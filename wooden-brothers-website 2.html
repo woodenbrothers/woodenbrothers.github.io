@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wooden Brothers - Artisanat en bois</title>
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #DEB887;
+            --background-color: #F5F5F5;
+            --text-color: #333;
+            --spacing: 1rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .filter-container {
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding-bottom: 0.5rem;
+        }
+        
+        .filter-btn {
+            background-color: white;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            margin-right: 0.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        @media (min-width: 640px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .product-details {
+            padding: 1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-category {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-top: auto;
+        }
+        
+        .product-link {
+            display: block;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 0.75rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        
+        .product-link:hover {
+            background-color: #6d350f;
+        }
+        
+        .about-section {
+            background-color: white;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            border-radius: 10px;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="https://storage.googleapis.com/anthropic-artifacts-staging.appspot.com/artifacts/195296d1274bbce95babf1fee8fc4982ee469e32.txt.md" alt="Wooden Brothers Logo" style="height: 40px; margin-right: 10px;">
+                Wooden Brothers
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="hero">
+            <h1>Artisanat en bois fait main</h1>
+            <p>Des créations uniques pour votre intérieur et vos passions</p>
+        </section>
+        
+        <div class="filter-container">
+            <button class="filter-btn active" data-category="all">Tous les produits</button>
+            <button class="filter-btn" data-category="dessous-plats">Dessous de plats</button>
+            <button class="filter-btn" data-category="cartes-pokemon">Cartes Pokémon</button>
+            <button class="filter-btn" data-category="dessous-verre">Dessous de verre</button>
+        </div>
+        
+        <div class="products-grid">
+            <!-- Dessous de plats -->
+            <div class="product-card" data-category="dessous-plats">
+                <img src="https://storage.googleapis.com/anthropic-artifacts-staging.appspot.com/artifacts/195296d1274bbce95babf1fee8fc4982ee469e32.txt.md" alt="Dessous de plat motif Arbre" class="product-image">
+                <div class="product-details">
+                    <div class="product-title">Dessous de plat Sapin en bois</div>
+                    <div class="product-category">Dessous de plats</div>
+                    <div class="product-price">22,99 €</div>
+                </div>
+                <a href="https://www.etsy.com/listing/1891818343?etsrc=sdt" class="product-link">Voir sur Etsy</a>
+            </div>
+            
+            <div class="product-card" data-category="dessous-plats">
+                <img src="/api/placeholder/400/400" alt="Dessous de plat en bois exotique" class="product-image">
+                <div class="product-details">
+                    <div class="product-title">Dessous de plat hexagonal</div>
+                    <div class="product-category">Dessous de plats</div>
+                    <div class="product-price">24,99 €</div>
+                </div>
+                <a href="https://www.etsy.com/shop/WoodenBrothers" class="product-link">Voir sur Etsy</a>
+            </div>
+            
+            <div class="product-card" data-category="dessous-plats">
+                <img src="/api/placeholder/400/400" alt="Dessous de plat rond" class="product-image">
+                <div class="product-details">
+                    <div class="product-title">Dessous de plat rond motif floral</div>
+                    <div class="product-category">Dessous de plats</div>
+                    <div class="product-price">19,99 €</div>
+                </div>
+                <a href="https://www.etsy.com/shop/WoodenBrothers" class="product-link">Voir sur Etsy</a>
+            </div>
+            
+            <div class="product-card" data-category="dessous-plats">
+                <img src="/api/placeholder/400/400" alt="Set de dessous de plat" class="product-image">
+                <div class="product-details">
+                    <div class="product-title">Set de 3 dessous de plat assortis</div>
+                    <div class="product-category">Dessous de plats</div>
+                    <div class="product-price">49,99 €</div>
+                </div>
+                <a href="https://www.etsy.com/shop/WoodenBrothers" class="product-link">Voir sur Etsy</a>
+            </div>
+            
+            <!-- Cartes Pokémon -->
+            <div class="product-card" data-category="cartes-pokemon">
+                <img src="/api/placeholder/400/400" alt="Support carte Pokémon Dracaufeu" class="product-image">
+                <div class="product-details">
+                    <div class="product-title">Support Pokémon Dracaufeu</div>
+                    <div class="product-category">Cartes Pokémon</div>
+                    <div class="product-price">15,99 €</div>
+                </div>
+                <a href="https://www.etsy.com/shop/WoodenBrothers" class="product-link">Voir sur Etsy</a>
+            </div>
+            
+            <div class="product-card" data-category="cartes-pokemon">
+                <img src="/api/placeholder/400/400" alt="Support carte Pokémon Pikachu" class="product-image">
+                <div class="product-details">
+                    <div class="product-title">Support Pokémon Pikachu</div>
+                    <div class="product-category">Cartes Pokémon</div>
+                    <div class="product-price">14,99 €</div>
+                </div>
+                <a href="https://www.etsy.com/shop/WoodenBrothers" class="product-link">Voir sur Etsy</a>
+            </div>
+            
+            <div class="product-card" data-category="cartes-pokemon">
+                <img src="/api/placeholder/400/400" alt="Présentoir multi-cartes Pokémon" class="product-image">
+                <div class="product-details">
+                    <div class="product-title">Présentoir 5 cartes Pokémon</div>
+                    <div class="product-category">Cartes Pokémon</div>
+                    <div class="product-price">29,99 €</div>
+                </div>
+                <a href="https://www.etsy.com/shop/WoodenBrothers" class="product-link">Voir sur Etsy</a>
+            </div>
+            
+            <!-- Dessous de verre -->
+            <div class="product-card" data-category="dessous-verre">
+                <img src="/api/placeholder/400/400" alt="Set de dessous de verre circulaires" class="product-image">
+                <div class="product-details">
+                    <div class="product-title">Set de 4 dessous de verre ronds</div>
+                    <div class="product-category">Dessous de verre</div>
+                    <div class="product-price">19,99 €</div>
+                </div>
+                <a href="https://www.etsy.com/shop/WoodenBrothers" class="product-link">Voir sur Etsy</a>
+            </div>
+            
+            <div class="product-card" data-category="dessous-verre">
+                <img src="/api/placeholder/400/400" alt="Dessous de verre personnalisable" class="product-image">
+                <div class="product-details">
+                    <div class="product-title">Dessous de verre personnalisable</div>
+                    <div class="product-category">Dessous de verre</div>
+                    <div class="product-price">12,99 €</div>
+                </div>
+                <a href="https://www.etsy.com/shop/WoodenBrothers" class="product-link">Voir sur Etsy</a>
+            </div>
+            
+            <div class="product-card" data-category="dessous-verre">
+                <img src="/api/placeholder/400/400" alt="Dessous de verre géométriques" class="product-image">
+                <div class="product-details">
+                    <div class="product-title">Set de 6 dessous de verre géométriques</div>
+                    <div class="product-category">Dessous de verre</div>
+                    <div class="product-price">24,99 €</div>
+                </div>
+                <a href="https://www.etsy.com/shop/WoodenBrothers" class="product-link">Voir sur Etsy</a>
+            </div>
+        </div>
+        
+        <section class="about-section">
+            <div class="about-content">
+                <h2>À propos de Wooden Brothers</h2>
+                <p>Wooden Brothers est une entreprise artisanale spécialisée dans la création d'objets en bois uniques et de qualité. Nous concevons et fabriquons avec passion des articles qui allient fonctionnalité et esthétique.</p>
+                <p>Tous nos produits sont fabriqués à la main avec une attention particulière portée aux détails et à la finition. Nous utilisons uniquement des bois sélectionnés avec soin pour leur beauté et leur durabilité.</p>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Wooden Brothers. Tous droits réservés.</p>
+    </footer>
+    
+    <script>
+        // Filtrage des produits par catégorie
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Mettre à jour les boutons actifs
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                const selectedCategory = button.getAttribute('data-category');
+                
+                // Filtrer les produits
+                productCards.forEach(card => {
+                    if (selectedCategory === 'all' || card.getAttribute('data-category') === selectedCategory) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
