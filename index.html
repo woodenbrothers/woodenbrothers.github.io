@@ -89,6 +89,15 @@
             cursor: pointer;
             font-size: 0.9rem;
             transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .coming-soon {
+            font-size: 0.7rem;
+            color: #666;
+            font-style: italic;
         }
         
         .filter-btn:hover, .filter-btn.active {
@@ -229,10 +238,10 @@
         <div class="filter-container">
             <button class="filter-btn active" data-category="all">Tous les produits</button>
             <button class="filter-btn" data-category="dessous-plats">Dessous de plats</button>
-            <button class="filter-btn" data-category="cartes-pokemon">Cartes Pokémon</button>
-            <button class="filter-btn" data-category="dessous-verre">Dessous de verre</button>
             <button class="filter-btn" data-category="manga-anime">Manga & Anime</button>
             <button class="filter-btn" data-category="animaux">Animaux</button>
+            <button class="filter-btn" data-category="cartes-pokemon">Cartes Pokémon <span class="coming-soon">(Arrive prochainement)</span></button>
+            <button class="filter-btn" data-category="dessous-verre">Dessous de verre <span class="coming-soon">(Arrive prochainement)</span></button>
         </div>
         
         <div class="products-grid">
