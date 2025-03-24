@@ -15,26 +15,6 @@
             --accent-color: #5B3E2B;
         }
         
-        .theme-5 {
-            --primary-color: #214A22;
-            --accent-color: #3C6E36;
-            --background-color: #FDFDFD;
-            --text-color: #FFFFFF;
-        }
-        .theme-6 {
-            --primary-color: #34463E;
-            --accent-color: #5C7267;
-            --background-color: #FDFDFD;
-            --text-color: #FFFFFF;
-        }
-        /* Hover customizations for new themes */
-        .theme-5 .product-link:hover {
-            background-color: var(--accent-color);
-        }
-        .theme-6 .product-link:hover {
-            background-color: var(--accent-color);
-        }
-        
         * {
             margin: 0;
             padding: 0;
@@ -289,6 +269,47 @@
         .instagram-link:hover {
             color: #2c5133;
         }
+
+        /* Thèmes restaurés et nouveaux thèmes */
+        .theme-1 {
+            --primary-color: #A47551;
+            --accent-color: #5B3E2B;
+        }
+
+        .theme-2 {
+            --primary-color: #DEB887;
+            --accent-color: #8B4513;
+        }
+
+        .theme-3 {
+            --primary-color: #FDFBF7;
+            --accent-color: #1E1E1E;
+        }
+
+        .theme-4 {
+            --primary-color: #5B3E2B;
+            --accent-color: #A47551;
+        }
+
+        .theme-5 {
+            --primary-color: #214A22;
+            --accent-color: #1b3a1b;
+        }
+
+        .theme-6 {
+            --primary-color: #34463E;
+            --accent-color: #2c3e50;
+        }
+
+        /* Règles de hover pour .product-link pour chaque thème */
+        .theme-1 .product-link:hover,
+        .theme-2 .product-link:hover,
+        .theme-3 .product-link:hover,
+        .theme-4 .product-link:hover,
+        .theme-5 .product-link:hover,
+        .theme-6 .product-link:hover {
+            background-color: var(--accent-color);
+        }
     </style>
 </head>
 <body>
@@ -297,11 +318,17 @@
             <img src="Images/logo.png" alt="Wooden Brothers Logo" style="height: 40px; margin-right: 10px;">
             <span>Wooden Brothers</span>
         </div>
-        <select id="themeSwitcher" style="margin-top: 10px;">
+    </header>
+    <div style="text-align: center; margin: 1rem 0;">
+        <select id="themeSwitcher">
+            <option value="theme-1">Thème 1</option>
+            <option value="theme-2">Thème 2</option>
+            <option value="theme-3">Thème 3</option>
+            <option value="theme-4">Thème 4</option>
             <option value="theme-5">Thème 5</option>
             <option value="theme-6">Thème 6</option>
         </select>
-    </header>
+    </div>
     
     <div class="container">
         <section class="hero">
