@@ -7,12 +7,12 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #c5eeb4;
+            --primary-color: #A47551;
             --secondary-color: #DEB887;
-            --background-color: #F5F5F5;
+            --background-color: #FDFBF7;
             --text-color: #1E1E1E;
             --spacing: 1rem;
-            --accent-color: #e63946;
+            --accent-color: #5B3E2B;
         }
         
         * {
@@ -68,9 +68,9 @@
             padding: 2rem 1rem;
         }
         
-        h1 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
+        h1, h2 {
+            color: var(--accent-color);
+            font-weight: 700;
         }
         
         p {
@@ -91,7 +91,7 @@
         .filter-btn {
             background-color: white;
             border: 1px solid var(--primary-color);
-            color: var(--primary-color);
+            color: var(--accent-color);
             padding: 0.5rem 1rem;
             border-radius: 20px;
             cursor: pointer;
@@ -101,6 +101,7 @@
             align-items: center;
             gap: 0.5rem;
             white-space: nowrap;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         
         .coming-soon {
@@ -209,10 +210,12 @@
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         
         .product-link:hover {
-            background-color: #2c5133;
+            background-color: var(--accent-color);
         }
         
         .about-section {
@@ -278,7 +281,7 @@
     
     <div class="container">
         <section class="hero">
-            <h1>Des pièces gravées uniques</h1>
+            <h1>Des créations en bois qui racontent une histoire</h1>
             <p>Découvrez nos dessous de plats en bois naturel inspirés par la nature, les animaux et l'univers manga.</p>
         </section>
         
