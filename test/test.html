@@ -15,36 +15,24 @@
             --accent-color: #5B3E2B;
         }
         
-        .theme-1 {
-            --primary-color: #A47551;
-            --accent-color: #5B3E2B;
-            --secondary-color: #C3B091;
-            --background-color: #FDFBF7;
-            --green-accent: #8DB580;
+        .theme-5 {
+            --primary-color: #214A22;
+            --accent-color: #3C6E36;
+            --background-color: #FDFDFD;
+            --text-color: #FFFFFF;
         }
-        
-        .theme-2 {
-            --primary-color: #5F7161;
-            --accent-color: #3A4D39;
-            --secondary-color: #EAE7DC;
-            --background-color: #F9F9F6;
-            --green-accent: #DDEACB;
+        .theme-6 {
+            --primary-color: #34463E;
+            --accent-color: #5C7267;
+            --background-color: #FDFDFD;
+            --text-color: #FFFFFF;
         }
-        
-        .theme-3 {
-            --primary-color: #4CAF50;
-            --accent-color: #2E7D32;
-            --secondary-color: #F4F4F4;
-            --background-color: #FFFFFF;
-            --green-accent: #F9D923;
+        /* Hover customizations for new themes */
+        .theme-5 .product-link:hover {
+            background-color: var(--accent-color);
         }
-        
-        .theme-4 {
-            --primary-color: #6B9080;
-            --accent-color: #A4C3B2;
-            --secondary-color: #FFE5D9;
-            --background-color: #FDFCFB;
-            --green-accent: #CB997E;
+        .theme-6 .product-link:hover {
+            background-color: var(--accent-color);
         }
         
         * {
@@ -304,21 +292,15 @@
     </style>
 </head>
 <body>
-    <div style="position: fixed; top: 1rem; right: 1rem; z-index: 999;">
-        <label for="themeSwitcher" style="font-size: 0.9rem; font-weight: bold; margin-right: 0.5rem;">Thème :</label>
-        <select id="themeSwitcher" onchange="changeTheme(this.value)" style="padding: 0.25rem 0.5rem; font-size: 0.9rem;">
-            <option value="">Défaut</option>
-            <option value="theme-1">Nature douce</option>
-            <option value="theme-2">Fraîcheur moderne</option>
-            <option value="theme-3">Énergie verte</option>
-            <option value="theme-4">Zen créatif</option>
-        </select>
-    </div>
     <header>
         <div class="logo">
             <img src="Images/logo.png" alt="Wooden Brothers Logo" style="height: 40px; margin-right: 10px;">
             <span>Wooden Brothers</span>
         </div>
+        <select id="themeSwitcher" style="margin-top: 10px;">
+            <option value="theme-5">Thème 5</option>
+            <option value="theme-6">Thème 6</option>
+        </select>
     </header>
     
     <div class="container">
@@ -521,11 +503,6 @@
                 });
             });
         });
-    </script>
-    <script>
-        function changeTheme(themeName) {
-            document.body.className = themeName;
-        }
     </script>
 </body>
 </html>
