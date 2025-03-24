@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wooden Brothers - Artisanat en bois</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #8B4513;
+            --primary-color: #c5eeb4;
             --secondary-color: #DEB887;
             --background-color: #F5F5F5;
-            --text-color: #333;
+            --text-color: #1E1E1E;
             --spacing: 1rem;
             --accent-color: #e63946;
         }
@@ -151,6 +152,11 @@
             aspect-ratio: 1 / 1;
             object-fit: cover;
             display: block;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.1);
         }
         
         .product-details {
@@ -206,7 +212,7 @@
         }
         
         .product-link:hover {
-            background-color: #6d350f;
+            background-color: #2c5133;
         }
         
         .about-section {
@@ -231,6 +237,34 @@
         
         .hidden {
             display: none;
+        }
+        
+        .instagram-section {
+            background-color: white;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .instagram-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: color 0.2s;
+        }
+        
+        .instagram-link:hover {
+            color: #2c5133;
         }
     </style>
 </head>
@@ -258,7 +292,7 @@
         </div>
         
         <div class="products-grid">
-            <div class="product-card" data-category="dessous-plats manga-anime">
+            <div class="product-card" data-category="dessous-plats manga-anime" data-aos="fade-up">
                 <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Dessous de plat Luffy One Piece" class="product-image">
                 <div class="product-details">
                     <div class="product-title">Dessous de plat Luffy</div>
@@ -272,7 +306,7 @@
                 <a href="https://www.etsy.com/fr/listing/1865127564/dessous-de-plat-en-bois-luffy-one-piece" class="product-link" target="_blank" rel="noopener noreferrer">Acheter sur Etsy <img src="https://img.icons8.com/fluency/24/etsy.png" alt="Etsy" style="width: 20px; height: 20px;"></a>
             </div>
             
-            <div class="product-card" data-category="dessous-plats manga-anime">
+            <div class="product-card" data-category="dessous-plats manga-anime" data-aos="fade-up">
                 <img src="https://i.etsystatic.com/56732046/r/il/8ad2fe/6782430493/il_1588xN.6782430493_e4fr.jpg" alt="Dessous de plat Goku Dragon Ball" class="product-image">
                 <div class="product-details">
                     <div class="product-title">Dessous de plat Goku</div>
@@ -286,7 +320,7 @@
                 <a href="https://www.etsy.com/fr/listing/1891818343/dessous-de-plat-en-bois-goku-dragon-ball?ref=shop_home_active_1&pro=1&logging_key=d202c51c1cb49e16dc2378cb953d2ed975c725de%3A1891818343" class="product-link" target="_blank" rel="noopener noreferrer">Acheter sur Etsy <img src="https://img.icons8.com/fluency/24/etsy.png" alt="Etsy" style="width: 20px; height: 20px;"></a>
             </div>
 
-            <div class="product-card" data-category="dessous-plats manga-anime">
+            <div class="product-card" data-category="dessous-plats manga-anime" data-aos="fade-up">
                 <img src="https://i.etsystatic.com/56732046/r/il/bc1e5a/6657800678/il_1588xN.6657800678_evm5.jpg" alt="Dessous de plat Levi Ackerman Attack on Titan" class="product-image">
                 <div class="product-details">
                     <div class="product-title">Dessous de plat Livaï</div>
@@ -300,7 +334,7 @@
                 <a href="https://www.etsy.com/fr/listing/1876867223/dessous-de-plat-bois-livai-ackerman?ref=related-2&pro=1&logging_key=e02ee57c7e07beee8c406c2e90d51810466ced0f%3A1876867223" class="product-link" target="_blank" rel="noopener noreferrer">Acheter sur Etsy <img src="https://img.icons8.com/fluency/24/etsy.png" alt="Etsy" style="width: 20px; height: 20px;"></a>
             </div>
 
-            <div class="product-card" data-category="dessous-plats animaux">
+            <div class="product-card" data-category="dessous-plats animaux" data-aos="fade-up">
                 <img src="https://i.etsystatic.com/56732046/r/il/7585a7/6738475212/il_1588xN.6738475212_khld.jpg" alt="Dessous de plat animaux en bois massif" class="product-image">
                 <div class="product-details">
                     <div class="product-title">Dessous de plat animaux</div>
@@ -314,7 +348,7 @@
                 <a href="https://www.etsy.com/fr/listing/1849657184/dessous-de-plat-animaux-en-bois-massif?ref=shop_home_active_4&pro=1&logging_key=76fbaa82a5254324945d7e5d1bf817d5cf9fe786%3A1849657184" class="product-link" target="_blank" rel="noopener noreferrer">Acheter sur Etsy <img src="https://img.icons8.com/fluency/24/etsy.png" alt="Etsy" style="width: 20px; height: 20px;"></a>
             </div>
             
-            <div class="product-card" data-category="dessous-plats animaux">
+            <div class="product-card" data-category="dessous-plats animaux" data-aos="fade-up">
                 <img src="https://i.etsystatic.com/56732046/r/il/96342b/6545177886/il_1588xN.6545177886_hssh.jpg" alt="Dessous de plat panda en bois massif" class="product-image">
                 <div class="product-details">
                     <div class="product-title">Dessous de plat panda</div>
@@ -328,7 +362,7 @@
                 <a href="https://www.etsy.com/fr/listing/1839704122/dessous-de-plat-panda-en-bois-massif?ref=shop_home_active_5&pro=1&logging_key=55d5450858cca7cb9c7752900c97ab7288988517%3A1839704122" class="product-link" target="_blank" rel="noopener noreferrer">Acheter sur Etsy <img src="https://img.icons8.com/fluency/24/etsy.png" alt="Etsy" style="width: 20px; height: 20px;"></a>
             </div>
             
-            <div class="product-card" data-category="dessous-plats animaux">
+            <div class="product-card" data-category="dessous-plats animaux" data-aos="fade-up">
                 <img src="https://i.etsystatic.com/56732046/r/il/8bb26a/6543136974/il_1588xN.6543136974_k4v9.jpg" alt="Dessous de plat cheval en bois massif" class="product-image">
                 <div class="product-details">
                     <div class="product-title">Dessous de plat cheval</div>
@@ -342,7 +376,7 @@
                 <a href="https://www.etsy.com/fr/listing/1853445029/dessous-de-plat-cheval-en-bois-massif?ref=shop_home_active_6&pro=1&logging_key=ddad41ee6b54bfd8e3776bf8ece6877f4adec18f%3A1853445029" class="product-link" target="_blank" rel="noopener noreferrer">Acheter sur Etsy <img src="https://img.icons8.com/fluency/24/etsy.png" alt="Etsy" style="width: 20px; height: 20px;"></a>
             </div>
 
-            <div class="product-card" data-category="dessous-plats animaux">
+            <div class="product-card" data-category="dessous-plats animaux" data-aos="fade-up">
                 <img src="https://i.etsystatic.com/56732046/r/il/5e0bc6/6588924415/il_1588xN.6588924415_lsd8.jpg" alt="Dessous de plat chat en bois massif" class="product-image">
                 <div class="product-details">
                     <div class="product-title">Dessous de plat chat</div>
@@ -356,7 +390,7 @@
                 <a href="https://www.etsy.com/fr/listing/1838716908/dessous-de-plat-chat-en-bois-massif?ref=shop_home_active_7&pro=1&logging_key=4564f539efe79ae2e65d67f601bcf261ec41ea6f%3A1838716908" class="product-link" target="_blank" rel="noopener noreferrer">Acheter sur Etsy <img src="https://img.icons8.com/fluency/24/etsy.png" alt="Etsy" style="width: 20px; height: 20px;"></a>
             </div>
 
-            <div class="product-card" data-category="dessous-plats animaux">
+            <div class="product-card" data-category="dessous-plats animaux" data-aos="fade-up">
                 <img src="https://i.etsystatic.com/56732046/r/il/c6b310/6540750460/il_1588xN.6540750460_ruet.jpg" alt="Dessous de plat chien en bois massif" class="product-image">
                 <div class="product-details">
                     <div class="product-title">Dessous de plat chien</div>
@@ -370,7 +404,7 @@
                 <a href="https://www.etsy.com/fr/listing/1838708312/dessous-de-plat-chien-en-bois-massif?ref=shop_home_active_8&pro=1&logging_key=7f99844f200c86bab176182d4853ffd9d91a3fdc%3A1838708312" class="product-link" target="_blank" rel="noopener noreferrer">Acheter sur Etsy <img src="https://img.icons8.com/fluency/24/etsy.png" alt="Etsy" style="width: 20px; height: 20px;"></a>
             </div>
 
-            <div class="product-card" data-category="dessous-plats animaux">
+            <div class="product-card" data-category="dessous-plats animaux" data-aos="fade-up">
                 <img src="https://i.etsystatic.com/56732046/r/il/6e6d4e/6532846964/il_1588xN.6532846964_6n54.jpg" alt="Dessous de plat renard en bois massif" class="product-image">
                 <div class="product-details">
                     <div class="product-title">Dessous de plat renard</div>
@@ -393,13 +427,32 @@
                 <p>Que vous soyez fan de manga, amoureux des animaux ou amateur de déco naturelle, nos dessous de plats sont conçus pour sublimer votre intérieur.</p>
             </div>
         </section>
+        
+        <section class="instagram-section">
+            <div class="instagram-content">
+                <h2>Suivez-nous sur Instagram</h2>
+                <p>@woodenbrothers.art</p>
+                <p>Pour voir nos nouvelles créations en avant-première !</p>
+                <a href="https://www.instagram.com/woodenbrothers.art" class="instagram-link" target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.icons8.com/fluency/24/instagram-new.png" alt="Instagram" style="width: 20px; height: 20px;">
+                    Suivez-nous sur Instagram
+                </a>
+            </div>
+        </section>
     </div>
     
     <footer>
         <p>&copy; 2025 Wooden Brothers. Tous droits réservés.</p>
     </footer>
     
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Initialisation de AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+        
         // Filtrage des produits par catégorie
         const filterButtons = document.querySelectorAll('.filter-btn');
         const productCards = document.querySelectorAll('.product-card');
