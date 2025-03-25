@@ -143,7 +143,7 @@
         .product-card {
             background-color: var(--card-background);
             border-radius: 10px;
-            overflow: visible;
+            overflow: hidden;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
             display: flex;
@@ -151,9 +151,9 @@
             position: relative;
         }
         
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        .product-image-container {
+            overflow: hidden;
+            position: relative;
         }
         
         .product-image {
@@ -162,6 +162,11 @@
             object-fit: cover;
             display: block;
             transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
         
         .product-card:hover .product-image {
@@ -307,7 +312,9 @@
         
         <div class="products-grid">
             <div class="product-card" data-category="dessous-plats manga-anime" data-aos="fade-up">
-                <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Dessous de plat Luffy One Piece" class="product-image">
+                <div class="product-image-container">
+                    <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Dessous de plat Luffy One Piece" class="product-image">
+                </div>
                 <div class="product-details">
                     <div class="product-title">Dessous de plat Luffy</div>
                     <div class="product-category">Dessous de plats • Manga & Anime</div>
@@ -321,7 +328,9 @@
             </div>
             
             <div class="product-card" data-category="dessous-plats manga-anime" data-aos="fade-up">
-                <img src="https://i.etsystatic.com/56732046/r/il/8ad2fe/6782430493/il_1588xN.6782430493_e4fr.jpg" alt="Dessous de plat Goku Dragon Ball" class="product-image">
+                <div class="product-image-container">
+                    <img src="https://i.etsystatic.com/56732046/r/il/8ad2fe/6782430493/il_1588xN.6782430493_e4fr.jpg" alt="Dessous de plat Goku Dragon Ball" class="product-image">
+                </div>
                 <div class="product-details">
                     <div class="product-title">Dessous de plat Goku</div>
                     <div class="product-category">Dessous de plats • Manga & Anime</div>
@@ -335,7 +344,9 @@
             </div>
 
             <div class="product-card" data-category="dessous-plats manga-anime" data-aos="fade-up">
-                <img src="https://i.etsystatic.com/56732046/r/il/bc1e5a/6657800678/il_1588xN.6657800678_evm5.jpg" alt="Dessous de plat Levi Ackerman Attack on Titan" class="product-image">
+                <div class="product-image-container">
+                    <img src="https://i.etsystatic.com/56732046/r/il/bc1e5a/6657800678/il_1588xN.6657800678_evm5.jpg" alt="Dessous de plat Levi Ackerman Attack on Titan" class="product-image">
+                </div>
                 <div class="product-details">
                     <div class="product-title">Dessous de plat Livaï</div>
                     <div class="product-category">Dessous de plats • Manga & Anime</div>
@@ -349,7 +360,9 @@
             </div>
 
             <div class="product-card" data-category="dessous-plats animaux" data-aos="fade-up">
-                <img src="https://i.etsystatic.com/56732046/r/il/7585a7/6738475212/il_1588xN.6738475212_khld.jpg" alt="Dessous de plat animaux en bois massif" class="product-image">
+                <div class="product-image-container">
+                    <img src="https://i.etsystatic.com/56732046/r/il/7585a7/6738475212/il_1588xN.6738475212_khld.jpg" alt="Dessous de plat animaux en bois massif" class="product-image">
+                </div>
                 <div class="product-details">
                     <div class="product-title">Dessous de plat animaux</div>
                     <div class="product-category">Dessous de plats • Animaux</div>
@@ -363,7 +376,9 @@
             </div>
             
             <div class="product-card" data-category="dessous-plats animaux" data-aos="fade-up">
-                <img src="https://i.etsystatic.com/56732046/r/il/96342b/6545177886/il_1588xN.6545177886_hssh.jpg" alt="Dessous de plat panda en bois massif" class="product-image">
+                <div class="product-image-container">
+                    <img src="https://i.etsystatic.com/56732046/r/il/96342b/6545177886/il_1588xN.6545177886_hssh.jpg" alt="Dessous de plat panda en bois massif" class="product-image">
+                </div>
                 <div class="product-details">
                     <div class="product-title">Dessous de plat panda</div>
                     <div class="product-category">Dessous de plats • Animaux</div>
@@ -377,7 +392,9 @@
             </div>
             
             <div class="product-card" data-category="dessous-plats animaux" data-aos="fade-up">
-                <img src="https://i.etsystatic.com/56732046/r/il/8bb26a/6543136974/il_1588xN.6543136974_k4v9.jpg" alt="Dessous de plat cheval en bois massif" class="product-image">
+                <div class="product-image-container">
+                    <img src="https://i.etsystatic.com/56732046/r/il/8bb26a/6543136974/il_1588xN.6543136974_k4v9.jpg" alt="Dessous de plat cheval en bois massif" class="product-image">
+                </div>
                 <div class="product-details">
                     <div class="product-title">Dessous de plat cheval</div>
                     <div class="product-category">Dessous de plats • Animaux</div>
@@ -391,7 +408,9 @@
             </div>
 
             <div class="product-card" data-category="dessous-plats animaux" data-aos="fade-up">
-                <img src="https://i.etsystatic.com/56732046/r/il/5e0bc6/6588924415/il_1588xN.6588924415_lsd8.jpg" alt="Dessous de plat chat en bois massif" class="product-image">
+                <div class="product-image-container">
+                    <img src="https://i.etsystatic.com/56732046/r/il/5e0bc6/6588924415/il_1588xN.6588924415_lsd8.jpg" alt="Dessous de plat chat en bois massif" class="product-image">
+                </div>
                 <div class="product-details">
                     <div class="product-title">Dessous de plat chat</div>
                     <div class="product-category">Dessous de plats • Animaux</div>
@@ -405,7 +424,9 @@
             </div>
 
             <div class="product-card" data-category="dessous-plats animaux" data-aos="fade-up">
-                <img src="https://i.etsystatic.com/56732046/r/il/c6b310/6540750460/il_1588xN.6540750460_ruet.jpg" alt="Dessous de plat chien en bois massif" class="product-image">
+                <div class="product-image-container">
+                    <img src="https://i.etsystatic.com/56732046/r/il/c6b310/6540750460/il_1588xN.6540750460_ruet.jpg" alt="Dessous de plat chien en bois massif" class="product-image">
+                </div>
                 <div class="product-details">
                     <div class="product-title">Dessous de plat chien</div>
                     <div class="product-category">Dessous de plats • Animaux</div>
@@ -419,7 +440,9 @@
             </div>
 
             <div class="product-card" data-category="dessous-plats animaux" data-aos="fade-up">
-                <img src="https://i.etsystatic.com/56732046/r/il/6e6d4e/6532846964/il_1588xN.6532846964_6n54.jpg" alt="Dessous de plat renard en bois massif" class="product-image">
+                <div class="product-image-container">
+                    <img src="https://i.etsystatic.com/56732046/r/il/6e6d4e/6532846964/il_1588xN.6532846964_6n54.jpg" alt="Dessous de plat renard en bois massif" class="product-image">
+                </div>
                 <div class="product-details">
                     <div class="product-title">Dessous de plat renard</div>
                     <div class="product-category">Dessous de plats • Animaux</div>
