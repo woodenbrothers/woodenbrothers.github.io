@@ -143,7 +143,7 @@
         .product-card {
             background-color: var(--card-background);
             border-radius: 10px;
-            overflow: hidden;
+            overflow: visible;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
             display: flex;
@@ -154,6 +154,7 @@
         .product-image-container {
             overflow: hidden;
             position: relative;
+            border-radius: 10px 10px 0 0;
         }
         
         .product-image {
@@ -178,6 +179,7 @@
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+            background-color: var(--card-background);
         }
         
         .product-title {
@@ -227,6 +229,7 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             position: relative;
             z-index: 2;
+            margin: 0 1rem 1rem 1rem;
         }
         
         .product-link:hover {
