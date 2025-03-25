@@ -787,21 +787,35 @@
         });
 
         // Gestion de la galerie d'images
-        let currentImageIndex = 0;
-        const images = document.querySelectorAll('.thumbnail');
-        const mainImage = document.querySelector('.main-image');
-
-        function setMainImage(src) {
+        function setMainImage(src, modalId) {
+            const modal = document.getElementById(modalId);
+            const mainImage = modal.querySelector('.main-image');
+            const thumbnails = modal.querySelectorAll('.thumbnail');
+            
             mainImage.src = src;
-            images.forEach(img => img.classList.remove('active'));
+            thumbnails.forEach(img => img.classList.remove('active'));
             event.target.classList.add('active');
-            currentImageIndex = Array.from(images).indexOf(event.target);
+            
+            // Mettre à jour l'index de l'image courante
+            const currentIndex = Array.from(thumbnails).indexOf(event.target);
+            modal.dataset.currentIndex = currentIndex;
         }
 
-        function changeImage(direction) {
-            currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
-            const newSrc = images[currentImageIndex].src;
-            setMainImage(newSrc);
+        function changeImage(direction, modalId) {
+            const modal = document.getElementById(modalId);
+            const thumbnails = modal.querySelectorAll('.thumbnail');
+            const mainImage = modal.querySelector('.main-image');
+            let currentIndex = parseInt(modal.dataset.currentIndex || 0);
+            
+            currentIndex = (currentIndex + direction + thumbnails.length) % thumbnails.length;
+            const newSrc = thumbnails[currentIndex].src;
+            
+            mainImage.src = newSrc;
+            thumbnails.forEach(img => img.classList.remove('active'));
+            thumbnails[currentIndex].classList.add('active');
+            
+            // Mettre à jour l'index de l'image courante
+            modal.dataset.currentIndex = currentIndex;
         }
 
         function openFullscreen(src) {
@@ -834,13 +848,13 @@
             <div class="modal-gallery">
                 <div class="main-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Dessous de plat Luffy One Piece" class="main-image" onclick="openFullscreen(this.src)">
-                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1)">❮</div>
-                    <div class="gallery-nav gallery-next" onclick="changeImage(1)">❯</div>
+                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'luffy-modal')">❮</div>
+                    <div class="gallery-nav gallery-next" onclick="changeImage(1, 'luffy-modal')">❯</div>
                 </div>
                 <div class="thumbnail-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Dessous de plat Luffy One Piece" class="thumbnail active" onclick="setMainImage(this.src)">
-                    <img src="https://i.etsystatic.com/56732046/r/il/051158/6670357462/il_1588xN.6670357462_crbc.jpg" alt="Dessous de plat Luffy One Piece - Vue 2" class="thumbnail" onclick="setMainImage(this.src)">
-                    <img src="https://i.etsystatic.com/56732046/r/il/96f860/6670357782/il_1588xN.6670357782_7exz.jpg" alt="Dessous de plat Luffy One Piece - Vue 3" class="thumbnail" onclick="setMainImage(this.src)">
+                    <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Dessous de plat Luffy One Piece" class="thumbnail active" onclick="setMainImage(this.src, 'luffy-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/051158/6670357462/il_1588xN.6670357462_crbc.jpg" alt="Dessous de plat Luffy One Piece - Vue 2" class="thumbnail" onclick="setMainImage(this.src, 'luffy-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/96f860/6670357782/il_1588xN.6670357782_7exz.jpg" alt="Dessous de plat Luffy One Piece - Vue 3" class="thumbnail" onclick="setMainImage(this.src, 'luffy-modal')">
                 </div>
             </div>
             <div class="modal-description">
@@ -863,11 +877,11 @@
             <div class="modal-gallery">
                 <div class="main-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/8ad2fe/6782430493/il_1588xN.6782430493_e4fr.jpg" alt="Dessous de plat Goku Dragon Ball" class="main-image" onclick="openFullscreen(this.src)">
-                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1)">❮</div>
-                    <div class="gallery-nav gallery-next" onclick="changeImage(1)">❯</div>
+                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'goku-modal')">❮</div>
+                    <div class="gallery-nav gallery-next" onclick="changeImage(1, 'goku-modal')">❯</div>
                 </div>
                 <div class="thumbnail-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/8ad2fe/6782430493/il_1588xN.6782430493_e4fr.jpg" alt="Dessous de plat Goku Dragon Ball" class="thumbnail active" onclick="setMainImage(this.src)">
+                    <img src="https://i.etsystatic.com/56732046/r/il/8ad2fe/6782430493/il_1588xN.6782430493_e4fr.jpg" alt="Dessous de plat Goku Dragon Ball" class="thumbnail active" onclick="setMainImage(this.src, 'goku-modal')">
                 </div>
             </div>
             <div class="modal-description">
@@ -890,11 +904,11 @@
             <div class="modal-gallery">
                 <div class="main-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/bc1e5a/6657800678/il_1588xN.6657800678_evm5.jpg" alt="Dessous de plat Levi Ackerman Attack on Titan" class="main-image" onclick="openFullscreen(this.src)">
-                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1)">❮</div>
-                    <div class="gallery-nav gallery-next" onclick="changeImage(1)">❯</div>
+                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'levi-modal')">❮</div>
+                    <div class="gallery-nav gallery-next" onclick="changeImage(1, 'levi-modal')">❯</div>
                 </div>
                 <div class="thumbnail-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/bc1e5a/6657800678/il_1588xN.6657800678_evm5.jpg" alt="Dessous de plat Levi Ackerman Attack on Titan" class="thumbnail active" onclick="setMainImage(this.src)">
+                    <img src="https://i.etsystatic.com/56732046/r/il/bc1e5a/6657800678/il_1588xN.6657800678_evm5.jpg" alt="Dessous de plat Levi Ackerman Attack on Titan" class="thumbnail active" onclick="setMainImage(this.src, 'levi-modal')">
                 </div>
             </div>
             <div class="modal-description">
@@ -917,11 +931,11 @@
             <div class="modal-gallery">
                 <div class="main-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/7585a7/6738475212/il_1588xN.6738475212_khld.jpg" alt="Dessous de plat animaux en bois massif" class="main-image" onclick="openFullscreen(this.src)">
-                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1)">❮</div>
-                    <div class="gallery-nav gallery-next" onclick="changeImage(1)">❯</div>
+                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'animaux-modal')">❮</div>
+                    <div class="gallery-nav gallery-next" onclick="changeImage(1, 'animaux-modal')">❯</div>
                 </div>
                 <div class="thumbnail-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/7585a7/6738475212/il_1588xN.6738475212_khld.jpg" alt="Dessous de plat animaux en bois massif" class="thumbnail active" onclick="setMainImage(this.src)">
+                    <img src="https://i.etsystatic.com/56732046/r/il/7585a7/6738475212/il_1588xN.6738475212_khld.jpg" alt="Dessous de plat animaux en bois massif" class="thumbnail active" onclick="setMainImage(this.src, 'animaux-modal')">
                 </div>
             </div>
             <div class="modal-description">
@@ -944,11 +958,11 @@
             <div class="modal-gallery">
                 <div class="main-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/96342b/6545177886/il_1588xN.6545177886_hssh.jpg" alt="Dessous de plat panda en bois massif" class="main-image" onclick="openFullscreen(this.src)">
-                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1)">❮</div>
-                    <div class="gallery-nav gallery-next" onclick="changeImage(1)">❯</div>
+                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'panda-modal')">❮</div>
+                    <div class="gallery-nav gallery-next" onclick="changeImage(1, 'panda-modal')">❯</div>
                 </div>
                 <div class="thumbnail-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/96342b/6545177886/il_1588xN.6545177886_hssh.jpg" alt="Dessous de plat panda en bois massif" class="thumbnail active" onclick="setMainImage(this.src)">
+                    <img src="https://i.etsystatic.com/56732046/r/il/96342b/6545177886/il_1588xN.6545177886_hssh.jpg" alt="Dessous de plat panda en bois massif" class="thumbnail active" onclick="setMainImage(this.src, 'panda-modal')">
                 </div>
             </div>
             <div class="modal-description">
@@ -971,11 +985,11 @@
             <div class="modal-gallery">
                 <div class="main-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/8bb26a/6543136974/il_1588xN.6543136974_k4v9.jpg" alt="Dessous de plat cheval en bois massif" class="main-image" onclick="openFullscreen(this.src)">
-                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1)">❮</div>
-                    <div class="gallery-nav gallery-next" onclick="changeImage(1)">❯</div>
+                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'cheval-modal')">❮</div>
+                    <div class="gallery-nav gallery-next" onclick="changeImage(1, 'cheval-modal')">❯</div>
                 </div>
                 <div class="thumbnail-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/8bb26a/6543136974/il_1588xN.6543136974_k4v9.jpg" alt="Dessous de plat cheval en bois massif" class="thumbnail active" onclick="setMainImage(this.src)">
+                    <img src="https://i.etsystatic.com/56732046/r/il/8bb26a/6543136974/il_1588xN.6543136974_k4v9.jpg" alt="Dessous de plat cheval en bois massif" class="thumbnail active" onclick="setMainImage(this.src, 'cheval-modal')">
                 </div>
             </div>
             <div class="modal-description">
@@ -998,11 +1012,11 @@
             <div class="modal-gallery">
                 <div class="main-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/5e0bc6/6588924415/il_1588xN.6588924415_lsd8.jpg" alt="Dessous de plat chat en bois massif" class="main-image" onclick="openFullscreen(this.src)">
-                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1)">❮</div>
-                    <div class="gallery-nav gallery-next" onclick="changeImage(1)">❯</div>
+                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'chat-modal')">❮</div>
+                    <div class="gallery-nav gallery-next" onclick="changeImage(1, 'chat-modal')">❯</div>
                 </div>
                 <div class="thumbnail-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/5e0bc6/6588924415/il_1588xN.6588924415_lsd8.jpg" alt="Dessous de plat chat en bois massif" class="thumbnail active" onclick="setMainImage(this.src)">
+                    <img src="https://i.etsystatic.com/56732046/r/il/5e0bc6/6588924415/il_1588xN.6588924415_lsd8.jpg" alt="Dessous de plat chat en bois massif" class="thumbnail active" onclick="setMainImage(this.src, 'chat-modal')">
                 </div>
             </div>
             <div class="modal-description">
@@ -1025,11 +1039,11 @@
             <div class="modal-gallery">
                 <div class="main-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/c6b310/6540750460/il_1588xN.6540750460_ruet.jpg" alt="Dessous de plat chien en bois massif" class="main-image" onclick="openFullscreen(this.src)">
-                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1)">❮</div>
-                    <div class="gallery-nav gallery-next" onclick="changeImage(1)">❯</div>
+                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'chien-modal')">❮</div>
+                    <div class="gallery-nav gallery-next" onclick="changeImage(1, 'chien-modal')">❯</div>
                 </div>
                 <div class="thumbnail-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/c6b310/6540750460/il_1588xN.6540750460_ruet.jpg" alt="Dessous de plat chien en bois massif" class="thumbnail active" onclick="setMainImage(this.src)">
+                    <img src="https://i.etsystatic.com/56732046/r/il/c6b310/6540750460/il_1588xN.6540750460_ruet.jpg" alt="Dessous de plat chien en bois massif" class="thumbnail active" onclick="setMainImage(this.src, 'chien-modal')">
                 </div>
             </div>
             <div class="modal-description">
@@ -1052,11 +1066,11 @@
             <div class="modal-gallery">
                 <div class="main-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/6e6d4e/6532846964/il_1588xN.6532846964_6n54.jpg" alt="Dessous de plat renard en bois massif" class="main-image" onclick="openFullscreen(this.src)">
-                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1)">❮</div>
-                    <div class="gallery-nav gallery-next" onclick="changeImage(1)">❯</div>
+                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'renard-modal')">❮</div>
+                    <div class="gallery-nav gallery-next" onclick="changeImage(1, 'renard-modal')">❯</div>
                 </div>
                 <div class="thumbnail-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/6e6d4e/6532846964/il_1588xN.6532846964_6n54.jpg" alt="Dessous de plat renard en bois massif" class="thumbnail active" onclick="setMainImage(this.src)">
+                    <img src="https://i.etsystatic.com/56732046/r/il/6e6d4e/6532846964/il_1588xN.6532846964_6n54.jpg" alt="Dessous de plat renard en bois massif" class="thumbnail active" onclick="setMainImage(this.src, 'renard-modal')">
                 </div>
             </div>
             <div class="modal-description">
