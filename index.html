@@ -7,12 +7,12 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #A47551;
-            --secondary-color: #DEB887;
-            --background-color: #FDFBF7;
-            --text-color: #1E1E1E;
+            --primary-color: #060F06;
+            --secondary-color: #9DD8CE;
+            --background-color: #F8FCF8;
+            --text-color: #060F06;
             --spacing: 1rem;
-            --accent-color: #5B3E2B;
+            --accent-color: #060F06;
         }
         
         * {
@@ -89,14 +89,14 @@
         }
         
         .filter-btn {
-            background-color: white;
-            border: 1px solid var(--primary-color);
-            color: var(--accent-color);
+            background-color: var(--secondary-color);
+            border: none;
+            color: var(--text-color);
             padding: 0.5rem 1rem;
             border-radius: 20px;
             cursor: pointer;
             font-size: 0.9rem;
-            transition: all 0.2s;
+            transition: transform 0.2s;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
@@ -104,15 +104,19 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         
+        .filter-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
         .coming-soon {
             font-size: 0.7rem;
             color: #666;
             font-style: italic;
-        }
-        
-        .filter-btn:hover, .filter-btn.active {
-            background-color: var(--primary-color);
-            color: white;
         }
         
         .products-grid {
@@ -180,7 +184,7 @@
         
         .product-price {
             font-weight: bold;
-            color: var(--primary-color);
+            color: var(--text-color);
             margin-top: auto;
         }
         
@@ -193,7 +197,7 @@
         
         .product-discount {
             font-size: 0.8rem;
-            color: #e63946;
+            color: var(--accent-color);
             font-weight: 500;
         }
         
@@ -219,7 +223,7 @@
         }
         
         .about-section {
-            background-color: white;
+            background-color: var(--secondary-color);
             padding: 2rem 1rem;
             margin-top: 3rem;
             border-radius: 10px;
@@ -243,7 +247,7 @@
         }
         
         .instagram-section {
-            background-color: white;
+            background-color: var(--secondary-color);
             padding: 2rem 1rem;
             margin-top: 3rem;
             border-radius: 10px;
