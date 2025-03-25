@@ -143,11 +143,12 @@
         .product-card {
             background-color: var(--card-background);
             border-radius: 10px;
-            overflow: hidden;
+            overflow: visible;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
         
         .product-card:hover {
@@ -219,6 +220,8 @@
             gap: 0.5rem;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
         }
         
         .product-link:hover {
