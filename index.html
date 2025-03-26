@@ -556,8 +556,8 @@
 
         .mobile-filter-btn {
             display: none;
-            background-color: var(--primary-color);
-            color: white;
+            background-color: var(--card-background);
+            color: var(--text-color);
             border: none;
             padding: 0.75rem 1.5rem;
             border-radius: 25px;
@@ -569,15 +569,16 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .mobile-filter-btn:hover {
-            background-color: var(--secondary-color);
             transform: scale(1.05);
         }
 
         .mobile-filter-btn.active {
             background-color: var(--secondary-color);
+            color: white;
         }
 
         @media (max-width: 768px) {
