@@ -553,6 +553,81 @@
             background-color: rgba(255, 255, 255, 0.3);
             transform: rotate(90deg);
         }
+
+        .mobile-filter-btn {
+            display: none;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-filter-btn:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        .mobile-filter-btn.active {
+            background-color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-filter-btn {
+                display: block;
+                margin-bottom: 1rem;
+            }
+
+            .filter-container {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: var(--background-color);
+                padding: 2rem;
+                border-radius: 15px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+                z-index: 1000;
+                width: 90%;
+                max-width: 400px;
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+
+            .filter-container.active {
+                display: flex;
+            }
+
+            .filter-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 1rem;
+                font-size: 1rem;
+                margin: 0.5rem 0;
+            }
+
+            .filter-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+            }
+
+            .filter-overlay.active {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
@@ -577,6 +652,12 @@
             <button class="filter-btn" data-category="cartes-pokemon">Cartes Pokémon <span class="coming-soon">(Arrive prochainement)</span></button>
             <button class="filter-btn" data-category="dessous-verre">Dessous de verre <span class="coming-soon">(Arrive prochainement)</span></button>
         </div>
+        
+        <button class="mobile-filter-btn">
+            Filtres
+            <span class="filter-count">0</span>
+        </button>
+        <div class="filter-overlay"></div>
         
         <div class="products-grid">
             <div class="product-card" data-category="dessous-plats manga-anime" data-aos="fade-up">
@@ -770,6 +851,23 @@
         // Filtrage des produits par catégorie
         const filterButtons = document.querySelectorAll('.filter-btn');
         const productCards = document.querySelectorAll('.product-card');
+        const mobileFilterBtn = document.querySelector('.mobile-filter-btn');
+        const filterContainer = document.querySelector('.filter-container');
+        const filterOverlay = document.querySelector('.filter-overlay');
+        const filterCount = document.querySelector('.filter-count');
+        
+        // Gestion du bouton filtre mobile
+        mobileFilterBtn.addEventListener('click', () => {
+            filterContainer.classList.toggle('active');
+            filterOverlay.classList.toggle('active');
+            mobileFilterBtn.classList.toggle('active');
+        });
+
+        filterOverlay.addEventListener('click', () => {
+            filterContainer.classList.remove('active');
+            filterOverlay.classList.remove('active');
+            mobileFilterBtn.classList.remove('active');
+        });
         
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
@@ -788,6 +886,17 @@
                         card.classList.add('hidden');
                     }
                 });
+
+                // Mettre à jour le compteur de filtres actifs
+                const activeFilters = document.querySelectorAll('.filter-btn.active').length;
+                filterCount.textContent = activeFilters > 1 ? activeFilters - 1 : '0';
+
+                // Fermer le menu des filtres sur mobile
+                if (window.innerWidth <= 768) {
+                    filterContainer.classList.remove('active');
+                    filterOverlay.classList.remove('active');
+                    mobileFilterBtn.classList.remove('active');
+                }
             });
         });
 
