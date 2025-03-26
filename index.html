@@ -89,45 +89,53 @@
         }
         
         .filter-container {
-            margin: 1.5rem 0;
-            overflow-x: auto;
-            white-space: nowrap;
-            padding-bottom: 0.5rem;
-            display: flex;
-            flex-wrap: nowrap;
-            gap: 0.5rem;
-            justify-content: center;
+            display: none;
+            flex-direction: column;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.2);
+            background-color: var(--background-color);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            width: 90%;
+            max-width: 400px;
+            max-height: 80vh;
+            overflow-y: auto;
+            transition: transform 1s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-        
+
         .filter-container.active {
-            opacity: 1;
-            transform: translateY(0);
+            display: flex;
+            transform: translate(-50%, -50%) scale(1);
         }
-        
+
         .filter-btn {
+            width: 100%;
+            justify-content: center;
+            padding: 1rem;
+            font-size: 1rem;
+            margin: 0.5rem 0;
             background-color: var(--card-background);
-            border: none;
             color: var(--text-color);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: transform 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            white-space: nowrap;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.5s ease;
         }
-        
-        .filter-btn:hover {
-            transform: scale(1.05);
+
+        .filter-container.active .filter-btn {
+            transform: translateY(0);
+            opacity: 1;
         }
-        
-        .filter-btn.active {
-            background-color: var(--secondary-color);
-            color: white;
-        }
+
+        .filter-btn:nth-child(1) { transition-delay: 0.3s; }
+        .filter-btn:nth-child(2) { transition-delay: 0.4s; }
+        .filter-btn:nth-child(3) { transition-delay: 0.5s; }
+        .filter-btn:nth-child(4) { transition-delay: 0.6s; }
+        .filter-btn:nth-child(5) { transition-delay: 0.7s; }
+        .filter-btn:nth-child(6) { transition-delay: 0.8s; }
         
         .coming-soon {
             font-size: 0.7rem;
