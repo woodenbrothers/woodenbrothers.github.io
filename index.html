@@ -475,7 +475,7 @@
                 position: fixed;
                 top: 50%;
                 left: 50%;
-                transform: translate(-50%, -50%) scale(0.5);
+                transform: translate(-50%, -50%) scale(0.3);
                 background-color: var(--background-color);
                 padding: 2rem;
                 border-radius: 15px;
@@ -485,7 +485,7 @@
                 max-width: 400px;
                 max-height: 80vh;
                 overflow-y: auto;
-                transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+                transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
             }
 
             .filter-container.active {
@@ -501,9 +501,9 @@
                 margin: 0.5rem 0;
                 background-color: var(--card-background);
                 color: var(--text-color);
-                transform: translateY(20px);
+                transform: translateY(50px);
                 opacity: 0;
-                transition: all 0.3s ease;
+                transition: all 0.5s ease;
             }
 
             .filter-container.active .filter-btn {
@@ -511,12 +511,12 @@
                 opacity: 1;
             }
 
-            .filter-btn:nth-child(1) { transition-delay: 0.1s; }
-            .filter-btn:nth-child(2) { transition-delay: 0.2s; }
-            .filter-btn:nth-child(3) { transition-delay: 0.3s; }
-            .filter-btn:nth-child(4) { transition-delay: 0.4s; }
-            .filter-btn:nth-child(5) { transition-delay: 0.5s; }
-            .filter-btn:nth-child(6) { transition-delay: 0.6s; }
+            .filter-btn:nth-child(1) { transition-delay: 0.2s; }
+            .filter-btn:nth-child(2) { transition-delay: 0.3s; }
+            .filter-btn:nth-child(3) { transition-delay: 0.4s; }
+            .filter-btn:nth-child(4) { transition-delay: 0.5s; }
+            .filter-btn:nth-child(5) { transition-delay: 0.6s; }
+            .filter-btn:nth-child(6) { transition-delay: 0.7s; }
 
             .filter-btn.active {
                 background-color: var(--primary-color);
