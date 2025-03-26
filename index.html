@@ -566,6 +566,9 @@
             font-weight: 500;
             margin: 0 auto;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .mobile-filter-btn:hover {
@@ -654,8 +657,7 @@
         </div>
         
         <button class="mobile-filter-btn">
-            Filtres
-            <span class="filter-count">0</span>
+            Filtres: <span class="filter-text">Tous nos produits</span>
         </button>
         <div class="filter-overlay"></div>
         
@@ -854,7 +856,7 @@
         const mobileFilterBtn = document.querySelector('.mobile-filter-btn');
         const filterContainer = document.querySelector('.filter-container');
         const filterOverlay = document.querySelector('.filter-overlay');
-        const filterCount = document.querySelector('.filter-count');
+        const filterText = document.querySelector('.filter-text');
         
         // Gestion du bouton filtre mobile
         mobileFilterBtn.addEventListener('click', () => {
@@ -887,9 +889,8 @@
                     }
                 });
 
-                // Mettre à jour le compteur de filtres actifs
-                const activeFilters = document.querySelectorAll('.filter-btn.active').length;
-                filterCount.textContent = activeFilters > 1 ? activeFilters - 1 : '0';
+                // Mettre à jour le texte du filtre actif
+                filterText.textContent = button.textContent;
 
                 // Fermer le menu des filtres sur mobile
                 if (window.innerWidth <= 768) {
