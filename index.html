@@ -848,7 +848,9 @@
         // Initialisation de AOS
         AOS.init({
             duration: 800,
-            once: true
+            once: true,
+            offset: 0,
+            delay: 0
         });
         
         // Filtrage des produits par catégorie
@@ -885,6 +887,9 @@
                     const categories = card.getAttribute('data-category').split(' ');
                     if (selectedCategory === 'all' || categories.includes(selectedCategory)) {
                         card.classList.remove('hidden');
+                        // Forcer le refresh de l'animation
+                        card.setAttribute('data-aos', 'fade-up');
+                        AOS.refresh();
                     } else {
                         card.classList.add('hidden');
                     }
@@ -898,6 +903,12 @@
                     filterContainer.classList.remove('active');
                     filterOverlay.classList.remove('active');
                     mobileFilterBtn.classList.remove('active');
+                    
+                    // Scroll vers le premier produit visible
+                    const firstVisibleCard = document.querySelector('.product-card:not(.hidden)');
+                    if (firstVisibleCard) {
+                        firstVisibleCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
                 }
             });
         });
