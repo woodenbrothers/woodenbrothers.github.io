@@ -772,6 +772,23 @@
         
         <div class="products-grid">
             <div class="product-card" data-category="dessous-plats manga-anime" data-aos="fade-up">
+                <div class="product-image-container" onclick="openModal('eren-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Dessous de plat Eren Jäger Attack on Titan" class="product-image">
+                </div>
+                <div class="product-details">
+                    <div class="product-title">Dessous de plat Eren</div>
+                    <div class="product-category">Dessous de plats • Manga & Anime</div>
+                    <div style="display: flex; align-items: center;">
+                        <span class="product-original-price">17,99 €</span>
+                        <span class="product-price">14,39 €</span>
+                        <span class="product-discount">-20%</span>
+                    </div>
+                </div>
+                <a href="https://www.etsy.com/fr/listing/1880783276/dessous-de-plat-en-bois-eren-attaque-des?ref=shop_home_active_1&pro=1&logging_key=8a7c295f665f09382721105dd78e9ee8b6c55f9d%3A1880783276" class="product-link" target="_blank" rel="noopener noreferrer">Acheter</a>
+                <button class="product-details-btn" onclick="openModal('eren-modal')">En savoir plus</button>
+            </div>
+
+            <div class="product-card" data-category="dessous-plats manga-anime" data-aos="fade-up">
                 <div class="product-image-container" onclick="openModal('itachi-modal')">
                     <img src="https://i.etsystatic.com/56732046/r/il/1ff9b1/6740731906/il_1588xN.6740731906_kdrx.jpg" alt="Dessous de plat Itachi Naruto" class="product-image">
                 </div>
@@ -787,7 +804,7 @@
                 <a href="https://www.etsy.com/fr/listing/1893009633/dessous-de-plat-en-bois-itachi-naruto?ref=shop_home_active_1&pro=1&logging_key=f009a3ba9d6608797ad13ce28e5d30cc162aecc6%3A1893009633" class="product-link" target="_blank" rel="noopener noreferrer">Acheter</a>
                 <button class="product-details-btn" onclick="openModal('itachi-modal')">En savoir plus</button>
             </div>
-
+            
             <div class="product-card" data-category="dessous-plats manga-anime" data-aos="fade-up">
                 <div class="product-image-container" onclick="openModal('luffy-modal')">
                     <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Dessous de plat Luffy One Piece" class="product-image">
@@ -1122,6 +1139,66 @@
     </script>
     
     <!-- Modales pour chaque produit -->
+    <div id="eren-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('eren-modal')">&times;</span>
+            <h2 class="modal-title">Dessous de plat Eren</h2>
+            <div class="modal-gallery">
+                <div class="main-image-container">
+                    <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Dessous de plat Eren Jäger Attack on Titan" class="main-image" onclick="openFullscreen(this.src)">
+                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'eren-modal')">❮</div>
+                    <div class="gallery-nav gallery-next" onclick="changeImage(1, 'eren-modal')">❯</div>
+                </div>
+                <div class="thumbnail-container">
+                    <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Dessous de plat Eren Jäger Attack on Titan" class="thumbnail active" onclick="setMainImage(this.src, 'eren-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/f0edee/6750817180/il_1588xN.6750817180_12lw.jpg" alt="Dessous de plat Eren Jäger Attack on Titan - Vue 2" class="thumbnail" onclick="setMainImage(this.src, 'eren-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/96dfa3/6798835823/il_1588xN.6798835823_3ldn.jpg" alt="Dessous de plat Eren Jäger Attack on Titan - Vue 3" class="thumbnail" onclick="setMainImage(this.src, 'eren-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/387ffd/6750817382/il_1588xN.6750817382_icro.jpg" alt="Dessous de plat Eren Jäger Attack on Titan - Vue 4" class="thumbnail" onclick="setMainImage(this.src, 'eren-modal')">
+                </div>
+            </div>
+            <div class="modal-description">
+                <p>Ajoutez du caractère à votre décoration avec ce dessous de plat en bois naturel, gravé à l'effigie d'Eren Jäger, personnage central de la série L'Attaque des Titans. Cette pièce artisanale, conçue pour les fans de manga, allie intensité visuelle, qualité du bois et savoir-faire manuel.</p>
+                <p>Détails du produit :</p>
+                <ul>
+                    <li>Gravure fine et précise réalisée avec soin</li>
+                    <li>Bois massif de haute qualité, sélectionné pour sa durabilité</li>
+                    <li>Dimensions : environ 20 cm de diamètre, épaisseur 2 cm</li>
+                    <li>Vernis de protection pour une finition soignée et un entretien facile</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="itachi-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('itachi-modal')">&times;</span>
+            <h2 class="modal-title">Dessous de plat Itachi</h2>
+            <div class="modal-gallery">
+                <div class="main-image-container">
+                    <img src="https://i.etsystatic.com/56732046/r/il/1ff9b1/6740731906/il_1588xN.6740731906_kdrx.jpg" alt="Dessous de plat Itachi Naruto" class="main-image" onclick="openFullscreen(this.src)">
+                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'itachi-modal')">❮</div>
+                    <div class="gallery-nav gallery-next" onclick="changeImage(1, 'itachi-modal')">❯</div>
+                </div>
+                <div class="thumbnail-container">
+                    <img src="https://i.etsystatic.com/56732046/r/il/1ff9b1/6740731906/il_1588xN.6740731906_kdrx.jpg" alt="Dessous de plat Itachi Naruto" class="thumbnail active" onclick="setMainImage(this.src, 'itachi-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/314182/6740736034/il_1588xN.6740736034_qr6l.jpg" alt="Dessous de plat Itachi Naruto - Vue 2" class="thumbnail" onclick="setMainImage(this.src, 'itachi-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/8db25e/6740736124/il_1588xN.6740736124_3pxe.jpg" alt="Dessous de plat Itachi Naruto - Vue 3" class="thumbnail" onclick="setMainImage(this.src, 'itachi-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/935cd0/6740736342/il_1588xN.6740736342_mhoo.jpg" alt="Dessous de plat Itachi Naruto - Vue 4" class="thumbnail" onclick="setMainImage(this.src, 'itachi-modal')">
+                </div>
+            </div>
+            <div class="modal-description">
+                <p>Apportez une touche unique à votre intérieur avec ce dessous de plat en bois naturel, gravé à l'effigie d'Itachi Uchiwa, personnage emblématique de l'univers Naruto. Conçu pour les passionnés de manga, ce modèle allie esthétisme, originalité et qualité artisanale.</p>
+                <p>Détails du produit :</p>
+                <ul>
+                    <li>Gravure fine et précise réalisée avec soin</li>
+                    <li>Bois massif de haute qualité, sélectionné pour sa durabilité</li>
+                    <li>Dimensions : environ 20 cm de diamètre, épaisseur 2 cm</li>
+                    <li>Vernis de protection pour une finition soignée et un entretien facile</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <div id="luffy-modal" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('luffy-modal')">&times;</span>
@@ -1356,36 +1433,6 @@
             </div>
             <div class="modal-description">
                 <p>Laissez entrer la malice et l'élégance du renard avec ce dessous de plat en bois gravé. Son design précis et épuré met en valeur le charme mystérieux de cet animal. Une création artisanale unique, parfaite pour une déco naturelle et pleine de caractère.</p>
-                <p>Détails du produit :</p>
-                <ul>
-                    <li>Gravure fine et précise réalisée avec soin</li>
-                    <li>Bois massif de haute qualité, sélectionné pour sa durabilité</li>
-                    <li>Dimensions : environ 20 cm de diamètre, épaisseur 2 cm</li>
-                    <li>Vernis de protection pour une finition soignée et un entretien facile</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div id="itachi-modal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal('itachi-modal')">&times;</span>
-            <h2 class="modal-title">Dessous de plat Itachi</h2>
-            <div class="modal-gallery">
-                <div class="main-image-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/1ff9b1/6740731906/il_1588xN.6740731906_kdrx.jpg" alt="Dessous de plat Itachi Naruto" class="main-image" onclick="openFullscreen(this.src)">
-                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'itachi-modal')">❮</div>
-                    <div class="gallery-nav gallery-next" onclick="changeImage(1, 'itachi-modal')">❯</div>
-                </div>
-                <div class="thumbnail-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/1ff9b1/6740731906/il_1588xN.6740731906_kdrx.jpg" alt="Dessous de plat Itachi Naruto" class="thumbnail active" onclick="setMainImage(this.src, 'itachi-modal')">
-                    <img src="https://i.etsystatic.com/56732046/r/il/314182/6740736034/il_1588xN.6740736034_qr6l.jpg" alt="Dessous de plat Itachi Naruto - Vue 2" class="thumbnail" onclick="setMainImage(this.src, 'itachi-modal')">
-                    <img src="https://i.etsystatic.com/56732046/r/il/8db25e/6740736124/il_1588xN.6740736124_3pxe.jpg" alt="Dessous de plat Itachi Naruto - Vue 3" class="thumbnail" onclick="setMainImage(this.src, 'itachi-modal')">
-                    <img src="https://i.etsystatic.com/56732046/r/il/935cd0/6740736342/il_1588xN.6740736342_mhoo.jpg" alt="Dessous de plat Itachi Naruto - Vue 4" class="thumbnail" onclick="setMainImage(this.src, 'itachi-modal')">
-                </div>
-            </div>
-            <div class="modal-description">
-                <p>Apportez une touche unique à votre intérieur avec ce dessous de plat en bois naturel, gravé à l'effigie d'Itachi Uchiwa, personnage emblématique de l'univers Naruto. Conçu pour les passionnés de manga, ce modèle allie esthétisme, originalité et qualité artisanale.</p>
                 <p>Détails du produit :</p>
                 <ul>
                     <li>Gravure fine et précise réalisée avec soin</li>
