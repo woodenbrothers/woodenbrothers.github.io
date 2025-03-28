@@ -303,9 +303,12 @@
             margin: 20px auto;
             padding: 20px;
             width: 90%;
-            max-width: 800px;
+            max-width: 1000px;
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
 
         .modal-close {
@@ -340,7 +343,8 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
-            margin: 20px 0;
+            margin: 0;
+            width: 100%;
         }
 
         .main-image-container {
@@ -352,6 +356,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            background-color: var(--card-background);
         }
 
         .main-image {
@@ -359,7 +364,6 @@
             height: 100%;
             object-fit: contain;
             cursor: pointer;
-            background-color: var(--card-background);
         }
 
         .thumbnail-container {
@@ -369,6 +373,7 @@
             padding: 10px 0;
             scrollbar-width: none;
             -ms-overflow-style: none;
+            justify-content: center;
         }
 
         .thumbnail-container::-webkit-scrollbar {
@@ -431,7 +436,70 @@
         .modal-description {
             line-height: 1.6;
             color: var(--text-color);
-            margin-bottom: 20px;
+            margin: 0;
+        }
+
+        .modal-description h3 {
+            color: var(--primary-color);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.2rem;
+        }
+
+        .modal-description p {
+            margin-bottom: 1rem;
+        }
+
+        .modal-description ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modal-description li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .modal-description li::before {
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .modal-buy-button {
+            display: block;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 25px;
+            margin: 1.5rem auto 0;
+            width: fit-content;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-buy-button:hover {
+            transform: scale(1.05);
+            background-color: var(--primary-color);
+        }
+
+        @media (min-width: 768px) {
+            .modal-content {
+                flex-direction: row;
+                gap: 2rem;
+            }
+
+            .modal-gallery {
+                width: 60%;
+            }
+
+            .modal-description {
+                width: 40%;
+            }
         }
 
         @media (max-width: 768px) {
@@ -449,7 +517,7 @@
             }
 
             .main-image {
-                object-fit: cover;
+                object-fit: contain;
             }
 
             .thumbnail {
@@ -477,65 +545,6 @@
                 width: 25px;
                 height: 25px;
                 font-size: 18px;
-            }
-
-            .filter-btn {
-                background-color: var(--primary-color);
-                color: white;
-            }
-
-            .filter-container {
-                display: none;
-                flex-direction: column;
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%) scale(0.5);
-                background-color: var(--background-color);
-                padding: 2rem;
-                border-radius: 15px;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-                z-index: 1000;
-                width: 90%;
-                max-width: 400px;
-                max-height: 80vh;
-                overflow-y: auto;
-                transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            }
-
-            .filter-container.active {
-                display: flex;
-                transform: translate(-50%, -50%) scale(1);
-            }
-
-            .filter-btn {
-                width: 100%;
-                justify-content: center;
-                padding: 1rem;
-                font-size: 1rem;
-                margin: 0.5rem 0;
-                background-color: var(--card-background);
-                color: var(--text-color);
-                transform: translateY(20px);
-                opacity: 0;
-                transition: all 0.3s ease;
-            }
-
-            .filter-container.active .filter-btn {
-                transform: translateY(0);
-                opacity: 1;
-            }
-
-            .filter-btn:nth-child(1) { transition-delay: 0.1s; }
-            .filter-btn:nth-child(2) { transition-delay: 0.2s; }
-            .filter-btn:nth-child(3) { transition-delay: 0.3s; }
-            .filter-btn:nth-child(4) { transition-delay: 0.4s; }
-            .filter-btn:nth-child(5) { transition-delay: 0.5s; }
-            .filter-btn:nth-child(6) { transition-delay: 0.6s; }
-
-            .filter-btn.active {
-                background-color: var(--primary-color);
-                color: white;
             }
         }
         
@@ -1142,7 +1151,6 @@
     <div id="eren-modal" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('eren-modal')">&times;</span>
-            <h2 class="modal-title">Dessous de plat Eren</h2>
             <div class="modal-gallery">
                 <div class="main-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Dessous de plat Eren Jäger Attack on Titan" class="main-image" onclick="openFullscreen(this.src)">
@@ -1157,14 +1165,16 @@
                 </div>
             </div>
             <div class="modal-description">
+                <h2 class="modal-title">Dessous de plat Eren</h2>
                 <p>Ajoutez du caractère à votre décoration avec ce dessous de plat en bois naturel, gravé à l'effigie d'Eren Jäger, personnage central de la série L'Attaque des Titans. Cette pièce artisanale, conçue pour les fans de manga, allie intensité visuelle, qualité du bois et savoir-faire manuel.</p>
-                <p>Détails du produit :</p>
+                <h3>Détails du produit</h3>
                 <ul>
                     <li>Gravure fine et précise réalisée avec soin</li>
                     <li>Bois massif de haute qualité, sélectionné pour sa durabilité</li>
                     <li>Dimensions : environ 20 cm de diamètre, épaisseur 2 cm</li>
                     <li>Vernis de protection pour une finition soignée et un entretien facile</li>
                 </ul>
+                <a href="https://www.etsy.com/fr/listing/1880783276/dessous-de-plat-en-bois-eren-attaque-des?ref=shop_home_active_1&pro=1&logging_key=8a7c295f665f09382721105dd78e9ee8b6c55f9d%3A1880783276" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Acheter sur Etsy</a>
             </div>
         </div>
     </div>
@@ -1172,7 +1182,6 @@
     <div id="itachi-modal" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('itachi-modal')">&times;</span>
-            <h2 class="modal-title">Dessous de plat Itachi</h2>
             <div class="modal-gallery">
                 <div class="main-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/1ff9b1/6740731906/il_1588xN.6740731906_kdrx.jpg" alt="Dessous de plat Itachi Naruto" class="main-image" onclick="openFullscreen(this.src)">
@@ -1187,14 +1196,16 @@
                 </div>
             </div>
             <div class="modal-description">
+                <h2 class="modal-title">Dessous de plat Itachi</h2>
                 <p>Apportez une touche unique à votre intérieur avec ce dessous de plat en bois naturel, gravé à l'effigie d'Itachi Uchiwa, personnage emblématique de l'univers Naruto. Conçu pour les passionnés de manga, ce modèle allie esthétisme, originalité et qualité artisanale.</p>
-                <p>Détails du produit :</p>
+                <h3>Détails du produit</h3>
                 <ul>
                     <li>Gravure fine et précise réalisée avec soin</li>
                     <li>Bois massif de haute qualité, sélectionné pour sa durabilité</li>
                     <li>Dimensions : environ 20 cm de diamètre, épaisseur 2 cm</li>
                     <li>Vernis de protection pour une finition soignée et un entretien facile</li>
                 </ul>
+                <a href="https://www.etsy.com/fr/listing/1893009633/dessous-de-plat-en-bois-itachi-naruto?ref=shop_home_active_1&pro=1&logging_key=f009a3ba9d6608797ad13ce28e5d30cc162aecc6%3A1893009633" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Acheter sur Etsy</a>
             </div>
         </div>
     </div>
@@ -1202,7 +1213,6 @@
     <div id="luffy-modal" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('luffy-modal')">&times;</span>
-            <h2 class="modal-title">Dessous de plat Luffy</h2>
             <div class="modal-gallery">
                 <div class="main-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Dessous de plat Luffy One Piece" class="main-image" onclick="openFullscreen(this.src)">
@@ -1216,14 +1226,16 @@
                 </div>
             </div>
             <div class="modal-description">
+                <h2 class="modal-title">Dessous de plat Luffy</h2>
                 <p>Ajoutez une note chaleureuse et originale à votre intérieur avec ce dessous de plat en bois naturel, gravé à l'image de Monkey D. Luffy, le célèbre capitaine au chapeau de paille de One Piece. Pensé pour les amateurs de manga, ce modèle mêle authenticité et design unique.</p>
-                <p>Détails du produit :</p>
+                <h3>Détails du produit</h3>
                 <ul>
                     <li>Gravure fine et précise réalisée avec soin</li>
                     <li>Bois massif de haute qualité, sélectionné pour sa durabilité</li>
                     <li>Dimensions : environ 20 cm de diamètre, épaisseur 2 cm</li>
                     <li>Vernis de protection pour une finition soignée et un entretien facile</li>
                 </ul>
+                <a href="https://www.etsy.com/fr/listing/1865127564/dessous-de-plat-en-bois-luffy-one-piece" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Acheter sur Etsy</a>
             </div>
         </div>
     </div>
@@ -1231,7 +1243,6 @@
     <div id="goku-modal" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('goku-modal')">&times;</span>
-            <h2 class="modal-title">Dessous de plat Goku</h2>
             <div class="modal-gallery">
                 <div class="main-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/8ad2fe/6782430493/il_1588xN.6782430493_e4fr.jpg" alt="Dessous de plat Goku Dragon Ball" class="main-image" onclick="openFullscreen(this.src)">
@@ -1243,14 +1254,16 @@
                 </div>
             </div>
             <div class="modal-description">
+                <h2 class="modal-title">Dessous de plat Goku</h2>
                 <p>Offrez à votre décoration une touche puissante et symbolique avec ce dessous de plat en bois naturel, représentant Goku, l'icône incontournable de Dragon Ball. Ce modèle est idéal pour les fans de manga en quête d'un objet à la fois décoratif et authentique.</p>
-                <p>Détails du produit :</p>
+                <h3>Détails du produit</h3>
                 <ul>
                     <li>Gravure fine et précise réalisée avec soin</li>
                     <li>Bois massif de haute qualité, sélectionné pour sa durabilité</li>
                     <li>Dimensions : environ 20 cm de diamètre, épaisseur 2 cm</li>
                     <li>Vernis de protection pour une finition soignée et un entretien facile</li>
                 </ul>
+                <a href="https://www.etsy.com/fr/listing/1891818343/dessous-de-plat-en-bois-goku-dragon-ball?ref=shop_home_active_1&pro=1&logging_key=d202c51c1cb49e16dc2378cb953d2ed975c725de%3A1891818343" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Acheter sur Etsy</a>
             </div>
         </div>
     </div>
@@ -1258,7 +1271,6 @@
     <div id="levi-modal" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('levi-modal')">&times;</span>
-            <h2 class="modal-title">Dessous de plat Livaï</h2>
             <div class="modal-gallery">
                 <div class="main-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/bc1e5a/6657800678/il_1588xN.6657800678_evm5.jpg" alt="Dessous de plat Levi Ackerman Attack on Titan" class="main-image" onclick="openFullscreen(this.src)">
@@ -1270,14 +1282,16 @@
                 </div>
             </div>
             <div class="modal-description">
+                <h2 class="modal-title">Dessous de plat Livaï</h2>
                 <p>Apportez du caractère à votre espace avec ce dessous de plat en bois massif, gravé à l'effigie de Livaï Ackerman, le stratège légendaire de L'Attaque des Titans. Cette pièce artisanale allie finesse de gravure, qualité du bois et design inspiré de l'univers anime.</p>
-                <p>Détails du produit :</p>
+                <h3>Détails du produit</h3>
                 <ul>
                     <li>Gravure fine et précise réalisée avec soin</li>
                     <li>Bois massif de haute qualité, sélectionné pour sa durabilité</li>
                     <li>Dimensions : environ 20 cm de diamètre, épaisseur 2 cm</li>
                     <li>Vernis de protection pour une finition soignée et un entretien facile</li>
                 </ul>
+                <a href="https://www.etsy.com/fr/listing/1876867223/dessous-de-plat-bois-livai-ackerman?ref=related-2&pro=1&logging_key=e02ee57c7e07beee8c406c2e90d51810466ced0f%3A1876867223" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Acheter sur Etsy</a>
             </div>
         </div>
     </div>
@@ -1285,7 +1299,6 @@
     <div id="animaux-modal" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('animaux-modal')">&times;</span>
-            <h2 class="modal-title">Dessous de plat animaux</h2>
             <div class="modal-gallery">
                 <div class="main-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/7585a7/6738475212/il_1588xN.6738475212_khld.jpg" alt="Dessous de plat animaux en bois massif" class="main-image" onclick="openFullscreen(this.src)">
@@ -1297,14 +1310,16 @@
                 </div>
             </div>
             <div class="modal-description">
+                <h2 class="modal-title">Dessous de plat animaux</h2>
                 <p>Une collection de dessous de plats en bois massif représentant différents animaux. Chaque pièce est unique et apporte une touche de nature à votre table.</p>
-                <p>Caractéristiques :</p>
+                <h3>Caractéristiques</h3>
                 <ul>
                     <li>Bois massif de haute qualité</li>
                     <li>Gravure précise et détaillée</li>
                     <li>Dimensions : 20cm x 20cm</li>
                     <li>Finition soignée</li>
                 </ul>
+                <a href="https://www.etsy.com/fr/listing/1849657184/dessous-de-plat-animaux-en-bois-massif?ref=shop_home_active_4&pro=1&logging_key=76fbaa82a5254324945d7e5d1bf817d5cf9fe786%3A1849657184" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Acheter sur Etsy</a>
             </div>
         </div>
     </div>
@@ -1312,7 +1327,6 @@
     <div id="panda-modal" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('panda-modal')">&times;</span>
-            <h2 class="modal-title">Dessous de plat panda</h2>
             <div class="modal-gallery">
                 <div class="main-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/96342b/6545177886/il_1588xN.6545177886_hssh.jpg" alt="Dessous de plat panda en bois massif" class="main-image" onclick="openFullscreen(this.src)">
@@ -1324,14 +1338,16 @@
                 </div>
             </div>
             <div class="modal-description">
+                <h2 class="modal-title">Dessous de plat panda</h2>
                 <p>Ajoutez une touche zen et naturelle à votre intérieur avec ce dessous de plat en bois gravé représentant un panda. Symbole de calme et d'équilibre, cette pièce artisanale est idéale pour une décoration chaleureuse et apaisante. Gravée avec précision sur bois massif, elle allie esthétique et durabilité.</p>
-                <p>Détails du produit :</p>
+                <h3>Détails du produit</h3>
                 <ul>
                     <li>Gravure fine et précise réalisée avec soin</li>
                     <li>Bois massif de haute qualité, sélectionné pour sa durabilité</li>
                     <li>Dimensions : environ 20 cm de diamètre, épaisseur 2 cm</li>
                     <li>Vernis de protection pour une finition soignée et un entretien facile</li>
                 </ul>
+                <a href="https://www.etsy.com/fr/listing/1839704122/dessous-de-plat-panda-en-bois-massif?ref=shop_home_active_5&pro=1&logging_key=55d5450858cca7cb9c7752900c97ab7288988517%3A1839704122" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Acheter sur Etsy</a>
             </div>
         </div>
     </div>
@@ -1339,7 +1355,6 @@
     <div id="cheval-modal" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('cheval-modal')">&times;</span>
-            <h2 class="modal-title">Dessous de plat cheval</h2>
             <div class="modal-gallery">
                 <div class="main-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/8bb26a/6543136974/il_1588xN.6543136974_k4v9.jpg" alt="Dessous de plat cheval en bois massif" class="main-image" onclick="openFullscreen(this.src)">
@@ -1351,14 +1366,16 @@
                 </div>
             </div>
             <div class="modal-description">
+                <h2 class="modal-title">Dessous de plat cheval</h2>
                 <p>Faites entrer la noblesse et la puissance du cheval dans votre décoration grâce à ce dessous de plat en bois naturel. Gravé avec finesse, ce modèle reflète la beauté sauvage de l'animal et s'intègre parfaitement dans un intérieur rustique ou raffiné. Une pièce unique pour les passionnés d'équitation ou de nature.</p>
-                <p>Détails du produit :</p>
+                <h3>Détails du produit</h3>
                 <ul>
                     <li>Gravure fine et précise réalisée avec soin</li>
                     <li>Bois massif de haute qualité, sélectionné pour sa durabilité</li>
                     <li>Dimensions : environ 20 cm de diamètre, épaisseur 2 cm</li>
                     <li>Vernis de protection pour une finition soignée et un entretien facile</li>
                 </ul>
+                <a href="https://www.etsy.com/fr/listing/1853445029/dessous-de-plat-cheval-en-bois-massif?ref=shop_home_active_6&pro=1&logging_key=ddad41ee6b54bfd8e3776bf8ece6877f4adec18f%3A1853445029" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Acheter sur Etsy</a>
             </div>
         </div>
     </div>
@@ -1366,7 +1383,6 @@
     <div id="chat-modal" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('chat-modal')">&times;</span>
-            <h2 class="modal-title">Dessous de plat chat</h2>
             <div class="modal-gallery">
                 <div class="main-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/5e0bc6/6588924415/il_1588xN.6588924415_lsd8.jpg" alt="Dessous de plat chat en bois massif" class="main-image" onclick="openFullscreen(this.src)">
@@ -1378,14 +1394,16 @@
                 </div>
             </div>
             <div class="modal-description">
+                <h2 class="modal-title">Dessous de plat chat</h2>
                 <p>Apportez une note douce et élégante à votre table avec ce dessous de plat gravé à l'effigie d'un chat. Entre raffinement et tendresse, cette création artisanale séduira les amoureux des félins et du bois. Chaque pièce est travaillée à la main, sur un bois massif soigneusement sélectionné.</p>
-                <p>Détails du produit :</p>
+                <h3>Détails du produit</h3>
                 <ul>
                     <li>Gravure fine et précise réalisée avec soin</li>
                     <li>Bois massif de haute qualité, sélectionné pour sa durabilité</li>
                     <li>Dimensions : environ 20 cm de diamètre, épaisseur 2 cm</li>
                     <li>Vernis de protection pour une finition soignée et un entretien facile</li>
                 </ul>
+                <a href="https://www.etsy.com/fr/listing/1838716908/dessous-de-plat-chat-en-bois-massif?ref=shop_home_active_7&pro=1&logging_key=4564f539efe79ae2e65d67f601bcf261ec41ea6f%3A1838716908" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Acheter sur Etsy</a>
             </div>
         </div>
     </div>
@@ -1393,7 +1411,6 @@
     <div id="chien-modal" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('chien-modal')">&times;</span>
-            <h2 class="modal-title">Dessous de plat chien</h2>
             <div class="modal-gallery">
                 <div class="main-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/c6b310/6540750460/il_1588xN.6540750460_ruet.jpg" alt="Dessous de plat chien en bois massif" class="main-image" onclick="openFullscreen(this.src)">
@@ -1405,14 +1422,16 @@
                 </div>
             </div>
             <div class="modal-description">
+                <h2 class="modal-title">Dessous de plat chien</h2>
                 <p>Hommage fidèle au chien, ce dessous de plat en bois massif séduit par son design expressif et chaleureux. Gravé avec soin, il reflète la loyauté et la douceur de l'animal, pour une décoration authentique et attachante. Idéal pour les amoureux des animaux et des objets artisanaux.</p>
-                <p>Détails du produit :</p>
+                <h3>Détails du produit</h3>
                 <ul>
                     <li>Gravure fine et précise réalisée avec soin</li>
                     <li>Bois massif de haute qualité, sélectionné pour sa durabilité</li>
                     <li>Dimensions : environ 20 cm de diamètre, épaisseur 2 cm</li>
                     <li>Vernis de protection pour une finition soignée et un entretien facile</li>
                 </ul>
+                <a href="https://www.etsy.com/fr/listing/1838708312/dessous-de-plat-chien-en-bois-massif?ref=shop_home_active_8&pro=1&logging_key=7f99844f200c86bab176182d4853ffd9d91a3fdc%3A1838708312" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Acheter sur Etsy</a>
             </div>
         </div>
     </div>
@@ -1420,7 +1439,6 @@
     <div id="renard-modal" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('renard-modal')">&times;</span>
-            <h2 class="modal-title">Dessous de plat renard</h2>
             <div class="modal-gallery">
                 <div class="main-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/6e6d4e/6532846964/il_1588xN.6532846964_6n54.jpg" alt="Dessous de plat renard en bois massif" class="main-image" onclick="openFullscreen(this.src)">
@@ -1432,14 +1450,16 @@
                 </div>
             </div>
             <div class="modal-description">
+                <h2 class="modal-title">Dessous de plat renard</h2>
                 <p>Laissez entrer la malice et l'élégance du renard avec ce dessous de plat en bois gravé. Son design précis et épuré met en valeur le charme mystérieux de cet animal. Une création artisanale unique, parfaite pour une déco naturelle et pleine de caractère.</p>
-                <p>Détails du produit :</p>
+                <h3>Détails du produit</h3>
                 <ul>
                     <li>Gravure fine et précise réalisée avec soin</li>
                     <li>Bois massif de haute qualité, sélectionné pour sa durabilité</li>
                     <li>Dimensions : environ 20 cm de diamètre, épaisseur 2 cm</li>
                     <li>Vernis de protection pour une finition soignée et un entretien facile</li>
                 </ul>
+                <a href="https://www.etsy.com/fr/listing/1836879420/dessous-de-plat-renard-en-bois-massif?ref=shop_home_active_9&pro=1&logging_key=a0761db03f72649c4bf1a84cb11ee4f038795628%3A1836879420" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Acheter sur Etsy</a>
             </div>
         </div>
     </div>
