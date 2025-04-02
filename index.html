@@ -627,13 +627,17 @@
         .instagram-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-bottom: 2rem;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         @media (min-width: 768px) {
             .instagram-grid {
                 grid-template-columns: repeat(4, 1fr);
+                gap: 2rem;
             }
         }
 
@@ -643,12 +647,14 @@
             width: 100%;
             padding-bottom: 100%;
             overflow: hidden;
-            border-radius: 10px;
+            border-radius: 15px;
             transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .instagram-grid a:hover {
             transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         .instagram-grid img {
