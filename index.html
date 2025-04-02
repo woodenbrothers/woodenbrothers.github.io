@@ -600,20 +600,81 @@
             max-width: 800px;
             margin: 0 auto;
         }
-        
-        .instagram-link {
+
+        .instagram-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .instagram-header img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .instagram-header span {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .instagram-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .instagram-grid a {
+            position: relative;
+            display: block;
+            width: 100%;
+            padding-bottom: 100%;
+            overflow: hidden;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .instagram-grid a:hover {
+            transform: scale(1.05);
+        }
+
+        .instagram-grid img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .instagram-follow-btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
-            color: var(--primary-color);
+            background-color: var(--primary-color);
+            color: white;
             text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
             font-weight: 500;
-            margin-top: 1rem;
-            transition: color 0.2s;
+            transition: transform 0.3s ease;
         }
-        
-        .instagram-link:hover {
-            color: #2c5133;
+
+        .instagram-follow-btn:hover {
+            transform: scale(1.05);
         }
 
         .fullscreen-image {
@@ -1024,12 +1085,27 @@
         
         <section class="instagram-section">
             <div class="instagram-content">
-                <h2>Suivez-nous sur Instagram</h2>
-                <p>@woodenbrothers.art</p>
-                <p>Pour voir nos nouvelles créations en avant-première !</p>
-                <a href="https://www.instagram.com/woodenbrothers.art" class="instagram-link" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/woodenbrothers.art/" class="instagram-header" target="_blank" rel="noopener noreferrer">
+                    <img src="Images/logo.png" alt="Wooden Brothers Logo">
+                    <span>Wooden Brothers</span>
+                </a>
+                <div class="instagram-grid">
+                    <a href="https://www.instagram.com/woodenbrothers.art/p/DH1Gt2PtRTN/" target="_blank" rel="noopener noreferrer">
+                        <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Dessous de plat Eren">
+                    </a>
+                    <a href="https://www.instagram.com/woodenbrothers.art/p/DHlrT-gt9Z6/" target="_blank" rel="noopener noreferrer">
+                        <img src="https://i.etsystatic.com/56732046/r/il/1ff9b1/6740731906/il_1588xN.6740731906_kdrx.jpg" alt="Dessous de plat Itachi">
+                    </a>
+                    <a href="https://www.instagram.com/woodenbrothers.art/p/DHgo40bNd6t/" target="_blank" rel="noopener noreferrer">
+                        <img src="https://i.etsystatic.com/56732046/r/il/8ad2fe/6782430493/il_1588xN.6782430493_e4fr.jpg" alt="Dessous de plat Goku">
+                    </a>
+                    <a href="https://www.instagram.com/woodenbrothers.art/p/DHMAJKnMQSR/" target="_blank" rel="noopener noreferrer">
+                        <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Dessous de plat Luffy">
+                    </a>
+                </div>
+                <a href="https://www.instagram.com/woodenbrothers.art" class="instagram-follow-btn" target="_blank" rel="noopener noreferrer">
                     <img src="https://img.icons8.com/fluency/24/instagram-new.png" alt="Instagram" style="width: 20px; height: 20px;">
-                    Notre Instagram
+                    Suivez-nous sur Instagram
                 </a>
             </div>
         </section>
