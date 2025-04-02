@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wooden Brothers - Dessous de plat en bois gravés</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #C8A97E;
+            --text-color: #333333;
+            --background-color: #FFFFFF;
+            --secondary-background: #F5F5F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        /* Header Styles */
+        header {
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--background-color);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: url('images/hero-background.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 4rem 5%;
+            background-color: var(--secondary-background);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-color);
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        .about-content h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Customization Section */
+        .customization {
+            padding: 4rem 5%;
+            background-color: var(--secondary-background);
+            text-align: center;
+        }
+
+        .customization h2 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        }
+
+        .customization-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .customization-text {
+            text-align: left;
+        }
+
+        .customization-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .products h2 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Instagram Section */
+        .instagram {
+            padding: 4rem 5%;
+            text-align: center;
+            background-color: var(--secondary-background);
+        }
+
+        .instagram h2 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .instagram-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-color);
+            color: white;
+            padding: 2rem 5%;
+            text-align: center;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about,
+            .customization-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Wooden Brothers Logo">
+        </div>
+        <nav class="nav-links">
+            <a href="#about">À propos</a>
+            <a href="#products">Produits</a>
+            <a href="#customization">Personnalisation</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Wooden Brothers</h1>
+            <p>Des dessous de plat uniques gravés avec passion dans du bois massif</p>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stat-item">
+            <div class="stat-number">100+</div>
+            <div class="stat-label">Créations uniques</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Clients satisfaits</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">4.9/5</div>
+            <div class="stat-label">Note moyenne</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Années d'expérience</div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-image">
+            <img src="images/about.jpg" alt="Artisan Wooden Brothers">
+        </div>
+        <div class="about-content">
+            <h2>Notre Histoire</h2>
+            <p>Wooden Brothers est né d'une passion pour l'artisanat du bois et la culture pop. Nous créons des dessous de plat uniques qui allient fonctionnalité et art, en gravant avec précision vos personnages préférés dans du bois massif de haute qualité.</p>
+            <p>Chaque pièce est soigneusement conçue et réalisée à la main, garantissant un produit unique qui raconte une histoire.</p>
+        </div>
+    </section>
+
+    <section class="customization" id="customization">
+        <h2>Personnalisation</h2>
+        <div class="customization-content">
+            <div class="customization-text">
+                <p>Vous avez une idée spécifique en tête ? Nous pouvons créer un dessous de plat personnalisé selon vos souhaits. De vos personnages d'anime préférés aux designs originaux, nous donnons vie à vos idées dans le bois.</p>
+            </div>
+            <div class="customization-image">
+                <img src="images/custom-example.jpg" alt="Exemple de personnalisation">
+            </div>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <h2>Nos Créations</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="images/products/eren.jpg" alt="Dessous de plat Eren" class="product-image">
+                <div class="product-info">
+                    <div class="product-title">Eren - L'Attaque des Titans</div>
+                    <div class="product-price">29.99€</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="images/products/goku.jpg" alt="Dessous de plat Goku" class="product-image">
+                <div class="product-info">
+                    <div class="product-title">Goku - Dragon Ball</div>
+                    <div class="product-price">29.99€</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="images/products/levi.jpg" alt="Dessous de plat Livaï" class="product-image">
+                <div class="product-info">
+                    <div class="product-title">Livaï - L'Attaque des Titans</div>
+                    <div class="product-price">29.99€</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="images/products/animals.jpg" alt="Dessous de plat Animaux" class="product-image">
+                <div class="product-info">
+                    <div class="product-title">Collection Animaux</div>
+                    <div class="product-price">29.99€</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="instagram">
+        <h2>Suivez-nous sur Instagram</h2>
+        <div class="instagram-grid">
+            <div class="instagram-item">
+                <img src="images/instagram/post1.jpg" alt="Instagram post 1">
+            </div>
+            <div class="instagram-item">
+                <img src="images/instagram/post2.jpg" alt="Instagram post 2">
+            </div>
+            <div class="instagram-item">
+                <img src="images/instagram/post3.jpg" alt="Instagram post 3">
+            </div>
+            <div class="instagram-item">
+                <img src="images/instagram/post4.jpg" alt="Instagram post 4">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Wooden Brothers. Tous droits réservés.</p>
+        <div class="social-links">
+            <a href="https://instagram.com/wooden.brothers" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://etsy.com/shop/WoodenBrothers" target="_blank"><i class="fab fa-etsy"></i></a>
+        </div>
+    </footer>
+</body>
+</html> 
