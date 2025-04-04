@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature & Design - Créations artisanales</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3A5A3B;
+            --secondary-color: #b49972;
+            --background-color: #f5fbf5;
+            --text-color: #0f170f;
+            --secondary-text-color: #2A412B;
+            --text-white-color: #eff7ef;
+            --accent-color: #9dd8ce;
+            --card-background: #eef4ee;
+            --secondary-card-background: #e8f5e8;
+            --sold-color: #850C0C;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header styles */
+        .header {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: var(--card-background);
+        }
+
+        .header-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            background: var(--primary-color);
+            opacity: 0.1;
+            animation: floatAnimation 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: -50px;
+            left: -100px;
+            transform: rotate(45deg);
+        }
+
+        .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            bottom: 50px;
+            right: -50px;
+            transform: rotate(30deg);
+            animation-delay: -5s;
+        }
+
+        .shape:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            left: 30%;
+            transform: rotate(60deg);
+            animation-delay: -10s;
+        }
+
+        @keyframes floatAnimation {
+            0%, 100% {
+                transform: translateY(0) rotate(45deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(60deg);
+            }
+        }
+
+        .logo-container {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-white-color);
+            font-size: 2rem;
+            font-family: 'Lora', serif;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .header-title {
+            font-family: 'Lora', serif;
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-subtitle {
+            font-size: 1.2rem;
+            color: var(--secondary-text-color);
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Nouveautés section */
+        .nouveautes {
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--card-background);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--primary-color);
+            color: var(--text-white-color);
+            text-decoration: none;
+            border-radius: 25px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background: var(--secondary-color);
+        }
+
+        /* Citation section */
+        .quote-section {
+            padding: 5rem 2rem;
+            background: var(--secondary-card-background);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .quote-text {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            color: var(--primary-color);
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+
+        /* Collections section */
+        .collections {
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .diagonal-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--card-background) 0%, transparent 75%);
+            z-index: 1;
+        }
+
+        .collections-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Newsletter section */
+        .newsletter {
+            padding: 5rem 2rem;
+            background: var(--card-background);
+        }
+
+        .newsletter-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .form-input {
+            padding: 0.8rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 25px;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        /* Instagram section */
+        .instagram {
+            padding: 5rem 2rem;
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .instagram-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .instagram-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .instagram-item:hover .instagram-image {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--text-white-color);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-white-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 2rem;
+            }
+
+            .newsletter-form {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quote-text {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <div class="logo-container">
+            <div class="logo">N&D</div>
+        </div>
+        <h1 class="header-title" data-aos="fade-up">Nature & Design</h1>
+        <p class="header-subtitle" data-aos="fade-up" data-aos-delay="200">
+            Créations artisanales inspirées par la nature, façonnées par le design
+        </p>
+    </header>
+
+    <section class="nouveautes">
+        <h2 class="section-title" data-aos="fade-up">Nouveautés</h2>
+        <div class="products-grid">
+            <div class="product-card" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1602080858428-57174f9431cf" alt="Produit 1" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Collection Printemps</h3>
+                    <a href="#" class="btn">Découvrir</a>
+                </div>
+            </div>
+            <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1493106641515-6b5631de4bb9" alt="Produit 2" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Édition Limitée</h3>
+                    <a href="#" class="btn">Découvrir</a>
+                </div>
+            </div>
+            <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1485550409059-9afb054cada4" alt="Produit 3" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Collection Nature</h3>
+                    <a href="#" class="btn">Découvrir</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quote-section">
+        <div class="quote-container" data-aos="fade-up">
+            <p class="quote-text">
+                "L'art de créer des objets uniques, inspirés par la beauté de la nature"
+            </p>
+        </div>
+    </section>
+
+    <section class="collections">
+        <div class="diagonal-bg"></div>
+        <div class="collections-content">
+            <h2 class="section-title" data-aos="fade-up">Nos Collections</h2>
+            <!-- Contenu des collections à ajouter -->
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="newsletter-container" data-aos="fade-up">
+            <h2 class="section-title">Newsletter</h2>
+            <p>Reçois nos prochaines créations !</p>
+            <form class="newsletter-form">
+                <input type="text" placeholder="Prénom" class="form-input">
+                <input type="email" placeholder="Email" class="form-input">
+                <button type="submit" class="btn" style="grid-column: 1 / -1;">S'inscrire</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="instagram">
+        <div class="instagram-container" data-aos="fade-up">
+            <h2 class="section-title">@nature.design</h2>
+            <div class="instagram-grid">
+                <a href="#" class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1485550409059-9afb054cada4" alt="Instagram 1" class="instagram-image">
+                </a>
+                <a href="#" class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1493106641515-6b5631de4bb9" alt="Instagram 2" class="instagram-image">
+                </a>
+                <a href="#" class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1602080858428-57174f9431cf" alt="Instagram 3" class="instagram-image">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h3>À propos</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Notre histoire</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Informations</h3>
+                <ul class="footer-links">
+                    <li><a href="#">CGV</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Mon compte</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Se connecter</a></li>
+                    <li><a href="#">Mes commandes</a></li>
+                    <li><a href="#">Mes favoris</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Nature & Design. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+</body>
+</html> 
