@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nature & Design - Créations artisanales</title>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Eudoxus+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #3A5A3B;
@@ -24,6 +24,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Eudoxus Sans', sans-serif;
         }
 
         body {
@@ -164,7 +165,7 @@
 
         .section-title {
             text-align: center;
-            font-family: 'Lora', serif;
+            font-family: 'Eudoxus Sans', sans-serif;
             font-size: 2.5rem;
             color: var(--primary-color);
             margin-bottom: 3rem;
@@ -190,10 +191,21 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
+        .product-image-container {
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
         .product-image {
             width: 100%;
             height: 300px;
             object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-image-container:hover .product-image {
+            transform: scale(1.1);
         }
 
         .product-info {
@@ -207,6 +219,24 @@
             margin-bottom: 1rem;
         }
 
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .product-original-price {
+            text-decoration: line-through;
+            color: var(--text-color);
+            margin-right: 0.5rem;
+        }
+
+        .product-discount {
+            color: var(--sold-color);
+            margin-left: 0.5rem;
+        }
+
         .btn {
             display: inline-block;
             padding: 0.8rem 2rem;
@@ -215,11 +245,122 @@
             text-decoration: none;
             border-radius: 25px;
             transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
         }
 
         .btn:hover {
             transform: scale(1.05);
             background: var(--secondary-color);
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: var(--background-color);
+            margin: 2% auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        .modal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .modal-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .modal-image-container:hover .modal-image {
+            transform: scale(1.1);
+        }
+
+        .modal-info {
+            padding: 1rem;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .modal-description {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .modal-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .modal-original-price {
+            text-decoration: line-through;
+            color: var(--text-color);
+            margin-right: 0.5rem;
+        }
+
+        .modal-discount {
+            color: var(--sold-color);
+            margin-left: 0.5rem;
+        }
+
+        .modal-link {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--primary-color);
+            color: var(--text-white-color);
+            text-decoration: none;
+            border-radius: 25px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .modal-link:hover {
+            transform: scale(1.05);
+            background: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .modal-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Citation section */
@@ -524,39 +665,48 @@
         <h2 class="section-title" data-aos="fade-up">Nouveautés</h2>
         <div class="products-grid">
             <div class="product-card" data-aos="fade-up">
-                <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Dessous de plat Eren Jäger Attack on Titan" class="product-image">
+                <div class="product-image-container">
+                    <img src="Images/eren.jpg" alt="Eren" class="product-image">
+                </div>
                 <div class="product-info">
-                    <h3 class="product-title">Dessous de plat Eren</h3>
-                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
-                        <span style="text-decoration: line-through; margin-right: 0.5rem;">17,99 €</span>
-                        <span style="font-weight: bold;">14,39 €</span>
-                        <span style="color: #850C0C; margin-left: 0.5rem;">-20%</span>
-                    </div>
-                    <a href="https://www.etsy.com/fr/listing/1880783276/dessous-de-plat-en-bois-eren-attaque-des" class="btn" target="_blank">Découvrir</a>
+                    <h3 class="product-title">Eren</h3>
+                    <p class="product-price">
+                        <span class="product-original-price">45,00 €</span>
+                        35,00 €
+                        <span class="product-discount">-22%</span>
+                    </p>
+                    <a href="https://www.etsy.com/fr/shop/WoodenBrothers" class="btn" target="_blank">Découvrir</a>
+                    <button class="btn" style="margin-left: 10px;" onclick="openModal('eren-modal')">Voir détails</button>
                 </div>
             </div>
             <div class="product-card" data-aos="fade-up" data-aos-delay="100">
-                <img src="https://i.etsystatic.com/56732046/r/il/1ff9b1/6740731906/il_1588xN.6740731906_kdrx.jpg" alt="Dessous de plat Itachi Naruto" class="product-image">
+                <div class="product-image-container">
+                    <img src="Images/itachi.jpg" alt="Itachi" class="product-image">
+                </div>
                 <div class="product-info">
-                    <h3 class="product-title">Dessous de plat Itachi</h3>
-                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
-                        <span style="text-decoration: line-through; margin-right: 0.5rem;">17,99 €</span>
-                        <span style="font-weight: bold;">14,39 €</span>
-                        <span style="color: #850C0C; margin-left: 0.5rem;">-20%</span>
-                    </div>
-                    <a href="https://www.etsy.com/fr/listing/1893009633/dessous-de-plat-en-bois-itachi-naruto" class="btn" target="_blank">Découvrir</a>
+                    <h3 class="product-title">Itachi</h3>
+                    <p class="product-price">
+                        <span class="product-original-price">45,00 €</span>
+                        35,00 €
+                        <span class="product-discount">-22%</span>
+                    </p>
+                    <a href="https://www.etsy.com/fr/shop/WoodenBrothers" class="btn" target="_blank">Découvrir</a>
+                    <button class="btn" style="margin-left: 10px;" onclick="openModal('itachi-modal')">Voir détails</button>
                 </div>
             </div>
             <div class="product-card" data-aos="fade-up" data-aos-delay="200">
-                <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Dessous de plat Luffy One Piece" class="product-image">
+                <div class="product-image-container">
+                    <img src="Images/luffy.jpg" alt="Luffy" class="product-image">
+                </div>
                 <div class="product-info">
-                    <h3 class="product-title">Dessous de plat Luffy</h3>
-                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
-                        <span style="text-decoration: line-through; margin-right: 0.5rem;">17,99 €</span>
-                        <span style="font-weight: bold;">14,39 €</span>
-                        <span style="color: #850C0C; margin-left: 0.5rem;">-20%</span>
-                    </div>
-                    <a href="https://www.etsy.com/fr/listing/1865127564/dessous-de-plat-en-bois-luffy-one-piece" class="btn" target="_blank">Découvrir</a>
+                    <h3 class="product-title">Luffy</h3>
+                    <p class="product-price">
+                        <span class="product-original-price">45,00 €</span>
+                        35,00 €
+                        <span class="product-discount">-22%</span>
+                    </p>
+                    <a href="https://www.etsy.com/fr/shop/WoodenBrothers" class="btn" target="_blank">Découvrir</a>
+                    <button class="btn" style="margin-left: 10px;" onclick="openModal('luffy-modal')">Voir détails</button>
                 </div>
             </div>
         </div>
@@ -666,6 +816,82 @@
         </div>
     </footer>
 
+    <!-- Modals -->
+    <!-- Eren Modal -->
+    <div id="eren-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('eren-modal')">&times;</span>
+            <div class="modal-grid">
+                <div class="modal-image-container">
+                    <img src="Images/eren.jpg" alt="Eren" class="modal-image">
+                </div>
+                <div class="modal-info">
+                    <h2 class="modal-title">Eren</h2>
+                    <p class="modal-description">
+                        Découvrez notre création artisanale inspirée d'Eren, le protagonistes déterminé de l'Attaque des Titans. 
+                        Cette pièce unique capture l'intensité et la résolution du personnage, sculptée avec précision dans du bois de qualité.
+                    </p>
+                    <p class="modal-price">
+                        <span class="modal-original-price">45,00 €</span>
+                        35,00 €
+                        <span class="modal-discount">-22%</span>
+                    </p>
+                    <a href="https://www.etsy.com/fr/shop/WoodenBrothers" class="modal-link" target="_blank">Acheter sur Etsy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Itachi Modal -->
+    <div id="itachi-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('itachi-modal')">&times;</span>
+            <div class="modal-grid">
+                <div class="modal-image-container">
+                    <img src="Images/itachi.jpg" alt="Itachi" class="modal-image">
+                </div>
+                <div class="modal-info">
+                    <h2 class="modal-title">Itachi</h2>
+                    <p class="modal-description">
+                        Notre sculpture d'Itachi, le ninja légendaire de Naruto, capture l'essence de ce personnage complexe. 
+                        Chaque détail est soigneusement travaillé pour rendre hommage à l'un des personnages les plus appréciés de l'univers ninja.
+                    </p>
+                    <p class="modal-price">
+                        <span class="modal-original-price">45,00 €</span>
+                        35,00 €
+                        <span class="modal-discount">-22%</span>
+                    </p>
+                    <a href="https://www.etsy.com/fr/shop/WoodenBrothers" class="modal-link" target="_blank">Acheter sur Etsy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Luffy Modal -->
+    <div id="luffy-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('luffy-modal')">&times;</span>
+            <div class="modal-grid">
+                <div class="modal-image-container">
+                    <img src="Images/luffy.jpg" alt="Luffy" class="modal-image">
+                </div>
+                <div class="modal-info">
+                    <h2 class="modal-title">Luffy</h2>
+                    <p class="modal-description">
+                        Notre sculpture de Luffy, le futur Roi des Pirates, capture l'esprit aventureux et déterminé du personnage. 
+                        Cette pièce unique est sculptée avec passion pour rendre hommage à l'un des héros les plus aimés de One Piece.
+                    </p>
+                    <p class="modal-price">
+                        <span class="modal-original-price">45,00 €</span>
+                        35,00 €
+                        <span class="modal-discount">-22%</span>
+                    </p>
+                    <a href="https://www.etsy.com/fr/shop/WoodenBrothers" class="modal-link" target="_blank">Acheter sur Etsy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         // Ajout du script pour le défilement fluide
@@ -743,6 +969,25 @@
         setupHoverAnimation('manga-hover', 1000);
         setupHoverAnimation('animaux-hover', 1000);
         setupHoverAnimation('pokemon-hover', 1000);
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
     </script>
 </body>
 </html> 
