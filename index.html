@@ -278,7 +278,7 @@
             overflow-y: auto;
         }
 
-        .close-modal {
+        .modal-close {
             position: absolute;
             right: 20px;
             top: 20px;
@@ -288,55 +288,78 @@
             z-index: 1001;
         }
 
-        .modal-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
+        .modal-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
         }
 
-        .modal-image-container {
+        .main-image-container {
             position: relative;
-            overflow: hidden;
+            width: 100%;
             border-radius: 15px;
+            overflow: hidden;
         }
 
-        .modal-image {
+        .main-image {
             width: 100%;
             height: auto;
             display: block;
-            transition: transform 0.3s ease;
+            cursor: zoom-in;
         }
 
-        .modal-image-container:hover .modal-image {
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 1rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: background-color 0.3s;
+        }
+
+        .gallery-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .gallery-prev {
+            left: 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .gallery-next {
+            right: 0;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .thumbnail-container {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 0.5rem;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .thumbnail:hover {
             transform: scale(1.1);
         }
 
-        .modal-gallery {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-top: 1rem;
+        .thumbnail.active {
+            border: 2px solid var(--primary-color);
         }
 
-        .modal-gallery-item {
-            cursor: pointer;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-
-        .modal-gallery-item:hover {
-            transform: scale(1.05);
-        }
-
-        .modal-gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .modal-info {
+        .modal-description {
             padding: 1rem;
         }
 
@@ -346,30 +369,22 @@
             margin-bottom: 1rem;
         }
 
-        .modal-description {
+        .modal-description h3 {
+            color: var(--primary-color);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .modal-description ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
             margin-bottom: 1.5rem;
-            line-height: 1.6;
         }
 
-        .modal-price {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--text-color);
-            margin-bottom: 1rem;
+        .modal-description li {
+            margin-bottom: 0.5rem;
         }
 
-        .modal-original-price {
-            text-decoration: line-through;
-            color: var(--text-color);
-            margin-right: 0.5rem;
-        }
-
-        .modal-discount {
-            color: var(--sold-color);
-            margin-left: 0.5rem;
-        }
-
-        .modal-link {
+        .modal-buy-button {
             display: inline-block;
             padding: 1rem 2rem;
             background: var(--primary-color);
@@ -379,15 +394,9 @@
             transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
-        .modal-link:hover {
+        .modal-buy-button:hover {
             transform: scale(1.05);
             background: var(--secondary-color);
-        }
-
-        @media (max-width: 768px) {
-            .modal-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         /* Citation section */
@@ -844,38 +853,31 @@
     <!-- Eren Modal -->
     <div id="eren-modal" class="modal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('eren-modal')">&times;</span>
-            <div class="modal-grid">
-                <div class="modal-image-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Eren" class="modal-image">
-                    <div class="modal-gallery">
-                        <div class="modal-gallery-item">
-                            <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Eren vue 1">
-                        </div>
-                        <div class="modal-gallery-item">
-                            <img src="https://i.etsystatic.com/56732046/r/il/314182/6740736034/il_1588xN.6740736034/qr6l.jpg" alt="Eren vue 2">
-                        </div>
-                        <div class="modal-gallery-item">
-                            <img src="https://i.etsystatic.com/56732046/r/il/39469c/6782431003/il_1588xN.6782431003/abet.jpg" alt="Eren vue 3">
-                        </div>
-                        <div class="modal-gallery-item">
-                            <img src="https://i.etsystatic.com/56732046/r/il/fc40f1/6705841041/il_1588xN.6705841041/30t7.jpg" alt="Eren vue 4">
-                        </div>
-                    </div>
+            <span class="modal-close" onclick="closeModal('eren-modal')">&times;</span>
+            <div class="modal-gallery">
+                <div class="main-image-container">
+                    <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Dessous de plat Eren Jäger Attack on Titan" class="main-image" onclick="openFullscreen(this.src)">
+                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'eren-modal')">❮</div>
+                    <div class="gallery-nav gallery-next" onclick="changeImage(1, 'eren-modal')">❯</div>
                 </div>
-                <div class="modal-info">
-                    <h2 class="modal-title">Dessous de plat Eren</h2>
-                    <p class="modal-description">
-                        Découvrez notre création artisanale inspirée d'Eren, le protagonistes déterminé de l'Attaque des Titans. 
-                        Cette pièce unique capture l'intensité et la résolution du personnage, sculptée avec précision dans du bois de qualité.
-                    </p>
-                    <p class="modal-price">
-                        <span class="modal-original-price">17,99 €</span>
-                        14,39 €
-                        <span class="modal-discount">-20%</span>
-                    </p>
-                    <a href="https://www.etsy.com/fr/listing/1880783276/dessous-de-plat-en-bois-eren-attaque-des" class="modal-link" target="_blank">Acheter sur Etsy</a>
+                <div class="thumbnail-container">
+                    <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Dessous de plat Eren Jäger Attack on Titan" class="thumbnail active" onclick="setMainImage(this.src, 'eren-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/f0edee/6750817180/il_1588xN.6750817180_12lw.jpg" alt="Dessous de plat Eren Jäger Attack on Titan - Vue 2" class="thumbnail" onclick="setMainImage(this.src, 'eren-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/96dfa3/6798835823/il_1588xN.6798835823_3ldn.jpg" alt="Dessous de plat Eren Jäger Attack on Titan - Vue 3" class="thumbnail" onclick="setMainImage(this.src, 'eren-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/387ffd/6750817382/il_1588xN.6750817382_icro.jpg" alt="Dessous de plat Eren Jäger Attack on Titan - Vue 4" class="thumbnail" onclick="setMainImage(this.src, 'eren-modal')">
                 </div>
+            </div>
+            <div class="modal-description">
+                <h2 class="modal-title">Dessous de plat Eren</h2>
+                <p>Ajoutez du caractère à votre décoration avec ce dessous de plat en bois naturel, gravé à l'effigie d'Eren Jäger, personnage central de la série L'Attaque des Titans. Cette pièce artisanale, conçue pour les fans de manga, allie intensité visuelle, qualité du bois et savoir-faire manuel.</p>
+                <h3>Détails du produit</h3>
+                <ul>
+                    <li>Gravure fine et précise réalisée avec soin</li>
+                    <li>Bois massif de haute qualité, sélectionné pour sa durabilité</li>
+                    <li>Dimensions : environ 20 cm de diamètre, épaisseur 2 cm</li>
+                    <li>Vernis de protection pour une finition soignée et un entretien facile</li>
+                </ul>
+                <a href="https://www.etsy.com/fr/listing/1880783276/dessous-de-plat-en-bois-eren-attaque-des" class="modal-buy-button" target="_blank">Commander sur Etsy</a>
             </div>
         </div>
     </div>
@@ -883,38 +885,31 @@
     <!-- Itachi Modal -->
     <div id="itachi-modal" class="modal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('itachi-modal')">&times;</span>
-            <div class="modal-grid">
-                <div class="modal-image-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/1ff9b1/6740731906/il_1588xN.6740731906_kdrx.jpg" alt="Itachi" class="modal-image">
-                    <div class="modal-gallery">
-                        <div class="modal-gallery-item">
-                            <img src="https://i.etsystatic.com/56732046/r/il/1ff9b1/6740731906/il_1588xN.6740731906_kdrx.jpg" alt="Itachi vue 1">
-                        </div>
-                        <div class="modal-gallery-item">
-                            <img src="https://i.etsystatic.com/56732046/r/il/314182/6740736034/il_1588xN.6740736034_qr6l.jpg" alt="Itachi vue 2">
-                        </div>
-                        <div class="modal-gallery-item">
-                            <img src="https://i.etsystatic.com/56732046/r/il/39469c/6782431003/il_1588xN.6782431003_abet.jpg" alt="Itachi vue 3">
-                        </div>
-                        <div class="modal-gallery-item">
-                            <img src="https://i.etsystatic.com/56732046/r/il/fc40f1/6705841041/il_1588xN.6705841041_30t7.jpg" alt="Itachi vue 4">
-                        </div>
-                    </div>
+            <span class="modal-close" onclick="closeModal('itachi-modal')">&times;</span>
+            <div class="modal-gallery">
+                <div class="main-image-container">
+                    <img src="https://i.etsystatic.com/56732046/r/il/1ff9b1/6740731906/il_1588xN.6740731906_kdrx.jpg" alt="Dessous de plat Itachi Naruto" class="main-image" onclick="openFullscreen(this.src)">
+                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'itachi-modal')">❮</div>
+                    <div class="gallery-nav gallery-next" onclick="changeImage(1, 'itachi-modal')">❯</div>
                 </div>
-                <div class="modal-info">
-                    <h2 class="modal-title">Dessous de plat Itachi</h2>
-                    <p class="modal-description">
-                        Notre sculpture d'Itachi, le ninja légendaire de Naruto, capture l'essence de ce personnage complexe. 
-                        Chaque détail est soigneusement travaillé pour rendre hommage à l'un des personnages les plus appréciés de l'univers ninja.
-                    </p>
-                    <p class="modal-price">
-                        <span class="modal-original-price">17,99 €</span>
-                        14,39 €
-                        <span class="modal-discount">-20%</span>
-                    </p>
-                    <a href="https://www.etsy.com/fr/listing/1893009633/dessous-de-plat-en-bois-itachi-naruto" class="modal-link" target="_blank">Acheter sur Etsy</a>
+                <div class="thumbnail-container">
+                    <img src="https://i.etsystatic.com/56732046/r/il/1ff9b1/6740731906/il_1588xN.6740731906_kdrx.jpg" alt="Dessous de plat Itachi Naruto" class="thumbnail active" onclick="setMainImage(this.src, 'itachi-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/f0edee/6750817180/il_1588xN.6750817180_12lw.jpg" alt="Dessous de plat Itachi Naruto - Vue 2" class="thumbnail" onclick="setMainImage(this.src, 'itachi-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/96dfa3/6798835823/il_1588xN.6798835823_3ldn.jpg" alt="Dessous de plat Itachi Naruto - Vue 3" class="thumbnail" onclick="setMainImage(this.src, 'itachi-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/387ffd/6750817382/il_1588xN.6750817382_icro.jpg" alt="Dessous de plat Itachi Naruto - Vue 4" class="thumbnail" onclick="setMainImage(this.src, 'itachi-modal')">
                 </div>
+            </div>
+            <div class="modal-description">
+                <h2 class="modal-title">Dessous de plat Itachi</h2>
+                <p>Découvrez notre création artisanale inspirée d'Itachi, le ninja légendaire de Naruto. Cette pièce unique capture l'essence de ce personnage complexe, sculptée avec précision dans du bois de qualité.</p>
+                <h3>Détails du produit</h3>
+                <ul>
+                    <li>Gravure fine et précise réalisée avec soin</li>
+                    <li>Bois massif de haute qualité, sélectionné pour sa durabilité</li>
+                    <li>Dimensions : environ 20 cm de diamètre, épaisseur 2 cm</li>
+                    <li>Vernis de protection pour une finition soignée et un entretien facile</li>
+                </ul>
+                <a href="https://www.etsy.com/fr/listing/1893009633/dessous-de-plat-en-bois-itachi-naruto" class="modal-buy-button" target="_blank">Commander sur Etsy</a>
             </div>
         </div>
     </div>
@@ -922,38 +917,31 @@
     <!-- Luffy Modal -->
     <div id="luffy-modal" class="modal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('luffy-modal')">&times;</span>
-            <div class="modal-grid">
-                <div class="modal-image-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Luffy" class="modal-image">
-                    <div class="modal-gallery">
-                        <div class="modal-gallery-item">
-                            <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Luffy vue 1">
-                        </div>
-                        <div class="modal-gallery-item">
-                            <img src="https://i.etsystatic.com/56732046/r/il/314182/6740736034/il_1588xN.6740736034_qr6l.jpg" alt="Luffy vue 2">
-                        </div>
-                        <div class="modal-gallery-item">
-                            <img src="https://i.etsystatic.com/56732046/r/il/39469c/6782431003/il_1588xN.6782431003_abet.jpg" alt="Luffy vue 3">
-                        </div>
-                        <div class="modal-gallery-item">
-                            <img src="https://i.etsystatic.com/56732046/r/il/fc40f1/6705841041/il_1588xN.6705841041_30t7.jpg" alt="Luffy vue 4">
-                        </div>
-                    </div>
+            <span class="modal-close" onclick="closeModal('luffy-modal')">&times;</span>
+            <div class="modal-gallery">
+                <div class="main-image-container">
+                    <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Dessous de plat Luffy One Piece" class="main-image" onclick="openFullscreen(this.src)">
+                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'luffy-modal')">❮</div>
+                    <div class="gallery-nav gallery-next" onclick="changeImage(1, 'luffy-modal')">❯</div>
                 </div>
-                <div class="modal-info">
-                    <h2 class="modal-title">Dessous de plat Luffy</h2>
-                    <p class="modal-description">
-                        Notre sculpture de Luffy, le futur Roi des Pirates, capture l'esprit aventureux et déterminé du personnage. 
-                        Cette pièce unique est sculptée avec passion pour rendre hommage à l'un des héros les plus aimés de One Piece.
-                    </p>
-                    <p class="modal-price">
-                        <span class="modal-original-price">17,99 €</span>
-                        14,39 €
-                        <span class="modal-discount">-20%</span>
-                    </p>
-                    <a href="https://www.etsy.com/fr/listing/1865127564/dessous-de-plat-en-bois-luffy-one-piece" class="modal-link" target="_blank">Acheter sur Etsy</a>
+                <div class="thumbnail-container">
+                    <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Dessous de plat Luffy One Piece" class="thumbnail active" onclick="setMainImage(this.src, 'luffy-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/f0edee/6750817180/il_1588xN.6750817180_12lw.jpg" alt="Dessous de plat Luffy One Piece - Vue 2" class="thumbnail" onclick="setMainImage(this.src, 'luffy-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/96dfa3/6798835823/il_1588xN.6798835823_3ldn.jpg" alt="Dessous de plat Luffy One Piece - Vue 3" class="thumbnail" onclick="setMainImage(this.src, 'luffy-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/387ffd/6750817382/il_1588xN.6750817382_icro.jpg" alt="Dessous de plat Luffy One Piece - Vue 4" class="thumbnail" onclick="setMainImage(this.src, 'luffy-modal')">
                 </div>
+            </div>
+            <div class="modal-description">
+                <h2 class="modal-title">Dessous de plat Luffy</h2>
+                <p>Notre sculpture de Luffy, le futur Roi des Pirates, capture l'esprit aventureux et déterminé du personnage. Cette pièce unique est sculptée avec passion pour rendre hommage à l'un des héros les plus aimés de One Piece.</p>
+                <h3>Détails du produit</h3>
+                <ul>
+                    <li>Gravure fine et précise réalisée avec soin</li>
+                    <li>Bois massif de haute qualité, sélectionné pour sa durabilité</li>
+                    <li>Dimensions : environ 20 cm de diamètre, épaisseur 2 cm</li>
+                    <li>Vernis de protection pour une finition soignée et un entretien facile</li>
+                </ul>
+                <a href="https://www.etsy.com/fr/listing/1865127564/dessous-de-plat-en-bois-luffy-one-piece" class="modal-buy-button" target="_blank">Commander sur Etsy</a>
             </div>
         </div>
     </div>
@@ -1057,14 +1045,59 @@
             }
         }
 
-        // Gallery image click handler
-        document.querySelectorAll('.modal-gallery-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const mainImage = this.closest('.modal-image-container').querySelector('.modal-image');
-                const clickedImage = this.querySelector('img');
-                mainImage.src = clickedImage.src;
+        // Gallery functions
+        function setMainImage(src, modalId) {
+            const modal = document.getElementById(modalId);
+            const mainImage = modal.querySelector('.main-image');
+            const thumbnails = modal.querySelectorAll('.thumbnail');
+            
+            mainImage.src = src;
+            
+            thumbnails.forEach(thumb => {
+                if (thumb.src === src) {
+                    thumb.classList.add('active');
+                } else {
+                    thumb.classList.remove('active');
+                }
             });
-        });
+        }
+
+        function changeImage(direction, modalId) {
+            const modal = document.getElementById(modalId);
+            const thumbnails = modal.querySelectorAll('.thumbnail');
+            const currentIndex = Array.from(thumbnails).findIndex(thumb => thumb.classList.contains('active'));
+            
+            let newIndex = (currentIndex + direction + thumbnails.length) % thumbnails.length;
+            setMainImage(thumbnails[newIndex].src, modalId);
+        }
+
+        function openFullscreen(src) {
+            const fullscreenContainer = document.createElement('div');
+            fullscreenContainer.style.position = 'fixed';
+            fullscreenContainer.style.top = '0';
+            fullscreenContainer.style.left = '0';
+            fullscreenContainer.style.width = '100%';
+            fullscreenContainer.style.height = '100%';
+            fullscreenContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+            fullscreenContainer.style.display = 'flex';
+            fullscreenContainer.style.justifyContent = 'center';
+            fullscreenContainer.style.alignItems = 'center';
+            fullscreenContainer.style.zIndex = '2000';
+            fullscreenContainer.style.cursor = 'zoom-out';
+
+            const img = document.createElement('img');
+            img.src = src;
+            img.style.maxWidth = '90%';
+            img.style.maxHeight = '90%';
+            img.style.objectFit = 'contain';
+
+            fullscreenContainer.appendChild(img);
+            document.body.appendChild(fullscreenContainer);
+
+            fullscreenContainer.onclick = function() {
+                document.body.removeChild(fullscreenContainer);
+            };
+        }
     </script>
 </body>
 </html> 
