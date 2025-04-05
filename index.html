@@ -184,6 +184,7 @@
             border-radius: 15px;
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
         }
 
         .product-card:hover {
@@ -818,7 +819,7 @@
     <section class="nouveautes">
         <h2 class="section-title" data-aos="fade-up">Nouveautés</h2>
         <div class="products-grid">
-            <div class="product-card" data-aos="fade-up">
+            <div class="product-card" data-aos="fade-up" onclick="openModal('eren-modal')">
                 <div class="product-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Dessous de plat Eren Jäger Attack on Titan" class="product-image">
                 </div>
@@ -829,10 +830,10 @@
                         <span style="font-weight: bold;">14,39 €</span>
                         <span style="color: #850C0C; margin-left: 0.5rem;">-20%</span>
                     </div>
-                    <a href="https://www.etsy.com/fr/listing/1880783276/dessous-de-plat-en-bois-eren-attaque-des" class="btn" target="_blank" onclick="openModal('eren-modal'); return false;">Découvrir</a>
+                    <a href="https://www.etsy.com/fr/listing/1880783276/dessous-de-plat-en-bois-eren-attaque-des" class="btn" target="_blank" onclick="event.stopPropagation();">Découvrir</a>
                 </div>
             </div>
-            <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="product-card" data-aos="fade-up" data-aos-delay="100" onclick="openModal('itachi-modal')">
                 <div class="product-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/1ff9b1/6740731906/il_1588xN.6740731906_kdrx.jpg" alt="Dessous de plat Itachi Naruto" class="product-image">
                 </div>
@@ -843,10 +844,10 @@
                         <span style="font-weight: bold;">14,39 €</span>
                         <span style="color: #850C0C; margin-left: 0.5rem;">-20%</span>
                     </div>
-                    <a href="https://www.etsy.com/fr/listing/1893009633/dessous-de-plat-en-bois-itachi-naruto" class="btn" target="_blank" onclick="openModal('itachi-modal'); return false;">Découvrir</a>
+                    <a href="https://www.etsy.com/fr/listing/1893009633/dessous-de-plat-en-bois-itachi-naruto" class="btn" target="_blank" onclick="event.stopPropagation();">Découvrir</a>
                 </div>
             </div>
-            <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="product-card" data-aos="fade-up" data-aos-delay="200" onclick="openModal('luffy-modal')">
                 <div class="product-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Dessous de plat Luffy One Piece" class="product-image">
                 </div>
@@ -857,7 +858,7 @@
                         <span style="font-weight: bold;">14,39 €</span>
                         <span style="color: #850C0C; margin-left: 0.5rem;">-20%</span>
                     </div>
-                    <a href="https://www.etsy.com/fr/listing/1865127564/dessous-de-plat-en-bois-luffy-one-piece" class="btn" target="_blank" onclick="openModal('luffy-modal'); return false;">Découvrir</a>
+                    <a href="https://www.etsy.com/fr/listing/1865127564/dessous-de-plat-en-bois-luffy-one-piece" class="btn" target="_blank" onclick="event.stopPropagation();">Découvrir</a>
                 </div>
             </div>
         </div>
