@@ -1,4 +1,4 @@
-# Nature & Design
+# Wooden Brothers
 
 Site vitrine moderne pour une marque de créations artisanales inspirées par la nature.
 
@@ -20,7 +20,7 @@ Site vitrine moderne pour une marque de créations artisanales inspirées par la
 
 1. Clonez le dépôt
 ```bash
-git clone https://github.com/votre-username/nature-design.git
+git clone https://github.com/votre-username/wooden-brothers.git
 ```
 
 2. Ouvrez `index.html` dans votre navigateur
