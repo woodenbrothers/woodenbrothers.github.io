@@ -406,16 +406,9 @@
             opacity: 0.8;
         }
 
-        .scroll-indicator span {
-            color: var(--text-color);
-            font-size: 1rem;
-            font-weight: 500;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
         .scroll-arrow {
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             border: 2px solid var(--text-color);
             border-radius: 50%;
             position: relative;
@@ -428,11 +421,18 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-right: 2px solid var(--text-color);
             border-bottom: 2px solid var(--text-color);
             transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .scroll-indicator span {
+            color: var(--text-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         @keyframes bounce {
@@ -593,15 +593,22 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 800,
-            once: true
-        });
-
         // Ajout du script pour le défilement fluide
         document.querySelector('.scroll-indicator').addEventListener('click', () => {
             const nouveautesSection = document.querySelector('.nouveautes');
-            nouveautesSection.scrollIntoView({ behavior: 'smooth' });
+            if (nouveautesSection) {
+                nouveautesSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+
+        // Configuration AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
         });
     </script>
 </body>
