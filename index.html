@@ -264,6 +264,9 @@
             background-color: rgba(0, 0, 0, 0.7);
             z-index: 1000;
             overflow-y: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .modal-content {
@@ -274,6 +277,8 @@
             max-width: 1000px;
             border-radius: 15px;
             position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .close-modal {
@@ -307,6 +312,30 @@
 
         .modal-image-container:hover .modal-image {
             transform: scale(1.1);
+        }
+
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .modal-gallery-item {
+            cursor: pointer;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .modal-gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .modal-gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .modal-info {
@@ -821,11 +850,25 @@
             <div class="modal-grid">
                 <div class="modal-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Eren" class="modal-image">
+                    <div class="modal-gallery">
+                        <div class="modal-gallery-item">
+                            <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Eren vue 1">
+                        </div>
+                        <div class="modal-gallery-item">
+                            <img src="https://i.etsystatic.com/56732046/r/il/314182/6740736034/il_1588xN.6740736034/qr6l.jpg" alt="Eren vue 2">
+                        </div>
+                        <div class="modal-gallery-item">
+                            <img src="https://i.etsystatic.com/56732046/r/il/39469c/6782431003/il_1588xN.6782431003/abet.jpg" alt="Eren vue 3">
+                        </div>
+                        <div class="modal-gallery-item">
+                            <img src="https://i.etsystatic.com/56732046/r/il/fc40f1/6705841041/il_1588xN.6705841041/30t7.jpg" alt="Eren vue 4">
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-info">
                     <h2 class="modal-title">Dessous de plat Eren</h2>
                     <p class="modal-description">
-                        Découvrez notre création artisanale inspirée d'Eren, le protagoniste déterminé de l'Attaque des Titans. 
+                        Découvrez notre création artisanale inspirée d'Eren, le protagonistes déterminé de l'Attaque des Titans. 
                         Cette pièce unique capture l'intensité et la résolution du personnage, sculptée avec précision dans du bois de qualité.
                     </p>
                     <p class="modal-price">
@@ -846,6 +889,20 @@
             <div class="modal-grid">
                 <div class="modal-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/1ff9b1/6740731906/il_1588xN.6740731906_kdrx.jpg" alt="Itachi" class="modal-image">
+                    <div class="modal-gallery">
+                        <div class="modal-gallery-item">
+                            <img src="https://i.etsystatic.com/56732046/r/il/1ff9b1/6740731906/il_1588xN.6740731906_kdrx.jpg" alt="Itachi vue 1">
+                        </div>
+                        <div class="modal-gallery-item">
+                            <img src="https://i.etsystatic.com/56732046/r/il/314182/6740736034/il_1588xN.6740736034_qr6l.jpg" alt="Itachi vue 2">
+                        </div>
+                        <div class="modal-gallery-item">
+                            <img src="https://i.etsystatic.com/56732046/r/il/39469c/6782431003/il_1588xN.6782431003_abet.jpg" alt="Itachi vue 3">
+                        </div>
+                        <div class="modal-gallery-item">
+                            <img src="https://i.etsystatic.com/56732046/r/il/fc40f1/6705841041/il_1588xN.6705841041_30t7.jpg" alt="Itachi vue 4">
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-info">
                     <h2 class="modal-title">Dessous de plat Itachi</h2>
@@ -871,6 +928,20 @@
             <div class="modal-grid">
                 <div class="modal-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Luffy" class="modal-image">
+                    <div class="modal-gallery">
+                        <div class="modal-gallery-item">
+                            <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Luffy vue 1">
+                        </div>
+                        <div class="modal-gallery-item">
+                            <img src="https://i.etsystatic.com/56732046/r/il/314182/6740736034/il_1588xN.6740736034_qr6l.jpg" alt="Luffy vue 2">
+                        </div>
+                        <div class="modal-gallery-item">
+                            <img src="https://i.etsystatic.com/56732046/r/il/39469c/6782431003/il_1588xN.6782431003_abet.jpg" alt="Luffy vue 3">
+                        </div>
+                        <div class="modal-gallery-item">
+                            <img src="https://i.etsystatic.com/56732046/r/il/fc40f1/6705841041/il_1588xN.6705841041_30t7.jpg" alt="Luffy vue 4">
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-info">
                     <h2 class="modal-title">Dessous de plat Luffy</h2>
@@ -969,12 +1040,14 @@
 
         // Modal functions
         function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'block';
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
 
         function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
 
@@ -985,6 +1058,15 @@
                 document.body.style.overflow = 'auto';
             }
         }
+
+        // Gallery image click handler
+        document.querySelectorAll('.modal-gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const mainImage = this.closest('.modal-image-container').querySelector('.modal-image');
+                const clickedImage = this.querySelector('img');
+                mainImage.src = clickedImage.src;
+            });
+        });
     </script>
 </body>
 </html> 
