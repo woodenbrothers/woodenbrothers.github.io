@@ -264,9 +264,6 @@
             background-color: rgba(0, 0, 0, 0.7);
             z-index: 1000;
             overflow-y: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .modal-content {
@@ -288,6 +285,7 @@
             font-size: 30px;
             cursor: pointer;
             color: var(--text-color);
+            z-index: 1001;
         }
 
         .modal-grid {
@@ -1041,7 +1039,7 @@
         // Modal functions
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
-            modal.style.display = 'flex';
+            modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
 
