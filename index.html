@@ -101,9 +101,11 @@
         }
 
         .logo-container {
-            position: absolute;
-            top: 2rem;
-            left: 2rem;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 2rem;
             z-index: 10;
         }
 
@@ -124,6 +126,17 @@
 
         .logo:hover {
             transform: scale(1.1);
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100vh;
+            position: relative;
+            padding: 2rem;
         }
 
         .header-title {
@@ -376,7 +389,7 @@
         /* Ajout des styles pour l'animation de défilement */
         .scroll-indicator {
             position: absolute;
-            bottom: 2rem;
+            bottom: 4rem;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -386,6 +399,7 @@
             cursor: pointer;
             transition: opacity 0.3s ease;
             z-index: 10;
+            opacity: 1 !important;
         }
 
         .scroll-indicator:hover {
@@ -441,18 +455,20 @@
             <div class="shape"></div>
             <div class="shape"></div>
         </div>
-        <div class="logo-container">
-            <div class="logo">
-                <img src="Images/logo.png" alt="Wooden Brothers Logo">
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="Images/logo.png" alt="Wooden Brothers Logo">
+                </div>
             </div>
-        </div>
-        <h1 class="header-title" data-aos="fade-up">Wooden Brothers</h1>
-        <p class="header-subtitle" data-aos="fade-up" data-aos-delay="200">
-            Créations artisanales inspirées par la nature, façonnées par le design
-        </p>
-        <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="400">
-            <div class="scroll-arrow"></div>
-            <span>Découvrir nos créations</span>
+            <h1 class="header-title" data-aos="fade-up">Wooden Brothers</h1>
+            <p class="header-subtitle" data-aos="fade-up" data-aos-delay="200">
+                Créations artisanales inspirées par la nature, façonnées par le design
+            </p>
+            <div class="scroll-indicator">
+                <div class="scroll-arrow"></div>
+                <span>Découvrir nos créations</span>
+            </div>
         </div>
     </header>
 
