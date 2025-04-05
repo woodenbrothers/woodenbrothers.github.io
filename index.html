@@ -253,21 +253,57 @@
             overflow: hidden;
         }
 
-        .diagonal-bg {
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .collection-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+        }
+
+        .collection-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+
+        .collection-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hover-images {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--card-background) 0%, transparent 75%);
-            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .collections-content {
-            position: relative;
-            z-index: 2;
-            max-width: 1200px;
-            margin: 0 auto;
+        .collection-card:hover .collection-image {
+            opacity: 0;
+        }
+
+        .collection-card:hover .hover-images {
+            opacity: 1;
         }
 
         /* Newsletter section */
@@ -527,7 +563,33 @@
         <div class="collections-content">
             <h2 class="section-title" data-aos="fade-up">Nos Collections</h2>
             <div class="collections-grid">
-                <!-- Contenu des collections à ajouter -->
+                <div class="collection-card" data-aos="fade-up">
+                    <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Manga & Anime" class="collection-image">
+                    <div class="hover-images" id="manga-hover">
+                        <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Manga & Anime 2">
+                        <img src="https://i.etsystatic.com/56732046/r/il/314182/6740736034/il_1588xN.6740736034_qr6l.jpg" alt="Manga & Anime 3">
+                        <img src="https://i.etsystatic.com/56732046/r/il/39469c/6782431003/il_1588xN.6782431003_abet.jpg" alt="Manga & Anime 4">
+                        <img src="https://i.etsystatic.com/56732046/r/il/fc40f1/6705841041/il_1588xN.6705841041_30t7.jpg" alt="Manga & Anime 5">
+                    </div>
+                    <h3 class="collection-title">Manga & Anime</h3>
+                </div>
+                <div class="collection-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://i.etsystatic.com/56732046/r/il/8bb26a/6543136974/il_600x600.6543136974_k4v9.jpg" alt="Animaux" class="collection-image">
+                    <div class="hover-images" id="animaux-hover">
+                        <img src="https://i.etsystatic.com/56732046/r/il/785116/6588925859/il_1588xN.6588925859_c8yt.jpg" alt="Animaux 2">
+                        <img src="https://i.etsystatic.com/56732046/r/il/c6b310/6540750460/il_1588xN.6540750460_ruet.jpg" alt="Animaux 3">
+                        <img src="https://i.etsystatic.com/56732046/r/il/6e6d4e/6532846964/il_1588xN.6532846964_6n54.jpg" alt="Animaux 4">
+                        <img src="https://i.etsystatic.com/56732046/r/il/bc0cbd/6545181226/il_1588xN.6545181226_2t3s.jpg" alt="Animaux 5">
+                    </div>
+                    <h3 class="collection-title">Animaux</h3>
+                </div>
+                <div class="collection-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://i.etsystatic.com/56732046/r/il/88c23e/6803518645/il_1588xN.6803518645_1x6l.jpg" alt="Cartes Pokemon" class="collection-image">
+                    <div class="hover-images" id="pokemon-hover">
+                        <img src="https://i.etsystatic.com/56732046/r/il/6fe636/6765194598/il_1588xN.6765194598_e9v9.jpg" alt="Cartes Pokemon 2">
+                    </div>
+                    <h3 class="collection-title">Cartes Pokemon</h3>
+                </div>
             </div>
         </div>
     </section>
@@ -635,6 +697,41 @@
             easing: 'ease-in-out',
             once: true
         });
+
+        // Animation des images au survol
+        function setupHoverAnimation(hoverId, delay) {
+            const hoverContainer = document.getElementById(hoverId);
+            if (!hoverContainer) return;
+
+            const images = hoverContainer.getElementsByTagName('img');
+            let currentIndex = 0;
+
+            function showNextImage() {
+                for (let i = 0; i < images.length; i++) {
+                    images[i].style.opacity = i === currentIndex ? '1' : '0';
+                }
+                currentIndex = (currentIndex + 1) % images.length;
+            }
+
+            let interval;
+            hoverContainer.parentElement.addEventListener('mouseenter', () => {
+                showNextImage();
+                interval = setInterval(showNextImage, delay);
+            });
+
+            hoverContainer.parentElement.addEventListener('mouseleave', () => {
+                clearInterval(interval);
+                currentIndex = 0;
+                for (let img of images) {
+                    img.style.opacity = '0';
+                }
+            });
+        }
+
+        // Configuration des animations
+        setupHoverAnimation('manga-hover', 1000);
+        setupHoverAnimation('animaux-hover', 1000);
+        setupHoverAnimation('pokemon-hover', 1000);
     </script>
 </body>
 </html> 
