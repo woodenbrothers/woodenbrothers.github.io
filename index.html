@@ -796,6 +796,9 @@
                 </div>
             </div>
         </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="https://woodenbrothers.github.io/website/produits" class="btn" style="font-size: 1.1rem; padding: 1rem 2.5rem;">Voir tous les produits</a>
+        </div>
     </section>
 
     <section class="quote-section">
@@ -1142,7 +1145,34 @@
             fullscreenContainer.style.justifyContent = 'center';
             fullscreenContainer.style.alignItems = 'center';
             fullscreenContainer.style.zIndex = '2000';
-            fullscreenContainer.style.cursor = 'zoom-out';
+            fullscreenContainer.style.cursor = 'default';
+
+            const closeButton = document.createElement('div');
+            closeButton.innerHTML = '&times;';
+            closeButton.style.position = 'absolute';
+            closeButton.style.top = '20px';
+            closeButton.style.right = '20px';
+            closeButton.style.color = 'white';
+            closeButton.style.fontSize = '30px';
+            closeButton.style.cursor = 'pointer';
+            closeButton.style.width = '40px';
+            closeButton.style.height = '40px';
+            closeButton.style.display = 'flex';
+            closeButton.style.alignItems = 'center';
+            closeButton.style.justifyContent = 'center';
+            closeButton.style.background = 'rgba(0, 0, 0, 0.5)';
+            closeButton.style.borderRadius = '50%';
+            closeButton.style.transition = 'all 0.3s ease';
+
+            closeButton.onmouseover = function() {
+                closeButton.style.transform = 'rotate(90deg)';
+                closeButton.style.background = 'rgba(255, 255, 255, 0.2)';
+            };
+
+            closeButton.onmouseout = function() {
+                closeButton.style.transform = 'rotate(0deg)';
+                closeButton.style.background = 'rgba(0, 0, 0, 0.5)';
+            };
 
             const img = document.createElement('img');
             img.src = src;
@@ -1150,10 +1180,11 @@
             img.style.maxHeight = '90%';
             img.style.objectFit = 'contain';
 
+            fullscreenContainer.appendChild(closeButton);
             fullscreenContainer.appendChild(img);
             document.body.appendChild(fullscreenContainer);
 
-            fullscreenContainer.onclick = function() {
+            closeButton.onclick = function() {
                 document.body.removeChild(fullscreenContainer);
             };
         }
