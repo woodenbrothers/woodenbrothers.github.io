@@ -180,34 +180,28 @@
         }
         
         .product-card {
-            background-color: var(--card-background);
-            border-radius: 25px;
-            overflow: visible;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-            position: relative;
+            background: var(--card-background);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
         }
         
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         .product-image-container {
             overflow: hidden;
             position: relative;
-            border-radius: 25px 25px 0 0;
             cursor: pointer;
         }
         
         .product-image {
             width: 100%;
-            aspect-ratio: 1 / 1;
+            height: 300px;
             object-fit: cover;
-            display: block;
             transition: transform 0.3s ease;
         }
 
@@ -215,12 +209,9 @@
             transform: scale(1.1);
         }
 
-        .product-details {
-            padding: 1rem;
+        .product-info {
+            padding: 1.5rem;
             text-align: center;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
         }
         
         .product-title {
@@ -234,22 +225,20 @@
             font-weight: bold;
             color: var(--text-color);
             margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
         }
         
         .product-original-price {
             text-decoration: line-through;
             color: var(--text-color);
+            margin-right: 0.5rem;
         }
         
         .product-discount {
             color: var(--sold-color);
+            margin-left: 0.5rem;
         }
 
-        .product-link {
+        .btn {
             display: inline-block;
             padding: 0.8rem 2rem;
             background: var(--primary-color);
@@ -257,42 +246,12 @@
             text-decoration: none;
             border-radius: 25px;
             transition: transform 0.3s ease, background-color 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            margin: 0 1rem 0.5rem 1rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .product-link:hover {
-            background-color: var(--secondary-color);
-            transform: scale(1.08);
-        }
-
-        .product-details-btn {
-            display: block;
-            background-color: transparent;
-            color: var(--text-color);
-            text-align: center;
-            padding: 0.75rem;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            border-radius: 25px;
-            border: 2px solid var(--primary-color);
-            position: relative;
-            z-index: 2;
-            margin: 0 1rem 1rem 1rem;
             cursor: pointer;
         }
 
-        .product-details-btn:hover {
-            transform: scale(1.08);
+        .btn:hover {
+            transform: scale(1.05);
+            background: var(--secondary-color);
         }
 
         /* Modal styles */
@@ -860,49 +819,46 @@
     <section class="nouveautes">
         <h2 class="section-title" data-aos="fade-up">Nouveautés</h2>
         <div class="products-grid">
-            <div class="product-card" data-aos="fade-up">
+            <div class="product-card" data-aos="fade-up" onclick="openModal('eren-modal')">
                 <div class="product-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Dessous de plat Eren Jäger Attack on Titan" class="product-image">
                 </div>
-                <div class="product-details">
+                <div class="product-info">
                     <h3 class="product-title">Dessous de plat Eren</h3>
-                    <div class="product-price">
-                        <span class="product-original-price">17,99 €</span>
-                        <span>14,39 €</span>
-                        <span class="product-discount">-20%</span>
+                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                        <span style="text-decoration: line-through; margin-right: 0.5rem;">17,99 €</span>
+                        <span style="font-weight: bold;">14,39 €</span>
+                        <span style="color: #850C0C; margin-left: 0.5rem;">-20%</span>
                     </div>
-                    <a href="https://www.etsy.com/fr/listing/1880783276/dessous-de-plat-en-bois-eren-attaque-des" class="product-link" target="_blank" onclick="event.stopPropagation();">Acheter sur Etsy</a>
-                    <button class="product-details-btn" onclick="openModal('eren-modal')">Voir les détails</button>
+                    <a href="https://www.etsy.com/fr/listing/1880783276/dessous-de-plat-en-bois-eren-attaque-des" class="btn" target="_blank" onclick="event.stopPropagation();">Découvrir</a>
                 </div>
             </div>
-            <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="product-card" data-aos="fade-up" data-aos-delay="100" onclick="openModal('itachi-modal')">
                 <div class="product-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/1ff9b1/6740731906/il_1588xN.6740731906_kdrx.jpg" alt="Dessous de plat Itachi Naruto" class="product-image">
                 </div>
-                <div class="product-details">
+                <div class="product-info">
                     <h3 class="product-title">Dessous de plat Itachi</h3>
-                    <div class="product-price">
-                        <span class="product-original-price">17,99 €</span>
-                        <span>14,39 €</span>
-                        <span class="product-discount">-20%</span>
+                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                        <span style="text-decoration: line-through; margin-right: 0.5rem;">17,99 €</span>
+                        <span style="font-weight: bold;">14,39 €</span>
+                        <span style="color: #850C0C; margin-left: 0.5rem;">-20%</span>
                     </div>
-                    <a href="https://www.etsy.com/fr/listing/1893009633/dessous-de-plat-en-bois-itachi-naruto" class="product-link" target="_blank" onclick="event.stopPropagation();">Acheter sur Etsy</a>
-                    <button class="product-details-btn" onclick="openModal('itachi-modal')">Voir les détails</button>
+                    <a href="https://www.etsy.com/fr/listing/1893009633/dessous-de-plat-en-bois-itachi-naruto" class="btn" target="_blank" onclick="event.stopPropagation();">Découvrir</a>
                 </div>
             </div>
-            <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="product-card" data-aos="fade-up" data-aos-delay="200" onclick="openModal('luffy-modal')">
                 <div class="product-image-container">
                     <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Dessous de plat Luffy One Piece" class="product-image">
                 </div>
-                <div class="product-details">
+                <div class="product-info">
                     <h3 class="product-title">Dessous de plat Luffy</h3>
-                    <div class="product-price">
-                        <span class="product-original-price">17,99 €</span>
-                        <span>14,39 €</span>
-                        <span class="product-discount">-20%</span>
+                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                        <span style="text-decoration: line-through; margin-right: 0.5rem;">17,99 €</span>
+                        <span style="font-weight: bold;">14,39 €</span>
+                        <span style="color: #850C0C; margin-left: 0.5rem;">-20%</span>
                     </div>
-                    <a href="https://www.etsy.com/fr/listing/1865127564/dessous-de-plat-en-bois-luffy-one-piece" class="product-link" target="_blank" onclick="event.stopPropagation();">Acheter sur Etsy</a>
-                    <button class="product-details-btn" onclick="openModal('luffy-modal')">Voir les détails</button>
+                    <a href="https://www.etsy.com/fr/listing/1865127564/dessous-de-plat-en-bois-luffy-one-piece" class="btn" target="_blank" onclick="event.stopPropagation();">Découvrir</a>
                 </div>
             </div>
         </div>

@@ -170,19 +170,13 @@
             display: flex;
             flex-direction: column;
             position: relative;
-            cursor: pointer;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
         }
         
         .product-image-container {
             overflow: hidden;
             position: relative;
             border-radius: 25px 25px 0 0;
-            pointer-events: none;
+            cursor: pointer;
         }
         
         .product-image {
@@ -193,13 +187,21 @@
             transition: transform 0.3s ease;
         }
         
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-image-container:hover .product-image {
+            transform: scale(1.1);
+        }
+        
         .product-details {
-            padding: 20px;
+            padding: 1rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            pointer-events: none;
+            background-color: var(--card-background);
         }
         
         .product-title {
@@ -252,7 +254,6 @@
             position: relative;
             z-index: 2;
             margin: 0 1rem 0.5rem 1rem;
-            pointer-events: auto;
         }
         
         .product-link:hover {
@@ -279,7 +280,6 @@
             z-index: 2;
             margin: 0 1rem 1rem 1rem;
             cursor: pointer;
-            pointer-events: auto;
         }
         
         .product-details-btn:hover {
@@ -885,203 +885,191 @@
         <div class="filter-overlay"></div>
         
         <div class="products-grid">
-            <div class="product-card" onclick="openModal('eren-modal')">
-                <div class="product-image-container">
+            <div class="product-card" data-category="dessous-plats manga-anime" data-aos="fade-up">
+                <div class="product-image-container" onclick="openModal('eren-modal')">
                     <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Dessous de plat Eren Jäger Attack on Titan" class="product-image">
                 </div>
                 <div class="product-details">
-                    <h3>Dessous de plat Eren</h3>
-                    <p class="product-category">Dessous de plats • Manga & Anime</p>
-                    <div class="product-price">
-                        <span class="original-price">17,99 €</span>
-                        <span class="discounted-price">14,39 €</span>
-                        <span class="discount-tag">-20%</span>
-                    </div>
-                    <div class="product-buttons">
-                        <a href="https://www.etsy.com/fr/listing/1880783276/dessous-de-plat-en-bois-eren-attaque-des" class="product-link" target="_blank" onclick="event.stopPropagation();">Commander sur Etsy</a>
-                        <button class="product-details-btn" onclick="event.stopPropagation();">Voir les détails</button>
+                    <div class="product-title">Dessous de plat Eren</div>
+                    <div class="product-category">Dessous de plats • Manga & Anime</div>
+                    <div style="display: flex; align-items: center;">
+                        <span class="product-original-price">17,99 €</span>
+                        <span class="product-price">14,39 €</span>
+                        <span class="product-discount">-20%</span>
                     </div>
                 </div>
+                <a href="https://www.etsy.com/fr/listing/1880783276/dessous-de-plat-en-bois-eren-attaque-des?ref=shop_home_active_1&pro=1&logging_key=8a7c295f665f09382721105dd78e9ee8b6c55f9d%3A1880783276" class="product-link" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                <button class="product-details-btn" onclick="openModal('eren-modal')">Voir les détails</button>
             </div>
             
-            <div class="product-card" onclick="openModal('itachi-modal')">
-                <div class="product-image-container">
+            <div class="product-card" data-category="dessous-plats manga-anime" data-aos="fade-up">
+                <div class="product-image-container" onclick="openModal('itachi-modal')">
                     <img src="https://i.etsystatic.com/56732046/r/il/1ff9b1/6740731906/il_1588xN.6740731906_kdrx.jpg" alt="Dessous de plat Itachi Naruto" class="product-image">
                 </div>
                 <div class="product-details">
-                    <h3>Dessous de plat Itachi</h3>
-                    <p class="product-category">Dessous de plats • Manga & Anime</p>
-                    <div class="product-price">
-                        <span class="original-price">17,99 €</span>
-                        <span class="discounted-price">14,39 €</span>
-                        <span class="discount-tag">-20%</span>
+                    <div class="product-title">Dessous de plat Itachi</div>
+                    <div class="product-category">Dessous de plats • Manga & Anime</div>
+                    <div style="display: flex; align-items: center;">
+                        <span class="product-original-price">17,99 €</span>
+                        <span class="product-price">14,39 €</span>
+                        <span class="product-discount">-20%</span>
                 </div>
-                <div class="product-buttons">
-                    <a href="https://www.etsy.com/fr/listing/1893009633/dessous-de-plat-en-bois-itachi-naruto" class="product-link" target="_blank" onclick="event.stopPropagation();">Commander sur Etsy</a>
-                    <button class="product-details-btn" onclick="event.stopPropagation();">Voir les détails</button>
                 </div>
+                <a href="https://www.etsy.com/fr/listing/1893009633/dessous-de-plat-en-bois-itachi-naruto?ref=shop_home_active_1&pro=1&logging_key=f009a3ba9d6608797ad13ce28e5d30cc162aecc6%3A1893009633" class="product-link" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                <button class="product-details-btn" onclick="openModal('itachi-modal')">Voir les détails</button>
             </div>
             
-            <div class="product-card" onclick="openModal('luffy-modal')">
-                <div class="product-image-container">
+            <div class="product-card" data-category="dessous-plats manga-anime" data-aos="fade-up">
+                <div class="product-image-container" onclick="openModal('luffy-modal')">
                     <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Dessous de plat Luffy One Piece" class="product-image">
                 </div>
                 <div class="product-details">
-                    <h3>Dessous de plat Luffy</h3>
-                    <p class="product-category">Dessous de plats • Manga & Anime</p>
-                    <div class="product-price">
-                        <span class="original-price">17,99 €</span>
-                        <span class="discounted-price">14,39 €</span>
-                        <span class="discount-tag">-20%</span>
+                    <div class="product-title">Dessous de plat Luffy</div>
+                    <div class="product-category">Dessous de plats • Manga & Anime</div>
+                    <div style="display: flex; align-items: center;">
+                        <span class="product-original-price">17,99 €</span>
+                        <span class="product-price">14,39 €</span>
+                        <span class="product-discount">-20%</span>
                 </div>
-                <div class="product-buttons">
-                    <a href="https://www.etsy.com/fr/listing/1865127564/dessous-de-plat-en-bois-luffy-one-piece" class="product-link" target="_blank" onclick="event.stopPropagation();">Commander sur Etsy</a>
-                    <button class="product-details-btn" onclick="event.stopPropagation();">Voir les détails</button>
                 </div>
+                <a href="https://www.etsy.com/fr/listing/1865127564/dessous-de-plat-en-bois-luffy-one-piece" class="product-link" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                <button class="product-details-btn" onclick="openModal('luffy-modal')">Voir les détails</button>
             </div>
             
-            <div class="product-card" onclick="openModal('goku-modal')">
-                <div class="product-image-container">
+            <div class="product-card" data-category="dessous-plats manga-anime" data-aos="fade-up">
+                <div class="product-image-container" onclick="openModal('goku-modal')">
                     <img src="https://i.etsystatic.com/56732046/r/il/8ad2fe/6782430493/il_1588xN.6782430493_e4fr.jpg" alt="Dessous de plat Goku Dragon Ball" class="product-image">
                 </div>
                 <div class="product-details">
-                    <h3>Dessous de plat Goku</h3>
-                    <p class="product-category">Dessous de plats • Manga & Anime</p>
-                    <div class="product-price">
-                        <span class="original-price">17,99 €</span>
-                        <span class="discounted-price">14,39 €</span>
-                        <span class="discount-tag">-20%</span>
+                    <div class="product-title">Dessous de plat Goku</div>
+                    <div class="product-category">Dessous de plats • Manga & Anime</div>
+                    <div style="display: flex; align-items: center;">
+                        <span class="product-original-price">17,99 €</span>
+                        <span class="product-price">14,39 €</span>
+                        <span class="product-discount">-20%</span>
                 </div>
-                <div class="product-buttons">
-                    <a href="https://www.etsy.com/fr/listing/1891818343/dessous-de-plat-en-bois-goku-dragon-ball" class="product-link" target="_blank" onclick="event.stopPropagation();">Commander sur Etsy</a>
-                    <button class="product-details-btn" onclick="event.stopPropagation();">Voir les détails</button>
                 </div>
+                <a href="https://www.etsy.com/fr/listing/1891818343/dessous-de-plat-en-bois-goku-dragon-ball?ref=shop_home_active_1&pro=1&logging_key=d202c51c1cb49e16dc2378cb953d2ed975c725de%3A1891818343" class="product-link" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                <button class="product-details-btn" onclick="openModal('goku-modal')">Voir les détails</button>
             </div>
             
-            <div class="product-card" onclick="openModal('levi-modal')">
-                <div class="product-image-container">
+            <div class="product-card" data-category="dessous-plats manga-anime" data-aos="fade-up">
+                <div class="product-image-container" onclick="openModal('levi-modal')">
                     <img src="https://i.etsystatic.com/56732046/r/il/bc1e5a/6657800678/il_1588xN.6657800678_evm5.jpg" alt="Dessous de plat Levi Ackerman Attack on Titan" class="product-image">
                 </div>
                 <div class="product-details">
-                    <h3>Dessous de plat Livaï</h3>
-                    <p class="product-category">Dessous de plats • Manga & Anime</p>
-                    <div class="product-price">
-                        <span class="original-price">17,99 €</span>
-                        <span class="discounted-price">14,39 €</span>
-                        <span class="discount-tag">-20%</span>
+                    <div class="product-title">Dessous de plat Livaï</div>
+                    <div class="product-category">Dessous de plats • Manga & Anime</div>
+                    <div style="display: flex; align-items: center;">
+                        <span class="product-original-price">17,99 €</span>
+                        <span class="product-price">14,39 €</span>
+                        <span class="product-discount">-20%</span>
                 </div>
-                <div class="product-buttons">
-                    <a href="https://www.etsy.com/fr/listing/1876867223/dessous-de-plat-bois-livai-ackerman" class="product-link" target="_blank" onclick="event.stopPropagation();">Commander sur Etsy</a>
-                    <button class="product-details-btn" onclick="event.stopPropagation();">Voir les détails</button>
                 </div>
+                <a href="https://www.etsy.com/fr/listing/1876867223/dessous-de-plat-bois-livai-ackerman?ref=related-2&pro=1&logging_key=e02ee57c7e07beee8c406c2e90d51810466ced0f%3A1876867223" class="product-link" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                <button class="product-details-btn" onclick="openModal('levi-modal')">Voir les détails</button>
             </div>
             
-            <div class="product-card" onclick="openModal('animaux-modal')">
-                <div class="product-image-container">
+            <div class="product-card" data-category="dessous-plats animaux" data-aos="fade-up">
+                <div class="product-image-container" onclick="openModal('animaux-modal')">
                     <img src="https://i.etsystatic.com/56732046/r/il/7585a7/6738475212/il_1588xN.6738475212_khld.jpg" alt="Dessous de plat animaux en bois massif" class="product-image">
                 </div>
                 <div class="product-details">
-                    <h3>Dessous de plat animaux</h3>
-                    <p class="product-category">Dessous de plats • Animaux</p>
-                    <div class="product-price">
-                        <span class="original-price">17,99 €</span>
-                        <span class="discounted-price">14,39 €</span>
-                        <span class="discount-tag">-20%</span>
+                    <div class="product-title">Dessous de plat animaux</div>
+                    <div class="product-category">Dessous de plats • Animaux</div>
+                    <div style="display: flex; align-items: center;">
+                        <span class="product-original-price">17,99 €</span>
+                        <span class="product-price">14,39 €</span>
+                        <span class="product-discount">-20%</span>
                 </div>
-                <div class="product-buttons">
-                    <a href="https://www.etsy.com/fr/listing/1849657184/dessous-de-plat-animaux-en-bois-massif" class="product-link" target="_blank" onclick="event.stopPropagation();">Commander sur Etsy</a>
-                    <button class="product-details-btn" onclick="event.stopPropagation();">Voir les détails</button>
                 </div>
+                <a href="https://www.etsy.com/fr/listing/1849657184/dessous-de-plat-animaux-en-bois-massif?ref=shop_home_active_4&pro=1&logging_key=76fbaa82a5254324945d7e5d1bf817d5cf9fe786%3A1849657184" class="product-link" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                <button class="product-details-btn" onclick="openModal('animaux-modal')">Voir les détails</button>
             </div>
             
-            <div class="product-card" onclick="openModal('panda-modal')">
-                <div class="product-image-container">
+            <div class="product-card" data-category="dessous-plats animaux" data-aos="fade-up">
+                <div class="product-image-container" onclick="openModal('panda-modal')">
                     <img src="https://i.etsystatic.com/56732046/r/il/96342b/6545177886/il_1588xN.6545177886_hssh.jpg" alt="Dessous de plat panda en bois massif" class="product-image">
                 </div>
                 <div class="product-details">
-                    <h3>Dessous de plat panda</h3>
-                    <p class="product-category">Dessous de plats • Animaux</p>
-                    <div class="product-price">
-                        <span class="original-price">17,99 €</span>
-                        <span class="discounted-price">14,39 €</span>
-                        <span class="discount-tag">-20%</span>
+                    <div class="product-title">Dessous de plat panda</div>
+                    <div class="product-category">Dessous de plats • Animaux</div>
+                    <div style="display: flex; align-items: center;">
+                        <span class="product-original-price">17,99 €</span>
+                        <span class="product-price">14,39 €</span>
+                        <span class="product-discount">-20%</span>
                 </div>
-                <div class="product-buttons">
-                    <a href="https://www.etsy.com/fr/listing/1839704122/dessous-de-plat-panda-en-bois-massif" class="product-link" target="_blank" onclick="event.stopPropagation();">Commander sur Etsy</a>
-                    <button class="product-details-btn" onclick="event.stopPropagation();">Voir les détails</button>
                 </div>
+                <a href="https://www.etsy.com/fr/listing/1839704122/dessous-de-plat-panda-en-bois-massif?ref=shop_home_active_5&pro=1&logging_key=55d5450858cca7cb9c7752900c97ab7288988517%3A1839704122" class="product-link" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                <button class="product-details-btn" onclick="openModal('panda-modal')">Voir les détails</button>
             </div>
             
-            <div class="product-card" onclick="openModal('cheval-modal')">
-                <div class="product-image-container">
+            <div class="product-card" data-category="dessous-plats animaux" data-aos="fade-up">
+                <div class="product-image-container" onclick="openModal('cheval-modal')">
                     <img src="https://i.etsystatic.com/56732046/r/il/8bb26a/6543136974/il_1588xN.6543136974_k4v9.jpg" alt="Dessous de plat cheval en bois massif" class="product-image">
                 </div>
                 <div class="product-details">
-                    <h3>Dessous de plat cheval</h3>
-                    <p class="product-category">Dessous de plats • Animaux</p>
-                    <div class="product-price">
-                        <span class="original-price">17,99 €</span>
-                        <span class="discounted-price">14,39 €</span>
-                        <span class="discount-tag">-20%</span>
+                    <div class="product-title">Dessous de plat cheval</div>
+                    <div class="product-category">Dessous de plats • Animaux</div>
+                    <div style="display: flex; align-items: center;">
+                        <span class="product-original-price">17,99 €</span>
+                        <span class="product-price">14,39 €</span>
+                        <span class="product-discount">-20%</span>
                 </div>
-                <div class="product-buttons">
-                    <a href="https://www.etsy.com/fr/listing/1853445029/dessous-de-plat-cheval-en-bois-massif" class="product-link" target="_blank" onclick="event.stopPropagation();">Commander sur Etsy</a>
-                    <button class="product-details-btn" onclick="event.stopPropagation();">Voir les détails</button>
                 </div>
+                <a href="https://www.etsy.com/fr/listing/1853445029/dessous-de-plat-cheval-en-bois-massif?ref=shop_home_active_6&pro=1&logging_key=ddad41ee6b54bfd8e3776bf8ece6877f4adec18f%3A1853445029" class="product-link" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                <button class="product-details-btn" onclick="openModal('cheval-modal')">Voir les détails</button>
             </div>
             
-            <div class="product-card" onclick="openModal('chat-modal')">
-                <div class="product-image-container">
+            <div class="product-card" data-category="dessous-plats animaux" data-aos="fade-up">
+                <div class="product-image-container" onclick="openModal('chat-modal')">
                     <img src="https://i.etsystatic.com/56732046/r/il/5e0bc6/6588924415/il_1588xN.6588924415_lsd8.jpg" alt="Dessous de plat chat en bois massif" class="product-image">
                 </div>
                 <div class="product-details">
-                    <h3>Dessous de plat chat</h3>
-                    <p class="product-category">Dessous de plats • Animaux</p>
-                    <div class="product-price">
-                        <span class="original-price">17,99 €</span>
-                        <span class="discounted-price">14,39 €</span>
-                        <span class="discount-tag">-20%</span>
+                    <div class="product-title">Dessous de plat chat</div>
+                    <div class="product-category">Dessous de plats • Animaux</div>
+                    <div style="display: flex; align-items: center;">
+                        <span class="product-original-price">17,99 €</span>
+                        <span class="product-price">14,39 €</span>
+                        <span class="product-discount">-20%</span>
                 </div>
-                <div class="product-buttons">
-                    <a href="https://www.etsy.com/fr/listing/1838716908/dessous-de-plat-chat-en-bois-massif" class="product-link" target="_blank" onclick="event.stopPropagation();">Commander sur Etsy</a>
-                    <button class="product-details-btn" onclick="event.stopPropagation();">Voir les détails</button>
                 </div>
+                <a href="https://www.etsy.com/fr/listing/1838716908/dessous-de-plat-chat-en-bois-massif?ref=shop_home_active_7&pro=1&logging_key=4564f539efe79ae2e65d67f601bcf261ec41ea6f%3A1838716908" class="product-link" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                <button class="product-details-btn" onclick="openModal('chat-modal')">Voir les détails</button>
             </div>
             
-            <div class="product-card" onclick="openModal('chien-modal')">
-                <div class="product-image-container">
+            <div class="product-card" data-category="dessous-plats animaux" data-aos="fade-up">
+                <div class="product-image-container" onclick="openModal('chien-modal')">
                     <img src="https://i.etsystatic.com/56732046/r/il/c6b310/6540750460/il_1588xN.6540750460_ruet.jpg" alt="Dessous de plat chien en bois massif" class="product-image">
                 </div>
                 <div class="product-details">
-                    <h3>Dessous de plat chien</h3>
-                    <p class="product-category">Dessous de plats • Animaux</p>
-                    <div class="product-price">
-                        <span class="original-price">17,99 €</span>
-                        <span class="discounted-price">14,39 €</span>
-                        <span class="discount-tag">-20%</span>
+                    <div class="product-title">Dessous de plat chien</div>
+                    <div class="product-category">Dessous de plats • Animaux</div>
+                    <div style="display: flex; align-items: center;">
+                        <span class="product-original-price">17,99 €</span>
+                        <span class="product-price">14,39 €</span>
+                        <span class="product-discount">-20%</span>
                 </div>
-                <div class="product-buttons">
-                    <a href="https://www.etsy.com/fr/listing/1838708312/dessous-de-plat-chien-en-bois-massif" class="product-link" target="_blank" onclick="event.stopPropagation();">Commander sur Etsy</a>
-                    <button class="product-details-btn" onclick="event.stopPropagation();">Voir les détails</button>
                 </div>
+                <a href="https://www.etsy.com/fr/listing/1838708312/dessous-de-plat-chien-en-bois-massif?ref=shop_home_active_8&pro=1&logging_key=7f99844f200c86bab176182d4853ffd9d91a3fdc%3A1838708312" class="product-link" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                <button class="product-details-btn" onclick="openModal('chien-modal')">Voir les détails</button>
             </div>
             
-            <div class="product-card" onclick="openModal('renard-modal')">
-                <div class="product-image-container">
+            <div class="product-card" data-category="dessous-plats animaux" data-aos="fade-up">
+                <div class="product-image-container" onclick="openModal('renard-modal')">
                     <img src="https://i.etsystatic.com/56732046/r/il/6e6d4e/6532846964/il_1588xN.6532846964_6n54.jpg" alt="Dessous de plat renard en bois massif" class="product-image">
                 </div>
                 <div class="product-details">
-                    <h3>Dessous de plat renard</h3>
-                    <p class="product-category">Dessous de plats • Animaux</p>
-                    <div class="product-price">
-                        <span class="original-price">17,99 €</span>
-                        <span class="discounted-price">14,39 €</span>
-                        <span class="discount-tag">-20%</span>
+                    <div class="product-title">Dessous de plat renard</div>
+                    <div class="product-category">Dessous de plats • Animaux</div>
+                    <div style="display: flex; align-items: center;">
+                        <span class="product-original-price">17,99 €</span>
+                        <span class="product-price">14,39 €</span>
+                        <span class="product-discount">-20%</span>
                 </div>
-                <div class="product-buttons">
-                    <a href="https://www.etsy.com/fr/listing/1836879420/dessous-de-plat-renard-en-bois-massif" class="product-link" target="_blank" onclick="event.stopPropagation();">Commander sur Etsy</a>
-                    <button class="product-details-btn" onclick="event.stopPropagation();">Voir les détails</button>
                 </div>
+                <a href="https://www.etsy.com/fr/listing/1836879420/dessous-de-plat-renard-en-bois-massif?ref=shop_home_active_9&pro=1&logging_key=a0761db03f72649c4bf1a84cb11ee4f038795628%3A1836879420" class="product-link" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                <button class="product-details-btn" onclick="openModal('renard-modal')">Voir les détails</button>
             </div>
         </div>
         
