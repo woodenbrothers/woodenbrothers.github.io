@@ -1113,7 +1113,9 @@
             duration: 800,
             once: true,
             offset: 0,
-            delay: 0
+            delay: 0,
+            disable: 'mobile',
+            disableMutationObserver: true
         });
         
         // Filtrage des produits par catégorie
@@ -1634,15 +1636,28 @@
                     }
                 });
                 
+                // Désactiver temporairement AOS
+                AOS.disable();
+                
                 // Filtrer les produits
                 products.forEach(product => {
                     const categories = product.getAttribute('data-category').split(' ');
                     if (filter === 'all' || categories.includes(filter)) {
                         product.style.display = 'block';
+                        product.style.opacity = '1';
+                        product.style.transform = 'none';
                     } else {
                         product.style.display = 'none';
+                        product.style.opacity = '0';
+                        product.style.transform = 'none';
                     }
                 });
+
+                // Réactiver AOS après un court délai
+                setTimeout(() => {
+                    AOS.enable();
+                    AOS.refresh();
+                }, 100);
 
                 // Mettre à jour le texte du filtre actif sur mobile
                 const filterText = document.querySelector('.filter-text');
