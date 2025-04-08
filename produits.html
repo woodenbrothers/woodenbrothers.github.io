@@ -1632,16 +1632,22 @@
                     }
                 });
                 
+                // Désactiver temporairement AOS
+                products.forEach(product => {
+                    product.classList.remove('aos-animate');
+                    product.style.opacity = '0';
+                });
+                
                 // Filtrer les produits
                 products.forEach(product => {
                     const categories = product.getAttribute('data-category').split(' ');
                     if (filter === 'all' || categories.includes(filter)) {
                         product.style.display = 'block';
-                        // Forcer le rafraîchissement de l'affichage
-                        product.style.opacity = '0';
+                        // Réinitialiser AOS pour ce produit
                         setTimeout(() => {
+                            product.classList.add('aos-animate');
                             product.style.opacity = '1';
-                        }, 50);
+                        }, 100);
                     } else {
                         product.style.display = 'none';
                     }
@@ -1653,14 +1659,24 @@
                     const activeButton = document.querySelector('.filter-btn.active');
                     filterText.textContent = activeButton ? activeButton.textContent : 'Tous nos produits';
                 }
+
+                // Forcer une réinitialisation d'AOS
+                setTimeout(() => {
+                    AOS.refresh();
+                }, 200);
             }
 
             // Appliquer le filtre initial depuis l'URL
             if (filterFromUrl) {
-                applyFilter(filterFromUrl);
+                // Attendre que le DOM soit complètement chargé
+                setTimeout(() => {
+                    applyFilter(filterFromUrl);
+                }, 100);
             } else {
                 // Si pas de filtre dans l'URL, appliquer "all" par défaut
-                applyFilter('all');
+                setTimeout(() => {
+                    applyFilter('all');
+                }, 100);
             }
 
             // Gérer les clics sur les boutons de filtre
