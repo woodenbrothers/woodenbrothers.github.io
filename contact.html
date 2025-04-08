@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Wooden Brothers</title>
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="Images/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Images/logo.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="Images/logo.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="Images/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="Images/logo.png">
+    <meta name="msapplication-TileImage" content="Images/logo.png">
+    <meta name="msapplication-TileColor" content="#3A5A3B">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Eudoxus+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3A5A3B;
+            --secondary-color: #b49972;
+            --background-color: #f5fbf5;
+            --text-color: #0f170f;
+            --secondary-text-color: #2A412B;
+            --text-white-color: #eff7ef;
+            --accent-color: #9dd8ce;
+            --card-background: #eef4ee;
+            --secondary-card-background: #e8f5e8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Eudoxus Sans', sans-serif;
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .header {
+            background-color: var(--card-background);
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .header h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .contact-section {
+            background: var(--card-background);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .contact-item img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .contact-item a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: scale(1.05);
+            background: var(--secondary-color);
+        }
+
+        .social-link img {
+            width: 20px;
+            height: 20px;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: var(--text-white-color);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: var(--text-white-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                padding: 1rem;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="Images/logo.png" alt="Wooden Brothers Logo">
+        </div>
+        <h1>Contact</h1>
+        <p>Nous sommes là pour vous aider et répondre à vos questions</p>
+    </header>
+
+    <div class="contact-container">
+        <div class="contact-section" data-aos="fade-up">
+            <h2>Contactez-nous</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <img src="https://img.icons8.com/fluency/48/mail.png" alt="Email">
+                    <a href="mailto:contact.wooden.brothers@gmail.com">contact.wooden.brothers@gmail.com</a>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/woodenbrothers.art" class="social-link" target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.icons8.com/fluency/24/instagram-new.png" alt="Instagram">
+                    Suivez-nous sur Instagram
+                </a>
+                <a href="https://www.etsy.com/fr/shop/WoodenBrothersArt" class="social-link" target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.icons8.com/color/48/etsy.png" alt="Etsy">
+                    Notre boutique Etsy
+                </a>
+            </div>
+        </div>
+
+        <div class="contact-section" data-aos="fade-up" data-aos-delay="100">
+            <h2>À propos de nous</h2>
+            <p>Chez Wooden Brothers, chaque création est le fruit d'un travail minutieux, inspiré par la nature, la culture et la passion du bois. Nous sommes fiers de vous proposer des pièces uniques, fabriquées avec soin et attention aux détails.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Wooden Brothers. Tous droits réservés.</p>
+        <p>Contact : <a href="mailto:contact.wooden.brothers@gmail.com">contact.wooden.brothers@gmail.com</a></p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+    </script>
+</body>
+</html> 
