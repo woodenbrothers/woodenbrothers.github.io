@@ -871,12 +871,12 @@
         </section>
         
         <div class="filter-container">
-            <button class="filter-btn active" data-category="all">Tous nos produits</button>
-            <button class="filter-btn" data-category="dessous-plats">Dessous de plats</button>
-            <button class="filter-btn" data-category="manga-anime">Manga & Anime</button>
-            <button class="filter-btn" data-category="animaux">Animaux</button>
-            <button class="filter-btn" data-category="cartes-pokemon">Cartes Pokémon <span class="coming-soon">(Arrive prochainement)</span></button>
-            <button class="filter-btn" data-category="dessous-verre">Dessous de verre <span class="coming-soon">(Arrive prochainement)</span></button>
+            <button class="filter-btn active" data-filter="all">Tous nos produits</button>
+            <button class="filter-btn" data-filter="dessous-plats">Dessous de plats</button>
+            <button class="filter-btn" data-filter="manga-anime">Manga & Anime</button>
+            <button class="filter-btn" data-filter="animaux">Animaux</button>
+            <button class="filter-btn" data-filter="cartes-pokemon">Cartes Pokémon <span class="coming-soon">(Arrive prochainement)</span></button>
+            <button class="filter-btn" data-filter="dessous-verre">Dessous de verre <span class="coming-soon">(Arrive prochainement)</span></button>
         </div>
         
         <button class="mobile-filter-btn">
@@ -1142,7 +1142,7 @@
                 filterButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
                 
-                const selectedCategory = button.getAttribute('data-category');
+                const selectedCategory = button.getAttribute('data-filter');
                 
                 // Filtrer les produits
                 productCards.forEach(card => {
@@ -1633,17 +1633,28 @@
                 
                 // Filtrer les produits
                 products.forEach(product => {
-                    if (filter === 'all' || product.getAttribute('data-category') === filter) {
+                    const categories = product.getAttribute('data-category').split(' ');
+                    if (filter === 'all' || categories.includes(filter)) {
                         product.style.display = 'block';
                     } else {
                         product.style.display = 'none';
                     }
                 });
+
+                // Mettre à jour le texte du filtre actif sur mobile
+                const filterText = document.querySelector('.filter-text');
+                if (filterText) {
+                    const activeButton = document.querySelector('.filter-btn.active');
+                    filterText.textContent = activeButton ? activeButton.textContent : 'Tous nos produits';
+                }
             }
 
             // Appliquer le filtre initial depuis l'URL
             if (filterFromUrl) {
                 applyFilter(filterFromUrl);
+            } else {
+                // Si pas de filtre dans l'URL, appliquer "all" par défaut
+                applyFilter('all');
             }
 
             // Gérer les clics sur les boutons de filtre
