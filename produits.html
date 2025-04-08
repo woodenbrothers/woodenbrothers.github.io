@@ -1256,6 +1256,67 @@
                 closeFullscreen();
             }
         });
+
+        // Fonction pour obtenir les paramètres de l'URL
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Fonction pour mettre à jour l'URL avec le filtre sélectionné
+        function updateUrlWithFilter(filter) {
+            const url = new URL(window.location);
+            if (filter === 'all') {
+                url.searchParams.delete('filter');
+            } else {
+                url.searchParams.set('filter', filter);
+            }
+            window.history.pushState({}, '', url);
+        }
+
+        // Fonction pour appliquer le filtre
+        function applyFilter(category) {
+            const products = document.querySelectorAll('.product-card');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            // Mettre à jour l'URL
+            updateUrlWithFilter(category);
+            
+            // Mettre à jour les boutons de filtre
+            filterButtons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-category') === category) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Filtrer les produits
+            products.forEach(product => {
+                if (category === 'all' || product.getAttribute('data-category') === category) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+
+        // Initialiser les filtres au chargement de la page
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterFromUrl = getUrlParameter('filter');
+            if (filterFromUrl) {
+                applyFilter(filterFromUrl);
+            }
+        });
+
+        // Gérer les clics sur les boutons de filtre
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                applyFilter(category);
+            });
+        });
     </script>
     
     <!-- Modales pour chaque produit -->
