@@ -1150,11 +1150,13 @@
                     const categories = card.getAttribute('data-category').split(' ');
                     if (selectedCategory === 'all' || categories.includes(selectedCategory)) {
                         card.style.display = 'block';
+                        card.style.pointerEvents = 'auto';
                         // Forcer le refresh de l'animation
                         card.setAttribute('data-aos', 'fade-up');
                         AOS.refresh();
                     } else {
                         card.style.display = 'none';
+                        card.style.pointerEvents = 'none';
                     }
                 });
 
