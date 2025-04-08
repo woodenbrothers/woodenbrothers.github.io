@@ -1149,12 +1149,12 @@
                 productCards.forEach(card => {
                     const categories = card.getAttribute('data-category').split(' ');
                     if (selectedCategory === 'all' || categories.includes(selectedCategory)) {
-                        card.classList.remove('hidden');
+                        card.style.display = 'block';
                         // Forcer le refresh de l'animation
                         card.setAttribute('data-aos', 'fade-up');
                         AOS.refresh();
                     } else {
-                        card.classList.add('hidden');
+                        card.style.display = 'none';
                     }
                 });
 
