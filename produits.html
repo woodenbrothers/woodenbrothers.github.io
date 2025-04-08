@@ -971,20 +971,26 @@
                 <button class="product-details-btn" onclick="openModal('levi-modal')">Voir les détails</button>
             </div>
             
-            <div class="product-card" data-category="dessous-plats animaux" data-aos="fade-up" data-aos-delay="0">
-                <div class="product-image">
-                    <img src="https://i.etsystatic.com/44789995/r/il/5c0c0c/5613744754/il_1140xN.5613744754_1xqp.jpg" alt="Dessous de plat animaux">
+            <div class="product-card" data-category="dessous-plats animaux" data-aos="fade-up">
+                <div class="product-image-container" onclick="openModal('panda-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/96342b/6545177886/il_1588xN.6545177886_hssh.jpg" alt="Dessous de plat panda en bois massif" class="product-image">
                 </div>
                 <div class="product-details">
-                    <h3>Dessous de plat animaux</h3>
-                    <p class="price">17,99 €</p>
-                    <a href="#" class="discover-btn" onclick="openModal('animaux-modal'); return false;">Découvrir</a>
+                    <div class="product-title">Dessous de plat panda</div>
+                    <div class="product-category">Dessous de plats • Animaux</div>
+                    <div style="display: flex; align-items: center;">
+                        <span class="product-original-price">17,99 €</span>
+                        <span class="product-price">14,39 €</span>
+                        <span class="product-discount">-20%</span>
                 </div>
+                </div>
+                <a href="https://www.etsy.com/fr/listing/1849657184/dessous-de-plat-animaux-en-bois-massif?ref=shop_home_active_4&pro=1&logging_key=76fbaa82a5254324945d7e5d1bf817d5cf9fe786%3A1849657184" class="product-link" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                <button class="product-details-btn" onclick="openModal('panda-modal')">Voir les détails</button>
             </div>
-
-            <div class="product-card" data-category="dessous-plats animaux" data-aos="fade-up" data-aos-delay="0">
-                <div class="product-image">
-                    <img src="https://i.etsystatic.com/44789995/r/il/5c0c0c/5613744754/il_1140xN.5613744754_1xqp.jpg" alt="Dessous de plat renard">
+            
+            <div class="product-card" data-category="dessous-plats animaux" data-aos="fade-up">
+                <div class="product-image-container" onclick="openModal('cheval-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/8bb26a/6543136974/il_1588xN.6543136974_k4v9.jpg" alt="Dessous de plat cheval en bois massif" class="product-image">
                 </div>
                 <div class="product-details">
                     <div class="product-title">Dessous de plat cheval</div>
@@ -1104,11 +1110,10 @@
     <script>
         // Initialisation de AOS
         AOS.init({
-            duration: 0,
+            duration: 800,
             once: true,
             offset: 0,
-            delay: 0,
-            disable: true
+            delay: 0
         });
         
         // Filtrage des produits par catégorie
@@ -1144,14 +1149,12 @@
                 productCards.forEach(card => {
                     const categories = card.getAttribute('data-category').split(' ');
                     if (selectedCategory === 'all' || categories.includes(selectedCategory)) {
-                        card.style.display = 'block';
-                        card.style.pointerEvents = 'auto';
+                        card.classList.remove('hidden');
                         // Forcer le refresh de l'animation
                         card.setAttribute('data-aos', 'fade-up');
                         AOS.refresh();
                     } else {
-                        card.style.display = 'none';
-                        card.style.pointerEvents = 'none';
+                        card.classList.add('hidden');
                     }
                 });
 
@@ -1253,66 +1256,6 @@
             if (event.key === 'Escape') {
                 closeFullscreen();
             }
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // Récupérer le filtre depuis l'URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const filterFromUrl = urlParams.get('filter');
-
-            // Fonction pour mettre à jour l'URL avec le filtre
-            function updateUrlWithFilter(filter) {
-                const url = new URL(window.location.href);
-                if (filter === 'all') {
-                    url.searchParams.delete('filter');
-                } else {
-                    url.searchParams.set('filter', filter);
-                }
-                window.history.pushState({}, '', url);
-            }
-
-            // Fonction pour appliquer le filtre
-            function applyFilter(category) {
-                const products = document.querySelectorAll('.product-card');
-                const filterButtons = document.querySelectorAll('.filter-btn');
-                
-                // Mettre à jour les boutons de filtre
-                filterButtons.forEach(btn => {
-                    btn.classList.remove('active');
-                    if (btn.getAttribute('data-category') === category) {
-                        btn.classList.add('active');
-                    }
-                });
-                
-                // Appliquer le filtre sans animations
-                products.forEach(product => {
-                    const productCategory = product.getAttribute('data-category');
-                    if (category === 'all' || productCategory === category) {
-                        product.style.display = 'block';
-                        product.style.opacity = '1';
-                        product.style.transform = 'none';
-                        product.style.transition = 'none';
-                    } else {
-                        product.style.display = 'none';
-                    }
-                });
-            }
-
-            // Appliquer le filtre initial depuis l'URL
-            if (filterFromUrl) {
-                applyFilter(filterFromUrl);
-            } else {
-                // Si pas de filtre dans l'URL, appliquer "all" par défaut
-                applyFilter('all');
-            }
-
-            // Gérer les clics sur les boutons de filtre
-            document.querySelectorAll('.filter-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const filter = this.getAttribute('data-filter');
-                    applyFilter(filter);
-                });
-            });
         });
     </script>
     
@@ -1655,5 +1598,79 @@
         <img src="" alt="Image en plein écran">
         <span class="fullscreen-close" onclick="closeFullscreen()">&times;</span>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Récupérer le filtre depuis l'URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const filterFromUrl = urlParams.get('filter');
+
+            // Fonction pour mettre à jour l'URL avec le filtre
+            function updateUrlWithFilter(filter) {
+                const url = new URL(window.location.href);
+                if (filter === 'all') {
+                    url.searchParams.delete('filter');
+                } else {
+                    url.searchParams.set('filter', filter);
+                }
+                window.history.pushState({}, '', url);
+            }
+
+            // Fonction pour appliquer le filtre
+            function applyFilter(filter) {
+                const products = document.querySelectorAll('.product-card');
+                const filterButtons = document.querySelectorAll('.filter-btn');
+                
+                // Mettre à jour l'URL
+                updateUrlWithFilter(filter);
+                
+                // Mettre à jour les boutons de filtre
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('data-filter') === filter) {
+                        btn.classList.add('active');
+                    }
+                });
+                
+                // Filtrer les produits
+                products.forEach(product => {
+                    const categories = product.getAttribute('data-category').split(' ');
+                    if (filter === 'all' || categories.includes(filter)) {
+                        product.style.display = 'block';
+                        // Forcer le rafraîchissement de l'affichage
+                        product.style.opacity = '0';
+                        setTimeout(() => {
+                            product.style.opacity = '1';
+                        }, 50);
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+
+                // Mettre à jour le texte du filtre actif sur mobile
+                const filterText = document.querySelector('.filter-text');
+                if (filterText) {
+                    const activeButton = document.querySelector('.filter-btn.active');
+                    filterText.textContent = activeButton ? activeButton.textContent : 'Tous nos produits';
+                }
+            }
+
+            // Appliquer le filtre initial depuis l'URL
+            if (filterFromUrl) {
+                applyFilter(filterFromUrl);
+            } else {
+                // Si pas de filtre dans l'URL, appliquer "all" par défaut
+                applyFilter('all');
+            }
+
+            // Gérer les clics sur les boutons de filtre
+            document.querySelectorAll('.filter-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    applyFilter(filter);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
