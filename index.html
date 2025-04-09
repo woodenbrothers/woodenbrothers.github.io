@@ -1135,7 +1135,7 @@
                 const targetPosition = nouveautesSection.offsetTop - 100;
                 const startPosition = window.pageYOffset;
                 const distance = targetPosition - startPosition;
-                const duration = 1000; // Durée en millisecondes
+                const duration = 1000;
                 let start = null;
 
                 function animation(currentTime) {
@@ -1143,7 +1143,6 @@
                     const timeElapsed = currentTime - start;
                     const progress = Math.min(timeElapsed / duration, 1);
                     
-                    // Fonction d'easing pour un mouvement plus naturel
                     const easeInOutCubic = progress => {
                         return progress < 0.5
                             ? 4 * progress * progress * progress
