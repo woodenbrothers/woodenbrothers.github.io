@@ -782,7 +782,7 @@
             border: 2px solid var(--text-color);
             border-radius: 50%;
             position: relative;
-            animation: bounceAndGlow 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+            animation: bounce 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -818,25 +818,23 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        @keyframes bounceAndGlow {
+        @keyframes bounce {
             0%, 100% {
-                transform: translateY(0) scale(1);
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                transform: translateY(0);
             }
             50% {
-                transform: translateY(-15px) scale(1.05);
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+                transform: translateY(10px);
             }
         }
 
         @keyframes arrowPulse {
             0%, 100% {
                 opacity: 1;
-                transform: translate(-50%, -50%) rotate(45deg) scale(1);
+                transform: translate(-50%, -50%) rotate(45deg);
             }
             50% {
                 opacity: 0.7;
-                transform: translate(-50%, -50%) rotate(45deg) scale(1.1);
+                transform: translate(-50%, -50%) rotate(45deg);
             }
         }
     </style>
