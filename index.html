@@ -100,6 +100,24 @@
             animation-delay: -10s;
         }
 
+        .shape:nth-child(4) {
+            width: 180px;
+            height: 180px;
+            top: 20%;
+            right: 20%;
+            transform: rotate(15deg);
+            animation-delay: -15s;
+        }
+
+        .shape:nth-child(5) {
+            width: 220px;
+            height: 220px;
+            bottom: 30%;
+            left: 25%;
+            transform: rotate(75deg);
+            animation-delay: -20s;
+        }
+
         @keyframes floatAnimation {
             0%, 100% {
                 transform: translateY(0) rotate(45deg);
@@ -803,6 +821,8 @@
 <body>
     <header class="header">
         <div class="header-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
             <div class="shape"></div>
             <div class="shape"></div>
             <div class="shape"></div>
