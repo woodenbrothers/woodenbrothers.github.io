@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png" sizes="48x48" href="Images/logo.png">
     <link rel="icon" type="image/png" sizes="192x192" href="Images/logo.png">
     <link rel="apple-touch-icon" sizes="180x180" href="Images/logo.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="Images/logo.png">
     <meta name="msapplication-TileImage" content="Images/logo.png">
     <meta name="msapplication-TileColor" content="#3A5A3B">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -137,8 +138,8 @@
         }
         
         .logo {
-            width: 150px;
-            height: 150px;
+            width: 225px;
+            height: 225px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1132,7 +1133,7 @@
             e.preventDefault();
             const nouveautesSection = document.querySelector('.nouveautes');
             if (nouveautesSection) {
-                const targetPosition = nouveautesSection.offsetTop - -25;
+                const targetPosition = nouveautesSection.offsetTop - 100;
                 const startPosition = window.pageYOffset;
                 const distance = targetPosition - startPosition;
                 const duration = 1000;
