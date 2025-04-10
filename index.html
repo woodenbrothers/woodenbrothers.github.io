@@ -698,9 +698,10 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 0.5rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
             text-align: center;
+            justify-content: center;
         }
 
         .footer-links {
@@ -708,6 +709,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding: 0;
+            margin: 0;
         }
 
         .footer-links li {
