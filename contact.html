@@ -179,6 +179,32 @@
                 font-size: 2rem;
             }
         }
+
+        .copy-button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-left: 1rem;
+        }
+
+        .copy-button:hover {
+            background: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        .copy-button.copied {
+            background: #4CAF50;
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
     </style>
 </head>
 <body>
@@ -199,6 +225,7 @@
                 <div class="contact-item">
                     <img src="https://img.icons8.com/fluency/48/mail.png" alt="Email">
                     <a href="mailto:contact.wooden.brothers@gmail.com">contact.wooden.brothers@gmail.com</a>
+                    <button class="copy-button" onclick="copyEmail()">Copier</button>
                 </div>
             </div>
         </div>
@@ -221,6 +248,20 @@
             easing: 'ease-in-out',
             once: true
         });
+
+        function copyEmail() {
+            const email = 'contact.wooden.brothers@gmail.com';
+            navigator.clipboard.writeText(email).then(() => {
+                const button = document.querySelector('.copy-button');
+                button.textContent = 'Copié !';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = 'Copier';
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
     </script>
 </body>
 </html> 
