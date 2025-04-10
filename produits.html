@@ -339,9 +339,7 @@
         }
 
         .modal-close:hover {
-            transform: rotate(90deg);
-            background-color: var(--primary-color);
-            color: white;
+            background-color: var(--secondary-color);
         }
 
         .modal-gallery {
@@ -558,6 +556,15 @@
                 width: 25px;
                 height: 25px;
                 font-size: 18px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 20px auto;
             }
         }
         
@@ -852,25 +859,40 @@
         .disclaimer-banner p:last-child {
             margin-bottom: 0;
         }
+
+        .social-link img {
+            width: 20px;
+            height: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 20px auto;
+            }
+        }
+
+        footer {
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <header>
+    <div class="header">
         <div class="logo">
-            <a href="https://woodenbrothers.github.io/" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
+            <a href="/">
                 <img src="Images/logo.png" alt="Wooden Brothers Logo">
-                <span>Wooden Brothers</span>
             </a>
         </div>
-    </header>
-    
-    <div class="container">
-        <section class="hero">
-            <div class="hero-content">
-                <p>Chez Wooden Brothers, chaque création est le fruit d'un travail minutieux, inspiré par la nature, la culture et la passion du bois.</p>
-            </div>
-        </section>
-        
+        <h1>Nos Produits</h1>
+        <p>Découvrez notre collection de créations artisanales</p>
+    </div>
+
+    <div class="products-container">
         <div class="filter-container">
             <button class="filter-btn active" data-filter="all">Tous nos produits</button>
             <button class="filter-btn" data-filter="dessous-plats">Dessous de plats</button>
@@ -1092,11 +1114,7 @@
             </div>
         </section>
     </div>
-    
-    <footer>
-        <p>2025 Wooden Brothers</p>
-    </footer>
-    
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         // Initialisation de AOS
