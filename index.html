@@ -695,13 +695,17 @@
         }
 
         .footer-content {
-            max-width: 1200px;
+            max-width: 600px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            display: flex;
+            justify-content: center;
             gap: 0;
             text-align: center;
-            justify-content: center;
+        }
+
+        .footer-content > div {
+            flex: 0 1 auto;
+            margin: 0 1rem;
         }
 
         .footer-links {
