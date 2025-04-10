@@ -700,10 +700,14 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
+            text-align: center;
         }
 
         .footer-links {
             list-style: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .footer-links li {
@@ -718,6 +722,11 @@
 
         .footer-links a:hover {
             color: var(--accent-color);
+        }
+
+        .footer-content h3 {
+            text-align: center;
+            margin-bottom: 1rem;
         }
 
         .copyright {
