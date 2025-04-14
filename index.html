@@ -521,10 +521,12 @@
 
         .collection-card {
             position: relative;
-            border-radius: 15px;
             overflow: hidden;
-            aspect-ratio: 1;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
             cursor: pointer;
+            text-decoration: none;
+            color: inherit;
         }
 
         .collection-image {
@@ -860,6 +862,43 @@
                 transform: translate(-50%, -50%) rotate(45deg);
             }
         }
+
+        /* Styles pour les collections */
+        .collection-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        @media screen and (max-width: 768px) {
+            .collection-card {
+                pointer-events: none;
+            }
+
+            .collection-card .collection-image {
+                pointer-events: none;
+            }
+
+            .collection-card .hover-images {
+                display: none;
+            }
+
+            .collection-card a {
+                pointer-events: auto;
+                cursor: pointer;
+            }
+        }
+
+        .collection-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
     </style>
 </head>
 <body>
@@ -952,381 +991,31 @@
         <div class="collections-content">
             <div class="collections-grid">
                 <a href="/produits?filter=manga-anime" class="collection-card" data-aos="fade-up">
-                    <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Manga & Anime" class="collection-image">
-                    <div class="hover-images" id="manga-hover">
-                        <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Manga & Anime 2">
-                        <img src="https://i.etsystatic.com/56732046/r/il/314182/6740736034/il_1588xN.6740736034_qr6l.jpg" alt="Manga & Anime 3">
-                        <img src="https://i.etsystatic.com/56732046/r/il/39469c/6782431003/il_1588xN.6782431003_abet.jpg" alt="Manga & Anime 4">
-                        <img src="https://i.etsystatic.com/56732046/r/il/fc40f1/6705841041/il_1588xN.6705841041_30t7.jpg" alt="Manga & Anime 5">
+                    <div class="collection-image-container">
+                        <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Dessous de plat Eren Jäger Attack on Titan" class="collection-image">
                     </div>
-                    <h3 class="collection-title">Manga & Anime</h3>
+                    <div class="collection-info">
+                        <h3 class="collection-title">Manga et Anime</h3>
+                    </div>
                 </a>
-                <a href="/produits?filter=animaux" class="collection-card" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://i.etsystatic.com/56732046/r/il/8bb26a/6543136974/il_600x600.6543136974_k4v9.jpg" alt="Animaux" class="collection-image">
-                    <div class="hover-images" id="animaux-hover">
-                        <img src="https://i.etsystatic.com/56732046/r/il/785116/6588925859/il_1588xN.6588925859_c8yt.jpg" alt="Animaux 2">
-                        <img src="https://i.etsystatic.com/56732046/r/il/c6b310/6540750460/il_1588xN.6540750460_ruet.jpg" alt="Animaux 3">
-                        <img src="https://i.etsystatic.com/56732046/r/il/6e6d4e/6532846964/il_1588xN.6532846964_6n54.jpg" alt="Animaux 4">
-                        <img src="https://i.etsystatic.com/56732046/r/il/bc0cbd/6545181226/il_1588xN.6545181226_2t3s.jpg" alt="Animaux 5">
-                </div>
-                    <h3 class="collection-title">Animaux</h3>
+                <a href="/produits?filter=personnages-celebres" class="collection-card" data-aos="fade-up">
+                    <div class="collection-image-container">
+                        <img src="https://i.etsystatic.com/56732046/r/il/1ff9b1/6740731906/il_1588xN.6740731906_kdrx.jpg" alt="Dessous de plat Itachi Naruto" class="collection-image">
+                    </div>
+                    <div class="collection-info">
+                        <h3 class="collection-title">Personnages Célèbres</h3>
+                    </div>
                 </a>
-                <a href="/produits?filter=cartes-pokemon" class="collection-card" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://i.etsystatic.com/56732046/r/il/88c23e/6803518645/il_1588xN.6803518645_1x6l.jpg" alt="Cartes Pokemon" class="collection-image">
-                    <div class="hover-images" id="pokemon-hover">
-                        <img src="https://i.etsystatic.com/56732046/r/il/6fe636/6765194598/il_1588xN.6765194598_e9v9.jpg" alt="Cartes Pokemon 2">
+                <a href="/produits?filter=one-piece" class="collection-card" data-aos="fade-up">
+                    <div class="collection-image-container">
+                        <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Dessous de plat Luffy One Piece" class="collection-image">
+                    </div>
+                    <div class="collection-info">
+                        <h3 class="collection-title">One Piece</h3>
+                    </div>
+                </a>
             </div>
-                    <h3 class="collection-title">Cartes Pokemon</h3>
-                </a>
-                </div>
-            </div>
+        </div>
     </section>
-
-    <section class="newsletter">
-        <section class="instagram-section">
-            <div class="instagram-content">
-                <a href="https://www.instagram.com/woodenbrothers.art/" class="instagram-header" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 0.75rem; justify-content: center; text-decoration: none;">
-                    <img src="Images/logo.png" alt="Wooden Brothers Logo" style="width: 25px; height: 25px; border-radius: 50%; object-fit: contain;">
-                    <span style="font-size: 1.5rem; font-weight: 600; color: var(--text-color);">Wooden Brothers</span>
-                </a>
-                <div class="instagram-grid">
-                    <a href="https://www.instagram.com/p/DH1Gt2PtRTN/" target="_blank" rel="noopener noreferrer">
-                        <img src="https://i.etsystatic.com/56732046/r/il/f0edee/6750817180/il_1588xN.6750817180_12lw.jpg" alt="Dessous de plat Eren">
-                    </a>
-                    <a href="https://www.instagram.com/p/DHlrT-gt9Z6/" target="_blank" rel="noopener noreferrer">
-                        <img src="https://i.etsystatic.com/56732046/r/il/314182/6740736034/il_1588xN.6740736034_qr6l.jpg" alt="Dessous de plat Itachi">
-                    </a>
-                    <a href="https://www.instagram.com/p/DHgo40bNd6t/" target="_blank" rel="noopener noreferrer">
-                        <img src="https://i.etsystatic.com/56732046/r/il/8ad2fe/6782430493/il_1588xN.6782430493_e4fr.jpg" alt="Dessous de plat Goku">
-                    </a>
-                    <a href="https://www.instagram.com/p/DHMAJKnMQSR/" target="_blank" rel="noopener noreferrer">
-                        <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Dessous de plat Luffy">
-                    </a>
-                </div>
-                <a href="https://www.instagram.com/woodenbrothers.art" class="instagram-follow-btn" target="_blank" rel="noopener noreferrer">
-                    <img src="https://img.icons8.com/fluency/24/instagram-new.png" alt="Instagram" style="width: 20px; height: 20px;">
-                    Suivez-nous sur Instagram
-                </a>
-            </div>
-        </section>
-    </section>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <div>
-                <h3>À propos</h3>
-                <ul class="footer-links">
-                    <li><a href="/contact">Contact</a></li>
-                </ul>
-                </div>
-            <div>
-                <h3>Informations</h3>
-                <ul class="footer-links">
-                    <li><a href="/politique-confidentialite">Politique de confidentialité</a></li>
-                    <li><a href="/mentions-legales">Mentions légales</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Modals -->
-    <!-- Eren Modal -->
-    <div id="eren-modal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal('eren-modal')">&times;</span>
-            <div class="modal-gallery">
-                <div class="main-image-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Dessous de plat Eren Jäger Attack on Titan" class="main-image" onclick="openFullscreen(this.src)">
-                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'eren-modal')">❮</div>
-                    <div class="gallery-nav gallery-next" onclick="changeImage(1, 'eren-modal')">❯</div>
-                </div>
-                <div class="thumbnail-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Dessous de plat Eren Jäger Attack on Titan" class="thumbnail active" onclick="setMainImage(this.src, 'eren-modal')">
-                    <img src="https://i.etsystatic.com/56732046/r/il/f0edee/6750817180/il_1588xN.6750817180_12lw.jpg" alt="Dessous de plat Eren Jäger Attack on Titan - Vue 2" class="thumbnail" onclick="setMainImage(this.src, 'eren-modal')">
-                    <img src="https://i.etsystatic.com/56732046/r/il/96dfa3/6798835823/il_1588xN.6798835823_3ldn.jpg" alt="Dessous de plat Eren Jäger Attack on Titan - Vue 3" class="thumbnail" onclick="setMainImage(this.src, 'eren-modal')">
-                    <img src="https://i.etsystatic.com/56732046/r/il/387ffd/6750817382/il_1588xN.6750817382_icro.jpg" alt="Dessous de plat Eren Jäger Attack on Titan - Vue 4" class="thumbnail" onclick="setMainImage(this.src, 'eren-modal')">
-            </div>
-                </div>
-            <div class="modal-description">
-                <h2 class="modal-title">Dessous de plat Eren</h2>
-                <p>Ajoutez du caractère à votre décoration avec ce dessous de plat en bois naturel, gravé à l'effigie d'Eren Jäger, personnage central de la série L'Attaque des Titans. Cette pièce artisanale, conçue pour les fans de manga, allie intensité visuelle, qualité du bois et savoir-faire manuel.</p>
-                <h3>Détails du produit</h3>
-                <ul>
-                    <li>Gravure fine et précise réalisée avec soin</li>
-                    <li>Bois massif de haute qualité, sélectionné pour sa durabilité</li>
-                    <li>Dimensions : environ 20 cm de diamètre, épaisseur 2 cm</li>
-                    <li>Vernis de protection pour une finition soignée et un entretien facile</li>
-                </ul>
-                <div style="text-align: center; margin-top: 2rem;">
-                    <a href="https://www.etsy.com/fr/listing/1880783276/dessous-de-plat-en-bois-eren-attaque-des" class="modal-buy-button" target="_blank">Commander sur Etsy</a>
-            </div>
-                </div>
-        </div>
-            </div>
-            
-    <!-- Itachi Modal -->
-    <div id="itachi-modal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal('itachi-modal')">&times;</span>
-            <div class="modal-gallery">
-                <div class="main-image-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/1ff9b1/6740731906/il_1588xN.6740731906_kdrx.jpg" alt="Dessous de plat Itachi Naruto" class="main-image" onclick="openFullscreen(this.src)">
-                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'itachi-modal')">❮</div>
-                    <div class="gallery-nav gallery-next" onclick="changeImage(1, 'itachi-modal')">❯</div>
-                </div>
-                <div class="thumbnail-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/1ff9b1/6740731906/il_1588xN.6740731906_kdrx.jpg" alt="Dessous de plat Itachi Naruto" class="thumbnail active" onclick="setMainImage(this.src, 'itachi-modal')">
-                    <img src="https://i.etsystatic.com/56732046/r/il/f0edee/6750817180/il_1588xN.6750817180_12lw.jpg" alt="Dessous de plat Itachi Naruto - Vue 2" class="thumbnail" onclick="setMainImage(this.src, 'itachi-modal')">
-                    <img src="https://i.etsystatic.com/56732046/r/il/96dfa3/6798835823/il_1588xN.6798835823_3ldn.jpg" alt="Dessous de plat Itachi Naruto - Vue 3" class="thumbnail" onclick="setMainImage(this.src, 'itachi-modal')">
-                    <img src="https://i.etsystatic.com/56732046/r/il/387ffd/6750817382/il_1588xN.6750817382_icro.jpg" alt="Dessous de plat Itachi Naruto - Vue 4" class="thumbnail" onclick="setMainImage(this.src, 'itachi-modal')">
-            </div>
-                </div>
-            <div class="modal-description">
-                <h2 class="modal-title">Dessous de plat Itachi</h2>
-                <p>Découvrez notre création artisanale inspirée d'Itachi, le ninja légendaire de Naruto. Cette pièce unique capture l'essence de ce personnage complexe, sculptée avec précision dans du bois de qualité.</p>
-                <h3>Détails du produit</h3>
-                <ul>
-                    <li>Gravure fine et précise réalisée avec soin</li>
-                    <li>Bois massif de haute qualité, sélectionné pour sa durabilité</li>
-                    <li>Dimensions : environ 20 cm de diamètre, épaisseur 2 cm</li>
-                    <li>Vernis de protection pour une finition soignée et un entretien facile</li>
-                </ul>
-                <div style="text-align: center; margin-top: 2rem;">
-                    <a href="https://www.etsy.com/fr/listing/1893009633/dessous-de-plat-en-bois-itachi-naruto" class="modal-buy-button" target="_blank">Commander sur Etsy</a>
-            </div>
-                </div>
-            </div>
-            </div>
-            
-    <!-- Luffy Modal -->
-    <div id="luffy-modal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal('luffy-modal')">&times;</span>
-            <div class="modal-gallery">
-                <div class="main-image-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Dessous de plat Luffy One Piece" class="main-image" onclick="openFullscreen(this.src)">
-                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'luffy-modal')">❮</div>
-                    <div class="gallery-nav gallery-next" onclick="changeImage(1, 'luffy-modal')">❯</div>
-                </div>
-                <div class="thumbnail-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Dessous de plat Luffy One Piece" class="thumbnail active" onclick="setMainImage(this.src, 'luffy-modal')">
-                    <img src="https://i.etsystatic.com/56732046/r/il/f0edee/6750817180/il_1588xN.6750817180_12lw.jpg" alt="Dessous de plat Luffy One Piece - Vue 2" class="thumbnail" onclick="setMainImage(this.src, 'luffy-modal')">
-                    <img src="https://i.etsystatic.com/56732046/r/il/96dfa3/6798835823/il_1588xN.6798835823_3ldn.jpg" alt="Dessous de plat Luffy One Piece - Vue 3" class="thumbnail" onclick="setMainImage(this.src, 'luffy-modal')">
-                    <img src="https://i.etsystatic.com/56732046/r/il/387ffd/6750817382/il_1588xN.6750817382_icro.jpg" alt="Dessous de plat Luffy One Piece - Vue 4" class="thumbnail" onclick="setMainImage(this.src, 'luffy-modal')">
-            </div>
-        </div>
-            <div class="modal-description">
-                <h2 class="modal-title">Dessous de plat Luffy</h2>
-                <p>Notre sculpture de Luffy, le futur Roi des Pirates, capture l'esprit aventureux et déterminé du personnage. Cette pièce unique est sculptée avec passion pour rendre hommage à l'un des héros les plus aimés de One Piece.</p>
-                <h3>Détails du produit</h3>
-                <ul>
-                    <li>Gravure fine et précise réalisée avec soin</li>
-                    <li>Bois massif de haute qualité, sélectionné pour sa durabilité</li>
-                    <li>Dimensions : environ 20 cm de diamètre, épaisseur 2 cm</li>
-                    <li>Vernis de protection pour une finition soignée et un entretien facile</li>
-                </ul>
-                <div style="text-align: center; margin-top: 2rem;">
-                    <a href="https://www.etsy.com/fr/listing/1865127564/dessous-de-plat-en-bois-luffy-one-piece" class="modal-buy-button" target="_blank">Commander sur Etsy</a>
-            </div>
-            </div>
-        </div>
-    </div>
-    
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // Fonction pour détecter si on est sur mobile
-        function isMobile() {
-            return window.matchMedia("(max-width: 768px)").matches;
-        }
-
-        // Fonction pour configurer l'animation au survol
-        function setupHoverAnimation(containerId, interval) {
-            const container = document.getElementById(containerId);
-            if (!container) return;
-
-            const images = container.getElementsByTagName('img');
-            let currentIndex = 0;
-            let intervalId = null;
-
-            // Sur mobile, on désactive l'animation au clic
-            if (isMobile()) {
-                container.parentElement.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href) {
-                        window.location.href = href;
-                    }
-                });
-                return;
-            }
-
-            // Sur desktop, on garde le comportement normal
-            container.parentElement.addEventListener('mouseenter', () => {
-                currentIndex = 0;
-                images[currentIndex].style.opacity = '1';
-                
-                intervalId = setInterval(() => {
-                    images[currentIndex].style.opacity = '0';
-                    currentIndex = (currentIndex + 1) % images.length;
-                    images[currentIndex].style.opacity = '1';
-                }, interval);
-            });
-
-            container.parentElement.addEventListener('mouseleave', () => {
-                clearInterval(intervalId);
-                currentIndex = 0;
-                for (let img of images) {
-                    img.style.opacity = '0';
-                }
-            });
-        }
-
-        // Configuration des animations
-        setupHoverAnimation('manga-hover', 1000);
-        setupHoverAnimation('animaux-hover', 1000);
-        setupHoverAnimation('pokemon-hover', 1000);
-
-        // Configuration AOS
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
-        });
-
-        // Défilement fluide
-        document.querySelector('.scroll-indicator').addEventListener('click', (e) => {
-            e.preventDefault();
-            const nouveautesSection = document.querySelector('.nouveautes');
-            if (nouveautesSection) {
-                const targetPosition = nouveautesSection.offsetTop - -25;
-                const startPosition = window.pageYOffset;
-                const distance = targetPosition - startPosition;
-                const duration = 1000;
-                let start = null;
-
-                function animation(currentTime) {
-                    if (start === null) start = currentTime;
-                    const timeElapsed = currentTime - start;
-                    const progress = Math.min(timeElapsed / duration, 1);
-                    
-                    const easeInOutCubic = progress => {
-                        return progress < 0.5
-                            ? 4 * progress * progress * progress
-                            : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-                    };
-
-                    window.scrollTo(0, startPosition + (distance * easeInOutCubic(progress)));
-
-                    if (progress < 1) {
-                        requestAnimationFrame(animation);
-                    }
-                }
-
-                requestAnimationFrame(animation);
-            }
-        });
-
-        // Modal functions
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Gallery functions
-        function setMainImage(src, modalId) {
-            const modal = document.getElementById(modalId);
-            const mainImage = modal.querySelector('.main-image');
-            const thumbnails = modal.querySelectorAll('.thumbnail');
-            
-            mainImage.src = src;
-            
-            thumbnails.forEach(thumb => {
-                if (thumb.src === src) {
-                    thumb.classList.add('active');
-                } else {
-                    thumb.classList.remove('active');
-                }
-            });
-        }
-
-        function changeImage(direction, modalId) {
-            const modal = document.getElementById(modalId);
-            const thumbnails = modal.querySelectorAll('.thumbnail');
-            const currentIndex = Array.from(thumbnails).findIndex(thumb => thumb.classList.contains('active'));
-            
-            let newIndex = (currentIndex + direction + thumbnails.length) % thumbnails.length;
-            setMainImage(thumbnails[newIndex].src, modalId);
-        }
-
-        function openFullscreen(src) {
-            const fullscreenContainer = document.createElement('div');
-            fullscreenContainer.style.position = 'fixed';
-            fullscreenContainer.style.top = '0';
-            fullscreenContainer.style.left = '0';
-            fullscreenContainer.style.width = '100%';
-            fullscreenContainer.style.height = '100%';
-            fullscreenContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
-            fullscreenContainer.style.display = 'flex';
-            fullscreenContainer.style.justifyContent = 'center';
-            fullscreenContainer.style.alignItems = 'center';
-            fullscreenContainer.style.zIndex = '2000';
-            fullscreenContainer.style.cursor = 'default';
-
-            const closeButton = document.createElement('div');
-            closeButton.innerHTML = '&times;';
-            closeButton.style.position = 'absolute';
-            closeButton.style.top = '20px';
-            closeButton.style.right = '20px';
-            closeButton.style.color = 'white';
-            closeButton.style.fontSize = '30px';
-            closeButton.style.cursor = 'pointer';
-            closeButton.style.width = '40px';
-            closeButton.style.height = '40px';
-            closeButton.style.display = 'flex';
-            closeButton.style.alignItems = 'center';
-            closeButton.style.justifyContent = 'center';
-            closeButton.style.background = 'rgba(0, 0, 0, 0.5)';
-            closeButton.style.borderRadius = '50%';
-            closeButton.style.transition = 'all 0.3s ease';
-
-            closeButton.onmouseover = function() {
-                closeButton.style.transform = 'rotate(90deg)';
-                closeButton.style.background = 'rgba(255, 255, 255, 0.2)';
-            };
-
-            closeButton.onmouseout = function() {
-                closeButton.style.transform = 'rotate(0deg)';
-                closeButton.style.background = 'rgba(0, 0, 0, 0.5)';
-            };
-
-            const img = document.createElement('img');
-            img.src = src;
-            img.style.maxWidth = '90%';
-            img.style.maxHeight = '90%';
-            img.style.objectFit = 'contain';
-
-            fullscreenContainer.appendChild(closeButton);
-            fullscreenContainer.appendChild(img);
-            document.body.appendChild(fullscreenContainer);
-
-            closeButton.onclick = function() {
-                document.body.removeChild(fullscreenContainer);
-            };
-        }
-    </script>
 </body>
 </html>
