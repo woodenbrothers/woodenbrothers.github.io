@@ -575,22 +575,6 @@
             opacity: 1;
         }
 
-        /* Styles pour mobile */
-        @media screen and (max-width: 768px) {
-            .collection-card .hover-images {
-                display: none;
-            }
-            
-            .collection-card:hover .collection-image {
-                opacity: 1;
-            }
-            
-            .collection-card:hover .collection-title {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         /* Newsletter section */
         .newsletter {
             padding: 5rem 2rem;
@@ -1150,7 +1134,65 @@
     
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Ajout du script pour le défilement fluide
+        // Fonction pour détecter si on est sur mobile
+        function isMobile() {
+            return window.matchMedia("(max-width: 768px)").matches;
+        }
+
+        // Fonction pour configurer l'animation au survol
+        function setupHoverAnimation(containerId, interval) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            const images = container.getElementsByTagName('img');
+            let currentIndex = 0;
+            let intervalId = null;
+
+            // Sur mobile, on désactive l'animation au clic
+            if (isMobile()) {
+                container.parentElement.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href) {
+                        window.location.href = href;
+                    }
+                });
+                return;
+            }
+
+            // Sur desktop, on garde le comportement normal
+            container.parentElement.addEventListener('mouseenter', () => {
+                currentIndex = 0;
+                images[currentIndex].style.opacity = '1';
+                
+                intervalId = setInterval(() => {
+                    images[currentIndex].style.opacity = '0';
+                    currentIndex = (currentIndex + 1) % images.length;
+                    images[currentIndex].style.opacity = '1';
+                }, interval);
+            });
+
+            container.parentElement.addEventListener('mouseleave', () => {
+                clearInterval(intervalId);
+                currentIndex = 0;
+                for (let img of images) {
+                    img.style.opacity = '0';
+                }
+            });
+        }
+
+        // Configuration des animations
+        setupHoverAnimation('manga-hover', 1000);
+        setupHoverAnimation('animaux-hover', 1000);
+        setupHoverAnimation('pokemon-hover', 1000);
+
+        // Configuration AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Défilement fluide
         document.querySelector('.scroll-indicator').addEventListener('click', (e) => {
             e.preventDefault();
             const nouveautesSection = document.querySelector('.nouveautes');
@@ -1182,53 +1224,6 @@
                 requestAnimationFrame(animation);
             }
         });
-
-        // Configuration AOS
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
-        });
-
-        // Animation des images au survol
-        function setupHoverAnimation(hoverId, interval) {
-            // Ne pas initialiser l'animation sur mobile
-            if (window.innerWidth <= 768) {
-                return;
-            }
-
-            const container = document.getElementById(hoverId);
-            if (!container) return;
-
-            const images = container.getElementsByTagName('img');
-            let currentIndex = 0;
-
-            function showNextImage() {
-                for (let i = 0; i < images.length; i++) {
-                    images[i].style.opacity = i === currentIndex ? '1' : '0';
-                }
-                currentIndex = (currentIndex + 1) % images.length;
-            }
-
-            let interval;
-            container.parentElement.addEventListener('mouseenter', () => {
-                showNextImage();
-                interval = setInterval(showNextImage, interval);
-            });
-
-            container.parentElement.addEventListener('mouseleave', () => {
-                clearInterval(interval);
-                currentIndex = 0;
-                for (let img of images) {
-                    img.style.opacity = '0';
-                }
-            });
-        }
-
-        // Configuration des animations
-        setupHoverAnimation('manga-hover', 1000);
-        setupHoverAnimation('animaux-hover', 1000);
-        setupHoverAnimation('pokemon-hover', 1000);
 
         // Modal functions
         function openModal(modalId) {
