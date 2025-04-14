@@ -899,6 +899,55 @@
         .disclaimer-banner p:last-child {
             margin-bottom: 0;
         }
+
+        .footer {
+            background: var(--primary-color);
+            color: var(--text-white-color);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 0;
+            text-align: left;
+            padding: 0 1rem;
+        }
+
+        .footer-content > div {
+            flex: 0 1 auto;
+            margin: 0;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-white-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-content h3 {
+            text-align: left;
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -1140,8 +1189,22 @@
         </section>
     </div>
     
-    <footer>
-        <p>2025 Wooden Brothers</p>
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h3>À propos</h3>
+                <ul class="footer-links">
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Informations</h3>
+                <ul class="footer-links">
+                    <li><a href="/politique-confidentialite">Politique de confidentialité</a></li>
+                    <li><a href="/mentions-legales">Mentions légales</a></li>
+                </ul>
+            </div>
+        </div>
     </footer>
     
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
