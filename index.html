@@ -575,6 +575,22 @@
             opacity: 1;
         }
 
+        /* Styles pour mobile */
+        @media screen and (max-width: 768px) {
+            .collection-card .hover-images {
+                display: none;
+            }
+            
+            .collection-card:hover .collection-image {
+                opacity: 1;
+            }
+            
+            .collection-card:hover .collection-title {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         /* Newsletter section */
         .newsletter {
             padding: 5rem 2rem;
@@ -1175,11 +1191,16 @@
         });
 
         // Animation des images au survol
-        function setupHoverAnimation(hoverId, delay) {
-            const hoverContainer = document.getElementById(hoverId);
-            if (!hoverContainer) return;
+        function setupHoverAnimation(hoverId, interval) {
+            // Ne pas initialiser l'animation sur mobile
+            if (window.innerWidth <= 768) {
+                return;
+            }
 
-            const images = hoverContainer.getElementsByTagName('img');
+            const container = document.getElementById(hoverId);
+            if (!container) return;
+
+            const images = container.getElementsByTagName('img');
             let currentIndex = 0;
 
             function showNextImage() {
@@ -1190,12 +1211,12 @@
             }
 
             let interval;
-            hoverContainer.parentElement.addEventListener('mouseenter', () => {
+            container.parentElement.addEventListener('mouseenter', () => {
                 showNextImage();
-                interval = setInterval(showNextImage, delay);
+                interval = setInterval(showNextImage, interval);
             });
 
-            hoverContainer.parentElement.addEventListener('mouseleave', () => {
+            container.parentElement.addEventListener('mouseleave', () => {
                 clearInterval(interval);
                 currentIndex = 0;
                 for (let img of images) {
