@@ -1230,10 +1230,13 @@
         AOS.init({
             duration: 800,
             easing: 'ease-in-out',
-            once: true
+            once: true,
+            disable: function() {
+                return window.innerWidth < 768;
+            }
         });
 
-        // Défilement fluide
+        // Défilement fluide uniquement au clic sur la flèche
         document.querySelector('.scroll-indicator').addEventListener('click', (e) => {
             e.preventDefault();
             const nouveautesSection = document.querySelector('.nouveautes');
