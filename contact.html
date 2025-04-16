@@ -101,19 +101,24 @@
             position: relative;
         }
 
-        .contact-item:hover {
-            transform: scale(1.02);
+        .contact-item > div {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .contact-item img {
             width: 24px;
             height: 24px;
+            display: block;
         }
 
         .contact-item a {
             color: var(--text-color);
             text-decoration: none;
             transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
         }
 
         .contact-item a:hover {
