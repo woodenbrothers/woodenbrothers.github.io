@@ -586,13 +586,21 @@
         @media (max-width: 768px) {
             .collection-card {
                 margin-bottom: 1rem;
+                height: auto;
             }
             
             .collection-title {
-                margin-top: 0.5rem;
+                bottom: 0;
+                margin-top: 0;
                 white-space: nowrap;
                 font-size: 0.9rem;
                 padding: 8px 12px;
+            }
+
+            .collection-card img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
             }
 
             .collection-title img {
@@ -1022,26 +1030,26 @@
                         Manga & Anime
                     </div>
                 </a>
-            </div>
+                </div>
             <div class="collection-card">
                 <a href="/produits?filter=animaux">
                     <img src="https://i.etsystatic.com/56732046/r/il/8bb26a/6543136974/il_600x600.6543136974_k4v9.jpg" alt="Animaux">
                     <div class="collection-title">
                         <img src="Images/animaux.png" alt="Animaux icon">
                         Animaux
-                    </div>
-                </a>
             </div>
+                </a>
+                </div>
             <div class="collection-card">
                 <a href="/produits?filter=cartes-pokemon">
                     <img src="https://i.etsystatic.com/56732046/r/il/88c23e/6803518645/il_1588xN.6803518645_1x6l.jpg" alt="Cartes Pokemon">
                     <div class="collection-title">
                         <img src="Images/cartes.png" alt="Cartes icon">
                         Cartes Pokémon
-                    </div>
-                </a>
             </div>
-        </div>
+                </a>
+                </div>
+            </div>
     </section>
 
     <section class="newsletter">
