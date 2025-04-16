@@ -164,26 +164,31 @@
             }
 
             .contact-item {
+                display: flex;
                 flex-direction: column;
                 align-items: center;
-                text-align: center;
                 padding-bottom: 3.5rem;
                 gap: 0.5rem;
             }
 
-            .contact-item a {
-                margin: 0.5rem 0;
+            .contact-item > div {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .contact-item img {
+                width: 24px;
+                height: 24px;
+                margin: 0;
             }
 
             .copy-button {
                 bottom: 0.8rem;
-                right: 50%;
-                transform: translateX(50%);
+                left: 50%;
+                transform: translateX(-50%);
                 position: absolute;
-            }
-
-            .copy-button:hover {
-                transform: translateX(50%) scale(1.05);
+                margin: 0;
             }
         }
 
@@ -281,8 +286,10 @@
             <h2>Contactez-nous</h2>
             <div class="contact-info">
                 <div class="contact-item">
-                    <img src="https://img.icons8.com/fluency/48/mail.png" alt="Email">
-                    <a href="mailto:contact.wooden.brothers@gmail.com">contact.wooden.brothers@gmail.com</a>
+                    <div>
+                        <img src="https://img.icons8.com/fluency/48/mail.png" alt="Email">
+                        <a href="mailto:contact.wooden.brothers@gmail.com">contact.wooden.brothers@gmail.com</a>
+                    </div>
                     <button class="copy-button" onclick="copyEmail()">Copier</button>
                 </div>
             </div>
