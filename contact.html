@@ -333,18 +333,28 @@
             const email = 'contact.wooden.brothers@gmail.com';
             const subject = 'Contact Wooden Brothers';
             
-            // Création des différents formats d'URL pour les clients mail
+            // URLs pour différents clients mail
             const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
-            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}`;
+            const gmailAppUrl = `googlegmail:///co?to=${email}&subject=${encodeURIComponent(subject)}`;
+            const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}`;
             
             // Tente d'abord d'ouvrir l'application mail par défaut
             window.location.href = mailtoUrl;
             
             // Si après un court délai l'application mail n'a pas été ouverte,
-            // on propose d'ouvrir Gmail dans le navigateur
+            // essaie d'ouvrir l'application Gmail
             setTimeout(() => {
-                if (confirm("Voulez-vous ouvrir Gmail dans votre navigateur ?")) {
-                    window.open(gmailUrl, '_blank');
+                if (confirm("Voulez-vous ouvrir l'application Gmail ?")) {
+                    // Essaie d'abord d'ouvrir l'application Gmail
+                    window.location.href = gmailAppUrl;
+                    
+                    // Si après un court délai l'app Gmail n'a pas été ouverte,
+                    // propose d'ouvrir Gmail dans le navigateur
+                    setTimeout(() => {
+                        if (confirm("L'application Gmail n'est pas installée. Voulez-vous ouvrir Gmail dans votre navigateur ?")) {
+                            window.open(gmailWebUrl, '_blank');
+                        }
+                    }, 500);
                 }
             }, 500);
         }
