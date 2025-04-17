@@ -336,10 +336,8 @@
             // URL pour Gmail sur iOS
             const gmailUrl = `googlegmail://co?to=${email}&subject=${encodeURIComponent(subject)}`;
             
-            // Ouvre directement Gmail avec confirmation
-            if (confirm("Ouvrir dans Gmail ?")) {
-                window.location.href = gmailUrl;
-            }
+            // Ouvre directement Gmail
+            window.location.href = gmailUrl;
         }
 
         function copyEmail() {
