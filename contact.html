@@ -307,7 +307,7 @@
                 <div class="contact-item">
                     <div>
                         <img src="https://img.icons8.com/fluency/48/mail.png" alt="Email">
-                        <a href="mailto:contact.wooden.brothers@gmail.com">contact.wooden.brothers@gmail.com</a>
+                        <a href="#" onclick="openEmailClient(event)">contact.wooden.brothers@gmail.com</a>
                     </div>
                     <button class="copy-button" onclick="copyEmail()">Copier</button>
                 </div>
@@ -327,6 +327,27 @@
             easing: 'ease-in-out',
             once: true
         });
+
+        function openEmailClient(event) {
+            event.preventDefault();
+            const email = 'contact.wooden.brothers@gmail.com';
+            const subject = 'Contact Wooden Brothers';
+            
+            // Création des différents formats d'URL pour les clients mail
+            const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}`;
+            
+            // Tente d'abord d'ouvrir l'application mail par défaut
+            window.location.href = mailtoUrl;
+            
+            // Si après un court délai l'application mail n'a pas été ouverte,
+            // on propose d'ouvrir Gmail dans le navigateur
+            setTimeout(() => {
+                if (confirm("Voulez-vous ouvrir Gmail dans votre navigateur ?")) {
+                    window.open(gmailUrl, '_blank');
+                }
+            }, 500);
+        }
 
         function copyEmail() {
             const email = 'contact.wooden.brothers@gmail.com';
