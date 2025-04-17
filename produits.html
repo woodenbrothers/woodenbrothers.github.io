@@ -516,68 +516,26 @@
         }
 
         @media (max-width: 768px) {
-            .mobile-filter-btn {
-                display: flex;
-                margin-bottom: 1rem;
-            }
-
-            .mobile-filter-btn:hover, .mobile-filter-btn:active {
-                transform: none;
-                background-color: var(--primary-color);
-            }
-
-            .mobile-filter-btn.active {
-                background-color: var(--primary-color);
-            }
-
-            .filter-container {
-                display: none;
-                flex-direction: column;
+            .modal {
                 padding: 1rem;
-                background-color: var(--card-background);
-                border-radius: 15px;
-                margin-top: 1rem;
-                opacity: 0;
-                transform: translateY(-10px);
-                transition: opacity 0.3s ease, transform 0.3s ease;
-            }
-
-            .filter-container.active {
-                display: flex;
-                transform: translate(-50%, -50%) scale(1);
-            }
-
-            .filter-btn {
-                width: 100%;
-                justify-content: center;
-                padding: 1rem;
-                font-size: 1rem;
-                margin: 0.5rem 0;
-                background-color: var(--card-background);
-                color: var(--text-color);
-            }
-
-            .filter-btn.active {
-                background-color: var(--primary-color);
-                color: white;
-            }
-
-            .filter-overlay {
                 display: none;
                 position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.5);
-                z-index: 999;
-                opacity: 0;
-                transition: opacity 0.3s ease;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 90%;
+                max-height: 90vh;
+                background-color: var(--background-color);
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+                z-index: 1000;
+                overflow-y: auto;
             }
 
-            .filter-overlay.active {
-                display: block;
-                opacity: 1;
+            .modal-content {
+                position: relative;
+                padding-right: 0;
+                overflow: visible;
             }
 
             .close {
@@ -810,6 +768,111 @@
         .fullscreen-close:hover {
             background-color: rgba(255, 255, 255, 0.3);
             transform: rotate(90deg);
+        }
+
+        .mobile-filter-btn {
+            display: none;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-filter-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .mobile-filter-btn.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-filter-btn {
+                display: flex;
+                margin-bottom: 1rem;
+            }
+
+            .filter-container {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(0.8);
+                background-color: var(--background-color);
+                padding: 2rem;
+                border-radius: 15px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+                z-index: 1000;
+                width: 90%;
+                max-width: 400px;
+                max-height: 80vh;
+                overflow-y: auto;
+                transition: transform 0.5s ease;
+            }
+
+            .filter-container.active {
+                display: flex;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            .filter-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 1rem;
+                font-size: 1rem;
+                margin: 0.5rem 0;
+                background-color: var(--card-background);
+                color: var(--text-color);
+            }
+
+            .filter-btn.active {
+                background-color: var(--primary-color);
+                color: white;
+            }
+
+            .filter-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .filter-overlay.active {
+                display: block;
+                opacity: 1;
+            }
+        }
+
+        .filter-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .filter-overlay.active {
+            display: block;
         }
 
         .disclaimer-banner {
