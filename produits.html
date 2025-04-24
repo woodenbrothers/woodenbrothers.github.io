@@ -988,6 +988,17 @@
         <div class="filter-overlay"></div>
         
         <div class="products-grid">
+            <!-- Pikachu Card -->
+            <div class="product-card" data-category="cartes-pokemon tous" data-aos="fade-up">
+                <div class="product-image">
+                    <img src="https://i.etsystatic.com/56732046/r/il/aaa23e/6857470735/il_1588xN.6857470735_kti7.jpg" alt="Carte Pikachu en bois">
+                </div>
+                <div class="product-details">
+                    <h3>Carte Pikachu en bois</h3>
+                    <button class="discover-button" onclick="openModal('pikachu-modal')">Découvrir</button>
+                </div>
+            </div>
+
             <div class="product-card" data-category="dessous-plats manga-anime" data-aos="fade-up">
                 <div class="product-image-container" onclick="openModal('eren-modal')">
                     <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Dessous de plat Eren Jäger Attack on Titan" class="product-image">
@@ -1734,6 +1745,36 @@
     <div class="fullscreen-image" onclick="closeFullscreen()">
         <img src="" alt="Image en plein écran">
         <span class="fullscreen-close" onclick="closeFullscreen()">&times;</span>
+    </div>
+
+    <!-- Pikachu Modal -->
+    <div id="pikachu-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('pikachu-modal')">&times;</span>
+            <div class="modal-gallery">
+                <div class="main-image">
+                    <img id="pikachu-main-image" src="https://i.etsystatic.com/56732046/r/il/aaa23e/6857470735/il_1588xN.6857470735_kti7.jpg" alt="Carte Pikachu en bois - Vue principale">
+                </div>
+                <div class="gallery-thumbnails">
+                    <img src="https://i.etsystatic.com/56732046/r/il/aaa23e/6857470735/il_1588xN.6857470735_kti7.jpg" alt="Carte Pikachu en bois - Vue 1" onclick="changeImage('pikachu-main-image', this.src)">
+                    <img src="https://i.etsystatic.com/56732046/r/il/2c8bb3/6857462791/il_1588xN.6857462791_ms59.jpg" alt="Carte Pikachu en bois - Vue 2" onclick="changeImage('pikachu-main-image', this.src)">
+                    <img src="https://i.etsystatic.com/56732046/r/il/aaa23e/6857470735/il_1588xN.6857470735_kti7.jpg" alt="Carte Pikachu en bois - Vue 3" onclick="changeImage('pikachu-main-image', this.src)">
+                </div>
+            </div>
+            <div class="modal-description">
+                <h2 class="modal-title">Carte Pikachu en bois</h2>
+                <p>Redonnez vie à la nostalgie avec cette carte Pokémon en bois 3D gravée à l'effigie de Pikachu.
+                Chaque détail est soigneusement découpé et superposé pour créer un effet de profondeur unique.
+                <br><br>
+                Un objet de collection original et décoratif, idéal à offrir ou à exposer chez soi. Parfait pour les fans de Pokémon</p>
+                <h3>Détails du produit</h3>
+                <ul>
+                    <li>Gravure fine et précise réalisée avec soin</li>
+                    <li>Dimension: 6,3 cm de large x 8,8 cm de longueur, 0,6 cm d'épaisseur</li>
+                </ul>
+                <a href="https://www.etsy.com/fr/shop/WoodenBrothers" class="buy-button" target="_blank">Acheter sur Etsy</a>
+            </div>
+        </div>
     </div>
 
     <script>
