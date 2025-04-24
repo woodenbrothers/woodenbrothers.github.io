@@ -988,6 +988,22 @@
             Filtres: <span class="filter-text">Tous nos produits</span>
         </button>
         <div class="filter-overlay"></div>
+
+        <div class="product-card" data-category="cartes-pokemon all" data-aos="fade-up">
+            <div class="product-image-container" onclick="openModal('pikachu-modal')">
+                <img src="https://i.etsystatic.com/56732046/r/il/aaa23e/6857470735/il_1588xN.6857470735_kti7.jpg" alt="Carte Pokémon Pikachu bois" class="product-image">
+            </div>
+            <div class="product-details">
+                <div class="product-title">Carte Pikachu en bois</div>
+                <div class="product-category">Cartes Pokémon</div>
+                <div style="display: flex; align-items: center;">
+                    <span class="product-original-price">—</span>
+                    <span class="product-price">14,99 €</span>
+                </div>
+            </div>
+            <a href="https://www.etsy.com/fr/listing/xxxxx" class="product-link" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+            <button class="product-details-btn" onclick="openModal('pikachu-modal')">Voir les détails</button>
+        </div>
         
         <div class="products-grid">
             <div class="product-card" data-category="dessous-plats manga-anime" data-aos="fade-up">
@@ -1158,6 +1174,36 @@
                 </div>
                 <a href="https://www.etsy.com/fr/listing/1836879420/dessous-de-plat-renard-en-bois-massif?ref=shop_home_active_9&pro=1&logging_key=a0761db03f72649c4bf1a84cb11ee4f038795628%3A1836879420" class="product-link" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
                 <button class="product-details-btn" onclick="openModal('renard-modal')">Voir les détails</button>
+            </div>
+        </div>
+
+        <div id="pikachu-modal" class="modal">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeModal('pikachu-modal')">&times;</span>
+                <div class="modal-gallery">
+                    <div class="main-image-container">
+                        <img src="https://i.etsystatic.com/56732046/r/il/aaa23e/6857470735/il_1588xN.6857470735_kti7.jpg" alt="Carte Pokémon Pikachu bois" class="main-image" onclick="openFullscreen(this.src)">
+                        <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'pikachu-modal')">❮</div>
+                        <div class="gallery-nav gallery-next" onclick="changeImage(1, 'pikachu-modal')">❯</div>
+                    </div>
+                    <div class="thumbnail-container">
+                        <img src="https://i.etsystatic.com/56732046/r/il/aaa23e/6857470735/il_1588xN.6857470735_kti7.jpg" class="thumbnail active" onclick="setMainImage(this.src, 'pikachu-modal')">
+                        <img src="https://i.etsystatic.com/56732046/r/il/2c8bb3/6857462791/il_1588xN.6857462791_ms59.jpg" class="thumbnail" onclick="setMainImage(this.src, 'pikachu-modal')">
+                        <img src="https://i.etsystatic.com/56732046/r/il/aaa23e/6857470735/il_1588xN.6857470735_kti7.jpg" class="thumbnail" onclick="setMainImage(this.src, 'pikachu-modal')">
+                    </div>
+                </div>
+                <div class="modal-description">
+                    <h2 class="modal-title">Carte Pikachu en bois</h2>
+                    <p>Redonnez vie à la nostalgie avec cette carte Pokémon en bois 3D gravée à l’effigie de Pikachu.<br>
+                    Chaque détail est soigneusement découpé et superposé pour créer un effet de profondeur unique.<br><br>
+                    Un objet de collection original et décoratif, idéal à offrir ou à exposer chez soi. Parfait pour les fans de Pokémon.</p>
+                    <h3>Détails du produit</h3>
+                    <ul>
+                        <li>Gravure fine et précise réalisée avec soin</li>
+                        <li>Dimensions : 6,3 cm de large x 8,8 cm de longueur, 0,6 cm d'épaisseur</li>
+                    </ul>
+                    <a href="https://www.etsy.com/fr/listing/1892487438/carte-en-3d-bois-pikachu-pokemon?ref=shop_home_active_1&logging_key=a7c1f06c3fe48bcc40d807d7369f8d02d6067d19%3A1892487438" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                </div>
             </div>
         </div>
         
