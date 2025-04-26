@@ -992,6 +992,24 @@
         <div class="products-grid">
             <div class="product-card" data-category="cartes-pokemon all" data-aos="fade-up">
                 <div class="product-image-container" onclick="openModal('pikachu-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/9178db/6862598965/il_1588xN.6862598965_qji3.jpg" alt="Carte Pokémon Tortank bois" class="product-image">
+                </div>
+                <div class="product-details">
+                    <div class="product-title">Carte Tortank en bois</div>
+                    <div class="product-category">Cartes Pokémon</div>
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <span class="product-original-price">14,99 €</span>
+                        <span class="product-price">10,49 €</span>
+                        <span class="product-discount">-30%</span>
+                    </div>
+                </div>
+                <a href="https://www.etsy.com/fr/listing/4295981316/carte-en-bois-tortank-pokemon-decoration" class="product-link" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                <button class="product-details-btn" onclick="openModal('tortank-modal')">Voir les détails</button>
+            </div>
+
+        <div class="products-grid">
+            <div class="product-card" data-category="cartes-pokemon all" data-aos="fade-up">
+                <div class="product-image-container" onclick="openModal('pikachu-modal')">
                     <img src="https://i.etsystatic.com/56732046/r/il/aaa23e/6857470735/il_1588xN.6857470735_kti7.jpg" alt="Carte Pokémon Pikachu bois" class="product-image">
                 </div>
                 <div class="product-details">
@@ -1208,6 +1226,35 @@
             </div>
         </div>
         
+        <div id="tortank-modal" class="modal">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeModal('tortank-modal')">&times;</span>
+                <div class="modal-gallery">
+                    <div class="main-image-container">
+                        <img src="https://i.etsystatic.com/56732046/r/il/9178db/6862598965/il_1588xN.6862598965_qji3.jpg" alt="Carte Pokémon Tortank bois" class="main-image" onclick="openFullscreen(this.src)">
+                        <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'tortank-modal')">❮</div>
+                        <div class="gallery-nav gallery-next" onclick="changeImage(1, 'tortank-modal')">❯</div>
+                    </div>
+                    <div class="thumbnail-container">
+                        <img src="https://i.etsystatic.com/56732046/r/il/9178db/6862598965/il_1588xN.6862598965_qji3.jpg" class="thumbnail active" onclick="setMainImage(this.src, 'tortank-modal')">
+                        <img src="https://i.etsystatic.com/56732046/r/il/c2252a/6814614514/il_1588xN.6814614514_l3mg.jpg" class="thumbnail" onclick="setMainImage(this.src, 'tortank-modal')">
+                    </div>
+                </div>
+                <div class="modal-description">
+                    <h2 class="modal-title">Carte Tortank en bois</h2>
+                    <p>Redonnez vie à la nostalgie avec cette carte Pokémon en bois 3D gravée à l’effigie de Tortank.<br>
+                    Chaque détail est soigneusement découpé et superposé pour créer un effet de profondeur unique.<br><br>
+                    Un objet de collection original et décoratif, idéal à offrir ou à exposer chez soi. Parfait pour les fans de Pokémon.</p>
+                    <h3>Détails du produit</h3>
+                    <ul>
+                        <li>Gravure fine et précise réalisée avec soin</li>
+                        <li>Dimensions : 6,3 cm de large x 8,8 cm de longueur, 0,6 cm d'épaisseur</li>
+                    </ul>
+                    <a href="https://www.etsy.com/fr/listing/4295981316/carte-en-bois-tortank-pokemon-decoration?" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                </div>
+            </div>
+        </div>
+
         <section class="instagram-section">
             <div class="instagram-content">
                 <a href="https://www.instagram.com/woodenbrothers.art/" class="instagram-header" target="_blank" rel="noopener noreferrer">
