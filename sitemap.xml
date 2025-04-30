@@ -8,44 +8,44 @@
 
 
 <url>
-  <loc>https://woodenbrothers.github.io/produits</loc>
-  <lastmod>2025-04-30T12:52:52+00:00</lastmod>
+  <loc>https://woodenbrothers.github.io/</loc>
+  <lastmod>2025-04-30T13:07:52+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://woodenbrothers.github.io/</loc>
-  <lastmod>2025-04-30T12:52:52+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://woodenbrothers.github.io/contact</loc>
-  <lastmod>2025-04-30T12:52:52+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://woodenbrothers.github.io/politique-confidentialite</loc>
-  <lastmod>2025-04-30T12:52:52+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://woodenbrothers.github.io/mentions-legales</loc>
-  <lastmod>2025-04-30T12:52:52+00:00</lastmod>
+  <loc>https://woodenbrothers.github.io/produits</loc>
+  <lastmod>2025-04-30T13:07:52+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://woodenbrothers.github.io/produits?filter=manga-anime</loc>
-  <lastmod>2025-04-30T12:52:52+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2025-04-30T13:07:52+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://woodenbrothers.github.io/produits?filter=animaux</loc>
-  <lastmod>2025-04-30T12:52:52+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2025-04-30T13:07:52+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://woodenbrothers.github.io/produits?filter=cartes-pokemon</loc>
-  <lastmod>2025-04-30T12:52:52+00:00</lastmod>
-  <priority>0.64</priority>
+  <lastmod>2025-04-30T13:07:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://woodenbrothers.github.io/contact</loc>
+  <lastmod>2025-04-30T13:07:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://woodenbrothers.github.io/politique-confidentialite</loc>
+  <lastmod>2025-04-30T13:07:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://woodenbrothers.github.io/mentions-legales</loc>
+  <lastmod>2025-04-30T13:07:52+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 
 
