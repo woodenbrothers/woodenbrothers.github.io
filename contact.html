@@ -311,7 +311,7 @@
                 <div class="contact-item">
                     <div>
                         <img src="https://img.icons8.com/fluency/48/mail.png" alt="Email">
-                        <a href="#" onclick="openEmailClient(event)">contact.wooden.brothers@gmail.com</a>
+                        <a href="#" onclick="openEmailClient(event)">contact@woodenbrothers.fr</a>
                     </div>
                     <button class="copy-button" onclick="copyEmail()">Copier</button>
                 </div>
@@ -334,7 +334,7 @@
 
         function openEmailClient(event) {
             event.preventDefault();
-            const email = 'contact.wooden.brothers@gmail.com';
+            const email = 'contact@woodenbrothers.fr';
             const subject = 'Contact Wooden Brothers';
             
             // Détection mobile
@@ -350,7 +350,7 @@
         }
 
         function copyEmail() {
-            const email = 'contact.wooden.brothers@gmail.com';
+            const email = 'contact@woodenbrothers.fr';
             navigator.clipboard.writeText(email).then(() => {
                 const button = document.querySelector('.copy-button');
                 button.textContent = 'Copié !';
