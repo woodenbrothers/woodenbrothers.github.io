@@ -992,6 +992,42 @@
             Filtres: <span class="filter-text">Tous nos produits</span>
         </button>
         <div class="filter-overlay"></div>
+
+        <div class="products-grid">
+            <div class="product-card" data-category="cartes-pokemon all" data-aos="fade-up">
+                <div class="product-image-container" onclick="openModal('mewtwo-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/bada58/6898014411/il_1588xN.6898014411_2t3a.jpg" alt="Carte Pokémon décorative Mewtwo gravée en bois 3D" class="product-image">
+                </div>
+                <div class="product-details">
+                    <div class="product-title">Carte Mewtwo en bois</div>
+                    <div class="product-category">Cartes Pokémon</div>
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <span class="product-original-price">14,99 €</span>
+                        <span class="product-price"></span>
+                        <span class="product-discount"></span>
+                    </div>
+                </div>
+                <a href="https://www.etsy.com/fr/listing/4303017864/mewtwo-en-bois-3d-sculpture-unique-pour?" class="product-link" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                <button class="product-details-btn" onclick="openModal('mewtwo-modal')">Voir les détails</button>
+            </div>
+
+        <div class="products-grid">
+            <div class="product-card" data-category="cartes-pokemon all" data-aos="fade-up">
+                <div class="product-image-container" onclick="openModal('dracaufeu-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/c2252a/6814614514/il_1588xN.6814614514_l3mg.jpg" alt="Carte Pokémon Dracaufeu gravée en bois 3D décorative" class="product-image">
+                </div>
+                <div class="product-details">
+                    <div class="product-title">Carte Dracaufeu en bois</div>
+                    <div class="product-category">Cartes Pokémon</div>
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <span class="product-original-price">14,99 €</span>
+                        <span class="product-price"></span>
+                        <span class="product-discount"></span>
+                    </div>
+                </div>
+                <a href="https://www.etsy.com/fr/listing/4297694285/carte-en-bois-3d-dracaufeu-pokemon" class="product-link" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                <button class="product-details-btn" onclick="openModal('dracaufeu-modal')">Voir les détails</button>
+            </div>
         
         <div class="products-grid">
             <div class="product-card" data-category="cartes-pokemon all" data-aos="fade-up">
@@ -1003,8 +1039,8 @@
                     <div class="product-category">Cartes Pokémon</div>
                     <div style="display: flex; align-items: center; justify-content: center;">
                         <span class="product-original-price">14,99 €</span>
-                        <span class="product-price">10,49 €</span>
-                        <span class="product-discount">-30%</span>
+                        <span class="product-price"></span>
+                        <span class="product-discount"></span>
                     </div>
                 </div>
                 <a href="https://www.etsy.com/fr/listing/4295981316/carte-en-bois-tortank-pokemon-decoration" class="product-link" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
@@ -1020,8 +1056,8 @@
                     <div class="product-category">Cartes Pokémon</div>
                     <div style="display: flex; align-items: center; justify-content: center;">
                         <span class="product-original-price">14,99 €</span>
-                        <span class="product-price">10,49 €</span>
-                        <span class="product-discount">-30%</span>
+                        <span class="product-price"></span>
+                        <span class="product-discount"></span>
                     </div>
                 </div>
                 <a href="https://www.etsy.com/fr/listing/1892487438/carte-en-3d-bois-pikachu-pokemon?ref=shop_home_active_1&logging_key=a7c1f06c3fe48bcc40d807d7369f8d02d6067d19%3A1892487438" class="product-link" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
@@ -1253,6 +1289,64 @@
                             <li>Dimensions : 6,3 cm de large x 8,8 cm de longueur, 0,6 cm d'épaisseur</li>
                         </ul>
                         <a href="https://www.etsy.com/fr/listing/4295981316/carte-en-bois-tortank-pokemon-decoration?" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="dracaufeu-modal" class="modal">
+                <div class="modal-content">
+                    <span class="modal-close" onclick="closeModal('dracaufeu-modal')">&times;</span>
+                    <div class="modal-gallery">
+                        <div class="main-image-container">
+                            <img src="https://i.etsystatic.com/56732046/r/il/843a7f/6871413029/il_1588xN.6871413029_afds.jpg" alt="Carte Pokémon 3D Dracaufeu en bois" class="main-image" onclick="openFullscreen(this.src)">
+                            <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'dracaufeu-modal')">❮</div>
+                            <div class="gallery-nav gallery-next" onclick="changeImage(1, 'dracaufeu-modal')">❯</div>
+                        </div>
+                        <div class="thumbnail-container">
+                            <img src="https://i.etsystatic.com/56732046/r/il/aa94f0/6823435670/il_1588xN.6823435670_g3wr.jpg" class="thumbnail active" onclick="setMainImage(this.src, 'dracaufeu-modal')">
+                            <img src="https://i.etsystatic.com/56732046/r/il/8d22b0/6871408247/il_1588xN.6871408247_ncir.jpg" class="thumbnail" onclick="setMainImage(this.src, 'dracaufeu-modal')">
+                        </div>
+                    </div>
+                    <div class="modal-description">
+                        <h2 class="modal-title">Carte Dracaufeu en bois</h2>
+                        <p>Carte Pokémon 3D gravée à l’effigie de Dracaufeu.
+                            Effet de profondeur soigné sur du bois naturel.
+                            Objet de collection à offrir ou exposer fièrement.</p>
+                        <h3>Détails du produit</h3>
+                        <ul>
+                            <li>Gravure fine et précise réalisée avec soin</li>
+                            <li>Dimensions : 6,3 cm de large x 8,8 cm de longueur, 0,6 cm d'épaisseur</li>
+                        </ul>
+                        <a href="https://www.etsy.com/fr/listing/4297694285/carte-en-bois-3d-dracaufeu-pokemon?" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mewtwo-modal" class="modal">
+                <div class="modal-content">
+                    <span class="modal-close" onclick="closeModal('mewtwo-modal')">&times;</span>
+                    <div class="modal-gallery">
+                        <div class="main-image-container">
+                            <img src="https://i.etsystatic.com/56732046/r/il/bada58/6898014411/il_1588xN.6898014411_2t3a.jpg" alt="3D Carte Pokémon en bois Mewtwo" class="main-image" onclick="openFullscreen(this.src)">
+                            <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'mewtwo-modal')">❮</div>
+                            <div class="gallery-nav gallery-next" onclick="changeImage(1, 'mewtwo-modal')">❯</div>
+                        </div>
+                        <div class="thumbnail-container">
+                            <img src="https://i.etsystatic.com/56732046/r/il/d1a42f/6850049228/il_1588xN.6850049228_9c0i.jpg" class="thumbnail active" onclick="setMainImage(this.src, 'mewtwo-modal')">
+                            <img src="https://i.etsystatic.com/56732046/r/il/ecdcd6/6850044350/il_1588xN.6850044350_sh42.jpg" class="thumbnail" onclick="setMainImage(this.src, 'mewtwo-modal')">
+                        </div>
+                    </div>
+                    <div class="modal-description">
+                        <h2 class="modal-title">Carte Mewtwo en bois</h2>
+                        <p>Représentation de Mewtwo en 3D gravée avec finesse.
+                            Conçue en bois pour un rendu unique et durable.
+                            Idéal pour les fans et les amateurs de déco Pokémon.</p>
+                        <h3>Détails du produit</h3>
+                        <ul>
+                            <li>Gravure fine et précise réalisée avec soin</li>
+                            <li>Dimensions : 6,3 cm de large x 8,8 cm de longueur, 0,6 cm d'épaisseur</li>
+                        </ul>
+                        <a href="https://www.etsy.com/fr/listing/4303017864/mewtwo-en-bois-3d-sculpture-unique-pour?" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
                     </div>
                 </div>
             </div>
