@@ -970,11 +970,11 @@
     
     <section class="nouveautes">
         <h2 class="section-title" data-aos="fade-up">Nouveautés</h2>
-        <div id="nouveautes-container" class="products-grid"></div>
+        <div class="products-grid" id="nouveautes-dynamiques"></div>
         <div style="text-align: center; margin-top: 3rem;">
-            <a href="https://www.woodenbrothers.fr/produits" class="btn" style="font-size: 1.1rem; padding: 1rem 2.5rem;">Voir tous les produits</a>
+            <a href="/produits" class="btn" style="font-size: 1.1rem; padding: 1rem 2.5rem;">Voir tous les produits</a>
         </div>
-        </section>
+    </section>
         
     <section class="quote-section">
         <div class="quote-container" data-aos="fade-up">
@@ -1361,21 +1361,51 @@
     </script>
 
 <script>
-    fetch('/produits.html')
-      .then(res => res.text())
-      .then(html => {
+    async function chargerNouveautes() {
+        const response = await fetch('/produits.html');
+        const text = await response.text();
         const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        const productCards = doc.querySelectorAll('.product-card');
-        const nouveautesContainer = document.getElementById('nouveautes-container');
-    
-        for (let i = 0; i < 3 && i < productCards.length; i++) {
-          const cardClone = productCards[i].cloneNode(true);
-          nouveautesContainer.appendChild(cardClone);
-        }
-      })
-      .catch(err => console.error('Erreur chargement nouveautés :', err));
-    </script>
-    
+        const doc = parser.parseFromString(text, 'text/html');
+
+        const produits = Array.from(doc.querySelectorAll('.product-card')).slice(0, 3);
+
+        const container = document.querySelector('#nouveautes-dynamiques');
+        if (!container) return;
+
+        produits.forEach(card => {
+            const clone = card.cloneNode(true);
+
+            // Supprimer les modales des nouveaux produits
+            clone.querySelectorAll('button.product-details-btn')?.forEach(btn => btn.remove());
+            clone.querySelectorAll('[onclick]')?.forEach(el => el.removeAttribute('onclick'));
+
+            // Rendre toute la carte cliquable si possible
+            const etsyLink = clone.querySelector('.product-link')?.getAttribute('href');
+            if (etsyLink) {
+                const image = clone.querySelector('.product-image-container');
+                const wrapper = document.createElement('a');
+                wrapper.href = etsyLink;
+                wrapper.target = "_blank";
+                wrapper.rel = "noopener noreferrer";
+                wrapper.style.display = 'block';
+                wrapper.appendChild(image.cloneNode(true));
+                image.replaceWith(wrapper);
+            }
+
+            // Uniformiser le bouton Etsy
+            const btn = clone.querySelector('.product-link');
+            if (btn) {
+                btn.className = 'btn';
+                btn.innerText = 'Commander sur Etsy';
+                btn.style.marginTop = '1rem';
+            }
+
+            container.appendChild(clone);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', chargerNouveautes);
+</script>
+
 </body>
 </html>
