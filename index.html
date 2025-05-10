@@ -212,6 +212,12 @@
             display: none !important;
         }
 
+        .nouveautes-container .btn {
+            margin: 1rem auto;
+            display: block;
+            width: fit-content;
+        }
+
         .section-title {
             text-align: center;
             font-family: 'Eudoxus Sans', sans-serif;
@@ -981,7 +987,7 @@
         <h2 class="section-title" data-aos="fade-up">Nouveautés</h2>
         
         <!-- ZONE où les produits seront injectés -->
-        <div class="products-grid nouveautes-container" id="nouveautes-container">
+        <div class="products-grid nouveautes-container" id="nouveautes-dynamiques">
             <!-- Les 3 cartes seront ajoutées ici via JS -->
         </div>
     
@@ -1383,6 +1389,7 @@
         const doc = parser.parseFromString(text, 'text/html');
 
         const produits = Array.from(doc.querySelectorAll('.product-card')).slice(0, 3);
+        doc.querySelectorAll('.filter-container, .mobile-filter-btn, .filter-overlay').forEach(el => el.remove());
 
         const container = document.querySelector('#nouveautes-dynamiques');
         if (!container) return;
