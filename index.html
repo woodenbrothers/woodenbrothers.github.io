@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <html lang="fr">
     <meta name="description" content="Wooden Brothers : créations artisanales en bois gravé inspirées de la nature, des mangas, et de l’univers Pokémon.">
     <meta name="keywords" content="dessous de plat bois, Wooden Brothers, carte pokemon bois, décoration artisanale, cadeau original, anime bois, fais main, artisanal">
@@ -1581,7 +1582,7 @@
 
 <script>
     async function chargerNouveautes() {
-        const response = await fetch('/produits.html');
+        const response = await fetch(window.location.origin + '/produits.html', { cache: 'no-store' });
         const text = await response.text();
         const parser = new DOMParser();
         const doc = parser.parseFromString(text, 'text/html');
