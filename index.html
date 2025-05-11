@@ -209,8 +209,8 @@
         }
 
         .scroll-indicator.ventes-scroll {
-            position: static;
-            margin: 4rem auto 0 auto; /* marge top + centrage horizontal */
+            position: static; /* annule le absolute */
+            margin-top: 4rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1049,17 +1049,17 @@
               </div>
             </a>
             <a href="https://www.etsy.com/fr/listing/4297694285/carte-en-bois-3d-dracaufeu-pokemon?" class="btn" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
-          </div>
-          <div class="scroll-indicator ventes-scroll" id="scroll-vers-nouveautes">
-            <div class="scroll-arrow"></div>
-            <span>Voir les nouveautés</span>
-        </div>
-      
+          </div>      
         </div>
       
         <!-- 🔽 Bouton Voir tous les produits -->
         <div style="text-align: center; margin-top: 3rem;">
           <a href="/produits" class="btn" style="font-size: 1.1rem; padding: 1rem 2.5rem;">Voir tous les produits</a>
+        </div>
+
+        <div class="scroll-indicator ventes-scroll" id="scroll-vers-nouveautes">
+            <div class="scroll-arrow"></div>
+            <span>Voir les nouveautés</span>
         </div>
       </section>
 
