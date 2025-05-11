@@ -237,8 +237,16 @@
         }
 
         /* Nouveautés section */
-        .nouveautes {
-            padding: 13rem 2rem 5rem; /* ↑ ↑ ↑ Ajoute 2rem de marge haute */
+        @media (max-width: 768px) {
+            .nouveautes {
+                padding-top: 7rem;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .nouveautes {
+                padding: 13rem 2rem 5rem;
+            }
         }
 
         .nouveautes-container .product-link {
