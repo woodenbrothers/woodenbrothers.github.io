@@ -209,7 +209,16 @@
         }
 
         .scroll-indicator.ventes-scroll {
-            margin-top: 4rem; /* ajuste la valeur selon le rendu souhaité */
+            position: static; /* annule le absolute */
+            margin-top: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+            opacity: 1 !important;
         }
 
         .meilleures-ventes {
