@@ -209,15 +209,17 @@
         }
 
         .scroll-indicator.ventes-scroll {
-            position: static; /* remet dans le flux normal */
+            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin: 2rem auto 0 auto; /* centrage + espace */
+            margin: 2rem auto 0 auto; /* centrage horizontal + marge top */
             opacity: 1 !important;
             cursor: pointer;
             z-index: 1;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .meilleures-ventes {
