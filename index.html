@@ -1590,13 +1590,16 @@
             const parser = new DOMParser();
             const doc = parser.parseFromString(text, 'text/html');
 
-            const produits = Array.from(doc.querySelectorAll('.product-card')).slice(0, 3);
+            const produits = Array.from(doc.querySelectorAll('.product-card'));
+            const isMobile = window.matchMedia("(max-width: 768px)").matches;
+            const nbMax = isMobile ? 3 : 3;
+            const selection = produits.slice(0, nbMax);
             if (produits.length === 0) throw new Error("Aucun produit trouvé dans produits.html");
 
             const container = document.querySelector('#nouveautes-dynamiques');
             if (!container) throw new Error("Container #nouveautes-dynamiques introuvable");
 
-            produits.forEach(card => {
+            selection.forEach(card => {
                 const clone = card.cloneNode(true);
 
                 clone.querySelectorAll('button.product-details-btn')?.forEach(btn => btn.remove());
