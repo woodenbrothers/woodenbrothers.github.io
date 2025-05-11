@@ -1582,61 +1582,59 @@
 
 <script>
     async function chargerNouveautes() {
-        const response = await fetch(window.location.origin + '/produits.html', { cache: 'no-store' });
-        const text = await response.text();
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(text, 'text/html');
+        try {
+            const response = await fetch('/produits.html', { cache: 'no-store' });
+            if (!response.ok) throw new Error("Erreur HTTP " + response.status);
 
-        const produits = Array.from(doc.querySelectorAll('.product-card')).slice(0, 3);
-        doc.querySelectorAll('.filter-container, .mobile-filter-btn, .filter-overlay').forEach(el => el.remove());
+            const text = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(text, 'text/html');
 
-        const container = document.querySelector('#nouveautes-dynamiques');
-        if (!container) return;
+            const produits = Array.from(doc.querySelectorAll('.product-card')).slice(0, 3);
+            if (produits.length === 0) throw new Error("Aucun produit trouvé dans produits.html");
 
-        produits.forEach(card => {
-            const clone = card.cloneNode(true);
+            const container = document.querySelector('#nouveautes-dynamiques');
+            if (!container) throw new Error("Container #nouveautes-dynamiques introuvable");
 
-            // Supprimer les modales des nouveaux produits
-            clone.querySelectorAll('button.product-details-btn')?.forEach(btn => btn.remove());
-            clone.querySelectorAll('[onclick]')?.forEach(el => el.removeAttribute('onclick'));
+            produits.forEach(card => {
+                const clone = card.cloneNode(true);
 
-            // Rendre toute la carte cliquable si possible
-            const etsyLink = clone.querySelector('.product-link')?.getAttribute('href');
-            if (etsyLink) {
-                const image = clone.querySelector('.product-image-container');
-                const wrapper = document.createElement('a');
-                wrapper.href = etsyLink;
-                wrapper.target = "_blank";
-                wrapper.rel = "noopener noreferrer";
-                wrapper.style.display = 'block';
-                wrapper.appendChild(image.cloneNode(true));
-                image.replaceWith(wrapper);
+                clone.querySelectorAll('button.product-details-btn')?.forEach(btn => btn.remove());
+                clone.querySelectorAll('[onclick]')?.forEach(el => el.removeAttribute('onclick'));
+
+                const etsyLink = clone.querySelector('.product-link')?.getAttribute('href');
+                if (etsyLink) {
+                    const image = clone.querySelector('.product-image-container');
+                    if (image) {
+                        const wrapper = document.createElement('a');
+                        wrapper.href = etsyLink;
+                        wrapper.target = "_blank";
+                        wrapper.rel = "noopener noreferrer";
+                        wrapper.style.display = 'block';
+                        wrapper.appendChild(image.cloneNode(true));
+                        image.replaceWith(wrapper);
+                    }
+                }
+
+                const btn = clone.querySelector('.product-link');
+                if (btn) {
+                    btn.className = 'btn';
+                    btn.innerText = 'Commander sur Etsy';
+                    btn.style.marginTop = '1rem';
+                }
+
+                container.appendChild(clone);
+            });
+        } catch (error) {
+            console.error("🚨 Erreur lors du chargement des nouveautés :", error);
+            const container = document.querySelector('#nouveautes-dynamiques');
+            if (container) {
+                container.innerHTML = `<p style="color: red; text-align: center;">Erreur : ${error.message}</p>`;
             }
-
-            // Uniformiser le bouton Etsy
-            const btn = clone.querySelector('.product-link');
-            if (btn) {
-                btn.className = 'btn';
-                btn.innerText = 'Commander sur Etsy';
-                btn.style.marginTop = '1rem';
-            }
-
-            container.appendChild(clone);
-        });
+        }
     }
 
     document.addEventListener('DOMContentLoaded', chargerNouveautes);
-
-    function scrollToSection(selector) {
-    const section = document.querySelector(selector);
-    if (section) {
-        const offset = section.offsetTop - 25;
-        window.scrollTo({
-            top: offset,
-            behavior: 'smooth'
-        });
-    }
-}
 </script>
 
 </body>
