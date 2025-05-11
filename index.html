@@ -911,11 +911,10 @@
 
             /* Correction: cibler l'ID #nouveautes-dynamiques pour la grille responsive */
             #nouveautes-dynamiques {
-                display: grid !important;
+                display: grid;
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1rem;
                 padding: 0 1rem;
-                margin-top: 3rem; /* added to push section lower */
             }
 
             .collections-grid {
@@ -1626,13 +1625,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', chargerNouveautes);
-    // For debugging: show message if container has no content after loading
-    window.addEventListener("load", () => {
-        const container = document.getElementById("nouveautes-dynamiques");
-        if (container && container.children.length === 0) {
-            container.innerHTML = "<p style='text-align:center;color:red;'>Aucun produit chargé.</p>";
-        }
-    });
 
     function scrollToSection(selector) {
     const section = document.querySelector(selector);
