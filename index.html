@@ -1626,6 +1626,13 @@
     }
 
     document.addEventListener('DOMContentLoaded', chargerNouveautes);
+    // For debugging: show message if container has no content after loading
+    window.addEventListener("load", () => {
+        const container = document.getElementById("nouveautes-dynamiques");
+        if (container && container.children.length === 0) {
+            container.innerHTML = "<p style='text-align:center;color:red;'>Aucun produit chargé.</p>";
+        }
+    });
 
     function scrollToSection(selector) {
     const section = document.querySelector(selector);
