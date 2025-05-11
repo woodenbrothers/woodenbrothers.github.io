@@ -198,6 +198,10 @@
             z-index: 2;
         }
 
+        .ventes-scroll {
+            margin-top: 4rem;
+        }
+
         .meilleures-ventes-container .btn {
             display: block;
             margin: 1rem auto 0 auto;
@@ -993,6 +997,11 @@
         </div>
     </header>
 
+    <div class="scroll-indicator ventes-scroll" onclick="scrollToSection('.nouveautes')">
+        <div class="scroll-arrow"></div>
+        <span>Voir les nouveautés</span>
+    </div>
+
     <section class="meilleures-ventes">
         <h2 class="section-title" data-aos="fade-up">Meilleures ventes</h2>
         <div class="products-grid meilleures-ventes-container" id="meilleures-ventes">
@@ -1476,6 +1485,17 @@
     }
 
     document.addEventListener('DOMContentLoaded', chargerNouveautes);
+
+    function scrollToSection(selector) {
+    const section = document.querySelector(selector);
+    if (section) {
+        const offset = section.offsetTop - 25;
+        window.scrollTo({
+            top: offset,
+            behavior: 'smooth'
+        });
+    }
+}
 </script>
 
 </body>
