@@ -1583,7 +1583,7 @@
 <script>
     async function chargerNouveautes() {
         try {
-            fetch('https://www.woodenbrothers.fr/produits.html', { cache: 'no-store' })
+            const response = await fetch('https://www.woodenbrothers.fr/produits.html', { cache: 'no-store' });
             if (!response.ok) throw new Error("Erreur HTTP " + response.status);
 
             const text = await response.text();
