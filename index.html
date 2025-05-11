@@ -1582,7 +1582,7 @@
 
 <script>
     async function chargerNouveautes() {
-        const response = await fetch('/produits.html');
+        const response = await fetch('/produits');
         const text = await response.text();
         const parser = new DOMParser();
         const doc = parser.parseFromString(text, 'text/html');
