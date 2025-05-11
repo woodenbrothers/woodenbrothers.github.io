@@ -1581,6 +1581,7 @@
     </script>
 
 <script>
+    // Script chargerNouveautes (déplacé à la fin)
     async function chargerNouveautes() {
         try {
             const response = await fetch('https://www.woodenbrothers.fr/produits.html', { cache: 'no-store' });
@@ -1591,7 +1592,8 @@
             const doc = parser.parseFromString(text, 'text/html');
 
             const produits = Array.from(doc.querySelectorAll('.product-card'));
-            const isMobile = window.matchMedia("(max-width: 768px)").matches;
+            // Utilisation de la détection mobile par userAgent
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
             const nbMax = isMobile ? 3 : 3;
             const selection = produits.slice(0, nbMax);
             if (produits.length === 0) throw new Error("Aucun produit trouvé dans produits.html");
