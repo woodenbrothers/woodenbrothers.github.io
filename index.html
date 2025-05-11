@@ -202,6 +202,16 @@
             margin-top: 4rem;
         }
 
+        .ventes-scroll {
+            margin-top: 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .meilleures-ventes {
+            padding-bottom: 3rem;
+        }
+
         .meilleures-ventes-container .btn {
             display: block;
             margin: 1rem auto 0 auto;
@@ -1028,7 +1038,7 @@
             <a href="https://www.etsy.com/fr/listing/4297694285/carte-en-bois-3d-dracaufeu-pokemon?" class="btn" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
           </div>
 
-          <div class="scroll-indicator ventes-scroll" onclick="scrollToSection('.nouveautes')">
+          <div class="scroll-indicator ventes-scroll" id="scroll-vers-nouveautes">
             <div class="scroll-arrow"></div>
             <span>Voir les nouveautés</span>
         </div>
@@ -1302,6 +1312,38 @@
             }
         });
 
+        document.querySelector('#scroll-vers-nouveautes')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            const section = document.querySelector('.nouveautes');
+            if (section) {
+                const targetPosition = section.offsetTop - 25;
+                const startPosition = window.pageYOffset;
+                const distance = targetPosition - startPosition;
+                const duration = 1000;
+                let start = null;
+
+                function animation(currentTime) {
+                    if (start === null) start = currentTime;
+                    const timeElapsed = currentTime - start;
+                    const progress = Math.min(timeElapsed / duration, 1);
+
+                    const easeInOutCubic = progress => {
+                        return progress < 0.5
+                            ? 4 * progress * progress * progress
+                            : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+                    };
+
+                    window.scrollTo(0, startPosition + (distance * easeInOutCubic(progress)));
+
+                    if (progress < 1) {
+                        requestAnimationFrame(animation);
+                    }
+                }
+
+                requestAnimationFrame(animation);
+            }
+        });
+        
         // Défilement fluide uniquement au clic sur la flèche
         document.querySelector('.scroll-indicator').addEventListener('click', (e) => {
             e.preventDefault();
@@ -1334,6 +1376,7 @@
                 requestAnimationFrame(animation);
             }
         });
+        
 
         // Modal functions
         function openModal(modalId) {
