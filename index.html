@@ -1035,6 +1035,12 @@
   @media (max-width: 768px) {
     #nouveautes-dynamiques .product-card {
       display: block !important;
+      background: var(--card-background);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      width: 100%;
       max-width: 100%;
       margin: 1rem auto;
     }
@@ -1051,6 +1057,11 @@
       display: block;
       text-align: center;
       padding: 1rem;
+    }
+
+    #nouveautes-dynamiques .btn {
+      display: block;
+      margin: 0.5rem auto;
     }
   }
   </style>
