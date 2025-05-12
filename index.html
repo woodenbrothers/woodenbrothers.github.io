@@ -1584,7 +1584,8 @@
     // Script chargerNouveautes (déplacé à la fin)
     async function chargerNouveautes() {
         try {
-            const response = await fetch('https://www.woodenbrothers.fr/produits.html', { cache: 'no-store' });
+            // Correction du chemin pour éviter les erreurs de chemin relatif
+            const response = await fetch(`${window.location.origin}/produits.html`, { cache: 'no-store' });
             if (!response.ok) throw new Error("Erreur HTTP " + response.status);
 
             const text = await response.text();
@@ -1592,9 +1593,10 @@
             const doc = parser.parseFromString(text, 'text/html');
 
             const produits = Array.from(doc.querySelectorAll('.product-card'));
-            // Utilisation de la détection mobile par userAgent
+            // Détection mobile par userAgent
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            const nbMax = isMobile ? 3 : 3;
+            // Correction : plus de produits sur desktop
+            const nbMax = isMobile ? 3 : 4;
             const selection = produits.slice(0, nbMax);
             if (produits.length === 0) throw new Error("Aucun produit trouvé dans produits.html");
 
@@ -1607,7 +1609,19 @@
                 clone.querySelectorAll('button.product-details-btn')?.forEach(btn => btn.remove());
                 clone.querySelectorAll('[onclick]')?.forEach(el => el.removeAttribute('onclick'));
 
-                const etsyLink = clone.querySelector('.product-link')?.getAttribute('href');
+                // Correction : la classe .product-link n'existe pas, on utilise le bouton .btn comme lien Etsy
+                let etsyLink = null;
+                let btn = clone.querySelector('a.btn');
+                if (btn) {
+                    etsyLink = btn.getAttribute('href');
+                }
+                // Fallback si .btn n'est pas trouvé
+                if (!etsyLink) {
+                    // Essayer de trouver un autre lien
+                    const maybeLink = clone.querySelector('a[href*="etsy.com"]');
+                    if (maybeLink) etsyLink = maybeLink.getAttribute('href');
+                }
+
                 if (etsyLink) {
                     const image = clone.querySelector('.product-image-container');
                     if (image) {
@@ -1621,7 +1635,7 @@
                     }
                 }
 
-                const btn = clone.querySelector('.product-link');
+                // Mettre à jour le bouton (si trouvé), sinon ne rien faire
                 if (btn) {
                     btn.className = 'btn';
                     btn.innerText = 'Commander sur Etsy';
