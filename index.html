@@ -1635,8 +1635,8 @@
             const produits = Array.from(doc.querySelectorAll('.product-card'));
             // Détection mobile par userAgent
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            // Correction : plus de produits sur desktop
-            const nbMax = isMobile ? 3 : 4;
+            // Correction : plus de produits sur mobile
+            const nbMax = isMobile ? 4 : 3;
             const selection = produits.slice(0, nbMax);
             if (produits.length === 0) throw new Error("Aucun produit trouvé dans produits.html");
 
