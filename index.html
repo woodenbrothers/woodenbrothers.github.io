@@ -1677,20 +1677,9 @@
 
                 // Mettre à jour le bouton (si trouvé), sinon ne rien faire
                 if (btn) {
-                    btn.classList.add('btn');
-                    btn.classList.remove('product-link');
+                    btn.className = 'btn';
                     btn.innerText = 'Commander sur Etsy';
-                    btn.style.marginTop = '1rem';
-                    btn.style.fontSize = '1rem';
-                    btn.style.padding = '0.8rem 2rem';
-                    btn.style.backgroundColor = 'var(--primary-color)';
-                    btn.style.color = 'var(--text-white-color)';
-                    btn.style.borderRadius = '25px';
-                    btn.style.textDecoration = 'none';
-                    btn.style.transition = 'transform 0.3s ease';
-                    btn.style.display = 'inline-block';
-                    btn.onmouseover = () => btn.style.transform = 'scale(1.05)';
-                    btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                    btn.removeAttribute('style');
                 }
 
                 container.appendChild(clone);
