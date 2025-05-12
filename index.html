@@ -1681,11 +1681,8 @@
                     btn.innerText = 'Commander sur Etsy';
                     btn.removeAttribute('style');
 
-                    // Ajouter wrapper autour du bouton pour centrage et cohérence
-                    const btnWrapper = document.createElement('div');
-                    btnWrapper.style.textAlign = 'center';
-                    btnWrapper.appendChild(btn.cloneNode(true));
-                    btn.replaceWith(btnWrapper);
+                    btn.style.display = 'block';
+                    btn.style.margin = '1rem auto';
                 }
 
                 container.appendChild(clone);
