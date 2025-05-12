@@ -1679,17 +1679,7 @@
                 if (btn) {
                     btn.className = 'btn';
                     btn.innerText = 'Commander sur Etsy';
-                    btn.style.marginTop = '1rem';
-                    btn.style.fontSize = '';
-                    btn.style.padding = '';
-                    btn.style.backgroundColor = '';
-                    btn.style.color = '';
-                    btn.style.borderRadius = '';
-                    btn.style.textDecoration = '';
-                    btn.style.transition = '';
-                    btn.style.display = '';
-                    btn.onmouseover = null;
-                    btn.onmouseout = null;
+                    btn.removeAttribute('style');
                 }
 
                 container.appendChild(clone);
