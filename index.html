@@ -1030,6 +1030,24 @@
                 transform: translate(-50%, -50%) rotate(45deg);
             }
         }
+        
+        /* Uniformisation des boutons Commander sur Etsy dans .product-card */
+        .product-card a[href*="etsy.com"] {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--primary-color);
+            color: var(--text-white-color) !important;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .product-card a[href*="etsy.com"]:hover {
+            transform: scale(1.05);
+        }
     </style>
   <style>
   @media (max-width: 768px) {
