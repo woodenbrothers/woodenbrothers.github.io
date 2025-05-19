@@ -337,15 +337,12 @@
             const email = 'contact@woodenbrothers.fr';
             const subject = 'Contact Wooden Brothers';
             
-            // Détection mobile
             const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
             
-            // URL différente selon la plateforme
             const mailUrl = isMobile 
                 ? `googlegmail://co?to=${email}&subject=${encodeURIComponent(subject)}`
                 : `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}`;
             
-            // Ouvre le client mail approprié
             window.location.href = mailUrl;
         }
 
