@@ -995,6 +995,23 @@
         
         <div class="products-grid">
             <div class="product-card" data-category="cartes-pokemon all" data-aos="fade-up">
+                <div class="product-image-container" onclick="openModal('evoli-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/add696/6946008663/il_1588xN.6946008663_1jzy.jpg" alt="Evoli Carte Pokémon décorative gravée en bois 3D" class="product-image">
+                </div>
+                <div class="product-details">
+                    <div class="product-title">Carte Evoli en bois</div>
+                    <div class="product-category">Cartes Pokémon</div>
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <span class="product-original-price"></span>
+                        <span class="product-price">9,99 €</span>
+                        <span class="product-discount"></span>
+                    </div>
+                </div>
+                <a href="https://www.etsy.com/fr/listing/4312473345/evolie-en-bois-3d-sculpture-unique-pour?" class="product-link" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                <button class="product-details-btn" onclick="openModal('evoli-modal')">Voir les détails</button>
+            </div>
+            
+            <div class="product-card" data-category="cartes-pokemon all" data-aos="fade-up">
                 <div class="product-image-container" onclick="openModal('mewtwo-modal')">
                     <img src="https://i.etsystatic.com/56732046/r/il/bada58/6898014411/il_1588xN.6898014411_2t3a.jpg" alt="Carte Pokémon décorative Mewtwo gravée en bois 3D" class="product-image">
                 </div>
@@ -1003,7 +1020,7 @@
                     <div class="product-category">Cartes Pokémon</div>
                     <div style="display: flex; align-items: center; justify-content: center;">
                         <span class="product-original-price"></span>
-                        <span class="product-price">14,99 €</span>
+                        <span class="product-price">9,99 €</span>
                         <span class="product-discount"></span>
                     </div>
                 </div>
@@ -1020,7 +1037,7 @@
                     <div class="product-category">Cartes Pokémon</div>
                     <div style="display: flex; align-items: center; justify-content: center;">
                         <span class="product-original-price"></span>
-                        <span class="product-price">14,99 €</span>
+                        <span class="product-price">9,99 €</span>
                         <span class="product-discount"></span>
                     </div>
                 </div>
@@ -1038,7 +1055,7 @@
                     <div class="product-category">Cartes Pokémon</div>
                     <div style="display: flex; align-items: center; justify-content: center;">
                         <span class="product-original-price"></span>
-                        <span class="product-price">14,99 €</span>
+                        <span class="product-price">9,99 €</span>
                         <span class="product-discount"></span>
                     </div>
                 </div>
@@ -1055,7 +1072,7 @@
                     <div class="product-category">Cartes Pokémon</div>
                     <div style="display: flex; align-items: center; justify-content: center;">
                         <span class="product-original-price"></span>
-                        <span class="product-price">14,99 €</span>
+                        <span class="product-price">9,99 €</span>
                         <span class="product-discount"></span>
                     </div>
                 </div>
@@ -1348,6 +1365,37 @@
                             <li>Dimensions : 6,3 cm de large x 8,8 cm de longueur, 0,6 cm d'épaisseur</li>
                         </ul>
                         <a href="https://www.etsy.com/fr/listing/4303017864/mewtwo-en-bois-3d-sculpture-unique-pour?" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="evoli-modal" class="modal">
+                <div class="modal-content">
+                    <span class="modal-close" onclick="closeModal('evoli-modal')">&times;</span>
+                    <div class="modal-gallery">
+                        <div class="main-image-container">
+                            <img src="https://i.etsystatic.com/56732046/r/il/add696/6946008663/il_1588xN.6946008663_1jzy.jpg" alt="Pokémon carte 3D en bois evoli" class="main-image" onclick="openFullscreen(this.src)">
+                            <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'evoli-modal')">❮</div>
+                            <div class="gallery-nav gallery-next" onclick="changeImage(1, 'evoli-modal')">❯</div>
+                        </div>
+                        <div class="thumbnail-container">
+                            <img src="https://i.etsystatic.com/56732046/r/il/add696/6946008663/il_1588xN.6946008663_1jzy.jpg" class="thumbnail active" onclick="setMainImage(this.src, 'evoli-modal')">
+                            <img src="https://i.etsystatic.com/56732046/r/il/893324/6946014281/il_1588xN.6946014281_jga0.jpg" class="thumbnail" onclick="setMainImage(this.src, 'evoli-modal')">
+                            <img src="https://i.etsystatic.com/56732046/r/il/8a224f/6946014383/il_1588xN.6946014383_6zr5.jpg" class="thumbnail" onclick="setMainImage(this.src, 'evoli-modal')">
+                            <img src="https://i.etsystatic.com/56732046/r/il/16c1b9/6898037388/il_1588xN.6898037388_11kg.jpg" class="thumbnail" onclick="setMainImage(this.src, 'evoli-modal')">
+                        </div>
+                    </div>
+                    <div class="modal-description">
+                        <h2 class="modal-title">Carte Evoli en bois</h2>
+                        <p>Carte 3D en bois gravée à l’effigie d’Évoli.
+                            Superposition de couches pour un effet de relief unique.
+                            Objet décoratif idéal pour les fans de Pokémon.</p>
+                        <h3>Détails du produit</h3>
+                        <ul>
+                            <li>Gravure fine et précise réalisée avec soin</li>
+                            <li>Dimensions : 6,3 cm de large x 8,8 cm de longueur, 0,6 cm d'épaisseur</li>
+                        </ul>
+                        <a href="https://www.etsy.com/fr/listing/4312473345/evolie-en-bois-3d-sculpture-unique-pour?" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
                     </div>
                 </div>
             </div>
