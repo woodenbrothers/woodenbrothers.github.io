@@ -995,6 +995,23 @@
         
         <div class="products-grid">
             <div class="product-card" data-category="cartes-pokemon all" data-aos="fade-up">
+                <div class="product-image-container" onclick="openModal('florizarre-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/add696/6946008663/il_1588xN.6946008663_1jzy.jpg" alt="Carte Pokémon Florizarre gravée en bois 3D décorative" class="product-image">
+                </div>
+                <div class="product-details">
+                    <div class="product-title">Carte Florizarre en bois</div>
+                    <div class="product-category">Cartes Pokémon</div>
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <span class="product-original-price"></span>
+                        <span class="product-price">9,99 €</span>
+                        <span class="product-discount"></span>
+                    </div>
+                </div>
+                <a href="https://www.etsy.com/fr/listing/4315496445/florizarre-en-bois-3d-pokemon-decoration?" class="product-link" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                <button class="product-details-btn" onclick="openModal('florizarre-modal')">Voir les détails</button>
+            </div>
+            
+            <div class="product-card" data-category="cartes-pokemon all" data-aos="fade-up">
                 <div class="product-image-container" onclick="openModal('evoli-modal')">
                     <img src="https://i.etsystatic.com/56732046/r/il/add696/6946008663/il_1588xN.6946008663_1jzy.jpg" alt="Evoli Carte Pokémon décorative gravée en bois 3D" class="product-image">
                 </div>
@@ -1401,6 +1418,37 @@
                             <li>Dimensions : 6,3 cm de large x 8,8 cm de longueur, 0,6 cm d'épaisseur</li>
                         </ul>
                         <a href="https://www.etsy.com/fr/listing/4312473345/evolie-en-bois-3d-sculpture-unique-pour?" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="florizarre-modal" class="modal">
+                <div class="modal-content">
+                    <span class="modal-close" onclick="closeModal('florizarre-modal')">&times;</span>
+                    <div class="modal-gallery">
+                        <div class="main-image-container">
+                            <img src="https://i.etsystatic.com/56732046/r/il/b6f818/6914097642/il_794xN.6914097642_3p4s.jpg" alt="carte Pokémon 3D en bois florizarre" class="main-image" onclick="openFullscreen(this.src)">
+                            <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'florizarre-modal')">❮</div>
+                            <div class="gallery-nav gallery-next" onclick="changeImage(1, 'florizarre-modal')">❯</div>
+                        </div>
+                        <div class="thumbnail-container">
+                            <img src="https://i.etsystatic.com/56732046/r/il/b6f818/6914097642/il_794xN.6914097642_3p4s.jpg" class="thumbnail active" onclick="setMainImage(this.src, 'florizarre-modal')">
+                            <img src="https://i.etsystatic.com/56732046/r/il/049f16/6962068739/il_794xN.6962068739_4p82.jpg" class="thumbnail" onclick="setMainImage(this.src, 'florizarre-modal')">
+                            <img src="https://i.etsystatic.com/56732046/r/il/812eae/6967577255/il_794xN.6967577255_jo2x.jpg" class="thumbnail" onclick="setMainImage(this.src, 'florizarre-modal')">
+                            <img src="https://i.etsystatic.com/56732046/r/il/c27733/6914096514/il_794xN.6914096514_s6a9.jpg" class="thumbnail" onclick="setMainImage(this.src, 'florizarre-modal')">
+                        </div>
+                    </div>
+                    <div class="modal-description">
+                        <h2 class="modal-title">Carte Florizarre en bois</h2>
+                        <p>Carte 3D en bois représentant Florizarre.
+                            Gravure précise avec effet de profondeur superposé.
+                            Un objet décoratif unique pour les collectionneurs Pokémon.</p>
+                        <h3>Détails du produit</h3>
+                        <ul>
+                            <li>Gravure fine et précise réalisée avec soin</li>
+                            <li>Dimensions : 6,3 cm de large x 8,8 cm de longueur, 0,6 cm d'épaisseur</li>
+                        </ul>
+                        <a href="https://www.etsy.com/fr/listing/4315496445/florizarre-en-bois-3d-pokemon-decoration?" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
                     </div>
                 </div>
             </div>
