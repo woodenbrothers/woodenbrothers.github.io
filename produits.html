@@ -995,6 +995,23 @@
         
         <div class="products-grid">
             <div class="product-card" data-category="cartes-pokemon all" data-aos="fade-up">
+                <div class="product-image-container" onclick="openModal('arcanin-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/b6f818/6914097642/il_794xN.6914097642_3p4s.jpg" alt="Carte décorative Pokémon Arcanin 3D gravée en bois" class="product-image">
+                </div>
+                <div class="product-details">
+                    <div class="product-title">Carte Arcanin en bois</div>
+                    <div class="product-category">Cartes Pokémon</div>
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <span class="product-original-price"></span>
+                        <span class="product-price">9,99 €</span>
+                        <span class="product-discount"></span>
+                    </div>
+                </div>
+                <a href="https://www.etsy.com/fr/listing/4315496445/arcanin-en-bois-3d-pokemon-decoration?" class="product-link" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                <button class="product-details-btn" onclick="openModal('arcanin-modal')">Voir les détails</button>
+            </div>
+            
+            <div class="product-card" data-category="cartes-pokemon all" data-aos="fade-up">
                 <div class="product-image-container" onclick="openModal('florizarre-modal')">
                     <img src="https://i.etsystatic.com/56732046/r/il/b6f818/6914097642/il_794xN.6914097642_3p4s.jpg" alt="Carte Pokémon Florizarre gravée en bois 3D décorative" class="product-image">
                 </div>
@@ -1449,6 +1466,38 @@
                             <li>Dimensions : 6,3 cm de large x 8,8 cm de longueur, 0,6 cm d'épaisseur</li>
                         </ul>
                         <a href="https://www.etsy.com/fr/listing/4315496445/florizarre-en-bois-3d-pokemon-decoration?" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="arcanin-modal" class="modal">
+                <div class="modal-content">
+                    <span class="modal-close" onclick="closeModal('arcanin-modal')">&times;</span>
+                    <div class="modal-gallery">
+                        <div class="main-image-container">
+                            <img src="https://i.etsystatic.com/56732046/r/il/a90c38/6937297840/il_794xN.6937297840_6jas.jpg" alt="carte Pokémon 3D en bois Arcanin" class="main-image" onclick="openFullscreen(this.src)">
+                            <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'arcanin-modal')">❮</div>
+                            <div class="gallery-nav gallery-next" onclick="changeImage(1, 'arcanin-modal')">❯</div>
+                        </div>
+                        <div class="thumbnail-container">
+                            <img src="https://i.etsystatic.com/56732046/r/il/a90c38/6937297840/il_794xN.6937297840_6jas.jpg" class="thumbnail active" onclick="setMainImage(this.src, 'arcanin-modal')">
+                            <img src="https://i.etsystatic.com/56732046/r/il/ffe5bf/6985264467/il_794xN.6985264467_qyiv.jpg" class="thumbnail" onclick="setMainImage(this.src, 'arcanin-modal')">
+                            <img src="https://i.etsystatic.com/56732046/r/il/d31c0c/6937287226/il_794xN.6937287226_mque.jpg" class="thumbnail" onclick="setMainImage(this.src, 'arcanin-modal')">
+                            <img src="https://i.etsystatic.com/56732046/r/il/8bd775/6937289684/il_794xN.6937289684_w4f4.jpg" class="thumbnail" onclick="setMainImage(this.src, 'arcanin-modal')">
+                        </div>
+                    </div>
+                    <div class="modal-description">
+                        <h2 class="modal-title">Carte Arcanin en bois</h2>
+                        <p>Revivez la magie Pokémon avec cette carte Arcanin en bois gravé 3D.
+                            Chaque pièce est minutieusement assemblée à la main.
+                            Idéale pour enrichir une collection ou offrir un souvenir inoubliable.
+                            Un incontournable pour les fans nostalgiques et les vrais passionnés.</p>
+                        <h3>Détails du produit</h3>
+                        <ul>
+                            <li>Gravure fine et précise réalisée avec soin</li>
+                            <li>Dimensions : 6,3 cm de large x 8,8 cm de longueur, 0,6 cm d'épaisseur</li>
+                        </ul>
+                        <a href="https://www.etsy.com/fr/listing/4315496445/arcanin-en-bois-3d-pokemon-decoration?" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
                     </div>
                 </div>
             </div>
