@@ -995,6 +995,23 @@
         <div class="filter-overlay"></div>
         
         <div class="products-grid">
+            <div class="product-card" data-category="disney" data-aos="fade-up">
+                <div class="product-image-container" onclick="openModal('roilion-modal')">
+                    <img src="https://i.etsystatic.com/56732046/r/il/0ed570/7272114177/il_794xN.7272114177_jnrb.jpg" alt="Dessous de plat gravé sur bois Roi lion" class="product-image">
+                </div>
+                <div class="product-details">
+                    <div class="product-title">Dessous de plat Roi lion</div>
+                    <div class="product-category">Disney</div>
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        <span class="product-original-price"></span>
+                        <span class="product-price">17,99 €</span>
+                        <span class="product-discount"></span>
+                    </div>
+                </div>
+                <a href="https://www.etsy.com/fr/listing/4374718335/dessous-de-plat-en-bois-le-roi-lion" class="product-link" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                <button class="product-details-btn" onclick="openModal('roilion-modal')">Voir les détails</button>
+            </div>
+            
             <div class="product-card" data-category="cartes-pokemon all" data-aos="fade-up">
                 <div class="product-image-container" onclick="openModal('arcanin-modal')">
                     <img src="https://i.etsystatic.com/56732046/r/il/a90c38/6937297840/il_794xN.6937297840_6jas.jpg" alt="Carte décorative Pokémon Arcanin 3D gravée en bois" class="product-image">
@@ -1499,6 +1516,36 @@
                             <li>Dimensions : 6,3 cm de large x 8,8 cm de longueur, 0,6 cm d'épaisseur</li>
                         </ul>
                         <a href="https://www.etsy.com/fr/listing/4315496445/arcanin-en-bois-3d-pokemon-decoration?" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
+                    </div>
+                </div>
+
+                <div id="roilion-modal" class="modal">
+                <div class="modal-content">
+                    <span class="modal-close" onclick="closeModal('roilion-modal')">&times;</span>
+                    <div class="modal-gallery">
+                        <div class="main-image-container">
+                            <img src="https://i.etsystatic.com/56732046/r/il/0ed570/7272114177/il_794xN.7272114177_jnrb.jpg" alt="Dessous de plat en bois gravé Roi Lion, disney" class="main-image" onclick="openFullscreen(this.src)">
+                            <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'roilion-modal')">❮</div>
+                            <div class="gallery-nav gallery-next" onclick="changeImage(1, 'roilion-modal')">❯</div>
+                        </div>
+                        <div class="thumbnail-container">
+                            <img src="https://i.etsystatic.com/56732046/r/il/0ed570/7272114177/il_794xN.7272114177_jnrb.jpg" class="thumbnail active" onclick="setMainImage(this.src, 'roilion-modal')">
+                            <img src="https://i.etsystatic.com/56732046/r/il/7f5ad3/7224156868/il_794xN.7224156868_ha1h.jpg" class="thumbnail" onclick="setMainImage(this.src, 'roilion-modal')">
+                            <img src="https://i.etsystatic.com/56732046/r/il/fb1025/7272126291/il_794xN.7272126291_p4x3.jpg" class="thumbnail" onclick="setMainImage(this.src, 'roilion-modal')">
+                            <img src="https://i.etsystatic.com/56732046/r/il/114386/7272125529/il_794xN.7272125529_rdzi.jpg" class="thumbnail" onclick="setMainImage(this.src, 'roilion-modal')">
+                        </div>
+                    </div>
+                    <div class="modal-description">
+                        <h2 class="modal-title">Dessous de plat Roi lion</h2>
+                        <p>Apportez une touche de magie Disney à votre table avec ce dessous de plat en bois gravé du Roi Lion.
+                            Fabriqué en Paulownia, il allie légèreté, résistance et style unique.
+                            Idéal pour protéger vos surfaces avec élégance, c’est aussi une pièce déco qui ravira petits et grands fans du classique intemporel.</p>
+                        <h3>Détails du produit</h3>
+                        <ul>
+                            <li>Gravure fine et précise réalisée avec soin</li>
+                            <li>Dimensions : 6,3 cm de large x 8,8 cm de longueur, 0,6 cm d'épaisseur</li>
+                        </ul>
+                        <a href="https://www.etsy.com/fr/listing/4374718335/dessous-de-plat-en-bois-le-roi-lion" class="modal-buy-button" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
                     </div>
                 </div>
             </div>
