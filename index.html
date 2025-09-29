@@ -1213,8 +1213,52 @@
               font-size: 1rem !important;
             }
           }
+        /* ✅ Aligner les boutons en bas des cartes sur mobile */
+        @media (max-width: 768px) {
+
+          /* Les grilles doivent étirer les items */
+          .products-grid,
+          .meilleures-ventes-container,
+          #nouveautes-dynamiques {
+            align-items: stretch;
+          }
+
+          /* Cartes = colonnes flex, hauteur égale */
+          .products-grid .product-card,
+          .meilleures-ventes-container .product-card,
+          #nouveautes-dynamiques .product-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+          }
+
+          /* Zone infos prend toute la place disponible */
+          .products-grid .product-info,
+          .meilleures-ventes-container .product-info,
+          #nouveautes-dynamiques .product-info {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;  /* étire le bloc jusqu'en bas */
+          }
+
+          /* Le bouton est collé au bas de la carte */
+          .products-grid .product-card .btn,
+          .meilleures-ventes-container .product-card .btn,
+          #nouveautes-dynamiques .product-card .btn {
+            margin-top: auto;         /* pousse en bas */
+            width: 100%;              /* optionnel : pleine largeur */
+            max-width: none;
+          }
+
+          /* Optionnel : normaliser la hauteur du titre pour éviter les décalages */
+          .products-grid .product-title,
+          .meilleures-ventes-container .product-title,
+          #nouveautes-dynamiques .product-title {
+            min-height: 3.2em; /* ≈ 2 lignes */
+          }
+        }
         </style>
-      
+        
         <!-- 🔽 Bouton Voir tous les produits -->
         <div style="text-align: center; margin-top: 3rem;">
           <a href="/produits" class="btn" style="font-size: 1.1rem; padding: 1rem 2.5rem;">Voir tous les produits</a>
