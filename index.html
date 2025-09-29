@@ -1257,6 +1257,47 @@
             min-height: 3.2em; /* ≈ 2 lignes */
           }
         }
+
+        /* ✅ Aligner les boutons en bas et uniformiser la hauteur des cartes (mobile) */
+        @media (max-width: 768px) {
+          /* Les grilles doivent étirer les items */
+          .meilleures-ventes-container,
+          #nouveautes-dynamiques,
+          .products-grid { align-items: stretch; }
+
+          /* Chaque carte = colonne flex */
+          .meilleures-ventes-container .product-card,
+          #nouveautes-dynamiques .product-card,
+          .products-grid .product-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+          }
+
+          /* Image carrée partout pour cartes égales */
+          .meilleures-ventes-container .product-image-container,
+          #nouveautes-dynamiques .product-image-container,
+          .products-grid .product-image-container {
+            width: 100%;
+            aspect-ratio: 1 / 1;          /* iOS OK */
+            overflow: hidden;
+          }
+          .meilleures-ventes-container .product-image,
+          #nouveautes-dynamiques .product-image,
+          .products-grid .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+          /* Le bouton colle au bas de la carte */
+          .meilleures-ventes-container .product-card .btn,
+          #nouveautes-dynamiques .product-card .btn,
+          .products-grid .product-card .btn {
+            margin-top: auto;      /* pousse le bouton en bas */
+            align-self: stretch;   /* pleine largeur de la carte (optionnel) */
+          }
+        }
         </style>
         
         <!-- 🔽 Bouton Voir tous les produits -->
