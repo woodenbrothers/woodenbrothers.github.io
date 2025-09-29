@@ -1298,6 +1298,48 @@
             align-self: stretch;   /* pleine largeur de la carte (optionnel) */
           }
         }
+
+        /* ✅ Mobile : cartes de même hauteur + boutons alignés */
+        @media (max-width: 768px) {
+          /* Grille 2 colonnes et items étirés */
+          .meilleures-ventes-container {
+            grid-template-columns: repeat(2, 1fr);
+            align-items: stretch;
+          }
+
+          /* Chaque carte = colonne flex, bouton poussé en bas */
+          .meilleures-ventes-container .product-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+          }
+
+          /* Le carré est géré par le CONTAINER, pas l'img */
+          .meilleures-ventes-container .product-image-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;   /* carré strict pour toutes les vignettes */
+            overflow: hidden;
+          }
+          .meilleures-ventes-container .product-image {
+            position: absolute;    /* remplit le container carré */
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+          /* Le bouton colle au bas de la carte */
+          .meilleures-ventes-container .btn {
+            margin-top: auto;
+            align-self: stretch;   /* pleine largeur (optionnel) */
+          }
+
+          /* (Option) neutraliser AOS sur mobile pour éviter des décalages */
+          [data-aos] {
+            transform: none !important;
+          }
+        }
         </style>
         
         <!-- 🔽 Bouton Voir tous les produits -->
