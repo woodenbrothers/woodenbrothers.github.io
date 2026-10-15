@@ -75,8 +75,8 @@ DEFAULT_DETAILS = {
         "Superposition de couches de bois pour un effet de relief 3D",
         "Gravure fine et précise réalisée avec soin",
     ],
-    "horloge": ["Pièce unique faite main", "Bois naturel, finition soignée"],
-    "autre": ["Pièce réalisée à la main dans notre atelier"],
+    "horloge": ["Pièce unique au design original", "Bois naturel, finition soignée"],
+    "autre": ["Pièce réalisée dans notre atelier"],
 }
 
 
