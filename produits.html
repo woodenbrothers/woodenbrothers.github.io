@@ -30,6 +30,7 @@
 <script>document.documentElement.classList.replace('no-js', 'js');</script>
 </head>
 <body data-page-produits>
+<!-- wb:header -->
 <a class="skip-link" href="#main">Aller au contenu</a>
 <header class="site-header">
   <div class="container header__inner">
@@ -40,7 +41,7 @@
     <nav class="nav" id="nav" aria-label="Navigation principale">
       <a href="/" class="nav__link">Accueil</a>
       <a href="/produits" class="nav__link" aria-current="page">Nos créations</a>
-      <a href="/produits?filter=personnalise" class="nav__link">Sur mesure</a>
+      <a href="/collections/personnalise/" class="nav__link">Sur mesure</a>
       <a href="/a-propos" class="nav__link">L'atelier</a>
       <a href="/contact" class="nav__link">Contact</a>
       <a class="btn btn--primary btn--sm nav__cta" href="https://www.etsy.com/fr/shop/WoodenBrothersArt" target="_blank" rel="noopener">Commander sur Etsy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
@@ -48,6 +49,7 @@
     <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Ouvrir le menu"><span></span></button>
   </div>
 </header>
+<!-- /wb:header -->
 <main id="main">
   <section class="page-head">
     <div class="rings" aria-hidden="true"></div>
@@ -61,7 +63,7 @@
 
   <div class="toolbar">
     <div class="container toolbar__inner">
-      <div class="chips" id="chips" role="group" aria-label="Filtrer par collection"></div>
+      <div class="chips" id="chips" role="group" aria-label="Filtrer par collection"><!-- wb:chips --><!-- /wb:chips --></div>
       <div class="toolbar__sort">
         <label for="sort">Trier</label>
         <select id="sort" class="select">
@@ -80,7 +82,7 @@
         <h2 id="catalogue-title">Toutes nos créations</h2>
         <span class="results-count" id="results-count" aria-live="polite"></span>
       </div>
-      <div class="product-grid" id="catalogue-grid"><div class="skeleton">Chargement du catalogue…</div></div>
+      <div class="product-grid" id="catalogue-grid" data-prerendered="all"><!-- wb:catalogue --><div class="skeleton">Chargement du catalogue…</div><!-- /wb:catalogue --></div>
       <div class="empty-state" id="empty-state" hidden>
         <h3>Aucune création dans cette collection pour le moment</h3>
         <p>De nouvelles pièces arrivent régulièrement. En attendant, découvrez le reste de la boutique ou <a href="/contact">contactez-nous</a>.</p>
@@ -99,7 +101,7 @@
             <h2>Vous ne trouvez pas <em>votre bonheur</em> ?</h2>
             <p>Nous gravons aussi vos propres visuels : photo, dessin, texte ou Pokémon préféré. Parlez-nous de votre idée.</p>
             <div class="cta-band__actions">
-              <a class="btn btn--wood" href="/produits?filter=personnalise">Créations sur mesure</a>
+              <a class="btn btn--wood" href="/collections/personnalise/">Créations sur mesure</a>
               <a class="btn btn--ghost-light" href="/contact">Nous contacter</a>
             </div>
           </div>
@@ -112,6 +114,7 @@
     </div>
   </section>
 </main>
+<!-- wb:footer -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer__grid">
@@ -128,11 +131,11 @@
         <h3>La boutique</h3>
         <ul>
           <li><a href="/produits">Toutes nos créations</a></li>
-          <li><a href="/produits?filter=animaux">Animaux</a></li>
-          <li><a href="/produits?filter=manga-anime">Manga &amp; Anime</a></li>
-          <li><a href="/produits?filter=cartes-pokemon">Cartes Pokémon</a></li>
-          <li><a href="/produits?filter=disney">Disney</a></li>
-          <li><a href="/produits?filter=personnalise">Sur mesure</a></li>
+          <li><a href="/collections/animaux/">Animaux</a></li>
+          <li><a href="/collections/manga-anime/">Manga &amp; Anime</a></li>
+          <li><a href="/collections/cartes-pokemon/">Cartes Pokémon</a></li>
+          <li><a href="/collections/disney/">Disney</a></li>
+          <li><a href="/collections/personnalise/">Sur mesure</a></li>
         </ul>
       </div>
       <div>
@@ -160,6 +163,7 @@
     <p class="footer__disclaimer">Wooden Brothers n'est affilié à aucune licence ni société. Nos créations inspirées de mangas, de Pokémon ou de Disney sont exclusivement du fan art personnalisé, sans intention de porter atteinte aux droits d'auteur.</p>
   </div>
 </footer>
+<!-- /wb:footer -->
 <script src="/assets/js/site.js" defer></script>
 <script src="/assets/js/catalogue.js" defer></script>
 </body>

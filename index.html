@@ -33,6 +33,7 @@
 </script>
 </head>
 <body data-page-home>
+<!-- wb:header -->
 <a class="skip-link" href="#main">Aller au contenu</a>
 <header class="site-header">
   <div class="container header__inner">
@@ -43,7 +44,7 @@
     <nav class="nav" id="nav" aria-label="Navigation principale">
       <a href="/" class="nav__link" aria-current="page">Accueil</a>
       <a href="/produits" class="nav__link">Nos créations</a>
-      <a href="/produits?filter=personnalise" class="nav__link">Sur mesure</a>
+      <a href="/collections/personnalise/" class="nav__link">Sur mesure</a>
       <a href="/a-propos" class="nav__link">L'atelier</a>
       <a href="/contact" class="nav__link">Contact</a>
       <a class="btn btn--primary btn--sm nav__cta" href="https://www.etsy.com/fr/shop/WoodenBrothersArt" target="_blank" rel="noopener">Commander sur Etsy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
@@ -51,6 +52,7 @@
     <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Ouvrir le menu"><span></span></button>
   </div>
 </header>
+<!-- /wb:header -->
 <main id="main">
   <section class="hero">
     <div class="rings" aria-hidden="true"></div>
@@ -96,42 +98,42 @@
         <a class="btn btn--secondary" href="/produits">Tout voir</a>
       </div>
       <div class="collections">
-        <a class="collection-card" href="/produits?filter=animaux" data-reveal>
+        <a class="collection-card" href="/collections/animaux/" data-reveal>
           <img src="https://i.etsystatic.com/56732046/r/il/6e6d4e/6532846964/il_794xN.6532846964_6n54.jpg" alt="" width="794" height="794" loading="lazy" decoding="async">
           <div class="collection-card__body">
             <h3 class="collection-card__name">Animaux</h3>
             <div class="collection-card__meta"><span data-collection-count="animaux">&nbsp;</span><span>Découvrir</span></div>
           </div>
         </a>
-        <a class="collection-card" href="/produits?filter=manga-anime" data-reveal data-reveal-delay="1">
+        <a class="collection-card" href="/collections/manga-anime/" data-reveal data-reveal-delay="1">
           <img src="https://i.etsystatic.com/56732046/r/il/592bd7/6983079458/il_794xN.6983079458_7nld.jpg" alt="" width="794" height="794" loading="lazy" decoding="async">
           <div class="collection-card__body">
             <h3 class="collection-card__name">Manga &amp; Anime</h3>
             <div class="collection-card__meta"><span data-collection-count="manga-anime">&nbsp;</span><span>Découvrir</span></div>
           </div>
         </a>
-        <a class="collection-card" href="/produits?filter=cartes-pokemon" data-reveal data-reveal-delay="2">
+        <a class="collection-card" href="/collections/cartes-pokemon/" data-reveal data-reveal-delay="2">
           <img src="https://i.etsystatic.com/56732046/r/il/d8f5a5/6914070754/il_794xN.6914070754_gae1.jpg" alt="" width="794" height="794" loading="lazy" decoding="async">
           <div class="collection-card__body">
             <h3 class="collection-card__name">Cartes Pokémon</h3>
             <div class="collection-card__meta"><span data-collection-count="cartes-pokemon">&nbsp;</span><span>Découvrir</span></div>
           </div>
         </a>
-        <a class="collection-card" href="/produits?filter=disney" data-reveal>
+        <a class="collection-card" href="/collections/disney/" data-reveal>
           <img src="https://i.etsystatic.com/56732046/r/il/0ed570/7272114177/il_794xN.7272114177_jnrb.jpg" alt="" width="794" height="794" loading="lazy" decoding="async">
           <div class="collection-card__body">
             <h3 class="collection-card__name">Disney</h3>
             <div class="collection-card__meta"><span data-collection-count="disney">&nbsp;</span><span>Découvrir</span></div>
           </div>
         </a>
-        <a class="collection-card" href="/produits?filter=horloges" data-reveal data-reveal-delay="1">
+        <a class="collection-card" href="/collections/horloges/" data-reveal data-reveal-delay="1">
           <img src="https://i.etsystatic.com/56732046/r/il/841300/7451057970/il_794xN.7451057970_2xd8.jpg" alt="" width="794" height="794" loading="lazy" decoding="async">
           <div class="collection-card__body">
             <h3 class="collection-card__name">Horloges</h3>
             <div class="collection-card__meta"><span data-collection-count="horloges">&nbsp;</span><span>Découvrir</span></div>
           </div>
         </a>
-        <a class="collection-card" href="/produits?filter=personnalise" data-reveal data-reveal-delay="2">
+        <a class="collection-card" href="/collections/personnalise/" data-reveal data-reveal-delay="2">
           <img src="https://i.etsystatic.com/56732046/r/il/f21054/7480584038/il_794xN.7480584038_4w92.jpg" alt="" width="794" height="794" loading="lazy" decoding="async">
           <div class="collection-card__body">
             <h3 class="collection-card__name">Sur mesure</h3>
@@ -149,7 +151,7 @@
         <h2>Nos créations <em>phares</em></h2>
         <p class="section__lead">Un aperçu de ce qui sort de l'atelier. Toutes nos pièces sont disponibles sur notre boutique Etsy.</p>
       </div>
-      <div class="product-grid" id="selection-grid" data-max="8"><div class="skeleton">Chargement des créations…</div></div>
+      <div class="product-grid" id="selection-grid" data-max="8"><!-- wb:selection --><div class="skeleton">Chargement des créations…</div><!-- /wb:selection --></div>
       <div class="section__foot"><a class="btn btn--primary btn--lg" href="/produits">Voir toute la boutique</a></div>
     </div>
   </section>
@@ -207,11 +209,11 @@
             <h2>Une idée en tête ? <em>Nous la gravons.</em></h2>
             <p>Une photo, un dessin, un texte ou votre Pokémon préféré : envoyez-nous votre visuel et nous le gravons sur bois. Le cadeau unique par excellence.</p>
             <div class="cta-band__actions">
-              <a class="btn btn--wood" href="/produits?filter=personnalise">Voir les créations sur mesure</a>
+              <a class="btn btn--wood" href="/collections/personnalise/">Voir les créations sur mesure</a>
               <a class="btn btn--ghost-light" href="/contact">Nous contacter</a>
             </div>
           </div>
-          <div class="product-grid" id="featured-grid"></div>
+          <div class="product-grid" id="featured-grid"><!-- wb:featured --><!-- /wb:featured --></div>
         </div>
       </div>
     </div>
@@ -266,6 +268,7 @@
     </div>
   </section>
 </main>
+<!-- wb:footer -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer__grid">
@@ -282,11 +285,11 @@
         <h3>La boutique</h3>
         <ul>
           <li><a href="/produits">Toutes nos créations</a></li>
-          <li><a href="/produits?filter=animaux">Animaux</a></li>
-          <li><a href="/produits?filter=manga-anime">Manga &amp; Anime</a></li>
-          <li><a href="/produits?filter=cartes-pokemon">Cartes Pokémon</a></li>
-          <li><a href="/produits?filter=disney">Disney</a></li>
-          <li><a href="/produits?filter=personnalise">Sur mesure</a></li>
+          <li><a href="/collections/animaux/">Animaux</a></li>
+          <li><a href="/collections/manga-anime/">Manga &amp; Anime</a></li>
+          <li><a href="/collections/cartes-pokemon/">Cartes Pokémon</a></li>
+          <li><a href="/collections/disney/">Disney</a></li>
+          <li><a href="/collections/personnalise/">Sur mesure</a></li>
         </ul>
       </div>
       <div>
@@ -314,6 +317,7 @@
     <p class="footer__disclaimer">Wooden Brothers n'est affilié à aucune licence ni société. Nos créations inspirées de mangas, de Pokémon ou de Disney sont exclusivement du fan art personnalisé, sans intention de porter atteinte aux droits d'auteur.</p>
   </div>
 </footer>
+<!-- /wb:footer -->
 <script src="/assets/js/site.js" defer></script>
 </body>
 </html>

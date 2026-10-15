@@ -1,11 +1,12 @@
 /* =====================================================================
-   Wooden Brothers — page « Nos créations » (catalogue)
-   Filtres par collection (?filter=slug), tri, rendu des cartes.
+   Wooden Brothers — catalogue (page « Nos créations » et pages collection)
+   Les grilles et les filtres sont pré-rendus par scripts/build.py ; ce script
+   ajoute le filtrage instantané, le tri et la navigation sans rechargement.
    ===================================================================== */
 (function () {
   'use strict';
   var WB = window.WB;
-  var $ = WB.$, $$ = WB.$$, esc = WB.esc;
+  var $ = WB.$, $$ = WB.$$;
 
   var grid = $('#catalogue-grid');
   var chips = $('#chips');
@@ -13,75 +14,86 @@
   var count = $('#results-count');
   var empty = $('#empty-state');
   var heading = $('#catalogue-title');
-  if (!grid) return;
+  if (!grid || !chips) return;
 
-  // Anciens filtres (liens déjà indexés) -> nouveaux
-  var LEGACY = { 'dessous-plats': 'kind:dessous-de-plat', 'dessous-verre': 'all', 'all': 'all' };
+  // Anciens liens ?filter=… (encore indexés) -> collections actuelles
+  var LEGACY = { 'dessous-plats': 'dessous-de-plat', 'dessous-verre': 'all' };
 
-  var params = new URLSearchParams(location.search);
-  var filter = params.get('filter') || 'all';
-  if (LEGACY[filter]) filter = LEGACY[filter];
+  function filterFromLocation() {
+    var m = /^\/collections\/([a-z0-9-]+)\/?$/.exec(location.pathname);
+    if (m) return m[1];
+    var q = new URLSearchParams(location.search).get('filter');
+    if (q) return LEGACY[q] || q;
+    return 'all';
+  }
+
+  var filter = filterFromLocation();
   var sort = 'recent';
 
   WB.catalogue().then(function (data) {
-    var cats = data.categories.filter(function (c) { return data.countBySlug[c.slug]; });
-    if (filter !== 'all' && filter.indexOf('kind:') !== 0 && !data.catBySlug[filter]) filter = 'all';
+    var virtual = {};
+    (data.collections_virtuelles || []).forEach(function (c) { virtual[c.slug] = c; });
+    var known = {};
+    $$('[data-filter]', chips).forEach(function (c) { known[c.getAttribute('data-filter')] = c; });
+    if (!known[filter]) filter = 'all';
 
-    chips.innerHTML = '<button type="button" class="chip" data-filter="all">Tout <span class="chip__count">' + data.products.length + '</span></button>' +
-      cats.map(function (c) {
-        return '<button type="button" class="chip" data-filter="' + esc(c.slug) + '">' + esc(c.name) + ' <span class="chip__count">' + data.countBySlug[c.slug] + '</span></button>';
-      }).join('');
+    function matches(p) {
+      if (filter === 'all') return true;
+      if (virtual[filter]) return p.kind === virtual[filter].kind;
+      return p.category === filter;
+    }
 
-    chips.addEventListener('click', function (e) {
-      var b = e.target.closest('[data-filter]');
-      if (!b) return;
-      filter = b.getAttribute('data-filter');
-      apply(true);
-    });
-    if (sortSel) sortSel.addEventListener('change', function () { sort = sortSel.value; apply(false); });
-    window.addEventListener('popstate', function () {
-      var p = new URLSearchParams(location.search).get('filter') || 'all';
-      filter = LEGACY[p] || p;
-      apply(false, true);
-    });
-
-    function apply(scroll, silent) {
-      var list = data.products.filter(function (p) {
-        if (filter === 'all') return true;
-        if (filter.indexOf('kind:') === 0) return p.kind === filter.slice(5);
-        return p.category === filter;
-      });
+    function apply(push, scroll) {
+      var list = data.products.filter(matches);
       if (sort === 'price-asc') list.sort(function (a, b) { return a.price - b.price; });
       else if (sort === 'price-desc') list.sort(function (a, b) { return b.price - a.price; });
       else if (sort === 'name') list.sort(function (a, b) { return (a.short_title || a.title).localeCompare(b.short_title || b.title, 'fr'); });
-      // « recent » : ordre du catalogue (déjà du plus récent au plus ancien)
 
-      grid.innerHTML = list.map(function (p, i) { return WB.productCard(p, data, { reveal: true, eager: i < 6 }); }).join('');
-      WB.observe(grid);
+      var prerendered = grid.getAttribute('data-prerendered');
+      if (!(prerendered === filter && sort === 'recent' && grid.querySelector('.product-card'))) {
+        grid.innerHTML = list.map(function (p, i) { return WB.productCard(p, data, { reveal: true, eager: i < 6 }); }).join('');
+        grid.setAttribute('data-prerendered', sort === 'recent' ? filter : '');
+        WB.observe(grid);
+      }
       if (empty) empty.hidden = list.length > 0;
       if (count) count.textContent = WB.plural(list.length, 'création', 'créations');
 
+      var chip = known[filter];
       $$('[data-filter]', chips).forEach(function (c) {
-        var active = c.getAttribute('data-filter') === filter;
+        var active = c === chip;
         c.classList.toggle('is-active', active);
-        c.setAttribute('aria-pressed', active ? 'true' : 'false');
+        c.setAttribute('aria-current', active ? 'page' : 'false');
       });
-      var cat = data.catBySlug[filter];
-      if (heading) heading.textContent = cat ? cat.name : (filter.indexOf('kind:') === 0 ? 'Dessous de plat' : 'Toutes nos créations');
-      document.title = (cat ? cat.name + ' – ' : '') + 'Nos créations en bois | Wooden Brothers';
-
-      if (!silent) {
-        var url = location.pathname + (filter === 'all' ? '' : '?filter=' + encodeURIComponent(filter));
-        history.replaceState(null, '', url);
+      var name = filter === 'all' ? 'Toutes nos créations' : (chip ? chip.firstChild.textContent.trim() : filter);
+      if (heading) heading.textContent = name;
+      if (push) {
+        var href = chip ? chip.getAttribute('href') : '/produits';
+        history.pushState({ filter: filter }, '', href);
+        document.title = (filter === 'all' ? 'Nos créations en bois' : name + ' – Créations en bois') + ' | Wooden Brothers';
       }
       if (scroll) {
         var top = grid.getBoundingClientRect().top + window.scrollY - 150;
         if (window.scrollY > top) window.scrollTo({ top: top, behavior: 'smooth' });
       }
     }
-    apply(false, true);
+
+    chips.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-filter]');
+      if (!b || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      filter = b.getAttribute('data-filter');
+      apply(true, true);
+    });
+    if (sortSel) sortSel.addEventListener('change', function () { sort = sortSel.value; apply(false, false); });
+    window.addEventListener('popstate', function () { filter = filterFromLocation(); if (!known[filter]) filter = 'all'; apply(false, false); });
+
+    // Ancien lien ?filter=… : on affiche la collection et on remplace l'URL par la page de collection
+    if (/[?&]filter=/.test(location.search)) {
+      var chip0 = known[filter];
+      history.replaceState({ filter: filter }, '', chip0 ? chip0.getAttribute('href') : '/produits');
+    }
+    apply(false, false);
   }).catch(function (err) {
     console.error(err);
-    grid.innerHTML = '<div class="empty-state"><h3>Le catalogue est momentanément indisponible</h3><p>Retrouvez toutes nos créations sur <a href="https://www.etsy.com/fr/shop/WoodenBrothersArt" target="_blank" rel="noopener">notre boutique Etsy</a>.</p></div>';
   });
 })();

@@ -44,8 +44,8 @@ ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_DATA = ROOT / "data" / "products.json"
 
 # Champs du catalogue que la synchronisation ne doit jamais écraser.
-EDITORIAL_FIELDS = ("short_title", "description", "details", "kind", "featured",
-                    "free_shipping", "hidden", "category_locked")
+EDITORIAL_FIELDS = ("short_title", "slug", "seo_title", "seo_description", "description", "details",
+                    "kind", "featured", "free_shipping", "hidden", "category_locked")
 
 # Règles de rattachement d'une section Etsy à une catégorie du site.
 # (mot-clé normalisé contenu dans le titre de la section -> slug de catégorie)
@@ -285,6 +285,7 @@ def merge(data: dict, shop: dict, sections: dict, listings: list) -> dict:
             log(f"  + nouvelle catégorie « {title} »")
 
     products = []
+    used_slugs = set()
     for l in sorted(listings, key=lambda x: x.get("original_creation_timestamp") or x.get("creation_timestamp") or 0, reverse=True):
         lid = int(l["listing_id"])
         old = old_products.get(lid, {})
@@ -316,10 +317,17 @@ def merge(data: dict, shop: dict, sections: dict, listings: list) -> dict:
         else:
             featured = bool(old.get("featured", False))
 
+        short_title = old.get("short_title") or short_title_from(title)
+        slug_base = old.get("slug") or slugify(short_title)
+        slug, n = slug_base, 2
+        while slug in used_slugs:
+            slug, n = f"{slug_base}-{n}", n + 1
+        used_slugs.add(slug)
         product = {
             "listing_id": lid,
             "title": title or old.get("title", ""),
-            "short_title": old.get("short_title") or short_title_from(title),
+            "short_title": short_title,
+            "slug": slug,
             "category": category,
             "kind": kind,
             "price": round(amount, 2) if amount is not None else None,
@@ -334,6 +342,9 @@ def merge(data: dict, shop: dict, sections: dict, listings: list) -> dict:
             "etsy_section_id": section_id,
             "created_timestamp": l.get("original_creation_timestamp") or l.get("creation_timestamp"),
         }
+        for key in ("seo_title", "seo_description"):
+            if old.get(key):
+                product[key] = old[key]
         if old.get("hidden"):
             product["hidden"] = True
         if old.get("category_locked"):

@@ -128,6 +128,8 @@
     return WB.imgSize(u, '300x300') + ' 300w, ' + WB.imgSize(u, '600x600') + ' 600w, ' + WB.imgSize(u, '800x800') + ' 800w';
   }
 
+  WB.pageUrl = function (p) { return p.slug ? '/creations/' + p.slug + '/' : '/produits#p=' + p.listing_id; };
+
   WB.productCard = function (p, data, opts) {
     opts = opts || {};
     var cat = data.catBySlug[p.category];
@@ -136,21 +138,24 @@
     var sizes = opts.sizes || '(max-width: 640px) 50vw, (max-width: 1100px) 33vw, 300px';
     var badges = WB.badges(p).map(function (b) { return '<span class="badge ' + b[1] + '">' + esc(b[0]) + '</span>'; }).join('');
     var title = esc(p.short_title || p.title);
+    var url = esc(WB.pageUrl(p));
     return '' +
       '<article class="product-card" data-id="' + p.listing_id + '" data-category="' + esc(p.category) + '"' + (opts.reveal ? ' data-reveal' : '') + '>' +
-        '<button type="button" class="product-card__media" data-quickview="' + p.listing_id + '" aria-label="Aperçu rapide : ' + title + '">' +
-          (img0 ? '<img class="product-card__img" src="' + esc(WB.imgSize(img0, '600x600')) + '" srcset="' + esc(srcset(img0)) + '" sizes="' + esc(sizes) + '" alt="' + title + '" width="600" height="600" loading="' + (opts.eager ? 'eager' : 'lazy') + '" decoding="async">' : '') +
-          (img1 ? '<img class="product-card__img product-card__img--alt" src="' + esc(WB.imgSize(img1, '600x600')) + '" alt="" width="600" height="600" loading="lazy" decoding="async" aria-hidden="true">' : '') +
+        '<div class="product-card__media">' +
+          '<a class="product-card__link" href="' + url + '">' +
+            (img0 ? '<img class="product-card__img" src="' + esc(WB.imgSize(img0, '600x600')) + '" srcset="' + esc(srcset(img0)) + '" sizes="' + esc(sizes) + '" alt="' + title + '" width="600" height="600" loading="' + (opts.eager ? 'eager' : 'lazy') + '" decoding="async">' : '') +
+            (img1 ? '<img class="product-card__img product-card__img--alt" src="' + esc(WB.imgSize(img1, '600x600')) + '" alt="" width="600" height="600" loading="lazy" decoding="async" aria-hidden="true">' : '') +
+          '</a>' +
           (badges ? '<span class="product-card__badges">' + badges + '</span>' : '') +
-          '<span class="product-card__quick btn btn--light btn--sm" aria-hidden="true">Aperçu rapide</span>' +
-        '</button>' +
+          '<button type="button" class="product-card__quick btn btn--light btn--sm" data-quickview="' + p.listing_id + '">Aperçu rapide</button>' +
+        '</div>' +
         '<div class="product-card__body">' +
           (cat && opts.showCategory !== false ? '<span class="product-card__cat">' + esc(cat.name) + '</span>' : '') +
-          '<h3 class="product-card__title">' + title + '</h3>' +
+          '<h3 class="product-card__title"><a href="' + url + '">' + title + '</a></h3>' +
           '<p class="product-card__price">' + esc(WB.price(p.price, p.currency)) + '</p>' +
         '</div>' +
         '<div class="product-card__actions">' +
-          '<button type="button" class="btn btn--secondary btn--sm" data-quickview="' + p.listing_id + '">Détails</button>' +
+          '<a class="btn btn--secondary btn--sm" href="' + url + '">Détails</a>' +
           '<a class="btn btn--primary btn--sm" href="' + esc(p.url) + '" target="_blank" rel="noopener">Commander sur Etsy</a>' +
         '</div>' +
       '</article>';
@@ -222,6 +227,7 @@
           (p.details && p.details.length ? '<ul class="modal__details">' + p.details.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' : '') +
           '<div class="modal__actions">' +
             '<a class="btn btn--primary btn--lg" href="' + esc(p.url) + '" target="_blank" rel="noopener">Commander sur Etsy ' + ICON_EXT + '</a>' +
+            (p.slug && location.pathname.indexOf('/creations/' + p.slug) !== 0 ? '<a class="btn btn--secondary btn--lg" href="' + esc(WB.pageUrl(p)) + '">Voir la page</a>' : '') +
           '</div>' +
           '<p class="modal__note">Paiement sécurisé, suivi de commande et protection des achats gérés par Etsy. Une question ? <a href="/contact">Contactez-nous</a>.</p>' +
         '</div>' +
@@ -267,7 +273,7 @@
 
     // Sélection de l'atelier : une pièce par collection, à tour de rôle
     var sel = $('#selection-grid');
-    if (sel) {
+    if (sel && !sel.querySelector('.product-card')) {
       var max = parseInt(sel.getAttribute('data-max') || '8', 10);
       var buckets = data.categories.map(function (c) {
         return data.products.filter(function (p) { return p.category === c.slug; });
@@ -283,7 +289,7 @@
 
     // Articles à la une (sur mesure)
     var feat = $('#featured-grid');
-    if (feat) {
+    if (feat && !feat.querySelector('.product-card')) {
       var list = data.products.filter(function (p) { return p.featured; }).slice(0, 2);
       if (!list.length) list = data.products.filter(function (p) { return p.category === 'personnalise'; }).slice(0, 2);
       if (list.length) {
@@ -299,6 +305,29 @@
       rv.innerHTML = '<strong>' + esc(String(Math.round(data.shop.review_average * 10) / 10).replace('.', ',')) + '/5</strong> · ' + WB.plural(data.shop.review_count, 'avis client', 'avis clients') + ' sur Etsy';
       rv.hidden = false;
     }
+  }
+
+  /* ---------- galerie (page création) ---------- */
+  function initGallery() {
+    $$('[data-gallery]').forEach(function (g) {
+      var images;
+      try { images = JSON.parse(g.getAttribute('data-images') || '[]'); } catch (e) { images = []; }
+      var main = $('.gallery__img', g);
+      if (!main || images.length < 2) return;
+      var index = 0;
+      function show(i) {
+        index = ((i % images.length) + images.length) % images.length;
+        main.src = WB.imgSize(images[index], '794xN');
+        main.srcset = WB.imgSize(images[index], '794xN') + ' 794w, ' + WB.imgSize(images[index], '1588xN') + ' 1588w';
+        $$('.gallery__thumb', g).forEach(function (t, k) { t.classList.toggle('is-active', k === index); });
+      }
+      g.addEventListener('click', function (e) {
+        var t = e.target.closest('.gallery__thumb'); if (t) show(parseInt(t.getAttribute('data-index'), 10));
+        var n = e.target.closest('[data-dir]'); if (n) show(index + parseInt(n.getAttribute('data-dir'), 10));
+      });
+      main.addEventListener('click', function () { show(index + 1); });
+      main.style.cursor = 'pointer';
+    });
   }
 
   /* ---------- copier dans le presse-papiers ---------- */
@@ -318,6 +347,7 @@
     initHeader();
     initQuickview();
     initCopy();
+    initGallery();
     WB.observe();
     $$('[data-year]').forEach(function (el) { el.textContent = String(new Date().getFullYear()); });
 

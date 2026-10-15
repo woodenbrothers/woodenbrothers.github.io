@@ -1,3 +1,5 @@
+# Wooden Brothers – https://www.woodenbrothers.fr
+# Tous les robots sont les bienvenus, y compris les assistants IA.
 User-agent: *
 Allow: /
 
