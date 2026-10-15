@@ -21,10 +21,12 @@ L'en-tête et le pied de page des pages générées sont extraits de index.html
 """
 from __future__ import annotations
 
+import hashlib
 import html
 import json
 import re
 import shutil
+import subprocess
 import sys
 import unicodedata
 from datetime import date
@@ -37,7 +39,10 @@ SITE = "https://www.woodenbrothers.fr"
 BRAND = "Wooden Brothers"
 ETSY_SHOP = "https://www.etsy.com/fr/shop/WoodenBrothersArt"
 
-COPY_TOP = ["Images", "assets", "data", "journal"]            # dossiers copiés tels quels
+IMAGES_CACHE = ROOT / ".cache" / "images"                  # produit par scripts/images.py (photos ré-hébergées)
+SIZE_TO_WIDTH = {"75x75": 400, "170x135": 400, "300x300": 400, "340x270": 400, "570xN": 800, "600x600": 800,
+                 "794xN": 800, "800x800": 800, "1140xN": 1200, "1588xN": 1200, "fullxfull": 1200}
+_manifest: dict = {}
 SKIP = {".git", ".github", "_site", "scripts", "README.md", ".gitignore", "sitemap.xml", "__pycache__", ".DS_Store"}
 
 ICON_EXT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>'
@@ -124,8 +129,28 @@ def esc(s) -> str:
     return html.escape(str(s if s is not None else ""), quote=True)
 
 
+def etsy_image_id(url: str) -> str | None:
+    m = re.search(r"/il_[0-9a-zA-Z]+x[0-9a-zA-Z]+\.(\d+)_", url or "")
+    return m.group(1) if m else None
+
+
 def img_size(url: str, size: str) -> str:
-    return re.sub(r"il_[0-9a-zA-Z]+x[0-9a-zA-Z]+\.", f"il_{size}.", url or "", count=1)
+    """URL d'une photo dans la taille demandée : version locale (WebP) si elle a été
+    générée par scripts/images.py, sinon la taille correspondante sur le CDN Etsy."""
+    if not url:
+        return ""
+    local = re.match(r"^(/img/creations/.+)-(\d+)\.webp$", url)
+    if local:
+        return f"{local.group(1)}-{SIZE_TO_WIDTH.get(size, 800)}.webp"
+    entry = _manifest.get(etsy_image_id(url) or "")
+    if entry:
+        return f"{entry['base']}-{SIZE_TO_WIDTH.get(size, 800)}.webp"
+    return re.sub(r"il_[0-9a-zA-Z]+x[0-9a-zA-Z]+\.", f"il_{size}.", url, count=1)
+
+
+def etsy_url(p: dict) -> str:
+    """Lien Etsy de l'article : lien traçable « Share & Save » s'il est renseigné."""
+    return p.get("share_url") or p["url"]
 
 
 def price_fmt(p, cur="EUR") -> str:
@@ -168,6 +193,30 @@ def inject(src: str, name: str, fragment: str) -> str:
     return pattern.sub(lambda m: m.group(1) + fragment + m.group(2), src, count=1)
 
 
+def git_date(*paths) -> str | None:
+    """Date (AAAA-MM-JJ) du dernier commit touchant l'un des fichiers, ou None hors dépôt git."""
+    try:
+        out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", *[str(p) for p in paths]],
+                             cwd=ROOT, capture_output=True, text=True, timeout=20)
+        return out.stdout.strip() or None
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def asset_hash(rel: str) -> str:
+    f = ROOT / rel.lstrip("/")
+    return hashlib.sha1(f.read_bytes()).hexdigest()[:8] if f.exists() else ""
+
+
+def fingerprint(html_text: str) -> str:
+    """Ajoute ?v=<empreinte> aux feuilles de style et scripts du site (cache des robots)."""
+    for rel in ("/assets/css/fonts.css", "/assets/css/style.css", "/assets/js/site.js", "/assets/js/catalogue.js"):
+        h = asset_hash(rel)
+        if h:
+            html_text = html_text.replace(f'"{rel}"', f'"{rel}?v={h}"')
+    return html_text
+
+
 def jsonld(obj) -> str:
     return '<script type="application/ld+json">' + json.dumps(obj, ensure_ascii=False, separators=(",", ":")) + "</script>"
 
@@ -179,12 +228,13 @@ class Catalogue:
     def __init__(self, data: dict):
         self.data = data
         self.shop = data.get("shop", {})
-        self.products = [p for p in data.get("products", []) if not p.get("hidden") and p.get("price") is not None]
+        self.all_products = [p for p in data.get("products", []) if not p.get("hidden") and p.get("price") is not None]
+        self.products = [p for p in self.all_products if p.get("status") != "unavailable"]   # affichés dans les grilles
         self.categories = data.get("categories", [])
         self.virtual = data.get("collections_virtuelles", [])
         self.cat_by_slug = {c["slug"]: c for c in self.categories}
         used = set()
-        for p in self.products:
+        for p in self.all_products:
             base = p.get("slug") or slugify(p.get("short_title") or p.get("title"))
             s, i = base, 2
             while s in used:
@@ -254,7 +304,7 @@ def product_card(p: dict, cat: Catalogue, show_category=True, reveal=True, eager
         "</div>"
         f'<div class="product-card__actions">'
         f'<a class="btn btn--secondary btn--sm" href="{p["page_url"]}">Détails</a>'
-        f'<a class="btn btn--primary btn--sm" href="{esc(p["url"])}" target="_blank" rel="noopener">Commander sur Etsy</a>'
+        f'<a class="btn btn--primary btn--sm" href="{esc(etsy_url(p))}" target="_blank" rel="noopener">Commander sur Etsy</a>'
         "</div></article>"
     )
 
@@ -288,7 +338,7 @@ def head(title: str, desc: str, path: str, image: str | None = None, extra: str 
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
 <meta name="author" content="{BRAND}">
-<meta name="robots" content="index, follow, max-image-preview:large">
+{'' if 'noindex' in extra else '<meta name="robots" content="index, follow, max-image-preview:large">'}
 <link rel="canonical" href="{SITE}{path}">
 <meta property="og:type" content="{og_type}">
 <meta property="og:site_name" content="{BRAND}">
@@ -300,6 +350,7 @@ def head(title: str, desc: str, path: str, image: str | None = None, extra: str 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#2F5B37">
 {FAVICONS}
+<link rel="preconnect" href="https://i.etsystatic.com">
 <link rel="preload" href="/assets/fonts/fraunces-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/dm-sans-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/fonts.css">
@@ -357,6 +408,7 @@ def product_page(p: dict, cat: Catalogue, header: str, footer: str) -> str:
         related += [x for x in cat.products if x["category"] != p["category"] and x["kind"] == p["kind"] and x not in related][: 4 - len(related)]
     other_cols = [(c2, items) for c2, items in cat.collections() if c2["slug"] != c.get("slug")][:6]
 
+    unavailable = p.get("status") == "unavailable"
     product_ld = {
         "@context": "https://schema.org",
         "@type": "Product",
@@ -370,10 +422,10 @@ def product_page(p: dict, cat: Catalogue, header: str, footer: str) -> str:
         "url": SITE + p["page_url"],
         "offers": {
             "@type": "Offer",
-            "url": p["url"],
+            "url": etsy_url(p),
             "priceCurrency": p.get("currency", "EUR"),
             "price": f"{float(p['price']):.2f}",
-            "availability": "https://schema.org/InStock",
+            "availability": "https://schema.org/OutOfStock" if unavailable else "https://schema.org/InStock",
             "itemCondition": "https://schema.org/NewCondition",
             "seller": {"@type": "Organization", "name": BRAND, "url": SITE + "/"},
         },
@@ -407,13 +459,15 @@ def product_page(p: dict, cat: Catalogue, header: str, footer: str) -> str:
       <h1 class="product-info__title">{esc(name)}</h1>
       <p class="product-info__sub">{esc(kind["subtitle"])}</p>
       <p class="product-info__price">{esc(price_fmt(p["price"], p.get("currency", "EUR")))} <small>{"Livraison offerte" if p.get("free_shipping") else "Frais de livraison calculés sur Etsy"}</small></p>
+      {('<div class="notice"><p><strong>Momentanément indisponible.</strong> Cette création n\'est pas en stock pour le moment. <a href="/contact">Contactez-nous</a> pour être prévenu de son retour ou pour une fabrication à la demande.</p></div>') if unavailable else ''}
       <div class="product-info__cta">
-        <a class="btn btn--primary btn--lg" href="{esc(p["url"])}" target="_blank" rel="noopener">Commander sur Etsy {ICON_EXT}</a>
+        <a class="btn btn--primary btn--lg" href="{esc(etsy_url(p))}" target="_blank" rel="noopener">{"Voir sur Etsy" if unavailable else "Commander sur Etsy"} {ICON_EXT}</a>
         <button type="button" class="btn btn--secondary btn--lg" data-quickview="{p["listing_id"]}">Aperçu rapide</button>
       </div>
       <p class="product-info__note">Paiement sécurisé, suivi de commande et protection des achats gérés par Etsy. Une question ? <a href="/contact">Contactez-nous</a>.</p>
       <div class="prose product-info__desc">
-        {paragraphs(p.get("description", ""))}
+        {paragraphs(p.get("description", "")) if not p.get("description_long") else ''}
+        {''.join(f'<p>{esc(x)}</p>' for x in p.get("description_long", []))}
         {('<ul>' + ''.join(f'<li>{esc(d)}</li>' for d in p.get('details', [])) + '</ul>') if p.get('details') else ''}
       </div>
       <ul class="icon-list product-info__why">{''.join(f'<li>{ICON_CHECK} <span>{esc(w)}</span></li>' for w in kind['why'])}</ul>
@@ -442,8 +496,11 @@ def product_page(p: dict, cat: Catalogue, header: str, footer: str) -> str:
   </section>
 </main>
 """
-    extra = jsonld(product_ld) + "\n" + jsonld(breadcrumb_ld(crumbs))
-    return head(title, desc, p["page_url"], img_size(images[0], "1588xN") if images else None, extra, og_type="product") + "<body>\n" + set_active(header, "/produits") + body + footer + '<script src="/assets/js/site.js" defer></script>\n</body>\n</html>\n'
+    extra = (jsonld(product_ld) + "\n" + jsonld(breadcrumb_ld(crumbs)) +
+             f'\n<meta property="product:price:amount" content="{float(p["price"]):.2f}">\n<meta property="product:price:currency" content="{esc(p.get("currency", "EUR"))}">'
+             + ('\n<meta name="robots" content="noindex, follow">' if unavailable else ''))
+    page_img = img_size(images[0], "1588xN") if images else None
+    return head(title, desc, p["page_url"], page_img, extra, og_type="product") + "<body>\n" + set_active(header, "/produits") + body + footer + '<script src="/assets/js/site.js" defer></script>\n</body>\n</html>\n'
 
 
 def collection_page(col: dict, items: list, cat: Catalogue, header: str, footer: str) -> str:
@@ -562,21 +619,38 @@ def html_pages(directory: Path) -> list:
     urls = []
     for f in sorted(directory.rglob("*.html")):
         rel = f.relative_to(directory).as_posix()
-        if rel.startswith("google") or rel == "404.html":
+        top = rel.split("/")[0]
+        if top in SKIP or top.startswith(".") or rel.startswith("google") or rel == "404.html":
             continue
         url = "/" + rel[:-5]
         if url.endswith("/index"):
             url = url[:-5]
         if url == "/index":
             url = "/"
-        urls.append((url, date.fromtimestamp(f.stat().st_mtime).isoformat()))
+        urls.append((url, git_date(f) or date.fromtimestamp(f.stat().st_mtime).isoformat()))
     return urls
 
 
 def main() -> int:
+    global _manifest
     data = json.loads(DATA.read_text(encoding="utf-8"))
     cat = Catalogue(data)
     copy_sources()
+
+    # Photos ré-hébergées (si scripts/images.py a tourné) : copie + réécriture des URL dans data/products.json
+    manifest_file = IMAGES_CACHE / "manifest.json"
+    if manifest_file.exists():
+        _manifest = json.loads(manifest_file.read_text(encoding="utf-8"))
+        out_dir = IMAGES_CACHE / "out"
+        if out_dir.exists():
+            shutil.copytree(out_dir, OUT / "img" / "creations", dirs_exist_ok=True)
+        for p in data.get("products", []):
+            p["images"] = [img_size(u, "794xN") if _manifest.get(etsy_image_id(u) or "") else u for u in p.get("images", [])]
+        for c in data.get("categories", []) + data.get("collections_virtuelles", []):
+            if c.get("image") and _manifest.get(etsy_image_id(c["image"]) or ""):
+                c["image"] = img_size(c["image"], "794xN")
+        (OUT / "data" / "products.json").write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        print(f"  photos locales : {len(_manifest)} image(s) servies depuis /img/creations/")
 
     index_src = (ROOT / "index.html").read_text(encoding="utf-8")
     header = extract(index_src, "header")
@@ -604,34 +678,52 @@ def main() -> int:
 
     # ----- pages générées
     generated = []
-    for p in cat.products:
+    for p in cat.all_products:
         d = OUT / "creations" / p["slug"]
         d.mkdir(parents=True, exist_ok=True)
         (d / "index.html").write_text(product_page(p, cat, header, footer), encoding="utf-8")
-        generated.append((p["page_url"], None))
+        if p.get("status") != "unavailable":
+            generated.append((p["page_url"], None))
     for col, items in cat.collections():
         d = OUT / "collections" / col["slug"]
         d.mkdir(parents=True, exist_ok=True)
         (d / "index.html").write_text(collection_page(col, items, cat, header, footer), encoding="utf-8")
         generated.append((f"/collections/{col['slug']}/", None))
 
-    # ----- sitemap.xml
+    # ----- cartes produit insérées dans les pages sources via <!-- wb:products ids="a,b,c" -->
+    pattern = re.compile(r'<!-- wb:products ids="([0-9, ]+)"(?: show-category="(\w+)")? -->.*?<!-- /wb:products -->', re.S)
+    by_id = {str(x["listing_id"]): x for x in cat.all_products}
+    for f in OUT.rglob("*.html"):
+        txt = f.read_text(encoding="utf-8")
+        if "wb:products" not in txt:
+            continue
+        def render(m):
+            ids = [i.strip() for i in m.group(1).split(",") if i.strip()]
+            cards = "".join(product_card(by_id[i], cat, show_category=(m.group(2) != "false"), reveal=False) for i in ids if i in by_id)
+            return f'<!-- wb:products ids="{m.group(1)}" -->{cards}<!-- /wb:products -->'
+        f.write_text(pattern.sub(render, txt), encoding="utf-8")
+
+    # ----- empreinte de cache sur toutes les pages produites
+    for f in OUT.rglob("*.html"):
+        f.write_text(fingerprint(f.read_text(encoding="utf-8")), encoding="utf-8")
+
+    # ----- sitemap.xml (lastmod = date du dernier commit touchant la page ou le catalogue)
+    catalogue_date = git_date(DATA, ROOT / "scripts" / "build.py") or (data.get("updated_at") or date.today().isoformat())[:10]
     today = date.today().isoformat()
-    priority = {"/": "1.0", "/produits": "0.9"}
     urls = []
-    for url, lastmod in html_pages(ROOT) + generated:
-        if url.startswith("/creations/") or url.startswith("/collections/"):
-            pr = "0.8"
-        elif url in ("/mentions-legales", "/politique-confidentialite"):
-            pr = "0.3"
-        else:
-            pr = priority.get(url, "0.7")
-        urls.append(f"  <url><loc>{SITE}{url}</loc><lastmod>{lastmod or today}</lastmod><priority>{pr}</priority></url>")
-    (OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(urls) + "\n</urlset>\n", encoding="utf-8")
+    images_by_url = {p["page_url"]: [img_size(u, "1588xN") for u in p.get("images", [])[:3]] for p in cat.products}
+    source_pages = html_pages(ROOT)
+    index_date = max(d for _, d in source_pages if d) if source_pages else today
+    for url, lastmod in source_pages + generated:
+        if url in ("/", "/produits"):
+            lastmod = max(lastmod or "", catalogue_date)       # ces pages embarquent le catalogue
+        imgs = "".join(f"<image:image><image:loc>{esc(u if u.startswith('http') else SITE + u)}</image:loc></image:image>" for u in images_by_url.get(url, []))
+        urls.append(f"  <url><loc>{SITE}{url}</loc><lastmod>{lastmod or catalogue_date}</lastmod>{imgs}</url>")
+    (OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n' + "\n".join(urls) + "\n</urlset>\n", encoding="utf-8")
 
     # ----- llms.txt (résumé lisible par les assistants IA)
     lines = [f"# {BRAND}", "",
-             f"> Atelier français de gravure sur bois : dessous de plat en rondin de Paulownia (animaux, manga, Disney), cartes Pokémon 3D en bois, horloges murales et créations personnalisées. Motifs dessinés par l'atelier, fabriqués en petites séries. Les ventes se font sur la boutique Etsy officielle ({ETSY_SHOP}).", "",
+             f"> Atelier de gravure sur bois : dessous de plat en rondin de Paulownia (animaux, manga, Disney), cartes Pokémon 3D en bois, horloges murales et créations personnalisées. Motifs dessinés par l'atelier, fabriqués en petites séries. Les ventes se font sur la boutique Etsy officielle ({ETSY_SHOP}).", "",
              f"Site : {SITE}/ · Contact : {cat.shop.get('email', '')} · Instagram : {cat.shop.get('instagram', '')}", "",
              "## Collections", ""]
     for col, items in cat.collections():
@@ -657,7 +749,7 @@ def main() -> int:
     if missing:
         print("ATTENTION liens internes introuvables :", ", ".join(sorted(missing)))
 
-    print(f"✓ {len(cat.products)} pages création, {len(cat.collections())} pages collection, {len(urls)} URL dans le sitemap → {OUT}")
+    print(f"✓ {len(cat.all_products)} pages création, {len(cat.collections())} pages collection, {len(urls)} URL dans le sitemap → {OUT}")
     return 1 if missing else 0
 
 

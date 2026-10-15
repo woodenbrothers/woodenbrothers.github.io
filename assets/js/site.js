@@ -24,9 +24,14 @@
   WB.$ = $; WB.$$ = $$; WB.esc = esc;
 
   /* Change la taille d'une image Etsy : il_794xN. -> il_600x600. etc. */
+  var LOCAL_WIDTH = { '75x75': 400, '170x135': 400, '300x300': 400, '340x270': 400, '570xN': 800, '600x600': 800, '794xN': 800, '800x800': 800, '1140xN': 1200, '1588xN': 1200, 'fullxfull': 1200 };
   WB.imgSize = function (url, size) {
-    return String(url || '').replace(/il_[0-9a-zA-Z]+x[0-9a-zA-Z]+\./, 'il_' + size + '.');
+    url = String(url || '');
+    var local = /^(\/img\/creations\/.+)-(\d+)\.webp$/.exec(url);
+    if (local) return local[1] + '-' + (LOCAL_WIDTH[size] || 800) + '.webp';
+    return url.replace(/il_[0-9a-zA-Z]+x[0-9a-zA-Z]+\./, 'il_' + size + '.');
   };
+  WB.etsyUrl = function (p) { return p.share_url || p.url; };
   WB.price = function (n, cur) {
     if (n == null || isNaN(n)) return '';
     try { return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: cur || 'EUR' }).format(n); }
@@ -101,11 +106,12 @@
         if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.json();
       }).then(function (data) {
-        data.products = (data.products || []).filter(function (p) { return !p.hidden && p.price != null; });
+        data.allProducts = (data.products || []).filter(function (p) { return !p.hidden && p.price != null; });
+        data.products = data.allProducts.filter(function (p) { return p.status !== 'unavailable'; });
         data.categories = data.categories || [];
         data.shop = data.shop || {};
         data.byId = {};
-        data.products.forEach(function (p) { data.byId[String(p.listing_id)] = p; });
+        data.allProducts.forEach(function (p) { data.byId[String(p.listing_id)] = p; });
         data.catBySlug = {};
         data.categories.forEach(function (c) { data.catBySlug[c.slug] = c; });
         data.countBySlug = {};
@@ -156,7 +162,7 @@
         '</div>' +
         '<div class="product-card__actions">' +
           '<a class="btn btn--secondary btn--sm" href="' + url + '">Détails</a>' +
-          '<a class="btn btn--primary btn--sm" href="' + esc(p.url) + '" target="_blank" rel="noopener">Commander sur Etsy</a>' +
+          '<a class="btn btn--primary btn--sm" href="' + esc(WB.etsyUrl(p)) + '" target="_blank" rel="noopener">Commander sur Etsy</a>' +
         '</div>' +
       '</article>';
   };
@@ -223,16 +229,17 @@
           (cat ? '<span class="modal__cat">' + esc(cat.name) + '</span>' : '') +
           '<h2 class="modal__title">' + esc(p.short_title || p.title) + '</h2>' +
           '<p class="modal__price">' + esc(WB.price(p.price, p.currency)) + (p.free_shipping ? '<small>Livraison offerte</small>' : '') + '</p>' +
+          (p.status === 'unavailable' ? '<p class="notice"><strong>Momentanément indisponible.</strong> <a href="/contact">Contactez-nous</a> pour être prévenu de son retour.</p>' : '') +
           (p.description ? '<p class="modal__desc">' + esc(p.description) + '</p>' : '') +
           (p.details && p.details.length ? '<ul class="modal__details">' + p.details.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' : '') +
           '<div class="modal__actions">' +
-            '<a class="btn btn--primary btn--lg" href="' + esc(p.url) + '" target="_blank" rel="noopener">Commander sur Etsy ' + ICON_EXT + '</a>' +
+            '<a class="btn btn--primary btn--lg" href="' + esc(WB.etsyUrl(p)) + '" target="_blank" rel="noopener">' + (p.status === 'unavailable' ? 'Voir sur Etsy ' : 'Commander sur Etsy ') + ICON_EXT + '</a>' +
             (p.slug && location.pathname.indexOf('/creations/' + p.slug) !== 0 ? '<a class="btn btn--secondary btn--lg" href="' + esc(WB.pageUrl(p)) + '">Voir la page</a>' : '') +
           '</div>' +
           '<p class="modal__note">Paiement sécurisé, suivi de commande et protection des achats gérés par Etsy. Une question ? <a href="/contact">Contactez-nous</a>.</p>' +
         '</div>' +
       '</div>';
-    if (typeof d.showModal !== 'function') { window.open(p.url, '_blank', 'noopener'); return; }
+    if (typeof d.showModal !== 'function') { window.open(WB.etsyUrl(p), '_blank', 'noopener'); return; }
     if (!d.open) d.showModal();
     document.body.style.overflow = 'hidden';
     history.replaceState(null, '', location.pathname + location.search + '#p=' + p.listing_id);

@@ -44,8 +44,8 @@ ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_DATA = ROOT / "data" / "products.json"
 
 # Champs du catalogue que la synchronisation ne doit jamais écraser.
-EDITORIAL_FIELDS = ("short_title", "slug", "seo_title", "seo_description", "description", "details",
-                    "kind", "featured", "free_shipping", "hidden", "category_locked")
+EDITORIAL_FIELDS = ("short_title", "slug", "seo_title", "seo_description", "description", "description_long",
+                    "details", "kind", "featured", "free_shipping", "hidden", "category_locked", "share_url")
 
 # Règles de rattachement d'une section Etsy à une catégorie du site.
 # (mot-clé normalisé contenu dans le titre de la section -> slug de catégorie)
@@ -342,7 +342,7 @@ def merge(data: dict, shop: dict, sections: dict, listings: list) -> dict:
             "etsy_section_id": section_id,
             "created_timestamp": l.get("original_creation_timestamp") or l.get("creation_timestamp"),
         }
-        for key in ("seo_title", "seo_description"):
+        for key in ("seo_title", "seo_description", "description_long", "share_url"):
             if old.get(key):
                 product[key] = old[key]
         if old.get("hidden"):
@@ -356,7 +356,14 @@ def merge(data: dict, shop: dict, sections: dict, listings: list) -> dict:
     removed = sorted(set(old_products) - {p["listing_id"] for p in products})
     added = sorted({p["listing_id"] for p in products} - set(old_products))
     if removed:
-        log("  − articles retirés (plus actifs sur Etsy) : " + ", ".join(str(r) for r in removed))
+        # Les articles qui ne sont plus actifs (vendus, désactivés) sont conservés avec le statut
+        # « unavailable » : leur page reste en ligne avec un bandeau, ils sortent des grilles.
+        # Pour les retirer définitivement, ajoutez "hidden": true dans data/products.json.
+        log("  − articles plus actifs sur Etsy, conservés en « indisponible » : " + ", ".join(str(r) for r in removed))
+        for lid in removed:
+            keep = copy.deepcopy(old_products[lid])
+            keep["status"] = "unavailable"
+            products.append(keep)
     if added:
         log("  + nouveaux articles : " + ", ".join(str(a) for a in added))
 

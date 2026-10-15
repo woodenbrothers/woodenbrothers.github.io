@@ -25,6 +25,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Cache des photos ré-hébergées
+        uses: actions/cache@v4
+        with:
+          path: .cache/images
+          key: images-${{ hashFiles('data/products.json') }}
+          restore-keys: images-
+      - name: Préparer les photos (WebP, 3 tailles, noms descriptifs)
+        continue-on-error: true
+        run: |
+          python3 -m pip install --quiet pillow
+          python3 scripts/images.py
       - name: Construire le site (pages créations, collections, sitemap, llms.txt)
         run: python3 scripts/build.py
       - name: Setup Pages
