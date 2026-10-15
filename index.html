@@ -1,1952 +1,319 @@
 <!DOCTYPE html>
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-<html lang="fr">
+<html lang="fr" class="no-js">
 <head>
-    <meta name="author" content="Wooden Brothers">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Wooden Brothers – Dessous de plat en bois">
-    <meta property="og:description" content="Dessous de plat artisanaux en Paulownia : durables et éco-responsables. Animaux, mangas & Pokémon. Découvrez nos collections.">
-    <meta property="og:image" content="https://www.woodenbrothers.fr/og-image.jpg">
-    <meta property="og:url" content="https://www.woodenbrothers.fr/">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wooden Brothers - Dessous de plat en bois</title>
-    <!-- Favicons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="Images/logo32.webp">
-    <link rel="icon" type="image/png" sizes="16x16" href="Images/logo16.webp">
-    <link rel="icon" type="image/png" sizes="48x48" href="Images/logo48.webp">
-    <link rel="icon" type="image/png" sizes="192x192" href="Images/logo192.webp">
-    <link rel="apple-touch-icon" sizes="180x180" href="Images/logo192.webp">
-    <link rel="icon" type="image/png" sizes="512x512" href="Images/logo512.webp">
-    <meta name="msapplication-TileImage" content="Images/logo192.webp">
-    <meta name="msapplication-TileColor" content="#3A5A3B">
-    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Eudoxus+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #3A5A3B;
-            --secondary-color: #b49972;
-            --background-color: #f5fbf5;
-            --text-color: #0f170f;
-            --secondary-text-color: #2A412B;
-            --text-white-color: #eff7ef;
-            --accent-color: #9dd8ce;
-            --card-background: #eef4ee;
-            --secondary-card-background: #e8f5e8;
-            --sold-color: #850C0C;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Eudoxus Sans', sans-serif;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-        
-        /* Header styles */
-        .header {
-            position: relative;
-            height: 100vh;
-            min-height: 600px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            background: var(--card-background);
-        }
-
-        .header-shapes {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .shape {
-            position: absolute;
-            background: var(--primary-color);
-            opacity: 0.1;
-            animation: floatAnimation 20s infinite ease-in-out;
-        }
-
-        .shape:nth-child(1) {
-            width: 300px;
-            height: 300px;
-            top: -50px;
-            left: -100px;
-            transform: rotate(45deg);
-        }
-
-        .shape:nth-child(2) {
-            width: 200px;
-            height: 200px;
-            bottom: 50px;
-            right: -50px;
-            transform: rotate(30deg);
-            animation-delay: -5s;
-        }
-
-        .shape:nth-child(3) {
-            width: 150px;
-            height: 150px;
-            top: 30%;
-            left: 10%;
-            transform: rotate(60deg);
-            animation-delay: -10s;
-        }
-
-        .shape:nth-child(4) {
-            width: 180px;
-            height: 180px;
-            top: 15%;
-            right: 15%;
-            transform: rotate(15deg);
-            animation-delay: -15s;
-        }
-
-        .shape:nth-child(5) {
-            width: 220px;
-            height: 220px;
-            bottom: 20%;
-            left: 35%;
-            transform: rotate(75deg);
-            animation-delay: -20s;
-        }
-
-        @keyframes floatAnimation {
-            0%, 100% {
-                transform: translateY(0) rotate(45deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(60deg);
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-            .shape:nth-child(3),
-            .shape:nth-child(4),
-            .shape:nth-child(5) {
-                display: none;
-            }
-        }
-
-        .logo-container {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 1rem;
-            z-index: 10;
-        }
-        
-        .logo {
-            width: 150px;
-            height: 150px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease;
-        }
-
-        .logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .logo:hover {
-            transform: scale(1.1);
-        }
-
-        .header-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            height: 100vh;
-            position: relative;
-            padding: 2rem;
-        }
-        
-        .header-title {
-            font-family: 'Lora', serif;
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .header-subtitle {
-            font-size: 1.2rem;
-            color: var(--secondary-text-color);
-            max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .ventes-scroll {
-            margin-top: 4rem;
-        }
-
-        .ventes-scroll {
-            margin-top: 4rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .scroll-indicator.ventes-scroll {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin: 14rem auto 0 auto; /* centrage horizontal + marge top */
-            opacity: 1 !important;
-            cursor: pointer;
-            z-index: 1;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .meilleures-ventes {
-            padding-bottom: 3rem;
-        }
-
-        .meilleures-ventes-container .btn {
-            display: block;
-            margin: 1rem auto 0 auto;
-            width: fit-content;
-        }
-
-        .meilleures-ventes {
-            margin-top: 6rem; /* ajuste la valeur si nécessaire */
-        }
-
-        /* Nouveautés section */
-        @media (max-width: 768px) {
-            .nouveautes {
-                padding-top: 7rem;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .nouveautes {
-                padding: 13rem 2rem 5rem;
-            }
-        }
-
-        .nouveautes-container .product-link {
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .nouveautes-container .product-category {
-            display: none !important;
-        }
-
-        .nouveautes-container .btn {
-            margin: 1rem auto;
-            display: block;
-            width: fit-content;
-        }
-
-        .section-title {
-            text-align: center;
-            font-family: 'Eudoxus Sans', sans-serif;
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 3rem;
-        }
-        
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .product-card {
-            background: var(--card-background);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .product-image-container {
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-        }
-        
-        .product-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .product-image-container:hover .product-image {
-            transform: scale(1.1);
-        }
-
-        .product-info {
-            padding: 1.5rem;
-            text-align: center;
-        }
-        
-        .product-title {
-            font-size: 1.2rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-        
-        .product-price {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--text-color);
-            margin-bottom: 1rem;
-        }
-        
-        .product-original-price {
-            text-decoration: line-through;
-            color: var(--text-color);
-            margin-right: 0.5rem;
-        }
-        
-        .product-discount {
-            color: var(--sold-color);
-            margin-left: 0.5rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: var(--primary-color);
-            color: var(--text-white-color);
-            text-decoration: none;
-            border-radius: 25px;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            transform: scale(1.05);
-        }
-        /* Nouveautés dynamique : bouton harmonisé et forcé */
-        #nouveautes-dynamiques .btn {
-            display: block;
-            padding: 0.8rem 2rem;
-            background: var(--primary-color);
-            color: var(--text-white-color) !important;
-            text-decoration: none !important;
-            border-radius: 25px;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-            font-size: 1rem;
-            text-align: center;
-            width: fit-content;
-            margin: 1rem auto 0 auto;
-            font-weight: 500;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        #nouveautes-dynamiques .btn:hover {
-            transform: scale(1.05);
-        }
-
-        #nouveautes-dynamiques .btn:visited {
-            color: var(--text-white-color) !important;
-        }
-
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            overflow-y: auto;
-        }
-
-        .modal-content {
-            background: var(--background-color);
-            padding: 2rem;
-            border-radius: 25px;
-            max-width: 1000px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            overflow-x: hidden;
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-            margin: 0 auto;
-            display: flex;
-            flex-direction: row;
-            gap: 2rem;
-        }
-
-        .modal-close {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--text-color);
-            z-index: 1001;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background-color: var(--card-background);
-            transition: all 0.3s ease;
-            line-height: 1;
-            padding: 0;
-            font-size: 20px;
-            transform-origin: center;
-        }
-
-        .modal-close:hover {
-            transform: rotate(90deg);
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .modal-gallery {
-            flex: 0 0 45%;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin: 0;
-        }
-
-        .main-image-container {
-            position: relative;
-            width: 100%;
-            height: 450px;
-            border-radius: 8px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--card-background);
-        }
-
-        .main-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            cursor: pointer;
-        }
-
-        .thumbnail-container {
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            padding: 10px 0;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            justify-content: center;
-        }
-
-        .thumbnail-container::-webkit-scrollbar {
-            display: none;
-        }
-
-        .thumbnail {
-            width: 90px;
-            height: 90px;
-            object-fit: cover;
-            border-radius: 4px;
-            cursor: pointer;
-            opacity: 0.6;
-            transition: opacity 0.3s ease;
-        }
-
-        .thumbnail.active {
-            opacity: 1;
-            border: 2px solid var(--primary-color);
-        }
-
-        .gallery-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            z-index: 2;
-            font-size: 20px;
-        }
-
-        .gallery-nav:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .gallery-prev {
-            left: 10px;
-        }
-
-        .gallery-next {
-            right: 10px;
-        }
-
-        .modal-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: var(--text-color);
-            text-align: center;
-        }
-
-        .modal-description {
-            flex: 0 0 55%;
-            line-height: 1.6;
-            color: var(--text-color);
-            margin: 0;
-            padding-right: 1rem;
-        }
-
-        .modal-description h3 {
-            color: var(--text-color);
-            margin: 1.5rem 0 1rem;
-            font-size: 1.2rem;
-        }
-
-        .modal-description ul {
-            list-style-type: disc;
-            margin-left: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .modal-description li {
-            margin-bottom: 0.5rem;
-        }
-
-        .modal-buy-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: var(--primary-color);
-            color: var(--text-white-color);
-            text-decoration: none;
-            border-radius: 25px;
-            transition: transform 0.3s ease;
-        }
-
-        .modal-buy-button:hover {
-            transform: scale(1.05);
-        }
-
-        /* Citation section */
-        .quote-section {
-            padding: 5rem 2rem;
-            background: var(--secondary-card-background);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .quote-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .quote-text {
-            font-family: 'Lora', serif;
-            font-size: 2.8rem;
-            color: var(--primary-color);
-            line-height: 1.4;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        /* Collections section */
-        .collections {
-            padding: 5rem 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .collections-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            padding: 0 1rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .collection-card {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 300px;
-        }
-
-        .collection-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .collection-card a {
-            display: block;
-            width: 100%;
-            height: 100%;
-            text-decoration: none;
-            color: white;
-        }
-
-        .collection-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 15px;
-        }
-
-        .collection-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
-            pointer-events: none;
-        }
-
-        .collection-title {
-            position: absolute;
-            bottom: 1rem;
-            left: 1rem;
-            right: 1rem;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 0.5rem;
-            border-radius: 12px;
-            font-size: 1.1rem;
-        }
-
-        .collection-title img {
-            width: 24px;
-            height: 24px;
-            object-fit: contain;
-        }
-
-        .section-collections {
-            padding-bottom: 3rem;
-            padding-top: 50px;
-        }
-
-        @media (max-width: 768px) {
-            .collection-card {
-                margin-bottom: 1rem;
-                height: auto;
-            }
-            
-            .collection-title {
-                bottom: 15px;
-                margin-top: 0;
-                white-space: nowrap;
-                font-size: 0.9rem;
-                padding: 8px 12px;
-            }
-
-            .collection-card img {
-                width: 100%;
-                height: 200px;
-                object-fit: cover;
-            }
-
-            .collection-card::after {
-                display: none;
-            }
-
-            .collection-title img {
-                width: 16px !important;
-                height: 16px !important;
-                min-width: 16px !important;
-                min-height: 16px !important;
-                margin-right: 6px;
-            }
-        }
-
-        /* Newsletter section */
-        .newsletter {
-            padding: 5rem 2rem;
-            background: var(--card-background);
-        }
-
-        .newsletter-container {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .newsletter-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .form-input {
-            padding: 0.8rem;
-            border: 2px solid var(--primary-color);
-            border-radius: 25px;
-            font-size: 1rem;
-            width: 100%;
-        }
-
-        /* Instagram section styles */
-        .instagram-section {
-            background-color: var(--card-background);
-            padding: 2rem 0;
-            margin-top: 3rem;
-            border-radius: 25px;
-            text-align: center;
-        }
-        
-        .instagram-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .instagram-header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            margin-bottom: 2rem;
-            text-decoration: none;
-            color: var(--text-color);
-        }
-
-        .instagram-header img {
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            object-fit: contain;
-        }
-
-        .instagram-header span {
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        .instagram-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
-            padding: 0 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .instagram-grid {
-                grid-template-columns: repeat(4, 1fr);
-                padding: 0 2rem;
-            }
-        }
-
-        .instagram-grid a {
-            position: relative;
-            display: block;
-            width: 100%;
-            padding-bottom: 100%;
-            overflow: hidden;
-            border-radius: 15px;
-            transition: transform 0.3s ease;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .instagram-grid a:hover {
-            transform: scale(1.05);
-        }
-
-        .instagram-grid img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .instagram-follow-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 500;
-            transition: transform 0.3s ease;
-        }
-
-        .instagram-follow-btn:hover {
-            transform: scale(1.05);
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--primary-color);
-            color: var(--text-white-color);
-            padding: 4rem 2rem 2rem;
-        }
-
-        .footer-content {
-            max-width: 400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            gap: 0;
-            text-align: left;
-            padding: 0 1rem;
-        }
-
-        .footer-content > div {
-            flex: 0 1 auto;
-            margin: 0;
-        }
-
-        .footer-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links a {
-            color: var(--text-white-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-color);
-        }
-
-        .footer-content h3 {
-            text-align: left;
-            margin-bottom: 1rem;
-        }
-
-        .copyright {
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .header-title {
-                font-size: 2rem;
-            }
-
-            .newsletter-form {
-                grid-template-columns: 1fr;
-            }
-
-            .products-grid {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-                padding: 0 1rem;
-            }
-
-            .meilleures-ventes-container {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                gap: 2rem;
-                max-width: 1200px;
-                margin: 0 auto;
-            }
-
-            @media (max-width: 768px) {
-                .meilleures-ventes-container {
-                    grid-template-columns: repeat(2, 1fr);
-                }
-            }
-
-            .quote-text {
-                font-size: 1.5rem;
-            }
-
-            .modal-content {
-                flex-direction: column;
-            }
-            
-            .modal-description {
-                padding-right: 0;
-            }
-
-            .nouveautes-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-                padding: 0 1rem;
-            }
-
-            /* Correction: cibler l'ID #nouveautes-dynamiques pour la grille responsive */
-            #nouveautes-dynamiques {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-                padding: 0 1rem;
-            }
-
-            .collections-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-                padding: 0 1rem;
-            }
-
-            .product-card {
-                width: 100%;
-                margin-bottom: 1rem;
-            }
-
-            .product-card img {
-                width: 100%;
-                height: auto;
-                aspect-ratio: 1;
-                object-fit: cover;
-            }
-
-            .collection-card {
-                width: 100%;
-                margin-bottom: 1rem;
-            }
-
-            .collection-card img {
-                width: 100%;
-                height: auto;
-                aspect-ratio: 1;
-                object-fit: cover;
-            }
-        }
-
-        /* Ajout des styles pour l'animation de défilement */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 4rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            transition: opacity 0.3s ease;
-            z-index: 10;
-            opacity: 1 !important;
-        }
-
-        .scroll-indicator:hover {
-            opacity: 0.8;
-        }
-
-        .scroll-arrow {
-            width: 32px;
-            height: 32px;
-            border: 2px solid var(--text-color);
-            border-radius: 50%;
-            position: relative;
-            animation: bounce 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .scroll-arrow::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 8px;
-            height: 8px;
-            border-right: 2px solid var(--text-color);
-            border-bottom: 2px solid var(--text-color);
-            transform: translate(-50%, -50%) rotate(45deg);
-            animation: arrowPulse 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .scroll-indicator:hover .scroll-arrow {
-            transform: scale(1.1);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            border-color: var(--primary-color);
-        }
-
-        .scroll-indicator:hover .scroll-arrow::after {
-            border-color: var(--primary-color);
-        }
-
-        .scroll-indicator span {
-            color: var(--text-color);
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(10px);
-            }
-        }
-
-        @keyframes arrowPulse {
-            0%, 100% {
-                opacity: 1;
-                transform: translate(-50%, -50%) rotate(45deg);
-            }
-            50% {
-                opacity: 0.7;
-                transform: translate(-50%, -50%) rotate(45deg);
-            }
-        }
-        /* ✅ Mobile : cartes de même hauteur + boutons alignés */
-        @media (max-width: 768px) {
-          /* Grille 2 colonnes et items étirés */
-          .meilleures-ventes-container {
-            grid-template-columns: repeat(2, 1fr);
-            align-items: stretch;
-          }
-
-          /* Chaque carte = colonne flex, bouton poussé en bas */
-          .meilleures-ventes-container .product-card {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-          }
-
-          /* Le carré est géré par le CONTAINER, pas l'img */
-          .meilleures-ventes-container .product-image-container {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 1 / 1;   /* carré strict pour toutes les vignettes */
-            overflow: hidden;
-          }
-          .meilleures-ventes-container .product-image {
-            position: absolute;    /* remplit le container carré */
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-
-          /* Le bouton colle au bas de la carte */
-          .meilleures-ventes-container .btn {
-            margin-top: auto;
-            align-self: stretch;   /* pleine largeur (optionnel) */
-          }
-
-          /* (Option) neutraliser AOS sur mobile pour éviter des décalages */
-          [data-aos] {
-            transform: none !important;
-          }
-        }
-    </style>
-  <style>
-  @media (max-width: 768px) {
-    #nouveautes-dynamiques .product-card {
-      display: block !important;
-      background: var(--card-background);
-      border-radius: 15px;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-      width: 100%;
-      max-width: 100%;
-      margin: 1rem auto;
-      /* Ajout pour garantir la visibilité des produits */
-      visibility: visible !important;
-      opacity: 1 !important;
-      transform: none !important;
-      height: auto !important;
-      pointer-events: auto !important;
-    }
-
-    #nouveautes-dynamiques .product-image {
-      display: block;
-      width: 100%;
-      height: auto !important;
-      aspect-ratio: 1;
-      object-fit: cover;
-    }
-
-    #nouveautes-dynamiques .product-info {
-      display: block;
-      text-align: center;
-      padding: 1rem;
-    }
-
-    #nouveautes-dynamiques .btn {
-      display: block;
-      margin: 0.5rem auto;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
-  </style>
-</head>
-<body>
-    <header class="header">
-        <div class="header-shapes">
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
-        </div>
-        <div class="header-content">
-            <div class="logo-container">
-        <div class="logo">
-                    <img src="Images/logo.webp" alt="Wooden Brothers Logo">
-                </div>
-            </div>
-            <h1 class="header-title" data-aos="fade-up">Wooden Brothers</h1>
-            <p class="subtitle" style="color: var(--primary-color); font-family: 'Lora', serif; font-size: 1.5rem;">Chaque pièce porte en elle le grain du bois et l'empreinte de notre passion.</p>
-            <div class="scroll-indicator">
-                <div class="scroll-arrow"></div>
-                <span>Découvrir nos créations</span>
-            </div>
-        </div>
-    </header>
-
-    <section class="meilleures-ventes">
-        <h2 class="section-title" data-aos="fade-up">Meilleures ventes</h2>
-        <div class="products-grid meilleures-ventes-container" id="meilleures-ventes">
-          
-          <div class="product-card" data-aos="fade-up">
-            <a href="https://www.etsy.com/fr/listing/1838716908/dessous-de-plat-chat-en-bois-massif?" target="_blank" rel="noopener noreferrer">
-              <div class="product-image-container">
-                <img src="https://i.etsystatic.com/56732046/r/il/5e0bc6/6588924415/il_1588xN.6588924415_lsd8.jpg" alt="Meilleure vente - Dessous de plat chat" class="product-image">
-              </div>
-            </a>
-            <a href="https://www.etsy.com/fr/listing/1838716908/dessous-de-plat-chat-en-bois-massif?" class="btn" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
-          </div>
-      
-          <div class="product-card" data-aos="fade-up">
-            <a href="https://www.etsy.com/fr/listing/1865127564/dessous-de-plat-en-bois-luffy-one-piece?" target="_blank" rel="noopener noreferrer">
-              <div class="product-image-container">
-                <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Meilleure vente - Dessous de plat Luffy" class="product-image">
-              </div>
-            </a>
-            <a href="https://www.etsy.com/fr/listing/1865127564/dessous-de-plat-en-bois-luffy-one-piece?" class="btn" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
-          </div>
-
-          <div class="product-card" data-aos="fade-up">
-            <a href="https://www.etsy.com/fr/listing/4297694285/carte-en-bois-3d-dracaufeu-pokemon?" target="_blank" rel="noopener noreferrer">
-              <div class="product-image-container">
-                <img src="https://i.etsystatic.com/56732046/r/il/b40d5b/6914064444/il_600x600.6914064444_h8tw.jpg" alt="Meilleure vente - Carte pokemon Dracaufeu en 3D" class="product-image">
-              </div>
-            </a>
-            <a href="https://www.etsy.com/fr/listing/4297694285/carte-en-bois-3d-dracaufeu-pokemon?" class="btn" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
-          </div>
-
-          <div class="product-card mobile-only" data-aos="fade-up">
-            <a href="https://www.etsy.com/fr/listing/1880783276/dessous-de-plat-en-bois-eren-attaque-des?">
-                <div class="product-image-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Meilleure vente - dessous de plat en bois gravé Eren - Attaque des Titans" class="product-image">
-                </div>
-            </a>
-            <a href="https://www.etsy.com/fr/listing/1880783276/dessous-de-plat-en-bois-eren-attaque-des?" class="btn" target="_blank" rel="noopener noreferrer">Commander sur Etsy</a>
-          </div>
-        </div>
-        <style>
-            @media (max-width: 768px) {
-                .meilleures-ventes-container .product-image {
-                    aspect-ratio: 1 / 1 !important;
-                    width: 100%;
-                    height: auto !important;
-                    object-fit: cover;
-                    margin: 0 auto;
-                }
-
-                .meilleures-ventes-container .product-card {
-                    max-width: 250px;
-                    margin: 0 auto 1rem;
-                }
-
-                .meilleures-ventes-container .btn {
-                    font-size: 0.9rem;
-                    padding: 0.6rem 1.2rem;
-                }
-            }
-        </style>
-        <style>
-        .mobile-only {
-            display: none !important;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-only {
-                display: block !important;
-            }
-        }
-        @media (max-width: 768px) {
-            .paulownia-section {
-              padding: 4rem 1.5rem 3rem !important;
-              margin-top: -10rem;
-            }
-
-            .paulownia-section .quote-text {
-              font-size: 2rem !important;
-            }
-
-            .paulownia-section p {
-              font-size: 1rem !important;
-            }
-          }
-        /* ✅ Aligner les boutons en bas des cartes sur mobile */
-        @media (max-width: 768px) {
-
-          /* Les grilles doivent étirer les items */
-          .products-grid,
-          .meilleures-ventes-container,
-          #nouveautes-dynamiques {
-            align-items: stretch;
-          }
-
-          /* Cartes = colonnes flex, hauteur égale */
-          .products-grid .product-card,
-          .meilleures-ventes-container .product-card,
-          #nouveautes-dynamiques .product-card {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-          }
-
-          /* Zone infos prend toute la place disponible */
-          .products-grid .product-info,
-          .meilleures-ventes-container .product-info,
-          #nouveautes-dynamiques .product-info {
-            display: flex;
-            flex-direction: column;
-            flex: 1 1 auto;  /* étire le bloc jusqu'en bas */
-          }
-
-          /* Le bouton est collé au bas de la carte */
-          .products-grid .product-card .btn,
-          .meilleures-ventes-container .product-card .btn,
-          #nouveautes-dynamiques .product-card .btn {
-            margin-top: auto;         /* pousse en bas */
-            width: 100%;              /* optionnel : pleine largeur */
-            max-width: none;
-          }
-
-          /* Optionnel : normaliser la hauteur du titre pour éviter les décalages */
-          .products-grid .product-title,
-          .meilleures-ventes-container .product-title,
-          #nouveautes-dynamiques .product-title {
-            min-height: 3.2em; /* ≈ 2 lignes */
-          }
-        }
-
-        /* ✅ Aligner les boutons en bas et uniformiser la hauteur des cartes (mobile) */
-        @media (max-width: 768px) {
-          /* Les grilles doivent étirer les items */
-          .meilleures-ventes-container,
-          #nouveautes-dynamiques,
-          .products-grid { align-items: stretch; }
-
-          /* Chaque carte = colonne flex */
-          .meilleures-ventes-container .product-card,
-          #nouveautes-dynamiques .product-card,
-          .products-grid .product-card {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-          }
-
-          /* Image carrée partout pour cartes égales */
-          .meilleures-ventes-container .product-image-container,
-          #nouveautes-dynamiques .product-image-container,
-          .products-grid .product-image-container {
-            width: 100%;
-            aspect-ratio: 1 / 1;          /* iOS OK */
-            overflow: hidden;
-          }
-          .meilleures-ventes-container .product-image,
-          #nouveautes-dynamiques .product-image,
-          .products-grid .product-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-
-          /* Le bouton colle au bas de la carte */
-          .meilleures-ventes-container .product-card .btn,
-          #nouveautes-dynamiques .product-card .btn,
-          .products-grid .product-card .btn {
-            margin-top: auto;      /* pousse le bouton en bas */
-            align-self: stretch;   /* pleine largeur de la carte (optionnel) */
-          }
-        }
-
-        /* ✅ Mobile : cartes de même hauteur + boutons alignés */
-        @media (max-width: 768px) {
-          /* Grille 2 colonnes et items étirés */
-          .meilleures-ventes-container {
-            grid-template-columns: repeat(2, 1fr);
-            align-items: stretch;
-          }
-
-          /* Chaque carte = colonne flex, bouton poussé en bas */
-          .meilleures-ventes-container .product-card {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-          }
-
-          /* Le carré est géré par le CONTAINER, pas l'img */
-          .meilleures-ventes-container .product-image-container {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 1 / 1;   /* carré strict pour toutes les vignettes */
-            overflow: hidden;
-          }
-          .meilleures-ventes-container .product-image {
-            position: absolute;    /* remplit le container carré */
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-
-          /* Le bouton colle au bas de la carte */
-          .meilleures-ventes-container .btn {
-            margin-top: auto;
-            align-self: stretch;   /* pleine largeur (optionnel) */
-          }
-
-          /* (Option) neutraliser AOS sur mobile pour éviter des décalages */
-          [data-aos] {
-            transform: none !important;
-          }
-        }
-        </style>
-        
-        <!-- 🔽 Bouton Voir tous les produits -->
-        <div style="text-align: center; margin-top: 3rem;">
-          <a href="/produits" class="btn" style="font-size: 1.1rem; padding: 1rem 2.5rem;">Voir tous les produits</a>
-        </div>
-
-        <div class="desktop-only">
-            <div class="scroll-indicator ventes-scroll" id="scroll-vers-nouveautes">
-                <div class="scroll-arrow"></div>
-                <span>Voir les nouveautés</span>
-                <style>
-                    @media (max-width: 768px) {
-                        .desktop-only {
-                            display: none !important;
-                        }
-                    }
-                </style>
-            </div>
-          </div>
-      </section>
-
-    <style>
-      @media (max-width: 768px) {
-        .quote-section {
-          margin-top: 4rem;
-        }
-      }
-    </style>
-    <section class="nouveautes">
-        <h2 class="section-title" data-aos="fade-up">Nouveautés</h2>
-        
-        <!-- ZONE où les produits seront injectés -->
-        <div class="products-grid nouveautes-container" id="nouveautes-dynamiques" style="display: grid;">
-            <!-- Les 3 cartes seront ajoutées ici via JS -->
-        </div>
-    
-        <!-- Bouton en dehors du container -->
-        <div style="text-align: center; margin-top: 3rem;">
-            <a href="/produits" class="btn" style="font-size: 1.1rem; padding: 1rem 2.5rem;">Voir tous les produits</a>
-        </div>
-    </section>
-        
-    <section class="quote-section">
-        <div class="quote-container" data-aos="fade-up">
-            <p class="quote-text">
-                Nos Collections
-            </p>
-        </div>
-    </section>
-
-    <section class="section-collections">
-        <div class="collections-grid">
-            <div class="collection-card">
-                <a href="/produits?filter=manga-anime">
-                    <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Manga & Anime">
-                    <div class="collection-title">
-                        <img src="Images/manga.webp" alt="Manga icon">
-                        Manga & Anime
-                    </div>
-                </a>
-                </div>
-            <div class="collection-card">
-                <a href="/produits?filter=animaux">
-                    <img src="https://i.etsystatic.com/56732046/r/il/8bb26a/6543136974/il_600x600.6543136974_k4v9.jpg" alt="Animaux">
-                    <div class="collection-title">
-                        <img src="Images/animaux.webp" alt="Animaux icon">
-                        Animaux
-            </div>
-                </a>
-                </div>
-            <div class="collection-card">
-                <a href="/produits?filter=cartes-pokemon">
-                    <img src="https://i.etsystatic.com/56732046/r/il/b0fcdf/6962047545/il_600x600.6962047545_6p91.jpg" alt="Cartes Pokemon">
-                    <div class="collection-title">
-                        <img src="Images/cartes.webp" alt="Cartes icon">
-                        Cartes Pokémon
-            </div>
-                </a>
-                </div>
-            <div class="collection-card">
-                <a href="/produits?filter=disney">
-                    <img src="https://i.etsystatic.com/56732046/r/il/0ed570/7272114177/il_794xN.7272114177_jnrb.jpg" alt="Dessous de plat Disney">
-                    <div class="collection-title">
-                        <img src="Images/disney.webp" alt="Disney icon">
-                        Disney
-            </div>
-                </a>
-                </div>
-            </div>
-    </section>
-    <div style="margin-bottom: 15rem;"></div>
-
-    <section class="paulownia-section" style="background: var(--secondary-card-background); padding: 5rem 2rem;">
-      <div class="quote-container" data-aos="fade-up" style="max-width: 800px; margin: 0 auto; text-align: center;">
-        <h2 class="quote-text" style="font-family: 'Lora', serif; font-size: 2.8rem; color: var(--primary-color); margin-bottom: 2rem; font-weight: 700;">
-          Un bois responsable et durable
-        </h2>
-        <p style="font-size: 1.2rem; color: var(--text-color); line-height: 1.8;">
-          Tous nos dessous de plat sont fabriqués à partir de bois de <strong>Paulownia</strong>, une essence naturellement légère, résistante et élégante. Ce bois se distingue par sa <strong>croissance exceptionnelle</strong> : il peut atteindre 10 mètres de haut en seulement 5 ans, tout en stockant une grande quantité de CO₂.
-        </p>
-        <p style="font-size: 1.2rem; color: var(--text-color); margin-top: 1.5rem; line-height: 1.8;">
-          En choisissant le Paulownia, nous favorisons un <strong>matériau durable</strong> à faible impact environnemental, tout en garantissant un rendu <strong>naturel et raffiné</strong>. C’est notre façon d’allier artisanat, esthétique et respect de la planète.
-        </p>
-      </div>
-    </section>
-
-    <section class="newsletter">
-        <section class="instagram-section">
-            <div class="instagram-content">
-                <a href="https://www.instagram.com/woodenbrothers.art/" class="instagram-header" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 0.75rem; justify-content: center; text-decoration: none;">
-                    <img src="Images/logo.webp" alt="Wooden Brothers Logo" style="width: 25px; height: 25px; border-radius: 50%; object-fit: contain;">
-                    <span style="font-size: 1.5rem; font-weight: 600; color: var(--text-color);">Wooden Brothers</span>
-                </a>
-                <div class="instagram-grid">
-                    <a href="https://www.instagram.com/p/DH1Gt2PtRTN/" target="_blank" rel="noopener noreferrer">
-                        <img src="https://i.etsystatic.com/56732046/r/il/f0edee/6750817180/il_1588xN.6750817180_12lw.jpg" alt="Dessous de plat Eren">
-                    </a>
-                    <a href="https://www.instagram.com/p/DHlrT-gt9Z6/" target="_blank" rel="noopener noreferrer">
-                        <img src="https://i.etsystatic.com/56732046/r/il/314182/6740736034/il_1588xN.6740736034_qr6l.jpg" alt="Dessous de plat Itachi">
-                    </a>
-                    <a href="https://www.instagram.com/p/DHgo40bNd6t/" target="_blank" rel="noopener noreferrer">
-                        <img src="https://i.etsystatic.com/56732046/r/il/8ad2fe/6782430493/il_1588xN.6782430493_e4fr.jpg" alt="Dessous de plat Goku">
-                    </a>
-                    <a href="https://www.instagram.com/p/DHMAJKnMQSR/" target="_blank" rel="noopener noreferrer">
-                        <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Dessous de plat Luffy">
-                    </a>
-                </div>
-                <a href="https://www.instagram.com/woodenbrothers.art" class="instagram-follow-btn" target="_blank" rel="noopener noreferrer">
-                    <img src="https://img.icons8.com/fluency/24/instagram-new.png" alt="Instagram" style="width: 20px; height: 20px;">
-                    Suivez-nous sur Instagram
-                </a>
-            </div>
-        </section>
-    </section>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <div>
-                <h3>À propos</h3>
-                <ul class="footer-links">
-                    <li><a href="/contact">Contact</a></li>
-                </ul>
-                </div>
-            <div>
-                <h3>Informations</h3>
-                <ul class="footer-links">
-                    <li><a href="/politique-confidentialite">Politique de confidentialité</a></li>
-                    <li><a href="/mentions-legales">Mentions légales</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Modals -->
-    <!-- Eren Modal -->
-    <div id="eren-modal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal('eren-modal')">&times;</span>
-            <div class="modal-gallery">
-                <div class="main-image-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Dessous de plat Eren Jäger Attack on Titan" class="main-image" onclick="openFullscreen(this.src)">
-                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'eren-modal')">❮</div>
-                    <div class="gallery-nav gallery-next" onclick="changeImage(1, 'eren-modal')">❯</div>
-                </div>
-                <div class="thumbnail-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_1588xN.6798834261_bead.jpg" alt="Dessous de plat Eren Jäger Attack on Titan" class="thumbnail active" onclick="setMainImage(this.src, 'eren-modal')">
-                    <img src="https://i.etsystatic.com/56732046/r/il/f0edee/6750817180/il_1588xN.6750817180_12lw.jpg" alt="Dessous de plat Eren Jäger Attack on Titan - Vue 2" class="thumbnail" onclick="setMainImage(this.src, 'eren-modal')">
-                    <img src="https://i.etsystatic.com/56732046/r/il/96dfa3/6798835823/il_1588xN.6798835823_3ldn.jpg" alt="Dessous de plat Eren Jäger Attack on Titan - Vue 3" class="thumbnail" onclick="setMainImage(this.src, 'eren-modal')">
-                    <img src="https://i.etsystatic.com/56732046/r/il/387ffd/6750817382/il_1588xN.6750817382_icro.jpg" alt="Dessous de plat Eren Jäger Attack on Titan - Vue 4" class="thumbnail" onclick="setMainImage(this.src, 'eren-modal')">
-            </div>
-                </div>
-            <div class="modal-description">
-                <h2 class="modal-title">Dessous de plat Eren</h2>
-                <p>Ajoutez du caractère à votre décoration avec ce dessous de plat en bois naturel, gravé à l'effigie d'Eren Jäger, personnage central de la série L'Attaque des Titans. Cette pièce artisanale, conçue pour les fans de manga, allie intensité visuelle, qualité du bois et savoir-faire manuel.</p>
-                <h3>Détails du produit</h3>
-                <ul>
-                    <li>Gravure fine et précise réalisée avec soin</li>
-                    <li>Bois massif de haute qualité, sélectionné pour sa durabilité</li>
-                    <li>Dimensions : environ 20 cm de diamètre, épaisseur 2 cm</li>
-                    <li>Vernis de protection pour une finition soignée et un entretien facile</li>
-                </ul>
-                <div style="text-align: center; margin-top: 2rem;">
-                    <a href="https://www.etsy.com/fr/listing/1880783276/dessous-de-plat-en-bois-eren-attaque-des" class="modal-buy-button" target="_blank">Commander sur Etsy</a>
-            </div>
-                </div>
-        </div>
-            </div>
-            
-    <!-- Itachi Modal -->
-    <div id="itachi-modal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal('itachi-modal')">&times;</span>
-            <div class="modal-gallery">
-                <div class="main-image-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/1ff9b1/6740731906/il_1588xN.6740731906_kdrx.jpg" alt="Dessous de plat Itachi Naruto" class="main-image" onclick="openFullscreen(this.src)">
-                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'itachi-modal')">❮</div>
-                    <div class="gallery-nav gallery-next" onclick="changeImage(1, 'itachi-modal')">❯</div>
-                </div>
-                <div class="thumbnail-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/1ff9b1/6740731906/il_1588xN.6740731906_kdrx.jpg" alt="Dessous de plat Itachi Naruto" class="thumbnail active" onclick="setMainImage(this.src, 'itachi-modal')">
-                    <img src="https://i.etsystatic.com/56732046/r/il/f0edee/6750817180/il_1588xN.6750817180_12lw.jpg" alt="Dessous de plat Itachi Naruto - Vue 2" class="thumbnail" onclick="setMainImage(this.src, 'itachi-modal')">
-                    <img src="https://i.etsystatic.com/56732046/r/il/96dfa3/6798835823/il_1588xN.6798835823_3ldn.jpg" alt="Dessous de plat Itachi Naruto - Vue 3" class="thumbnail" onclick="setMainImage(this.src, 'itachi-modal')">
-                    <img src="https://i.etsystatic.com/56732046/r/il/387ffd/6750817382/il_1588xN.6750817382_icro.jpg" alt="Dessous de plat Itachi Naruto - Vue 4" class="thumbnail" onclick="setMainImage(this.src, 'itachi-modal')">
-            </div>
-                </div>
-            <div class="modal-description">
-                <h2 class="modal-title">Dessous de plat Itachi</h2>
-                <p>Découvrez notre création artisanale inspirée d'Itachi, le ninja légendaire de Naruto. Cette pièce unique capture l'essence de ce personnage complexe, sculptée avec précision dans du bois de qualité.</p>
-                <h3>Détails du produit</h3>
-                <ul>
-                    <li>Gravure fine et précise réalisée avec soin</li>
-                    <li>Bois massif de haute qualité, sélectionné pour sa durabilité</li>
-                    <li>Dimensions : environ 20 cm de diamètre, épaisseur 2 cm</li>
-                    <li>Vernis de protection pour une finition soignée et un entretien facile</li>
-                </ul>
-                <div style="text-align: center; margin-top: 2rem;">
-                    <a href="https://www.etsy.com/fr/listing/1893009633/dessous-de-plat-en-bois-itachi-naruto" class="modal-buy-button" target="_blank">Commander sur Etsy</a>
-            </div>
-                </div>
-            </div>
-        </div>
-        
-    <!-- Luffy Modal -->
-    <div id="luffy-modal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal('luffy-modal')">&times;</span>
-            <div class="modal-gallery">
-                <div class="main-image-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Dessous de plat Luffy One Piece" class="main-image" onclick="openFullscreen(this.src)">
-                    <div class="gallery-nav gallery-prev" onclick="changeImage(-1, 'luffy-modal')">❮</div>
-                    <div class="gallery-nav gallery-next" onclick="changeImage(1, 'luffy-modal')">❯</div>
-            </div>
-                <div class="thumbnail-container">
-                    <img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_1588xN.6718397765_ahpo.jpg" alt="Dessous de plat Luffy One Piece" class="thumbnail active" onclick="setMainImage(this.src, 'luffy-modal')">
-                    <img src="https://i.etsystatic.com/56732046/r/il/f0edee/6750817180/il_1588xN.6750817180_12lw.jpg" alt="Dessous de plat Luffy One Piece - Vue 2" class="thumbnail" onclick="setMainImage(this.src, 'luffy-modal')">
-                    <img src="https://i.etsystatic.com/56732046/r/il/96dfa3/6798835823/il_1588xN.6798835823_3ldn.jpg" alt="Dessous de plat Luffy One Piece - Vue 3" class="thumbnail" onclick="setMainImage(this.src, 'luffy-modal')">
-                    <img src="https://i.etsystatic.com/56732046/r/il/387ffd/6750817382/il_1588xN.6750817382_icro.jpg" alt="Dessous de plat Luffy One Piece - Vue 4" class="thumbnail" onclick="setMainImage(this.src, 'luffy-modal')">
-            </div>
-        </div>
-            <div class="modal-description">
-                <h2 class="modal-title">Dessous de plat Luffy</h2>
-                <p>Notre sculpture de Luffy, le futur Roi des Pirates, capture l'esprit aventureux et déterminé du personnage. Cette pièce unique est sculptée avec passion pour rendre hommage à l'un des héros les plus aimés de One Piece.</p>
-                <h3>Détails du produit</h3>
-                <ul>
-                    <li>Gravure fine et précise réalisée avec soin</li>
-                    <li>Bois massif de haute qualité, sélectionné pour sa durabilité</li>
-                    <li>Dimensions : environ 20 cm de diamètre, épaisseur 2 cm</li>
-                    <li>Vernis de protection pour une finition soignée et un entretien facile</li>
-                </ul>
-                <div style="text-align: center; margin-top: 2rem;">
-                    <a href="https://www.etsy.com/fr/listing/1865127564/dessous-de-plat-en-bois-luffy-one-piece" class="modal-buy-button" target="_blank">Commander sur Etsy</a>
-            </div>
-            </div>
-        </div>
-    </div>
-    
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // Fonction pour détecter si on est sur mobile
-        function isMobile() {
-            return window.matchMedia("(max-width: 768px)").matches;
-        }
-
-        // Fonction pour configurer l'animation au survol
-        function setupHoverAnimation(containerId, interval) {
-            const container = document.getElementById(containerId);
-            if (!container) return;
-
-            const images = container.getElementsByTagName('img');
-            let currentIndex = 0;
-            let intervalId = null;
-
-            // Sur mobile, on ne fait rien car les hover-images sont cachées en CSS
-            if (isMobile()) {
-                return;
-            }
-
-            // Sur desktop, on garde le comportement normal
-            container.parentElement.addEventListener('mouseenter', () => {
-                currentIndex = 0;
-                images[currentIndex].style.opacity = '1';
-                
-                intervalId = setInterval(() => {
-                    images[currentIndex].style.opacity = '0';
-                    currentIndex = (currentIndex + 1) % images.length;
-                    images[currentIndex].style.opacity = '1';
-                }, interval);
-            });
-
-            container.parentElement.addEventListener('mouseleave', () => {
-                clearInterval(intervalId);
-                currentIndex = 0;
-                for (let img of images) {
-                    img.style.opacity = '0';
-                }
-            });
-        }
-
-        // Configuration des animations
-        setupHoverAnimation('manga-hover', 1000);
-        setupHoverAnimation('animaux-hover', 1000);
-        setupHoverAnimation('pokemon-hover', 1000);
-
-        // Configuration AOS
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true,
-            disable: function() {
-                return window.innerWidth < 768;
-            }
-        });
-
-        document.querySelector('#scroll-vers-nouveautes')?.addEventListener('click', (e) => {
-            e.preventDefault();
-            const section = document.querySelector('.nouveautes');
-            if (section) {
-                const targetPosition = section.offsetTop - -65;
-                const startPosition = window.pageYOffset;
-                const distance = targetPosition - startPosition;
-                const duration = 1000;
-                let start = null;
-
-                function animation(currentTime) {
-                    if (start === null) start = currentTime;
-                    const timeElapsed = currentTime - start;
-                    const progress = Math.min(timeElapsed / duration, 1);
-
-                    const easeInOutCubic = progress => {
-                        return progress < 0.5
-                            ? 4 * progress * progress * progress
-                            : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-                    };
-
-                    window.scrollTo(0, startPosition + (distance * easeInOutCubic(progress)));
-
-                    if (progress < 1) {
-                        requestAnimationFrame(animation);
-                    }
-                }
-
-                requestAnimationFrame(animation);
-            }
-        });
-        
-        // Défilement fluide uniquement au clic sur la flèche
-        document.querySelector('.scroll-indicator').addEventListener('click', (e) => {
-            e.preventDefault();
-            const nouveautesSection = document.querySelector('.meilleures-ventes');
-            if (nouveautesSection) {
-                const targetPosition = nouveautesSection.offsetTop - 25;
-                const startPosition = window.pageYOffset;
-                const distance = targetPosition - startPosition;
-                const duration = 1000;
-                let start = null;
-
-                function animation(currentTime) {
-                    if (start === null) start = currentTime;
-                    const timeElapsed = currentTime - start;
-                    const progress = Math.min(timeElapsed / duration, 1);
-                    
-                    const easeInOutCubic = progress => {
-                        return progress < 0.5
-                            ? 4 * progress * progress * progress
-                            : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-                    };
-
-                    window.scrollTo(0, startPosition + (distance * easeInOutCubic(progress)));
-
-                    if (progress < 1) {
-                        requestAnimationFrame(animation);
-                    }
-                }
-
-                requestAnimationFrame(animation);
-            }
-        });
-        
-
-        // Modal functions
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Gallery functions
-        function setMainImage(src, modalId) {
-            const modal = document.getElementById(modalId);
-            const mainImage = modal.querySelector('.main-image');
-            const thumbnails = modal.querySelectorAll('.thumbnail');
-            
-            mainImage.src = src;
-            
-            thumbnails.forEach(thumb => {
-                if (thumb.src === src) {
-                    thumb.classList.add('active');
-                } else {
-                    thumb.classList.remove('active');
-                }
-            });
-        }
-
-        function changeImage(direction, modalId) {
-            const modal = document.getElementById(modalId);
-            const thumbnails = modal.querySelectorAll('.thumbnail');
-            const currentIndex = Array.from(thumbnails).findIndex(thumb => thumb.classList.contains('active'));
-            
-            let newIndex = (currentIndex + direction + thumbnails.length) % thumbnails.length;
-            setMainImage(thumbnails[newIndex].src, modalId);
-        }
-
-        function openFullscreen(src) {
-            const fullscreenContainer = document.createElement('div');
-            fullscreenContainer.style.position = 'fixed';
-            fullscreenContainer.style.top = '0';
-            fullscreenContainer.style.left = '0';
-            fullscreenContainer.style.width = '100%';
-            fullscreenContainer.style.height = '100%';
-            fullscreenContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
-            fullscreenContainer.style.display = 'flex';
-            fullscreenContainer.style.justifyContent = 'center';
-            fullscreenContainer.style.alignItems = 'center';
-            fullscreenContainer.style.zIndex = '2000';
-            fullscreenContainer.style.cursor = 'default';
-
-            const closeButton = document.createElement('div');
-            closeButton.innerHTML = '&times;';
-            closeButton.style.position = 'absolute';
-            closeButton.style.top = '20px';
-            closeButton.style.right = '20px';
-            closeButton.style.color = 'white';
-            closeButton.style.fontSize = '30px';
-            closeButton.style.cursor = 'pointer';
-            closeButton.style.width = '40px';
-            closeButton.style.height = '40px';
-            closeButton.style.display = 'flex';
-            closeButton.style.alignItems = 'center';
-            closeButton.style.justifyContent = 'center';
-            closeButton.style.background = 'rgba(0, 0, 0, 0.5)';
-            closeButton.style.borderRadius = '50%';
-            closeButton.style.transition = 'all 0.3s ease';
-
-            closeButton.onmouseover = function() {
-                closeButton.style.transform = 'rotate(90deg)';
-                closeButton.style.background = 'rgba(255, 255, 255, 0.2)';
-            };
-
-            closeButton.onmouseout = function() {
-                closeButton.style.transform = 'rotate(0deg)';
-                closeButton.style.background = 'rgba(0, 0, 0, 0.5)';
-            };
-
-            const img = document.createElement('img');
-            img.src = src;
-            img.style.maxWidth = '90%';
-            img.style.maxHeight = '90%';
-            img.style.objectFit = 'contain';
-
-            fullscreenContainer.appendChild(closeButton);
-            fullscreenContainer.appendChild(img);
-            document.body.appendChild(fullscreenContainer);
-
-            closeButton.onclick = function() {
-                document.body.removeChild(fullscreenContainer);
-            };
-        }
-    </script>
-
-<script>
-    // Script chargerNouveautes (déplacé à la fin)
-    async function chargerNouveautes() {
-        try {
-            // Correction du chemin pour éviter les erreurs de chemin relatif
-            const response = await fetch(`${window.location.origin}/produits.html`, { cache: 'no-store' });
-            if (!response.ok) throw new Error("Erreur HTTP " + response.status);
-
-            const text = await response.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(text, 'text/html');
-
-            const produits = Array.from(doc.querySelectorAll('.product-card'));
-            // Détection mobile par userAgent
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            // Correction : plus de produits sur mobile
-            const nbMax = isMobile ? 4 : 3;
-            const selection = produits.slice(0, nbMax);
-            if (produits.length === 0) throw new Error("Aucun produit trouvé dans produits.html");
-
-            const container = document.querySelector('#nouveautes-dynamiques');
-            if (!container) throw new Error("Container #nouveautes-dynamiques introuvable");
-
-            selection.forEach(card => {
-                const clone = card.cloneNode(true);
-
-                clone.querySelectorAll('button.product-details-btn')?.forEach(btn => btn.remove());
-                clone.querySelectorAll('[onclick]')?.forEach(el => el.removeAttribute('onclick'));
-
-                // Correction : la classe .product-link n'existe pas, on utilise le bouton .btn comme lien Etsy
-                let etsyLink = null;
-                let btn = clone.querySelector('a.btn');
-                if (btn) {
-                    etsyLink = btn.getAttribute('href');
-                }
-                // Fallback si .btn n'est pas trouvé
-                if (!etsyLink) {
-                    // Essayer de trouver un autre lien
-                    const maybeLink = clone.querySelector('a[href*="etsy.com"]');
-                    if (maybeLink) etsyLink = maybeLink.getAttribute('href');
-                }
-
-                if (etsyLink) {
-                    const image = clone.querySelector('.product-image-container');
-                    if (image) {
-                        const wrapper = document.createElement('a');
-                        wrapper.href = etsyLink;
-                        wrapper.target = "_blank";
-                        wrapper.rel = "noopener noreferrer";
-                        wrapper.style.display = 'block';
-                        wrapper.appendChild(image.cloneNode(true));
-                        image.replaceWith(wrapper);
-                    }
-                }
-
-                // Mettre à jour le bouton (si trouvé), sinon ne rien faire
-                if (btn) {
-                    btn.className = 'btn';
-                    btn.innerText = 'Commander sur Etsy';
-                    // S'assurer qu'aucun style inline ne vienne écraser la classe btn
-                    btn.removeAttribute('style');
-                }
-                // S'assurer que tous les liens "Commander sur Etsy" ont la classe btn et aucun style inline
-                clone.querySelectorAll('a').forEach(a => {
-                    if (a.textContent && a.textContent.trim().toLowerCase().includes('commander sur etsy')) {
-                        a.classList.add('btn');
-                        a.removeAttribute('style');
-                    }
-                });
-
-                container.appendChild(clone);
-            });
-        } catch (error) {
-            console.error("🚨 Erreur lors du chargement des nouveautés :", error);
-            const container = document.querySelector('#nouveautes-dynamiques');
-            if (container) {
-                container.innerHTML = `<p style="color: red; text-align: center;">Erreur : ${error.message}</p>`;
-            }
-        }
-    }
-
-    window.onload = chargerNouveautes;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wooden Brothers – Créations artisanales en bois gravé</title>
+<meta name="description" content="Atelier de gravure sur bois : dessous de plat en Paulownia, cartes Pokémon 3D, horloges et créations sur mesure, faits main. Animaux, mangas, Pokémon et Disney.">
+<meta name="author" content="Wooden Brothers">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.woodenbrothers.fr/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Wooden Brothers">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Wooden Brothers – Créations artisanales en bois gravé">
+<meta property="og:description" content="Atelier de gravure sur bois : dessous de plat en Paulownia, cartes Pokémon 3D, horloges et créations sur mesure, faits main. Animaux, mangas, Pokémon et Disney.">
+<meta property="og:image" content="https://www.woodenbrothers.fr/og-image.jpg">
+<meta property="og:url" content="https://www.woodenbrothers.fr/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#2F5B37">
+<link rel="icon" type="image/png" sizes="32x32" href="/Images/logo32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/Images/logo16.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/Images/logo48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/Images/logo192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/Images/logo512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/Images/logo192.png">
+<link rel="preload" href="/assets/fonts/fraunces-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dm-sans-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script>document.documentElement.classList.replace('no-js', 'js');</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Wooden Brothers","url":"https://www.woodenbrothers.fr/","logo":"https://www.woodenbrothers.fr/Images/logo512.png","email":"contact@woodenbrothers.fr","description":"Atelier de gravure sur bois : dessous de plat, cartes Pokémon 3D et horloges faits main en bois de Paulownia.","sameAs":["https://www.etsy.com/fr/shop/WoodenBrothersArt","https://www.instagram.com/woodenbrothers.art/"]}
 </script>
+</head>
+<body data-page-home>
+<a class="skip-link" href="#main">Aller au contenu</a>
+<header class="site-header">
+  <div class="container header__inner">
+    <a class="brand" href="/" aria-label="Wooden Brothers, retour à l'accueil">
+      <img class="brand__logo" src="/Images/logo192.webp" alt="" width="46" height="46">
+      <span class="brand__name">Wooden Brothers</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="/" class="nav__link" aria-current="page">Accueil</a>
+      <a href="/produits" class="nav__link">Nos créations</a>
+      <a href="/produits?filter=personnalise" class="nav__link">Sur mesure</a>
+      <a href="/a-propos" class="nav__link">L'atelier</a>
+      <a href="/contact" class="nav__link">Contact</a>
+      <a class="btn btn--primary btn--sm nav__cta" href="https://www.etsy.com/fr/shop/WoodenBrothersArt" target="_blank" rel="noopener">Commander sur Etsy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+    </nav>
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Ouvrir le menu"><span></span></button>
+  </div>
+</header>
+<main id="main">
+  <section class="hero">
+    <div class="rings" aria-hidden="true"></div>
+    <div class="container hero__grid">
+      <div class="hero__content">
+        <span class="eyebrow">Atelier de gravure sur bois</span>
+        <h1 class="hero__title">Le bois, gravé avec <em>passion</em>.</h1>
+        <p class="hero__lead">Dessous de plat, cartes Pokémon 3D et horloges en bois, gravés et finis à la main. Chaque pièce porte en elle le grain du bois et l'empreinte de notre passion.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary btn--lg" href="/produits">Découvrir nos créations</a>
+          <a class="btn btn--secondary btn--lg" href="https://www.etsy.com/fr/shop/WoodenBrothersArt" target="_blank" rel="noopener">Notre boutique Etsy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        </div>
+        <p class="hero__reviews" data-shop-reviews hidden></p>
+        <ul class="hero__trust">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v2"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg> Fait main</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg> Bois de Paulownia</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg> Créations sur mesure</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg> Paiement sécurisé via Etsy</li>
+        </ul>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__frame hero__frame--main"><img src="https://i.etsystatic.com/56732046/r/il/5e0bc6/6588924415/il_794xN.6588924415_lsd8.jpg" srcset="https://i.etsystatic.com/56732046/r/il/5e0bc6/6588924415/il_794xN.6588924415_lsd8.jpg 794w, https://i.etsystatic.com/56732046/r/il/5e0bc6/6588924415/il_1588xN.6588924415_lsd8.jpg 1588w" sizes="(max-width: 960px) 60vw, 420px" alt="Dessous de plat en bois gravé d'un portrait de chat, posé sur des bûches" width="794" height="992" fetchpriority="high" decoding="async"></div>
+        <div class="hero__frame hero__frame--a"><img src="https://i.etsystatic.com/56732046/r/il/b0fcdf/6962047545/il_600x600.6962047545_6p91.jpg" alt="Carte Pokémon Pikachu en bois, gravée en relief 3D" width="600" height="600" loading="lazy" decoding="async"></div>
+        <div class="hero__frame hero__frame--b"><img src="https://i.etsystatic.com/56732046/r/il/d351ba/7030120823/il_600x600.7030120823_6xjf.jpg" alt="Dessous de plat en bois gravé à l'effigie de Luffy" width="600" height="600" loading="lazy" decoding="async"></div>
+        <div class="stamp" aria-hidden="true">
+          <span class="stamp__disc"></span>
+          <svg viewBox="0 0 132 132"><defs><path id="stamp-path" d="M66,66 m-52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0"/></defs><text textLength="326" lengthAdjust="spacingAndGlyphs"><textPath href="#stamp-path">FAIT MAIN • GRAVURE SUR BOIS • PIÈCES UNIQUES •</textPath></text></svg>
+          <img class="stamp__logo" src="/Images/logo192.webp" alt="" width="58" height="58">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true"><div class="marquee__track"><span>Fait main <i>◆</i>Gravure fine <i>◆</i>Bois de Paulownia <i>◆</i>Pièces uniques <i>◆</i>Idées cadeaux <i>◆</i>Créations sur mesure <i>◆</i></span><span>Fait main <i>◆</i>Gravure fine <i>◆</i>Bois de Paulownia <i>◆</i>Pièces uniques <i>◆</i>Idées cadeaux <i>◆</i>Créations sur mesure <i>◆</i></span></div></div>
+
+  <section class="section" id="collections">
+    <div class="container">
+      <div class="section__head section__head--row">
+        <div>
+          <span class="eyebrow">Nos collections</span>
+          <h2>Des univers variés, <em>un même soin du détail</em></h2>
+        </div>
+        <a class="btn btn--secondary" href="/produits">Tout voir</a>
+      </div>
+      <div class="collections">
+        <a class="collection-card" href="/produits?filter=animaux" data-reveal>
+          <img src="https://i.etsystatic.com/56732046/r/il/6e6d4e/6532846964/il_794xN.6532846964_6n54.jpg" alt="" width="794" height="794" loading="lazy" decoding="async">
+          <div class="collection-card__body">
+            <h3 class="collection-card__name">Animaux</h3>
+            <div class="collection-card__meta"><span data-collection-count="animaux">&nbsp;</span><span>Découvrir</span></div>
+          </div>
+        </a>
+        <a class="collection-card" href="/produits?filter=manga-anime" data-reveal data-reveal-delay="1">
+          <img src="https://i.etsystatic.com/56732046/r/il/592bd7/6983079458/il_794xN.6983079458_7nld.jpg" alt="" width="794" height="794" loading="lazy" decoding="async">
+          <div class="collection-card__body">
+            <h3 class="collection-card__name">Manga &amp; Anime</h3>
+            <div class="collection-card__meta"><span data-collection-count="manga-anime">&nbsp;</span><span>Découvrir</span></div>
+          </div>
+        </a>
+        <a class="collection-card" href="/produits?filter=cartes-pokemon" data-reveal data-reveal-delay="2">
+          <img src="https://i.etsystatic.com/56732046/r/il/d8f5a5/6914070754/il_794xN.6914070754_gae1.jpg" alt="" width="794" height="794" loading="lazy" decoding="async">
+          <div class="collection-card__body">
+            <h3 class="collection-card__name">Cartes Pokémon</h3>
+            <div class="collection-card__meta"><span data-collection-count="cartes-pokemon">&nbsp;</span><span>Découvrir</span></div>
+          </div>
+        </a>
+        <a class="collection-card" href="/produits?filter=disney" data-reveal>
+          <img src="https://i.etsystatic.com/56732046/r/il/0ed570/7272114177/il_794xN.7272114177_jnrb.jpg" alt="" width="794" height="794" loading="lazy" decoding="async">
+          <div class="collection-card__body">
+            <h3 class="collection-card__name">Disney</h3>
+            <div class="collection-card__meta"><span data-collection-count="disney">&nbsp;</span><span>Découvrir</span></div>
+          </div>
+        </a>
+        <a class="collection-card" href="/produits?filter=horloges" data-reveal data-reveal-delay="1">
+          <img src="https://i.etsystatic.com/56732046/r/il/841300/7451057970/il_794xN.7451057970_2xd8.jpg" alt="" width="794" height="794" loading="lazy" decoding="async">
+          <div class="collection-card__body">
+            <h3 class="collection-card__name">Horloges</h3>
+            <div class="collection-card__meta"><span data-collection-count="horloges">&nbsp;</span><span>Découvrir</span></div>
+          </div>
+        </a>
+        <a class="collection-card" href="/produits?filter=personnalise" data-reveal data-reveal-delay="2">
+          <img src="https://i.etsystatic.com/56732046/r/il/f21054/7480584038/il_794xN.7480584038_4w92.jpg" alt="" width="794" height="794" loading="lazy" decoding="async">
+          <div class="collection-card__body">
+            <h3 class="collection-card__name">Sur mesure</h3>
+            <div class="collection-card__meta"><span data-collection-count="personnalise">&nbsp;</span><span>Découvrir</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="selection">
+    <div class="container">
+      <div class="section__head">
+        <span class="eyebrow">Sélection de l'atelier</span>
+        <h2>Nos créations <em>phares</em></h2>
+        <p class="section__lead">Un aperçu de ce qui sort de l'atelier. Toutes nos pièces sont disponibles sur notre boutique Etsy.</p>
+      </div>
+      <div class="product-grid" id="selection-grid" data-max="8"><div class="skeleton">Chargement des créations…</div></div>
+      <div class="section__foot"><a class="btn btn--primary btn--lg" href="/produits">Voir toute la boutique</a></div>
+    </div>
+  </section>
+
+  <section class="section" id="savoir-faire">
+    <div class="container">
+      <div class="section__head">
+        <span class="eyebrow">Notre savoir-faire</span>
+        <h2>Trois étapes, <em>une pièce unique</em></h2>
+        <p class="section__lead">Du rondin brut à l'objet fini, tout est fait dans notre atelier, à la main et avec le souci du détail.</p>
+      </div>
+      <div class="steps">
+        <div class="step" data-reveal>
+          <div class="step__num">01</div>
+          <h3>Le choix du bois</h3>
+          <p>Nous sélectionnons des rondins et des planches de Paulownia pour leur légèreté, leur résistance et la beauté de leur grain.</p>
+        </div>
+        <div class="step" data-reveal data-reveal-delay="1">
+          <div class="step__num">02</div>
+          <h3>La gravure</h3>
+          <p>Chaque motif est gravé avec finesse, trait par trait, pour un rendu net, profond et durable.</p>
+        </div>
+        <div class="step" data-reveal data-reveal-delay="2">
+          <div class="step__num">03</div>
+          <h3>La finition</h3>
+          <p>Un vernis de protection vient révéler le bois et faciliter l'entretien. Chaque pièce est contrôlée à la main avant de partir.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="paulownia">
+    <div class="container feature">
+      <div class="feature__text" data-reveal>
+        <span class="eyebrow">Notre matière</span>
+        <h2>Un bois <em>responsable</em> et durable</h2>
+        <p>Tous nos dessous de plat sont fabriqués à partir de bois de <strong>Paulownia</strong>, une essence naturellement légère, résistante et élégante. Ce bois se distingue par sa <strong>croissance exceptionnelle</strong> : il peut atteindre 10 mètres de haut en seulement 5 ans, tout en stockant une grande quantité de CO₂.</p>
+        <p>En choisissant le Paulownia, nous favorisons un <strong>matériau durable</strong> à faible impact environnemental, tout en garantissant un rendu <strong>naturel et raffiné</strong>. C'est notre façon d'allier artisanat, esthétique et respect de la planète.</p>
+      </div>
+      <div class="feature__stats" data-reveal data-reveal-delay="1">
+        <div class="stat"><div class="stat__value">10 m</div><div class="stat__label">de hauteur atteints en 5 ans seulement</div></div>
+        <div class="stat"><div class="stat__value">CO₂</div><div class="stat__label">stocké en grande quantité pendant sa croissance</div></div>
+        <div class="stat stat--wide"><div class="stat__value">Léger &amp; résistant</div><div class="stat__label">Un bois élégant, agréable au quotidien et pensé pour durer.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sur-mesure">
+    <div class="container">
+      <div class="cta-band" data-reveal>
+        <div class="rings" aria-hidden="true"></div>
+        <div class="cta-band__grid">
+          <div>
+            <span class="eyebrow">Sur mesure</span>
+            <h2>Une idée en tête ? <em>Nous la gravons.</em></h2>
+            <p>Une photo, un dessin, un texte ou votre Pokémon préféré : envoyez-nous votre visuel et nous le gravons sur bois. Le cadeau unique par excellence.</p>
+            <div class="cta-band__actions">
+              <a class="btn btn--wood" href="/produits?filter=personnalise">Voir les créations sur mesure</a>
+              <a class="btn btn--ghost-light" href="/contact">Nous contacter</a>
+            </div>
+          </div>
+          <div class="product-grid" id="featured-grid"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" id="instagram">
+    <div class="container">
+      <div class="section__head section__head--row">
+        <div>
+          <span class="eyebrow">Instagram</span>
+          <h2>Suivez <em>l'atelier</em></h2>
+        </div>
+        <a class="btn btn--secondary" href="https://www.instagram.com/woodenbrothers.art/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> @woodenbrothers.art</a>
+      </div>
+      <div class="insta-grid" data-reveal>
+        <a href="https://www.instagram.com/p/DH1Gt2PtRTN/" target="_blank" rel="noopener" aria-label="Dessous de plat Eren sur Instagram"><img src="https://i.etsystatic.com/56732046/r/il/f0edee/6750817180/il_600x600.6750817180_12lw.jpg" alt="Dessous de plat Eren" width="600" height="600" loading="lazy" decoding="async"></a>
+        <a href="https://www.instagram.com/p/DHlrT-gt9Z6/" target="_blank" rel="noopener" aria-label="Dessous de plat Itachi sur Instagram"><img src="https://i.etsystatic.com/56732046/r/il/314182/6740736034/il_600x600.6740736034_qr6l.jpg" alt="Dessous de plat Itachi" width="600" height="600" loading="lazy" decoding="async"></a>
+        <a href="https://www.instagram.com/p/DHgo40bNd6t/" target="_blank" rel="noopener" aria-label="Dessous de plat Goku sur Instagram"><img src="https://i.etsystatic.com/56732046/r/il/8ad2fe/6782430493/il_600x600.6782430493_e4fr.jpg" alt="Dessous de plat Goku" width="600" height="600" loading="lazy" decoding="async"></a>
+        <a href="https://www.instagram.com/p/DHMAJKnMQSR/" target="_blank" rel="noopener" aria-label="Dessous de plat Luffy sur Instagram"><img src="https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_600x600.6718397765_ahpo.jpg" alt="Dessous de plat Luffy" width="600" height="600" loading="lazy" decoding="async"></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="faq">
+    <div class="container">
+      <div class="section__head">
+        <span class="eyebrow">Questions fréquentes</span>
+        <h2>Tout ce qu'il faut <em>savoir</em></h2>
+      </div>
+      <div class="faq" data-reveal>
+        <details open>
+          <summary>Où puis-je commander vos créations ?</summary>
+          <p>Toutes nos pièces sont vendues sur notre <a href="https://www.etsy.com/fr/shop/WoodenBrothersArt" target="_blank" rel="noopener">boutique Etsy officielle</a>. Vous y profitez du paiement sécurisé, du suivi de commande et de la protection des achats Etsy. Ce site vous présente l'atelier et l'ensemble de nos créations.</p>
+        </details>
+        <details>
+          <summary>Proposez-vous des créations personnalisées ?</summary>
+          <p>Oui ! Nous réalisons des dessous de plat gravés d'après votre visuel (photo, dessin, logo, texte) et des cartes Pokémon 3D du Pokémon de votre choix. Commandez l'article « personnalisé » correspondant sur Etsy en précisant votre demande, ou <a href="/contact">contactez-nous</a> avant de commander si vous avez un doute.</p>
+        </details>
+        <details>
+          <summary>Comment entretenir ma pièce en bois ?</summary>
+          <p>Un chiffon doux, légèrement humide, suffit pour la nettoyer. Évitez le lave-vaisselle et les immersions prolongées : le bois est une matière vivante qui n'aime pas l'eau stagnante. Bien entretenue, votre pièce vous accompagnera de longues années.</p>
+        </details>
+        <details>
+          <summary>Un article est épuisé, que faire ?</summary>
+          <p>Nos capacités de production étant limitées, certains articles peuvent ne pas être disponibles en stock. Si la création que vous recherchez n'est pas disponible, n'hésitez pas à <a href="/contact">nous contacter</a> : nous ferons de notre mieux pour la rendre accessible dans les plus brefs délais.</p>
+        </details>
+        <details>
+          <summary>Vos créations sont-elles des produits officiels ?</summary>
+          <p>Non. Wooden Brothers n'est en aucun cas affilié ni autorisé par une licence ou une société quelconque. Nos créations inspirées de mangas, de Pokémon ou de Disney sont exclusivement du fan art personnalisé, sans aucune intention de porter atteinte aux droits d'auteur.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="/"><img class="brand__logo" src="/Images/logo192.webp" alt="" width="46" height="46"><span class="brand__name">Wooden Brothers</span></a>
+        <p>Atelier de gravure sur bois. Dessous de plat, cartes Pokémon 3D et horloges faits main, en bois de Paulownia.</p>
+        <div class="footer__social">
+          <a href="https://www.etsy.com/fr/shop/WoodenBrothersArt" target="_blank" rel="noopener" aria-label="Notre boutique Etsy"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="18" text-anchor="middle" font-family="Georgia, serif" font-size="18" font-weight="700" fill="currentColor">E</text></svg></a>
+          <a href="https://www.instagram.com/woodenbrothers.art/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="mailto:contact@woodenbrothers.fr" aria-label="Nous écrire"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3>La boutique</h3>
+        <ul>
+          <li><a href="/produits">Toutes nos créations</a></li>
+          <li><a href="/produits?filter=animaux">Animaux</a></li>
+          <li><a href="/produits?filter=manga-anime">Manga &amp; Anime</a></li>
+          <li><a href="/produits?filter=cartes-pokemon">Cartes Pokémon</a></li>
+          <li><a href="/produits?filter=disney">Disney</a></li>
+          <li><a href="/produits?filter=personnalise">Sur mesure</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>L'atelier</h3>
+        <ul>
+          <li><a href="/a-propos">Notre histoire</a></li>
+          <li><a href="/#savoir-faire">Notre savoir-faire</a></li>
+          <li><a href="/#faq">Questions fréquentes</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Informations</h3>
+        <ul>
+          <li><a href="/mentions-legales">Mentions légales</a></li>
+          <li><a href="/politique-confidentialite">Politique de confidentialité</a></li>
+          <li><a href="https://www.etsy.com/fr/shop/WoodenBrothersArt" target="_blank" rel="noopener">Boutique Etsy officielle</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© <span data-year>2026</span> Wooden Brothers. Créations artisanales en bois.</p>
+      <p>Commandes et paiements sécurisés via Etsy.</p>
+    </div>
+    <p class="footer__disclaimer">Wooden Brothers n'est affilié à aucune licence ni société. Nos créations inspirées de mangas, de Pokémon ou de Disney sont exclusivement du fan art personnalisé, sans intention de porter atteinte aux droits d'auteur.</p>
+  </div>
+</footer>
+<script src="/assets/js/site.js" defer></script>
 </body>
 </html>

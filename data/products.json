@@ -1,0 +1,630 @@
+{
+  "$schema_note": "Catalogue du site. Les champs title/price/url/images/quantity/etsy_section_id/created_timestamp sont mis à jour automatiquement par scripts/sync_etsy.py (API Etsy). Les champs short_title/category/kind/description/details/featured/free_shipping/hidden sont conservés tels quels lors d'une synchro (sauf category si category_locked est absent : voir README).",
+  "shop": {
+    "name": "Wooden Brothers",
+    "etsy_shop_name": "WoodenBrothersArt",
+    "etsy_shop_id": 56732046,
+    "url": "https://www.etsy.com/fr/shop/WoodenBrothersArt",
+    "instagram": "https://www.instagram.com/woodenbrothers.art/",
+    "email": "contact@woodenbrothers.fr",
+    "review_average": null,
+    "review_count": null,
+    "num_favorers": null
+  },
+  "updated_at": "2026-10-15T12:00:00+00:00",
+  "source": "manuel (boutique Etsy du 15/10/2026)",
+  "categories": [
+    {
+      "slug": "animaux",
+      "name": "Animaux",
+      "tagline": "Portraits d'animaux gravés sur rondins de bois",
+      "etsy_section_ids": [
+        52403582
+      ],
+      "image": "https://i.etsystatic.com/56732046/r/il/5e0bc6/6588924415/il_794xN.6588924415_lsd8.jpg"
+    },
+    {
+      "slug": "manga-anime",
+      "name": "Manga & Anime",
+      "tagline": "Vos héros de manga gravés sur bois massif",
+      "etsy_section_ids": [
+        53027375
+      ],
+      "image": "https://i.etsystatic.com/56732046/r/il/d351ba/7030120823/il_794xN.7030120823_6xjf.jpg"
+    },
+    {
+      "slug": "cartes-pokemon",
+      "name": "Cartes Pokémon",
+      "tagline": "Cartes 3D en bois, format collection",
+      "etsy_section_ids": [
+        53497132
+      ],
+      "image": "https://i.etsystatic.com/56732046/r/il/b0fcdf/6962047545/il_794xN.6962047545_6p91.jpg"
+    },
+    {
+      "slug": "disney",
+      "name": "Disney",
+      "tagline": "La magie Disney gravée sur bois",
+      "etsy_section_ids": [
+        55656247
+      ],
+      "image": "https://i.etsystatic.com/56732046/r/il/0ed570/7272114177/il_794xN.7272114177_jnrb.jpg"
+    },
+    {
+      "slug": "horloges",
+      "name": "Horloges",
+      "tagline": "Horloges murales artisanales",
+      "etsy_section_ids": [
+        56464505
+      ],
+      "image": "https://i.etsystatic.com/56732046/r/il/841300/7451057970/il_794xN.7451057970_2xd8.jpg"
+    },
+    {
+      "slug": "personnalise",
+      "name": "Sur mesure",
+      "tagline": "Votre visuel, gravé par nos soins",
+      "etsy_section_ids": [],
+      "image": "https://i.etsystatic.com/56732046/r/il/f21054/7480584038/il_794xN.7480584038_4w92.jpg"
+    }
+  ],
+  "products": [
+    {
+      "listing_id": 1838716908,
+      "title": "Dessous de plat chat en bois massif - Cadeau de Noel - Rondin de bois artisanal - Idée cadeau de Noel Déco cuisine originale",
+      "short_title": "Dessous de plat Chat",
+      "category": "animaux",
+      "kind": "dessous-de-plat",
+      "price": 12.99,
+      "currency": "EUR",
+      "url": "https://www.etsy.com/fr/listing/1838716908/dessous-de-plat-chat-en-bois-massif",
+      "images": [
+        "https://i.etsystatic.com/56732046/r/il/5e0bc6/6588924415/il_794xN.6588924415_lsd8.jpg",
+        "https://i.etsystatic.com/56732046/r/il/785116/6588925859/il_794xN.6588925859_c8yt.jpg",
+        "https://i.etsystatic.com/56732046/r/il/b84d14/6588927061/il_794xN.6588927061_7ufd.jpg"
+      ],
+      "description": "Portrait de chat gravé avec finesse sur un rondin de bois massif. Un dessous de plat utile au quotidien qui apporte une touche de nature et de douceur à votre table.",
+      "details": [
+        "Dimensions : environ 20 cm de diamètre, épaisseur 2 cm",
+        "Gravure fine et précise réalisée avec soin",
+        "Bois massif sélectionné pour sa durabilité",
+        "Vernis de protection pour une finition soignée et un entretien facile"
+      ],
+      "featured": false,
+      "free_shipping": false,
+      "quantity": null,
+      "etsy_section_id": 52403582,
+      "created_timestamp": null
+    },
+    {
+      "listing_id": 4315496445,
+      "title": "Carte en bois 3D florizarre - Pokémon - Cadeau de Noel - Idée cadeau de Noel Pokémon - Décor geek - Objet de collection",
+      "short_title": "Carte 3D Florizarre",
+      "category": "cartes-pokemon",
+      "kind": "carte",
+      "price": 5.99,
+      "currency": "EUR",
+      "url": "https://www.etsy.com/fr/listing/4315496445/carte-en-bois-3d-florizarre-pokemon",
+      "images": [
+        "https://i.etsystatic.com/56732046/r/il/b6f818/6914097642/il_794xN.6914097642_3p4s.jpg",
+        "https://i.etsystatic.com/56732046/r/il/049f16/6962068739/il_794xN.6962068739_4p82.jpg",
+        "https://i.etsystatic.com/56732046/r/il/812eae/6967577255/il_794xN.6967577255_jo2x.jpg",
+        "https://i.etsystatic.com/56732046/r/il/c27733/6914096514/il_794xN.6914096514_s6a9.jpg"
+      ],
+      "description": "Carte 3D en bois représentant Florizarre. Gravure précise et couches superposées pour un effet de profondeur unique. Un objet de collection à exposer ou à offrir.",
+      "details": [
+        "Format carte à collectionner : 6,3 × 8,8 cm, épaisseur 0,6 cm",
+        "Superposition de couches de bois pour un effet de relief 3D",
+        "Gravure fine et précise réalisée avec soin"
+      ],
+      "featured": false,
+      "free_shipping": false,
+      "quantity": null,
+      "etsy_section_id": 53497132,
+      "created_timestamp": null
+    },
+    {
+      "listing_id": 4312473345,
+      "title": "Carte en bois 3D  Evolie - Pokémon - Cadeau de Noel - Idée cadeau de Noel Pokémon - Décor geek - Objet de collection",
+      "short_title": "Carte 3D Évoli",
+      "category": "cartes-pokemon",
+      "kind": "carte",
+      "price": 5.99,
+      "currency": "EUR",
+      "url": "https://www.etsy.com/fr/listing/4312473345/carte-en-bois-3d-evolie-pokemon-cadeau",
+      "images": [
+        "https://i.etsystatic.com/56732046/r/il/add696/6946008663/il_794xN.6946008663_1jzy.jpg",
+        "https://i.etsystatic.com/56732046/r/il/893324/6946014281/il_794xN.6946014281_jga0.jpg",
+        "https://i.etsystatic.com/56732046/r/il/8a224f/6946014383/il_794xN.6946014383_6zr5.jpg",
+        "https://i.etsystatic.com/56732046/r/il/16c1b9/6898037388/il_794xN.6898037388_11kg.jpg"
+      ],
+      "description": "Carte 3D en bois gravée à l'effigie d'Évoli. Superposition de couches pour un relief délicat. Un objet décoratif idéal pour les fans de Pokémon.",
+      "details": [
+        "Format carte à collectionner : 6,3 × 8,8 cm, épaisseur 0,6 cm",
+        "Superposition de couches de bois pour un effet de relief 3D",
+        "Gravure fine et précise réalisée avec soin"
+      ],
+      "featured": false,
+      "free_shipping": false,
+      "quantity": null,
+      "etsy_section_id": 53497132,
+      "created_timestamp": null
+    },
+    {
+      "listing_id": 4377548157,
+      "title": "Dessous de Plat en Bois Lilo et Stitch -Cadeau de Noel -Disney -Décoration Disney - Idée Cadeau de Noel Disney -Lilo et Stitch",
+      "short_title": "Dessous de plat Lilo & Stitch",
+      "category": "disney",
+      "kind": "dessous-de-plat",
+      "price": 12.99,
+      "currency": "EUR",
+      "url": "https://www.etsy.com/fr/listing/4377548157/dessous-de-plat-en-bois-lilo-et-stitch",
+      "images": [
+        "https://i.etsystatic.com/56732046/r/il/c105ac/7238114656/il_794xN.7238114656_55z9.jpg"
+      ],
+      "description": "Apportez une touche de magie Disney à votre table avec ce dessous de plat en bois gravé à l'effigie de Lilo et Stitch. Une pièce déco qui ravira petits et grands.",
+      "details": [
+        "Dimensions : environ 20 cm de diamètre, épaisseur 2 cm",
+        "Gravure fine et précise réalisée avec soin",
+        "Bois massif sélectionné pour sa durabilité",
+        "Vernis de protection pour une finition soignée et un entretien facile"
+      ],
+      "featured": false,
+      "free_shipping": false,
+      "quantity": null,
+      "etsy_section_id": 55656247,
+      "created_timestamp": null
+    },
+    {
+      "listing_id": 1836879420,
+      "title": "Dessous de plat renard en bois massif -Cadeau de Noel - Rondin de bois artisanal - Idée cadeau de Noel       - Déco cuisine originale",
+      "short_title": "Dessous de plat Renard",
+      "category": "animaux",
+      "kind": "dessous-de-plat",
+      "price": 12.99,
+      "currency": "EUR",
+      "url": "https://www.etsy.com/fr/listing/1836879420/dessous-de-plat-renard-en-bois-massif",
+      "images": [
+        "https://i.etsystatic.com/56732046/r/il/6e6d4e/6532846964/il_794xN.6532846964_6n54.jpg",
+        "https://i.etsystatic.com/56732046/r/il/950bf9/6532846972/il_794xN.6532846972_fmqd.jpg",
+        "https://i.etsystatic.com/56732046/r/il/c261e3/6532846968/il_794xN.6532846968_27uf.jpg"
+      ],
+      "description": "Renard gravé avec précision sur un rondin de bois massif. Un dessous de plat chaleureux qui protège votre table tout en décorant votre cuisine.",
+      "details": [
+        "Dimensions : environ 20 cm de diamètre, épaisseur 2 cm",
+        "Gravure fine et précise réalisée avec soin",
+        "Bois massif sélectionné pour sa durabilité",
+        "Vernis de protection pour une finition soignée et un entretien facile"
+      ],
+      "featured": false,
+      "free_shipping": false,
+      "quantity": null,
+      "etsy_section_id": 52403582,
+      "created_timestamp": null
+    },
+    {
+      "listing_id": 4418635277,
+      "title": "Carte Pokémon Personnalisée – Carte Custom – Idée Cadeau Originale –Carte Pokémon Sur Mesure",
+      "short_title": "Carte Pokémon personnalisée",
+      "category": "personnalise",
+      "kind": "carte",
+      "price": 8.99,
+      "currency": "EUR",
+      "url": "https://www.etsy.com/fr/listing/4418635277/carte-pokemon-personnalisee-carte-custom",
+      "images": [
+        "https://i.etsystatic.com/56732046/r/il/809839/7525793669/il_794xN.7525793669_g465.jpg"
+      ],
+      "description": "Choisissez votre Pokémon préféré : nous le gravons en relief 3D sur bois, au format carte à collectionner. Un cadeau original et vraiment unique.",
+      "details": [
+        "Pokémon de votre choix",
+        "Format carte à collectionner : 6,3 × 8,8 cm",
+        "Gravure et assemblage réalisés à la main"
+      ],
+      "featured": true,
+      "free_shipping": false,
+      "quantity": null,
+      "etsy_section_id": null,
+      "created_timestamp": null
+    },
+    {
+      "listing_id": 4374718335,
+      "title": "Dessous de Plat en Bois Le Roi Lion - Cadeau de Noel -Disney -Décoration Disney - Idée Cadeau de Noel Disney - Le Roi Lion",
+      "short_title": "Dessous de plat Le Roi Lion",
+      "category": "disney",
+      "kind": "dessous-de-plat",
+      "price": 12.99,
+      "currency": "EUR",
+      "url": "https://www.etsy.com/fr/listing/4374718335/dessous-de-plat-en-bois-le-roi-lion",
+      "images": [
+        "https://i.etsystatic.com/56732046/r/il/0ed570/7272114177/il_794xN.7272114177_jnrb.jpg",
+        "https://i.etsystatic.com/56732046/r/il/7f5ad3/7224156868/il_794xN.7224156868_ha1h.jpg",
+        "https://i.etsystatic.com/56732046/r/il/fb1025/7272126291/il_794xN.7272126291_p4x3.jpg",
+        "https://i.etsystatic.com/56732046/r/il/114386/7272125529/il_794xN.7272125529_rdzi.jpg"
+      ],
+      "description": "Le Roi Lion gravé sur bois : un dessous de plat qui allie légèreté, résistance et style. Idéal pour protéger vos surfaces avec élégance et faire revivre un classique intemporel.",
+      "details": [
+        "Dimensions : environ 20 cm de diamètre, épaisseur 2 cm",
+        "Gravure fine et précise réalisée avec soin",
+        "Bois massif sélectionné pour sa durabilité",
+        "Vernis de protection pour une finition soignée et un entretien facile"
+      ],
+      "featured": false,
+      "free_shipping": false,
+      "quantity": null,
+      "etsy_section_id": 55656247,
+      "created_timestamp": null
+    },
+    {
+      "listing_id": 4295981316,
+      "title": "Carte en bois 3D Tortank- Pokémon - Cadeau de Noel - Idée cadeau de Noel Pokémon - Décor geek - Objet de collection",
+      "short_title": "Carte 3D Tortank",
+      "category": "cartes-pokemon",
+      "kind": "carte",
+      "price": 5.99,
+      "currency": "EUR",
+      "url": "https://www.etsy.com/fr/listing/4295981316/carte-en-bois-3d-tortank-pokemon-cadeau",
+      "images": [
+        "https://i.etsystatic.com/56732046/r/il/d8f5a5/6914070754/il_794xN.6914070754_gae1.jpg",
+        "https://i.etsystatic.com/56732046/r/il/c2252a/6814614514/il_794xN.6814614514_l3mg.jpg",
+        "https://i.etsystatic.com/56732046/r/il/788ecb/6919614586/il_794xN.6919614586_mfni.jpg",
+        "https://i.etsystatic.com/56732046/r/il/e49e50/6967586355/il_794xN.6967586355_bn64.jpg"
+      ],
+      "description": "Carte Pokémon 3D gravée à l'effigie de Tortank. Fabrication en bois naturel avec un véritable effet de profondeur. Un objet de collection original à exposer ou à offrir.",
+      "details": [
+        "Format carte à collectionner : 6,3 × 8,8 cm, épaisseur 0,6 cm",
+        "Superposition de couches de bois pour un effet de relief 3D",
+        "Gravure fine et précise réalisée avec soin"
+      ],
+      "featured": false,
+      "free_shipping": false,
+      "quantity": null,
+      "etsy_section_id": 53497132,
+      "created_timestamp": null
+    },
+    {
+      "listing_id": 1839704122,
+      "title": "Dessous de plat panda en bois massif - Cadeau de Noel - Rondin de bois artisanal - Idée cadeau de Noel      - Déco cuisine originale",
+      "short_title": "Dessous de plat Panda",
+      "category": "animaux",
+      "kind": "dessous-de-plat",
+      "price": 12.99,
+      "currency": "EUR",
+      "url": "https://www.etsy.com/fr/listing/1839704122/dessous-de-plat-panda-en-bois-massif",
+      "images": [
+        "https://i.etsystatic.com/56732046/r/il/96342b/6545177886/il_794xN.6545177886_hssh.jpg",
+        "https://i.etsystatic.com/56732046/r/il/3498de/6545181100/il_794xN.6545181100_ote3.jpg",
+        "https://i.etsystatic.com/56732046/r/il/bc0cbd/6545181226/il_794xN.6545181226_2t3s.jpg"
+      ],
+      "description": "Gravure réaliste d'un panda sur bois naturel. Un design doux et décoratif pour une touche zen, aussi utile que joli.",
+      "details": [
+        "Dimensions : environ 20 cm de diamètre, épaisseur 2 cm",
+        "Gravure fine et précise réalisée avec soin",
+        "Bois massif sélectionné pour sa durabilité",
+        "Vernis de protection pour une finition soignée et un entretien facile"
+      ],
+      "featured": false,
+      "free_shipping": false,
+      "quantity": null,
+      "etsy_section_id": 52403582,
+      "created_timestamp": null
+    },
+    {
+      "listing_id": 1838708312,
+      "title": "Dessous de plat chien en bois massif - Cadeau de Noel- Rondin de bois artisanal - Idée cadeau de Noel        - Déco cuisine originale",
+      "short_title": "Dessous de plat Chien",
+      "category": "animaux",
+      "kind": "dessous-de-plat",
+      "price": 12.99,
+      "currency": "EUR",
+      "url": "https://www.etsy.com/fr/listing/1838708312/dessous-de-plat-chien-en-bois-massif",
+      "images": [
+        "https://i.etsystatic.com/56732046/r/il/c6b310/6540750460/il_794xN.6540750460_ruet.jpg",
+        "https://i.etsystatic.com/56732046/r/il/076b86/6540758512/il_794xN.6540758512_biph.jpg",
+        "https://i.etsystatic.com/56732046/r/il/ea0555/6540756576/il_794xN.6540756576_2xce.jpg"
+      ],
+      "description": "Portrait de chien gravé avec précision sur bois massif. Un accessoire utile pour votre cuisine qui ajoute une touche chaleureuse à votre intérieur.",
+      "details": [
+        "Dimensions : environ 20 cm de diamètre, épaisseur 2 cm",
+        "Gravure fine et précise réalisée avec soin",
+        "Bois massif sélectionné pour sa durabilité",
+        "Vernis de protection pour une finition soignée et un entretien facile"
+      ],
+      "featured": false,
+      "free_shipping": false,
+      "quantity": null,
+      "etsy_section_id": 52403582,
+      "created_timestamp": null
+    },
+    {
+      "listing_id": 4320000607,
+      "title": "Carte en bois 3D Arcanin - Pokémon - Cadeau de Noel - Idée cadeau de Noel Pokémon - Décor geek - Objet de collection",
+      "short_title": "Carte 3D Arcanin",
+      "category": "cartes-pokemon",
+      "kind": "carte",
+      "price": 5.99,
+      "currency": "EUR",
+      "url": "https://www.etsy.com/fr/listing/4320000607/carte-en-bois-3d-arcanin-pokemon-cadeau",
+      "images": [
+        "https://i.etsystatic.com/56732046/r/il/a90c38/6937297840/il_794xN.6937297840_6jas.jpg",
+        "https://i.etsystatic.com/56732046/r/il/ffe5bf/6985264467/il_794xN.6985264467_qyiv.jpg",
+        "https://i.etsystatic.com/56732046/r/il/d31c0c/6937287226/il_794xN.6937287226_mque.jpg",
+        "https://i.etsystatic.com/56732046/r/il/8bd775/6937289684/il_794xN.6937289684_w4f4.jpg"
+      ],
+      "description": "Revivez la magie Pokémon avec cette carte Arcanin en bois gravé 3D. Chaque pièce est minutieusement assemblée à la main : un incontournable pour les collectionneurs nostalgiques.",
+      "details": [
+        "Format carte à collectionner : 6,3 × 8,8 cm, épaisseur 0,6 cm",
+        "Superposition de couches de bois pour un effet de relief 3D",
+        "Gravure fine et précise réalisée avec soin"
+      ],
+      "featured": false,
+      "free_shipping": false,
+      "quantity": null,
+      "etsy_section_id": 53497132,
+      "created_timestamp": null
+    },
+    {
+      "listing_id": 1891818343,
+      "title": "Dessous de plat en bois Goku -Cadeau de Noel -Dragon Ball -Univers manga - Idée cadeau de Noel animes - Déco geek",
+      "short_title": "Dessous de plat Goku",
+      "category": "manga-anime",
+      "kind": "dessous-de-plat",
+      "price": 12.99,
+      "currency": "EUR",
+      "url": "https://www.etsy.com/fr/listing/1891818343/dessous-de-plat-en-bois-goku-cadeau-de",
+      "images": [
+        "https://i.etsystatic.com/56732046/r/il/592bd7/6983079458/il_794xN.6983079458_7nld.jpg",
+        "https://i.etsystatic.com/56732046/r/il/8ad2fe/6782430493/il_794xN.6782430493_e4fr.jpg",
+        "https://i.etsystatic.com/56732046/r/il/c8e939/6734405456/il_794xN.6734405456_mqd8.jpg",
+        "https://i.etsystatic.com/56732046/r/il/b3c0a8/6734406154/il_794xN.6734406154_ekos.jpg",
+        "https://i.etsystatic.com/56732046/r/il/39469c/6782431003/il_794xN.6782431003_abet.jpg"
+      ],
+      "description": "Goku gravé sur bois massif pour les fans de Dragon Ball. Un dessous de plat qui allie utilité et passion pour l'univers manga.",
+      "details": [
+        "Dimensions : environ 20 cm de diamètre, épaisseur 2 cm",
+        "Gravure fine et précise réalisée avec soin",
+        "Bois massif sélectionné pour sa durabilité",
+        "Vernis de protection pour une finition soignée et un entretien facile"
+      ],
+      "featured": false,
+      "free_shipping": false,
+      "quantity": null,
+      "etsy_section_id": 53027375,
+      "created_timestamp": null
+    },
+    {
+      "listing_id": 1892487438,
+      "title": "Carte en bois 3D Pikachu- Pokémon - Cadeau de Noel - Idée cadeau de Noel Pokémon - Décor geek - Objet de collection",
+      "short_title": "Carte 3D Pikachu",
+      "category": "cartes-pokemon",
+      "kind": "carte",
+      "price": 5.99,
+      "currency": "EUR",
+      "url": "https://www.etsy.com/fr/listing/1892487438/carte-en-bois-3d-pikachu-pokemon-cadeau",
+      "images": [
+        "https://i.etsystatic.com/56732046/r/il/b0fcdf/6962047545/il_794xN.6962047545_6p91.jpg",
+        "https://i.etsystatic.com/56732046/r/il/aaa23e/6857470735/il_794xN.6857470735_kti7.jpg",
+        "https://i.etsystatic.com/56732046/r/il/89e468/6962048081/il_794xN.6962048081_80ri.jpg",
+        "https://i.etsystatic.com/56732046/r/il/5de81a/6809460354/il_794xN.6809460354_gl45.jpg"
+      ],
+      "description": "Représentation 3D de Pikachu gravée dans le bois. Une fabrication soignée pour une finition de qualité, parfaite pour les fans et les amateurs de déco geek.",
+      "details": [
+        "Format carte à collectionner : 6,3 × 8,8 cm, épaisseur 0,6 cm",
+        "Superposition de couches de bois pour un effet de relief 3D",
+        "Gravure fine et précise réalisée avec soin"
+      ],
+      "featured": false,
+      "free_shipping": false,
+      "quantity": null,
+      "etsy_section_id": 53497132,
+      "created_timestamp": null
+    },
+    {
+      "listing_id": 4419114593,
+      "title": "Dessous de Plat Personnalisé – Cadeau Cuisine Unique – Dessous de plat Custom  –Idée Cadeau Maison",
+      "short_title": "Dessous de plat personnalisé",
+      "category": "personnalise",
+      "kind": "dessous-de-plat",
+      "price": 17.99,
+      "currency": "EUR",
+      "url": "https://www.etsy.com/fr/listing/4419114593/dessous-de-plat-personnalise-cadeau",
+      "images": [
+        "https://i.etsystatic.com/56732046/r/il/f21054/7480584038/il_794xN.7480584038_4w92.jpg"
+      ],
+      "description": "Envoyez-nous votre photo, votre dessin ou votre texte : nous le gravons sur un dessous de plat en bois. Le cadeau unique par excellence, pour une cuisine ou une occasion spéciale.",
+      "details": [
+        "Gravure d'après le visuel de votre choix (photo, logo, texte…)",
+        "Pièce unique réalisée à la main",
+        "Vernis de protection pour un entretien facile"
+      ],
+      "featured": true,
+      "free_shipping": false,
+      "quantity": null,
+      "etsy_section_id": null,
+      "created_timestamp": null
+    },
+    {
+      "listing_id": 1853445029,
+      "title": "Dessous de plat cheval en bois massif -Cadeau de Noel - Rondin de bois artisanal - Idée cadeau de Noel       - Déco cuisine originale",
+      "short_title": "Dessous de plat Cheval",
+      "category": "animaux",
+      "kind": "dessous-de-plat",
+      "price": 12.99,
+      "currency": "EUR",
+      "url": "https://www.etsy.com/fr/listing/1853445029/dessous-de-plat-cheval-en-bois-massif",
+      "images": [
+        "https://i.etsystatic.com/56732046/r/il/8bb26a/6543136974/il_794xN.6543136974_k4v9.jpg",
+        "https://i.etsystatic.com/56732046/r/il/0d9fcc/6543141314/il_794xN.6543141314_km2u.jpg",
+        "https://i.etsystatic.com/56732046/r/il/4a6bac/6543141486/il_794xN.6543141486_7aei.jpg"
+      ],
+      "description": "Cheval gravé avec finesse sur un rondin de bois massif. Une pièce élégante et naturelle pour protéger votre table avec style.",
+      "details": [
+        "Dimensions : environ 20 cm de diamètre, épaisseur 2 cm",
+        "Gravure fine et précise réalisée avec soin",
+        "Bois massif sélectionné pour sa durabilité",
+        "Vernis de protection pour une finition soignée et un entretien facile"
+      ],
+      "featured": false,
+      "free_shipping": false,
+      "quantity": null,
+      "etsy_section_id": 52403582,
+      "created_timestamp": null
+    },
+    {
+      "listing_id": 1880783276,
+      "title": "Dessous de plat en bois Eren -Cadeau de Noel  -Attaque des Titans -Univers manga - Idée cadeau de Noel animes -Déco geek",
+      "short_title": "Dessous de plat Eren",
+      "category": "manga-anime",
+      "kind": "dessous-de-plat",
+      "price": 12.99,
+      "currency": "EUR",
+      "url": "https://www.etsy.com/fr/listing/1880783276/dessous-de-plat-en-bois-eren-cadeau-de",
+      "images": [
+        "https://i.etsystatic.com/56732046/r/il/0180c0/6983083662/il_794xN.6983083662_dpvt.jpg",
+        "https://i.etsystatic.com/56732046/r/il/7f1e1b/6798834261/il_794xN.6798834261_bead.jpg",
+        "https://i.etsystatic.com/56732046/r/il/f0edee/6750817180/il_794xN.6750817180_12lw.jpg",
+        "https://i.etsystatic.com/56732046/r/il/96dfa3/6798835823/il_794xN.6798835823_3ldn.jpg",
+        "https://i.etsystatic.com/56732046/r/il/387ffd/6750817382/il_794xN.6750817382_icro.jpg"
+      ],
+      "description": "Eren Jäger, personnage central de L'Attaque des Titans, gravé sur bois naturel. Une pièce artisanale pensée pour les fans de manga, qui allie intensité visuelle et savoir-faire manuel.",
+      "details": [
+        "Dimensions : environ 20 cm de diamètre, épaisseur 2 cm",
+        "Gravure fine et précise réalisée avec soin",
+        "Bois massif sélectionné pour sa durabilité",
+        "Vernis de protection pour une finition soignée et un entretien facile"
+      ],
+      "featured": false,
+      "free_shipping": false,
+      "quantity": null,
+      "etsy_section_id": 53027375,
+      "created_timestamp": null
+    },
+    {
+      "listing_id": 4413812222,
+      "title": "Horloge Murale Artisanale en Bois – Décoration Murale Unique & Fait Main",
+      "short_title": "Horloge murale en bois",
+      "category": "horloges",
+      "kind": "horloge",
+      "price": 24.99,
+      "currency": "EUR",
+      "url": "https://www.etsy.com/fr/listing/4413812222/horloge-murale-artisanale-en-bois",
+      "images": [
+        "https://i.etsystatic.com/56732046/r/il/841300/7451057970/il_794xN.7451057970_2xd8.jpg"
+      ],
+      "description": "Horloge murale en bois, façonnée et gravée dans notre atelier. Une pièce décorative unique pour habiller un mur avec chaleur et caractère.",
+      "details": [
+        "Pièce unique faite main",
+        "Bois naturel, finition soignée",
+        "Livraison offerte"
+      ],
+      "featured": false,
+      "free_shipping": true,
+      "quantity": null,
+      "etsy_section_id": 56464505,
+      "created_timestamp": null
+    },
+    {
+      "listing_id": 4303017864,
+      "title": "Carte en bois 3D Mewtwo- Pokémon - Cadeau de Noel - Idée cadeau de Noel Pokémon - Décor geek - Objet de collection",
+      "short_title": "Carte 3D Mewtwo",
+      "category": "cartes-pokemon",
+      "kind": "carte",
+      "price": 5.99,
+      "currency": "EUR",
+      "url": "https://www.etsy.com/fr/listing/4303017864/carte-en-bois-3d-mewtwo-pokemon-cadeau",
+      "images": [
+        "https://i.etsystatic.com/56732046/r/il/7b0645/6914056230/il_794xN.6914056230_bsdz.jpg",
+        "https://i.etsystatic.com/56732046/r/il/bada58/6898014411/il_794xN.6898014411_2t3a.jpg",
+        "https://i.etsystatic.com/56732046/r/il/45c114/6914057498/il_794xN.6914057498_6sfz.jpg",
+        "https://i.etsystatic.com/56732046/r/il/d1a42f/6850049228/il_794xN.6850049228_9c0i.jpg"
+      ],
+      "description": "Mewtwo en relief 3D, gravé avec finesse dans le bois pour un rendu unique et durable. Idéal pour les fans et les amateurs de déco Pokémon.",
+      "details": [
+        "Format carte à collectionner : 6,3 × 8,8 cm, épaisseur 0,6 cm",
+        "Superposition de couches de bois pour un effet de relief 3D",
+        "Gravure fine et précise réalisée avec soin"
+      ],
+      "featured": false,
+      "free_shipping": false,
+      "quantity": null,
+      "etsy_section_id": 53497132,
+      "created_timestamp": null
+    },
+    {
+      "listing_id": 1865127564,
+      "title": "Dessous de plat en bois Luffy -Cadeau de Noel -One Piece -Univers manga - Idée cadeau de Noel animes - Déco geek",
+      "short_title": "Dessous de plat Luffy",
+      "category": "manga-anime",
+      "kind": "dessous-de-plat",
+      "price": 12.99,
+      "currency": "EUR",
+      "url": "https://www.etsy.com/fr/listing/1865127564/dessous-de-plat-en-bois-luffy-cadeau-de",
+      "images": [
+        "https://i.etsystatic.com/56732046/r/il/d351ba/7030120823/il_794xN.7030120823_6xjf.jpg",
+        "https://i.etsystatic.com/56732046/r/il/06dee4/6718397765/il_794xN.6718397765_ahpo.jpg",
+        "https://i.etsystatic.com/56732046/r/il/051158/6670357462/il_794xN.6670357462_crbc.jpg"
+      ],
+      "description": "Luffy, le futur Roi des Pirates, gravé sur bois massif. Une pièce unique qui capture l'esprit aventureux de One Piece, aussi utile que décorative.",
+      "details": [
+        "Dimensions : environ 20 cm de diamètre, épaisseur 2 cm",
+        "Gravure fine et précise réalisée avec soin",
+        "Bois massif sélectionné pour sa durabilité",
+        "Vernis de protection pour une finition soignée et un entretien facile"
+      ],
+      "featured": false,
+      "free_shipping": true,
+      "quantity": 1,
+      "etsy_section_id": 53027375,
+      "created_timestamp": null
+    },
+    {
+      "listing_id": 4404319125,
+      "title": "Carte en bois 3D Poussacha - Pokémon - Cadeau de Noel - Idée cadeau de Noel Pokémon - Décor geek - Objet de collection",
+      "short_title": "Carte 3D Poussacha",
+      "category": "cartes-pokemon",
+      "kind": "carte",
+      "price": 5.99,
+      "currency": "EUR",
+      "url": "https://www.etsy.com/fr/listing/4404319125/carte-en-bois-3d-poussacha-pokemon",
+      "images": [
+        "https://i.etsystatic.com/56732046/r/il/ea01fd/7440811223/il_794xN.7440811223_9r9c.jpg"
+      ],
+      "description": "Carte 3D en bois représentant Poussacha. Gravure précise et couches superposées pour un effet de relief. Un objet décoratif unique pour les collectionneurs.",
+      "details": [
+        "Format carte à collectionner : 6,3 × 8,8 cm, épaisseur 0,6 cm",
+        "Superposition de couches de bois pour un effet de relief 3D",
+        "Gravure fine et précise réalisée avec soin"
+      ],
+      "featured": false,
+      "free_shipping": false,
+      "quantity": null,
+      "etsy_section_id": 53497132,
+      "created_timestamp": null
+    },
+    {
+      "listing_id": 1876867223,
+      "title": "Dessous de plat bois Livaï Ackerman -Cadeau de Noel -Attaques des titans -Univers manga - Idée cadeau de Noel animes - Déco geek",
+      "short_title": "Dessous de plat Livaï",
+      "category": "manga-anime",
+      "kind": "dessous-de-plat",
+      "price": 12.99,
+      "currency": "EUR",
+      "url": "https://www.etsy.com/fr/listing/1876867223/dessous-de-plat-bois-livai-ackerman",
+      "images": [
+        "https://i.etsystatic.com/56732046/r/il/2680bc/7030009571/il_794xN.7030009571_jxjr.jpg",
+        "https://i.etsystatic.com/56732046/r/il/bc1e5a/6657800678/il_794xN.6657800678_evm5.jpg",
+        "https://i.etsystatic.com/56732046/r/il/fc40f1/6705841041/il_794xN.6705841041_30t7.jpg"
+      ],
+      "description": "Représentation fine de Livaï Ackerman, de L'Attaque des Titans, sur un dessous de plat en bois à l'esthétique soignée. Un accessoire fonctionnel et artistique.",
+      "details": [
+        "Dimensions : environ 20 cm de diamètre, épaisseur 2 cm",
+        "Gravure fine et précise réalisée avec soin",
+        "Bois massif sélectionné pour sa durabilité",
+        "Vernis de protection pour une finition soignée et un entretien facile"
+      ],
+      "featured": false,
+      "free_shipping": false,
+      "quantity": null,
+      "etsy_section_id": 53027375,
+      "created_timestamp": null
+    }
+  ]
+}

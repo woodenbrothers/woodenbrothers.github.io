@@ -1,0 +1,72 @@
+# Synchronise automatiquement le catalogue du site avec la boutique Etsy.
+#
+# Pré-requis : un secret de dépôt nommé ETSY_API_KEY (clé « keystring » d'une
+# application créée sur https://www.etsy.com/developers/your-apps).
+# Sans ce secret, le workflow ne fait rien et le site utilise data/products.json
+# tel qu'il est dans le dépôt (mise à jour manuelle). Voir README.md.
+name: Synchronisation Etsy
+
+on:
+  schedule:
+    - cron: "17 5 * * *"      # tous les jours à 05:17 UTC
+  workflow_dispatch:           # bouton « Run workflow » dans l'onglet Actions
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: sync-etsy
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Vérifier la présence de la clé API
+        id: key
+        env:
+          ETSY_API_KEY: ${{ secrets.ETSY_API_KEY }}
+        run: |
+          if [ -z "$ETSY_API_KEY" ]; then
+            echo "::notice::Secret ETSY_API_KEY absent : synchronisation ignorée, le catalogue reste celui de data/products.json."
+            echo "present=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Synchroniser data/products.json avec Etsy
+        if: steps.key.outputs.present == 'true'
+        env:
+          ETSY_API_KEY: ${{ secrets.ETSY_API_KEY }}
+        run: python3 scripts/sync_etsy.py
+
+      - name: Enregistrer les changements
+        if: steps.key.outputs.present == 'true'
+        id: commit
+        run: |
+          if git diff --quiet -- data/products.json; then
+            echo "Aucun changement dans le catalogue."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/products.json
+            git commit -m "Synchronisation automatique du catalogue Etsy"
+            git pull --rebase origin main
+            git push origin HEAD:main
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Un commit fait avec le GITHUB_TOKEN ne déclenche pas les autres workflows :
+      # on lance donc explicitement le déploiement GitHub Pages.
+      - name: Redéployer le site
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run static.yml --ref main

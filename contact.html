@@ -1,385 +1,156 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="no-js">
 <head>
-    <title>Contact – Wooden Brothers | Atelier de gravure sur bois</title>
-    <meta name="description" content="Une question, un projet sur-mesure ou une commande ? Écrivez-nous : conseils personnalisés et fabrication artisanale de dessous de plat en Paulownia.">
-    <link rel="canonical" href="https://www.woodenbrothers.fr/contact">
-    <meta name="keywords" content="contact Wooden Brothers, contacter Wooden Brothers">
-    <meta name="author" content="Wooden Brothers">
-    <meta name="robots" content="index, follow">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Wooden Brothers</title>
-    <!-- Favicons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="Images/logo.webp">
-    <link rel="icon" type="image/png" sizes="16x16" href="Images/logo.webp">
-    <link rel="icon" type="image/png" sizes="48x48" href="Images/logo.webp">
-    <link rel="icon" type="image/png" sizes="192x192" href="Images/logo.webp">
-    <link rel="apple-touch-icon" sizes="180x180" href="Images/logo.webp">
-    <meta name="msapplication-TileImage" content="Images/logo.webp">
-    <meta name="msapplication-TileColor" content="#3A5A3B">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Eudoxus+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #3A5A3B;
-            --secondary-color: #b49972;
-            --background-color: #f5fbf5;
-            --text-color: #0f170f;
-            --secondary-text-color: #2A412B;
-            --text-white-color: #eff7ef;
-            --accent-color: #9dd8ce;
-            --card-background: #eef4ee;
-            --secondary-card-background: #e8f5e8;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Eudoxus Sans', sans-serif;
-        }
-        
-        body {
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        .header {
-            background-color: var(--card-background);
-            padding: 2rem;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .logo {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1rem;
-        }
-
-        .logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .header h1 {
-            color: var(--primary-color);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .contact-section {
-            background: var(--card-background);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-section h2 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-        }
-
-        .contact-info {
-            margin-bottom: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            padding: 1rem;
-            background: white;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-            position: relative;
-        }
-
-        .contact-item > div {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .contact-item img {
-            width: 24px;
-            height: 24px;
-            display: block;
-        }
-
-        .contact-item a {
-            color: var(--text-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            display: flex;
-            align-items: center;
-        }
-
-        .contact-item a:hover {
-            color: var(--primary-color);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
-            background: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-
-        .social-link:hover {
-            transform: scale(1.05);
-            background: var(--secondary-color);
-        }
-
-        .social-link img {
-            width: 20px;
-            height: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .contact-container {
-                padding: 1rem;
-            }
-
-            .contact-section h2 {
-                text-align: center;
-            }
-
-            .social-links {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .contact-item {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                padding-bottom: 3.5rem;
-                gap: 0.5rem;
-            }
-
-            .contact-item > div {
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-            }
-
-            .contact-item img {
-                width: 24px;
-                height: 24px;
-                margin: 0;
-            }
-
-            .copy-button {
-                position: absolute;
-                bottom: 0.8rem;
-                width: 100px;
-                left: calc(50% - 50px);
-                transform: none;
-                transition: none;
-            }
-
-            .copy-button:hover {
-                transform: none;
-            }
-
-            [data-aos] {
-                opacity: 1 !important;
-                transform: none !important;
-            }
-        }
-
-        .copy-button {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: transform 0.3s ease;
-            position: absolute;
-            right: 1rem;
-        }
-
-        .copy-button:hover {
-            transform: scale(1.05);
-        }
-
-        .copy-button.copied {
-            background: #4CAF50;
-        }
-
-        .footer {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 4rem 2rem 2rem;
-            margin-top: calc(3rem + 106px);
-        }
-
-        .footer-content {
-            max-width: 400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            gap: 0;
-            text-align: left;
-            padding: 0 1rem;
-        }
-
-        .footer-content > div {
-            flex: 0 1 auto;
-            margin: 0;
-        }
-
-        .footer-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links a {
-            color: var(--text-white-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-color);
-        }
-
-        .footer-content h3 {
-            text-align: left;
-            margin-bottom: 1rem;
-        }
-
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Wooden Brothers</title>
+<meta name="description" content="Contactez l'atelier Wooden Brothers par e-mail, via Etsy ou Instagram : questions, commandes en cours et créations personnalisées.">
+<meta name="author" content="Wooden Brothers">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.woodenbrothers.fr/contact">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Wooden Brothers">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Contact | Wooden Brothers">
+<meta property="og:description" content="Contactez l'atelier Wooden Brothers par e-mail, via Etsy ou Instagram : questions, commandes en cours et créations personnalisées.">
+<meta property="og:image" content="https://www.woodenbrothers.fr/og-image.jpg">
+<meta property="og:url" content="https://www.woodenbrothers.fr/contact">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#2F5B37">
+<link rel="icon" type="image/png" sizes="32x32" href="/Images/logo32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/Images/logo16.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/Images/logo48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/Images/logo192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/Images/logo512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/Images/logo192.png">
+<link rel="preload" href="/assets/fonts/fraunces-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dm-sans-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script>document.documentElement.classList.replace('no-js', 'js');</script>
 </head>
 <body>
-    <header class="header">
-        <div class="logo" style="margin-top: 10px;">
-            <a href="/" style="display: block;">
-                <img src="Images/logo.webp" alt="Wooden Brothers Logo">
-            </a>
-        </div>
-        <h1>Contact</h1>
-        <p>Nous sommes là pour vous aider et répondre à vos questions</p>
-    </header>
-
-    <div class="contact-container">
-        <div class="contact-section" data-aos="fade-up">
-            <h2>Contactez-nous</h2>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div>
-                        <img src="https://img.icons8.com/fluency/48/mail.png" alt="Email">
-                        <a href="#" onclick="openEmailClient(event)">contact@woodenbrothers.fr</a>
-                    </div>
-                    <button class="copy-button" onclick="copyEmail()">Copier</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="contact-section" data-aos="fade-up" data-aos-delay="100">
-            <h2>À propos de nous</h2>
-            <p>Chez Wooden Brothers, chaque création est le fruit d'un travail minutieux, inspiré par la nature, la culture et la passion du bois. Nous sommes fiers de vous proposer des pièces uniques, fabriquées avec soin et attention aux détails.</p>
-        </div>
+<a class="skip-link" href="#main">Aller au contenu</a>
+<header class="site-header">
+  <div class="container header__inner">
+    <a class="brand" href="/" aria-label="Wooden Brothers, retour à l'accueil">
+      <img class="brand__logo" src="/Images/logo192.webp" alt="" width="46" height="46">
+      <span class="brand__name">Wooden Brothers</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="/" class="nav__link">Accueil</a>
+      <a href="/produits" class="nav__link">Nos créations</a>
+      <a href="/produits?filter=personnalise" class="nav__link">Sur mesure</a>
+      <a href="/a-propos" class="nav__link">L'atelier</a>
+      <a href="/contact" class="nav__link" aria-current="page">Contact</a>
+      <a class="btn btn--primary btn--sm nav__cta" href="https://www.etsy.com/fr/shop/WoodenBrothersArt" target="_blank" rel="noopener">Commander sur Etsy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+    </nav>
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Ouvrir le menu"><span></span></button>
+  </div>
+</header>
+<main id="main">
+  <section class="page-head">
+    <div class="rings" aria-hidden="true"></div>
+    <div class="container">
+      <span class="eyebrow">Contact</span>
+      <h1>Parlons de <em>votre projet</em></h1>
+      <p class="page-head__lead">Une question sur une création, une demande sur mesure ou une commande en cours ? Nous sommes là pour vous répondre.</p>
+      
     </div>
+  </section>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
-        });
-
-        function openEmailClient(event) {
-            event.preventDefault();
-            const email = 'contact@woodenbrothers.fr';
-            const subject = 'Contact Wooden Brothers';
-            
-            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-            
-            const mailUrl = isMobile 
-                ? `googlegmail://co?to=${email}&subject=${encodeURIComponent(subject)}`
-                : `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}`;
-            
-            window.location.href = mailUrl;
-        }
-
-        function copyEmail() {
-            const email = 'contact@woodenbrothers.fr';
-            navigator.clipboard.writeText(email).then(() => {
-                const button = document.querySelector('.copy-button');
-                button.textContent = 'Copié !';
-                button.classList.add('copied');
-                
-                setTimeout(() => {
-                    button.textContent = 'Copier';
-                    button.classList.remove('copied');
-                }, 2000);
-            });
-        }
-    </script>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <div>
-                <h3>À propos</h3>
-                <ul class="footer-links">
-                    <li><a href="/contact">Contact</a></li>
-                </ul>
-                </div>
-            <div>
-                <h3>Informations</h3>
-                <ul class="footer-links">
-                    <li><a href="/politique-confidentialite">Politique de confidentialité</a></li>
-                    <li><a href="/mentions-legales">Mentions légales</a></li>
-                </ul>
-            </div>
+  <section class="section section--tight">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-card" data-reveal>
+          <div class="contact-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+          <h3>Par e-mail</h3>
+          <p>Pour toute question ou projet personnalisé, écrivez-nous :</p>
+          <a class="contact-card__email" href="mailto:contact@woodenbrothers.fr?subject=Contact%20Wooden%20Brothers">contact@woodenbrothers.fr</a>
+          <div class="contact-card__actions" style="margin-top: 1.25rem;">
+            <a class="btn btn--primary btn--sm" href="mailto:contact@woodenbrothers.fr?subject=Contact%20Wooden%20Brothers">Écrire un e-mail</a>
+            <button type="button" class="btn btn--secondary btn--sm" data-copy="contact@woodenbrothers.fr">Copier l'adresse</button>
+          </div>
         </div>
-    </footer>
-    
+        <div class="contact-card" data-reveal data-reveal-delay="1">
+          <div class="contact-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></div>
+          <h3>Via Etsy</h3>
+          <p>Pour une commande en cours ou une question sur un article, le plus simple est de nous écrire directement depuis notre boutique Etsy.</p>
+          <div class="contact-card__actions"><a class="btn btn--secondary btn--sm" href="https://www.etsy.com/fr/shop/WoodenBrothersArt" target="_blank" rel="noopener">Ouvrir la boutique Etsy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+        </div>
+        <div class="contact-card" data-reveal data-reveal-delay="2">
+          <div class="contact-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></div>
+          <h3>Sur Instagram</h3>
+          <p>Suivez les coulisses de l'atelier, nos nouveautés et envoyez-nous un message.</p>
+          <div class="contact-card__actions"><a class="btn btn--secondary btn--sm" href="https://www.instagram.com/woodenbrothers.art/" target="_blank" rel="noopener">@woodenbrothers.art <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight section--alt">
+    <div class="container container--narrow">
+      <div class="section__head section__head--left">
+        <span class="eyebrow">Projet sur mesure</span>
+        <h2>Comment nous décrire <em>votre idée</em> ?</h2>
+      </div>
+      <ul class="icon-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg> <span><strong>Le type de pièce</strong> : dessous de plat, carte Pokémon 3D, horloge…</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg> <span><strong>Votre visuel</strong> : photo, dessin, logo ou texte à graver (le plus net possible).</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg> <span><strong>L'occasion et la date souhaitée</strong>, pour que nous puissions vous confirmer la faisabilité.</span></li>
+      </ul>
+      <p class="muted" style="margin-top: 1.5rem;">Vous pouvez aussi commander directement l'article « personnalisé » correspondant sur Etsy et y joindre votre demande. Consultez nos <a href="/#faq" style="color: var(--forest);">questions fréquentes</a> pour en savoir plus.</p>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="/"><img class="brand__logo" src="/Images/logo192.webp" alt="" width="46" height="46"><span class="brand__name">Wooden Brothers</span></a>
+        <p>Atelier de gravure sur bois. Dessous de plat, cartes Pokémon 3D et horloges faits main, en bois de Paulownia.</p>
+        <div class="footer__social">
+          <a href="https://www.etsy.com/fr/shop/WoodenBrothersArt" target="_blank" rel="noopener" aria-label="Notre boutique Etsy"><svg viewBox="0 0 24 24" aria-hidden="true"><text x="12" y="18" text-anchor="middle" font-family="Georgia, serif" font-size="18" font-weight="700" fill="currentColor">E</text></svg></a>
+          <a href="https://www.instagram.com/woodenbrothers.art/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="mailto:contact@woodenbrothers.fr" aria-label="Nous écrire"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3>La boutique</h3>
+        <ul>
+          <li><a href="/produits">Toutes nos créations</a></li>
+          <li><a href="/produits?filter=animaux">Animaux</a></li>
+          <li><a href="/produits?filter=manga-anime">Manga &amp; Anime</a></li>
+          <li><a href="/produits?filter=cartes-pokemon">Cartes Pokémon</a></li>
+          <li><a href="/produits?filter=disney">Disney</a></li>
+          <li><a href="/produits?filter=personnalise">Sur mesure</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>L'atelier</h3>
+        <ul>
+          <li><a href="/a-propos">Notre histoire</a></li>
+          <li><a href="/#savoir-faire">Notre savoir-faire</a></li>
+          <li><a href="/#faq">Questions fréquentes</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Informations</h3>
+        <ul>
+          <li><a href="/mentions-legales">Mentions légales</a></li>
+          <li><a href="/politique-confidentialite">Politique de confidentialité</a></li>
+          <li><a href="https://www.etsy.com/fr/shop/WoodenBrothersArt" target="_blank" rel="noopener">Boutique Etsy officielle</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© <span data-year>2026</span> Wooden Brothers. Créations artisanales en bois.</p>
+      <p>Commandes et paiements sécurisés via Etsy.</p>
+    </div>
+    <p class="footer__disclaimer">Wooden Brothers n'est affilié à aucune licence ni société. Nos créations inspirées de mangas, de Pokémon ou de Disney sont exclusivement du fan art personnalisé, sans intention de porter atteinte aux droits d'auteur.</p>
+  </div>
+</footer>
+<script src="/assets/js/site.js" defer></script>
 </body>
-</html> 
+</html>
