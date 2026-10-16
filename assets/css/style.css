@@ -389,7 +389,6 @@ p { margin: 0 0 1em; }
 .site-footer a:hover { color: var(--wood); }
 .footer__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem 1.5rem; padding-top: 1.5rem; font-size: .84rem; color: rgba(242, 234, 216, .6); }
 .footer__bottom p { margin: 0; }
-.footer__disclaimer { margin-top: 1.25rem; font-size: .78rem; color: rgba(242, 234, 216, .5); max-width: 90ch; }
 @media (max-width: 900px) { .footer__grid { grid-template-columns: 1fr 1fr; } .footer__brand { grid-column: span 2; } }
 @media (max-width: 520px) { .footer__grid { grid-template-columns: 1fr; } .footer__brand { grid-column: auto; } }
 
@@ -620,3 +619,12 @@ p { margin: 0 0 1em; }
 .section__foot--actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .85rem; }
 @media (max-width: 640px) { .reviews { grid-template-columns: 1fr; } .review { padding: 1.25rem; } }
 @media (max-width: 760px) { .section__head--row { flex-direction: column; align-items: flex-start; gap: 1.25rem; } .section__head--row > div { max-width: none; } }
+
+/* ---------- Avis de non-responsabilité (au-dessus du pied de page, toutes les pages) ---------- */
+.disclaimer { background: var(--wood-3); border-top: 3px solid var(--wood-2); }
+.disclaimer__inner { display: flex; gap: 1rem; align-items: flex-start; padding: 1.4rem 0; }
+.disclaimer__icon { flex: none; width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; background: var(--surface); color: var(--caramel); box-shadow: var(--shadow-sm); }
+.disclaimer__icon svg { width: 22px; height: 22px; }
+.disclaimer__title { margin: 0 0 .3rem; font-size: .74rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--caramel); }
+.disclaimer p { margin: 0; font-size: .9rem; line-height: 1.6; color: var(--ink-2); }
+.disclaimer a { color: var(--forest); }

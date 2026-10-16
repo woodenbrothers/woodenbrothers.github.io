@@ -9,6 +9,77 @@
   },
   "etsy_reviews_url": "https://www.etsy.com/fr/shop/WoodenBrothersArt/reviews",
   "updated_at": null,
-  "manuel": [],
+  "manuel": [
+    {
+      "author": "Antoine",
+      "rating": 5,
+      "date": "2026-01-17",
+      "text": "Très sympa, avec les reliefs qui rendent bien. 👌",
+      "listing_id": 4418635277
+    },
+    {
+      "author": "Scarlett",
+      "rating": 5,
+      "date": "2025-11-28",
+      "text": "Je suis ravie de mon achat. La commande a été livrée en quelques jours et parfaitement bien emballée. La gravure est vraiment magnifique et le résultat est saisissant. J'ai été agréablement surprise de découvrir un petit cadeau emballé dans un pochon : un porte clés à l'effigie du personnage que j'avais commandé pour le dessous de plat. Je recommande chaleureusement cette boutique.",
+      "listing_id": null
+    },
+    {
+      "author": "Melfira",
+      "rating": 5,
+      "date": "2025-11-20",
+      "text": "Objet de super qualité, réalisé et livré en seulement quelques jours. De plus, ils prennent les commandes personnalisées, très gentil et réactif dans les conversations, je recommande grandement !",
+      "listing_id": 4404319125
+    },
+    {
+      "author": "C.",
+      "rating": 5,
+      "date": "2025-10-05",
+      "text": "Arrivé très rapidement, parfaitement bien emballé et protégé ! Avec en plus en cadeau un porte-clé qui va avec dans une petite pochette. C'est impeccable, parfaitement bien réalisé une vraie œuvre d'art ! Parfait pour les fans de DBZ un cadeau au top ;)",
+      "listing_id": 1891818343
+    },
+    {
+      "author": "Anaïs",
+      "rating": 5,
+      "date": "2025-09-06",
+      "text": "Franchement super contente de mon achat, c’est magnifique, vraiment bien fait!! Le délai de livraison a été rallongé pour la fabrication, le vendeur m’en a averti dessuite et avec beaucoup de gentillesse, il a laissé un petit cadeau, un porte clé en bois à l’effigie de personnage que j’avais demandé pour l’achat! Merci beaucoup! Je recommanderai",
+      "listing_id": 1891818343
+    },
+    {
+      "author": "Jennifer",
+      "rating": 5,
+      "date": "2025-08-24",
+      "text": "Jolie gravure. Parfait. Exactement comme sur la présentation.",
+      "listing_id": 1891818343
+    },
+    {
+      "author": "kassandra",
+      "rating": 5,
+      "date": "2025-08-08",
+      "text": "Rapide, merci pour le cadeau et juste trop beau",
+      "listing_id": 1853445029
+    },
+    {
+      "author": "ZOUZOU",
+      "rating": 4,
+      "date": "2025-05-28",
+      "text": "Superbe article, envoi rapide et soigné, très satisfaite. Je recommande vivement . Merci beaucoup pour la délicate attention",
+      "listing_id": 1836879420
+    },
+    {
+      "author": "Nathalie",
+      "rating": 5,
+      "date": "2025-05-23",
+      "text": "Produit de qualité belle gravure",
+      "listing_id": 1838716908
+    },
+    {
+      "author": "Lucile",
+      "rating": 5,
+      "date": "2026-05-26",
+      "text": "",
+      "listing_id": 4295981316
+    }
+  ],
   "etsy": []
 }

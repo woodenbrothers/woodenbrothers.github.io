@@ -510,6 +510,7 @@ def head(title: str, desc: str, path: str, image: str | None = None, extra: str 
 <meta property="og:url" content="{SITE}{path}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#2F5B37">
+<meta name="p:domain_verify" content="dc20c129c06bf8a643d454ab923d57de">
 {FAVICONS}
 <link rel="preconnect" href="https://i.etsystatic.com">
 <link rel="preload" href="/assets/fonts/fraunces-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
