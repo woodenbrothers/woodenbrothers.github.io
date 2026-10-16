@@ -148,9 +148,22 @@ def img_size(url: str, size: str) -> str:
     return re.sub(r"il_[0-9a-zA-Z]+x[0-9a-zA-Z]+\.", f"il_{size}.", url, count=1)
 
 
+ETSY_URL_RE = re.compile(r"^https://([a-z0-9-]+\.)*etsy\.com/", re.I)
+IMAGE_URL_RE = re.compile(r"^(/img/creations/[a-z0-9-]+-\d+-\d+\.webp|https://i\.etsystatic\.com/[A-Za-z0-9_./-]+)$")
+SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9-]{0,80}$")
+
+
+def safe_slug(value: str, fallback: str) -> str:
+    return value if value and SLUG_RE.fullmatch(value) else slugify(fallback)
+
+
 def etsy_url(p: dict) -> str:
-    """Lien Etsy de l'article : lien traçable « Share & Save » s'il est renseigné."""
-    return p.get("share_url") or p["url"]
+    """Lien Etsy de l'article : lien traçable « Share & Save » s'il est renseigné.
+    Seules les adresses https sur etsy.com sont acceptées (sinon : la boutique)."""
+    for u in (p.get("share_url"), p.get("url")):
+        if u and ETSY_URL_RE.match(u):
+            return u
+    return ETSY_SHOP
 
 
 def price_fmt(p, cur="EUR") -> str:
@@ -218,7 +231,9 @@ def fingerprint(html_text: str) -> str:
 
 
 def jsonld(obj) -> str:
-    return '<script type="application/ld+json">' + json.dumps(obj, ensure_ascii=False, separators=(",", ":")) + "</script>"
+    # « </ » et « <!-- » sont échappés pour qu'aucune donnée ne puisse fermer la balise <script>
+    txt = json.dumps(obj, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/").replace("<!--", "<\\!--")
+    return '<script type="application/ld+json">' + txt + "</script>"
 
 
 # --------------------------------------------------------------------------- #
@@ -233,9 +248,12 @@ class Catalogue:
         self.categories = data.get("categories", [])
         self.virtual = data.get("collections_virtuelles", [])
         self.cat_by_slug = {c["slug"]: c for c in self.categories}
+        for c in self.categories + self.virtual:
+            c["slug"] = safe_slug(c.get("slug", ""), c.get("name", "collection"))
         used = set()
         for p in self.all_products:
-            base = p.get("slug") or slugify(p.get("short_title") or p.get("title"))
+            p["images"] = [u for u in p.get("images", []) if isinstance(u, str) and IMAGE_URL_RE.match(u)]
+            base = safe_slug(p.get("slug", ""), p.get("short_title") or p.get("title") or str(p["listing_id"]))
             s, i = base, 2
             while s in used:
                 s, i = f"{base}-{i}", i + 1
@@ -491,7 +509,7 @@ def product_page(p: dict, cat: Catalogue, header: str, footer: str) -> str:
         {('<a class="btn btn--secondary" href="/collections/' + c["slug"] + '/">Toute la collection ' + esc(c["name"]) + '</a>') if c.get("slug") else ''}
       </div>
       <div class="product-grid">{''.join(product_card(x, cat, reveal=False) for x in related)}</div>
-      <p class="muted" style="margin-top: 2rem;">Autres collections : {' · '.join(f'<a href="/collections/{c2["slug"]}/">{esc(c2["name"])}</a>' for c2, _ in other_cols)}.</p>
+      <p class="muted mt-3">Autres collections : {' · '.join(f'<a href="/collections/{c2["slug"]}/">{esc(c2["name"])}</a>' for c2, _ in other_cols)}.</p>
     </div>
   </section>
 </main>
@@ -703,9 +721,29 @@ def main() -> int:
             return f'<!-- wb:products ids="{m.group(1)}" -->{cards}<!-- /wb:products -->'
         f.write_text(pattern.sub(render, txt), encoding="utf-8")
 
-    # ----- empreinte de cache sur toutes les pages produites
+    # ----- photos Etsy encore référencées dans les pages sources (héros, tuiles…) -> versions locales si disponibles
+    etsy_img_re = re.compile(r"https://i\.etsystatic\.com/\d+/r/il/[0-9a-f]+/(\d+)/il_([0-9a-zA-Z]+x[0-9a-zA-Z]+)\.\1_[0-9a-z]+\.jpg")
+    def localize(m):
+        entry = _manifest.get(m.group(1))
+        return f"{entry['base']}-{SIZE_TO_WIDTH.get(m.group(2), 800)}.webp" if entry else m.group(0)
+
+    # ----- Content-Security-Policy (balise meta : GitHub Pages ne permet pas d'en-têtes HTTP)
+    def csp_meta(html_text: str) -> str:
+        hashes = set()
+        for m in re.finditer(r"<script>(.*?)</script>", html_text, re.S):
+            digest = hashlib.sha256(m.group(1).encode("utf-8")).digest()
+            hashes.add("'sha256-" + __import__("base64").b64encode(digest).decode() + "'")
+        policy = ("default-src 'self'; script-src 'self' " + " ".join(sorted(hashes)) + "; style-src 'self'; "
+                  "img-src 'self' data: https://i.etsystatic.com; font-src 'self'; connect-src 'self'; "
+                  "object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests")
+        return html_text.replace('<meta charset="UTF-8">', f'<meta charset="UTF-8">\n<meta http-equiv="Content-Security-Policy" content="{policy}">', 1)
+
+    # ----- empreinte de cache, CSP et photos locales sur toutes les pages produites
     for f in OUT.rglob("*.html"):
-        f.write_text(fingerprint(f.read_text(encoding="utf-8")), encoding="utf-8")
+        txt = f.read_text(encoding="utf-8")
+        if _manifest:
+            txt = etsy_img_re.sub(localize, txt)
+        f.write_text(csp_meta(fingerprint(txt)), encoding="utf-8")
 
     # ----- sitemap.xml (lastmod = date du dernier commit touchant la page ou le catalogue)
     catalogue_date = git_date(DATA, ROOT / "scripts" / "build.py") or (data.get("updated_at") or date.today().isoformat())[:10]

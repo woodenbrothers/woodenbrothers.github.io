@@ -141,10 +141,18 @@ def api_get(path: str, api_key: str, params: dict | None = None, retries: int = 
     raise RuntimeError(f"Échec sur {path} : {last_error}")
 
 
+def safe_listing_url(api_url, old_url, lid: int) -> str:
+    """URL de la fiche Etsy, limitée au domaine etsy.com en https (sinon URL canonique de l'article)."""
+    for u in (api_url, old_url):
+        if u and re.match(r"^https://([a-z0-9-]+\.)*etsy\.com/", u, re.I):
+            return re.sub(r"\?.*$", "", u)
+    return f"https://www.etsy.com/listing/{lid}"
+
+
 def image_url(img: dict) -> str | None:
     """Retourne l'URL « 794xN » (largeur 794 px) de la photo, dérivée de l'URL fullxfull."""
     url = img.get("url_fullxfull") or img.get("url_570xN") or img.get("url_170x135")
-    if not url:
+    if not url or not re.match(r"^https://i\.etsystatic\.com/", url):
         return None
     return re.sub(r"il_[0-9a-zA-Z]+x[0-9a-zA-Z]+\.", "il_794xN.", url, count=1)
 
@@ -332,7 +340,7 @@ def merge(data: dict, shop: dict, sections: dict, listings: list) -> dict:
             "kind": kind,
             "price": round(amount, 2) if amount is not None else None,
             "currency": price.get("currency_code") or old.get("currency") or "EUR",
-            "url": re.sub(r"\?.*$", "", l.get("url") or old.get("url") or f"https://www.etsy.com/listing/{lid}"),
+            "url": safe_listing_url(l.get("url"), old.get("url"), lid),
             "images": images,
             "description": old.get("description") or description_from(l.get("description", "")),
             "details": old.get("details") or DEFAULT_DETAILS.get(kind, DEFAULT_DETAILS["autre"]),

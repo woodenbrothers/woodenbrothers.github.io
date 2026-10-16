@@ -1,0 +1,11 @@
+# Propositions automatiques de mise à jour (pull requests) pour les actions GitHub et les dépendances Python du build.
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "pip"
+    directory: "/scripts"
+    schedule:
+      interval: "weekly"

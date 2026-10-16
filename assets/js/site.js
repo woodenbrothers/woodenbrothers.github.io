@@ -31,7 +31,12 @@
     if (local) return local[1] + '-' + (LOCAL_WIDTH[size] || 800) + '.webp';
     return url.replace(/il_[0-9a-zA-Z]+x[0-9a-zA-Z]+\./, 'il_' + size + '.');
   };
-  WB.etsyUrl = function (p) { return p.share_url || p.url; };
+  var ETSY_RE = /^https:\/\/([a-z0-9-]+\.)*etsy\.com\//i;
+  WB.etsyUrl = function (p) {
+    if (p.share_url && ETSY_RE.test(p.share_url)) return p.share_url;
+    if (p.url && ETSY_RE.test(p.url)) return p.url;
+    return ETSY_SHOP_URL;
+  };
   WB.price = function (n, cur) {
     if (n == null || isNaN(n)) return '';
     try { return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: cur || 'EUR' }).format(n); }
@@ -134,7 +139,7 @@
     return WB.imgSize(u, '300x300') + ' 300w, ' + WB.imgSize(u, '600x600') + ' 600w, ' + WB.imgSize(u, '800x800') + ' 800w';
   }
 
-  WB.pageUrl = function (p) { return p.slug ? '/creations/' + p.slug + '/' : '/produits#p=' + p.listing_id; };
+  WB.pageUrl = function (p) { return /^[a-z0-9][a-z0-9-]{0,80}$/.test(p.slug || '') ? '/creations/' + p.slug + '/' : '/produits#p=' + esc(String(p.listing_id)); };
 
   WB.productCard = function (p, data, opts) {
     opts = opts || {};
@@ -146,14 +151,14 @@
     var title = esc(p.short_title || p.title);
     var url = esc(WB.pageUrl(p));
     return '' +
-      '<article class="product-card" data-id="' + p.listing_id + '" data-category="' + esc(p.category) + '"' + (opts.reveal ? ' data-reveal' : '') + '>' +
+      '<article class="product-card" data-id="' + esc(String(p.listing_id)) + '" data-category="' + esc(p.category) + '"' + (opts.reveal ? ' data-reveal' : '') + '>' +
         '<div class="product-card__media">' +
           '<a class="product-card__link" href="' + url + '">' +
             (img0 ? '<img class="product-card__img" src="' + esc(WB.imgSize(img0, '600x600')) + '" srcset="' + esc(srcset(img0)) + '" sizes="' + esc(sizes) + '" alt="' + title + '" width="600" height="600" loading="' + (opts.eager ? 'eager' : 'lazy') + '" decoding="async">' : '') +
             (img1 ? '<img class="product-card__img product-card__img--alt" src="' + esc(WB.imgSize(img1, '600x600')) + '" alt="" width="600" height="600" loading="lazy" decoding="async" aria-hidden="true">' : '') +
           '</a>' +
           (badges ? '<span class="product-card__badges">' + badges + '</span>' : '') +
-          '<button type="button" class="product-card__quick btn btn--light btn--sm" data-quickview="' + p.listing_id + '">Aperçu rapide</button>' +
+          '<button type="button" class="product-card__quick btn btn--light btn--sm" data-quickview="' + esc(String(p.listing_id)) + '">Aperçu rapide</button>' +
         '</div>' +
         '<div class="product-card__body">' +
           (cat && opts.showCategory !== false ? '<span class="product-card__cat">' + esc(cat.name) + '</span>' : '') +
@@ -242,7 +247,7 @@
     if (typeof d.showModal !== 'function') { window.open(WB.etsyUrl(p), '_blank', 'noopener'); return; }
     if (!d.open) d.showModal();
     document.body.style.overflow = 'hidden';
-    history.replaceState(null, '', location.pathname + location.search + '#p=' + p.listing_id);
+    history.replaceState(null, '', location.pathname + location.search + '#p=' + encodeURIComponent(String(p.listing_id)));
     var closeBtn = $('.modal__close', d); if (closeBtn) closeBtn.focus();
   };
 

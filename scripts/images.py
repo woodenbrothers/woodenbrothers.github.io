@@ -42,15 +42,24 @@ def etsy_id(url: str):
     return m.group(1) if m else None
 
 
+ALLOWED_HOST = re.compile(r"^https://i\.etsystatic\.com/")
+MAX_BYTES = 25 * 1024 * 1024
+
+
 def download(url: str, dest: Path) -> bool:
     if dest.exists() and dest.stat().st_size > 1000:
         return True
+    if not ALLOWED_HOST.match(url):          # seules les photos du CDN Etsy sont téléchargées
+        print(f"  ! hôte non autorisé, ignoré : {url[:80]}")
+        return False
     big = re.sub(r"il_[0-9a-zA-Z]+x[0-9a-zA-Z]+\.", "il_1588xN.", url, count=1)
     req = urllib.request.Request(big, headers={"User-Agent": "Mozilla/5.0 (compatible; woodenbrothers.fr build)"})
     for attempt in range(3):
         try:
             with urllib.request.urlopen(req, timeout=40) as r:
-                data = r.read()
+                data = r.read(MAX_BYTES + 1)
+            if len(data) > MAX_BYTES:
+                raise ValueError("fichier trop volumineux")
             if len(data) < 1000:
                 raise ValueError("réponse vide")
             dest.write_bytes(data)

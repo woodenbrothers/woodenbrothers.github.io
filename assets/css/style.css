@@ -576,3 +576,18 @@ p { margin: 0 0 1em; }
 .article-card__meta { font-size: .8rem; color: var(--ink-3); }
 .related-articles { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 1rem; }
 @media (max-width: 640px) { .article .product-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ---------- Utilitaires (remplacent les styles inline, compatibles CSP) ---------- */
+.mt-0 { margin-top: 0 !important; }
+.mt-1 { margin-top: 1.25rem; }
+.mt-2 { margin-top: 1.5rem; }
+.mt-3 { margin-top: 2rem; }
+.pos-rel { position: relative; }
+.link { color: var(--forest); }
+.hero__actions--center { justify-content: center; }
+.icon-list--light { color: rgba(242, 234, 216, .85); }
+.notice--dark { background: rgba(247, 242, 232, .08); border-color: rgba(247, 242, 232, .18); border-left-color: var(--wood); color: rgba(242, 234, 216, .85); }
+.notice--dark strong { color: var(--cream); }
+.notice--dark a { color: var(--wood); }
+.rings--center { width: 520px; aspect-ratio: 1; left: 50%; top: 0; transform: translateX(-50%); opacity: .35; }
+.article__cover { aspect-ratio: 16 / 9; margin-bottom: 2rem; }
