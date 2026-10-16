@@ -31,6 +31,7 @@ python3 scripts/build.py && npx serve _site     # puis http://localhost:3000
 | `journal.html`, `journal/*.html` | Le journal de l'atelier : guides et idées cadeaux |
 | `a-propos.html`, `contact.html`, `mentions-legales.html`, `politique-confidentialite.html`, `404.html` | Pages fixes |
 | `data/products.json` | **Le catalogue** : boutique, catégories (textes SEO), collections virtuelles, créations |
+| `data/reviews.json` | **Les avis clients** affichés sur le site (recopiés d'Etsy ou récupérés par la synchronisation) |
 | `assets/css/style.css` | Charte graphique (couleurs, typographies, composants) |
 | `assets/css/fonts.css` + `assets/fonts/` | Polices Fraunces et DM Sans auto-hébergées |
 | `assets/js/site.js`, `assets/js/catalogue.js` | Menu, aperçu rapide, galerie, filtres et tri (amélioration progressive : tout fonctionne sans JS) |
@@ -47,8 +48,8 @@ python3 scripts/build.py && npx serve _site     # puis http://localhost:3000
 ### Option A – automatiquement depuis Etsy (recommandé)
 
 Le workflow « Synchronisation Etsy » interroge chaque jour l'API publique d'Etsy et met à jour `data/products.json`
-(articles actifs, titres, prix, photos, sections, note de la boutique), puis redéploie le site. Il ne fait rien tant que
-la clé API n'est pas configurée.
+(articles actifs, titres, prix, photos, sections, note de la boutique) et `data/reviews.json` (avis clients), puis
+redéploie le site. Il ne fait rien tant que la clé API n'est pas configurée.
 
 1. Connectez-vous sur Etsy, ouvrez <https://www.etsy.com/developers/your-apps> et créez une application
    (nom libre, ex. « Site vitrine woodenbrothers.fr »). Etsy fournit une clé **Keystring**.
@@ -91,6 +92,21 @@ Les catégories portent `name`, `h1`, `tagline`, `intro` (deux paragraphes sépa
 Le programme Share & Save d'Etsy rembourse une partie des frais sur les commandes venant de vos propres liens.
 Dans votre tableau de bord Etsy, générez le lien de partage de chaque article et collez-le dans son champ
 `share_url` ; le lien de la boutique peut aller dans `shop.share_url`. Le site utilisera ces liens partout.
+
+## Avis clients
+
+Les avis affichés sur le site (accueil, catalogue, atelier, pages création et collection) viennent de `data/reviews.json` :
+
+- `manuel` : avis recopiés depuis votre page d'avis Etsy. Pour chaque avis : `author` (prénom), `rating` (note de 1 à 5),
+  `date` (AAAA-MM-JJ), `text` (le texte tel quel) et, si possible, le `listing_id` de l'article concerné (l'avis
+  s'affiche alors aussi sur la page de cette création). Copiez le modèle `_exemple`.
+- `etsy` : rempli automatiquement par la synchronisation Etsy quand la clé API est configurée (ne pas modifier).
+
+Seuls les avis notés et accompagnés d'un texte sont affichés ; tant qu'il n'y en a aucun, les sections « avis » restent
+masquées. La note moyenne et le nombre d'avis de la boutique (héros de l'accueil, pages création et collection) viennent
+de `shop.review_average` et `shop.review_count` dans `data/products.json` : la synchronisation Etsy les remplit, et vous
+pouvez aussi les saisir vous-même tels qu'affichés sur Etsy (par exemple `4.9` et `37`). N'inventez jamais d'avis :
+Google comme Etsy sanctionnent les faux avis, et le site ne génère aucune note « schema.org » à partir de ces avis.
 
 ## Écrire un guide dans le journal
 

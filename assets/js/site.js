@@ -313,7 +313,7 @@
 
     // Avis Etsy (si la synchronisation les a récupérés)
     var rv = $('[data-shop-reviews]');
-    if (rv && data.shop.review_count && data.shop.review_average) {
+    if (rv && !rv.children.length && data.shop.review_count && data.shop.review_average) {
       rv.innerHTML = '<strong>' + esc(String(Math.round(data.shop.review_average * 10) / 10).replace('.', ',')) + '/5</strong> · ' + WB.plural(data.shop.review_count, 'avis client', 'avis clients') + ' sur Etsy';
       rv.hidden = false;
     }

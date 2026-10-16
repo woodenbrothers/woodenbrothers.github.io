@@ -1,0 +1,14 @@
+{
+  "_aide": "Avis clients affichés sur le site. « etsy » est rempli automatiquement par scripts/sync_etsy.py (clé API Etsy). « manuel » est à compléter vous-même : recopiez vos avis Etsy (prénom, note sur 5, date AAAA-MM-JJ, texte, et si possible listing_id de l'article concerné). N'inventez jamais d'avis. L'entrée _exemple est ignorée.",
+  "_exemple": {
+    "author": "Prénom",
+    "rating": 5,
+    "date": "2026-01-15",
+    "text": "Le texte de l'avis, recopié tel quel.",
+    "listing_id": 1838716908
+  },
+  "etsy_reviews_url": "https://www.etsy.com/fr/shop/WoodenBrothersArt/reviews",
+  "updated_at": null,
+  "manuel": [],
+  "etsy": []
+}

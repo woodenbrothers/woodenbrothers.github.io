@@ -35,6 +35,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "_site"
 DATA = ROOT / "data" / "products.json"
+REVIEWS = ROOT / "data" / "reviews.json"              # avis clients (saisis vous-même ou récupérés par la synchro Etsy)
 SITE = "https://www.woodenbrothers.fr"
 BRAND = "Wooden Brothers"
 ETSY_SHOP = "https://www.etsy.com/fr/shop/WoodenBrothersArt"
@@ -50,13 +51,20 @@ ICON_PREV = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-w
 ICON_NEXT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>'
 ICON_CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>'
 
+MADE_IN_FR = "Fabriqué dans notre atelier et expédié depuis la France"
+MADE_IN_FR_LONG = ("Toutes nos créations sont dessinées et fabriquées dans notre atelier, puis expédiées depuis la France, "
+                   "soigneusement emballées. Les délais et frais de livraison sont indiqués sur chaque fiche Etsy.")
+
 # Textes par type de pièce (modifiables)
 KINDS = {
     "dessous-de-plat": {
         "label": "Dessous de plat",
         "plural": "dessous de plat",
-        "subtitle": "Dessous de plat en bois de Paulownia, gravé dans notre atelier",
+        "subtitle": "Dessous de plat en bois de Paulownia, gravé dans notre atelier en France",
         "title": "{name} en bois gravé | Wooden Brothers",
+        "ld_name": "{name} en bois gravé",
+        "alt": "{name} en bois gravé",
+        "caption": "{name} : rondin de Paulownia gravé dans notre atelier, fabriqué et expédié depuis la France.",
         "why": [
             "Un véritable rondin de Paulownia, écorce comprise : chaque pièce est unique",
             "Protège votre table des plats chauds tout en décorant la cuisine",
@@ -69,15 +77,19 @@ KINDS = {
             ("Quelles sont les dimensions ?", "Environ 20 cm de diamètre pour 2 cm d'épaisseur. Chaque rondin étant naturel, le diamètre et la forme varient légèrement d'une pièce à l'autre."),
             ("Peut-on poser un plat très chaud dessus ?", "Oui, c'est son rôle : il protège la table des plats et casseroles sortant du four. Évitez simplement le contact direct avec une flamme ou une plaque brûlante pendant une longue durée."),
             ("Le motif peut-il être personnalisé ?", "Oui : nous proposons un dessous de plat personnalisé gravé d'après votre photo, votre dessin ou votre texte. Voir la collection « Sur mesure »."),
+            ("D'où est-il expédié ?", "De France. Chaque dessous de plat est fabriqué dans notre atelier puis expédié depuis la France, soigneusement emballé. Les délais et frais de livraison sont indiqués sur la fiche Etsy."),
         ],
     },
     "carte": {
-        "label": "Carte en bois 3D",
-        "plural": "cartes en bois",
-        "subtitle": "Carte Pokémon en bois gravé en relief 3D, format carte à collectionner",
-        "title": "{name} – Carte Pokémon en bois | Wooden Brothers",
+        "label": "Carte Pokémon en bois 3D",
+        "plural": "cartes Pokémon en bois 3D",
+        "subtitle": "Carte Pokémon en bois 3D gravée en relief, format carte à collectionner",
+        "title": "{name} en bois 3D | Wooden Brothers",
+        "ld_name": "{name} en bois 3D",
+        "alt": "{name} en bois 3D",
+        "caption": "{name} en bois 3D : couches de bois gravées puis superposées dans notre atelier, fabriquée et expédiée depuis la France.",
         "why": [
-            "Format carte à collectionner (6,3 × 8,8 cm), effet de relief par superposition de couches de bois",
+            "Format carte à collectionner (6,3 × 8,8 cm), relief 3D par superposition de couches de bois",
             "Un objet de collection original, à exposer ou à offrir, dès 5,99 €",
             "Modèle dessiné par nos soins, gravure fine et assemblage soigné",
         ],
@@ -87,14 +99,18 @@ KINDS = {
         "faq": [
             ("Est-ce une carte Pokémon officielle ?", "Non. Il s'agit d'une création artisanale en bois, un fan art dessiné par nos soins. Elle n'est pas affiliée à The Pokémon Company et ne se joue pas."),
             ("Quelle est sa taille ?", "6,3 cm de large sur 8,8 cm de haut, soit le format d'une carte à collectionner, pour environ 0,6 cm d'épaisseur avec le relief."),
-            ("Puis-je demander un autre Pokémon ?", "Oui : commandez notre carte Pokémon personnalisée en indiquant le Pokémon souhaité, nous le dessinons et le gravons."),
+            ("Puis-je demander un autre Pokémon ?", "Oui : commandez notre carte Pokémon sur mesure en indiquant le Pokémon souhaité. Nous le dessinons, le gravons et l'assemblons en relief 3D, quelle que soit sa génération."),
+            ("D'où est-elle expédiée ?", "De France. Chaque carte est fabriquée dans notre atelier puis expédiée depuis la France, protégée pour le transport. Les délais et frais de livraison sont indiqués sur la fiche Etsy."),
         ],
     },
     "horloge": {
         "label": "Horloge murale",
         "plural": "horloges",
-        "subtitle": "Horloge murale en bois conçue et fabriquée dans notre atelier",
+        "subtitle": "Horloge murale en bois conçue et fabriquée dans notre atelier en France",
         "title": "{name} artisanale | Wooden Brothers",
+        "ld_name": "{name}",
+        "alt": "{name}",
+        "caption": "{name} conçue et fabriquée dans notre atelier, expédiée depuis la France. Livraison offerte.",
         "why": [
             "Une pièce unique en bois naturel, conçue et fabriquée dans notre atelier",
             "Habille un salon, une entrée ou une cuisine avec chaleur et caractère",
@@ -105,14 +121,17 @@ KINDS = {
         "gift": "Un cadeau déco qui marque les esprits : crémaillère, mariage, Noël ou anniversaire.",
         "faq": [
             ("Les piles sont-elles fournies ?", "Consultez la fiche Etsy pour les détails de livraison et de mécanisme ; nous y répondons aussi à toutes vos questions avant commande."),
-            ("Comment est-elle livrée ?", "Soigneusement emballée pour protéger le bois pendant le transport. La livraison est offerte sur ce modèle."),
+            ("Comment est-elle livrée ?", "Soigneusement emballée pour protéger le bois pendant le transport, et expédiée depuis la France. La livraison est offerte sur ce modèle."),
         ],
     },
     "autre": {
         "label": "Création en bois",
         "plural": "créations",
-        "subtitle": "Création en bois conçue et fabriquée dans notre atelier",
+        "subtitle": "Création en bois conçue et fabriquée dans notre atelier en France",
         "title": "{name} | Wooden Brothers",
+        "ld_name": "{name}",
+        "alt": "{name}",
+        "caption": "{name}, fabriqué dans notre atelier et expédié depuis la France.",
         "why": ["Pièce conçue et réalisée dans notre atelier", "Bois naturel, finition soignée", "Design original Wooden Brothers"],
         "wood": "Nous travaillons des bois naturels sélectionnés pour leur grain et leur résistance.",
         "care": "Un chiffon doux et sec suffit pour l'entretien courant.",
@@ -262,6 +281,7 @@ class Catalogue:
             p["page_url"] = f"/creations/{s}/"
             if not p.get("kind"):
                 p["kind"] = "autre"
+        self.by_id = {str(p["listing_id"]): p for p in self.all_products}
 
     def in_category(self, slug: str) -> list:
         return [p for p in self.products if p["category"] == slug]
@@ -333,6 +353,129 @@ def chips(cat: Catalogue, active: str) -> str:
         slug = c["slug"]
         out.append(f'<a class="chip{" is-active" if active == slug else ""}" href="/collections/{slug}/" data-filter="{slug}"{" data-kind=\"" + c["kind"] + "\"" if c.get("kind") else ""}>{esc(c["name"])} <span class="chip__count">{len(items)}</span></a>')
     return "".join(out)
+
+
+# --------------------------------------------------------------------------- #
+# Avis clients (data/reviews.json)
+# --------------------------------------------------------------------------- #
+ICON_STAR = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.6-5.9-3.2-5.9 3.2 1.2-6.6L2.5 9.5l6.6-.9z"/></svg>'
+MONTHS_FR = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
+REVIEWS_LEAD = "Des avis déposés sur notre boutique Etsy par des clients qui ont reçu leur création."
+_reviews: dict = {"items": [], "url": ETSY_SHOP + "/reviews"}
+
+
+def load_reviews() -> dict:
+    """Avis clients : entrées « manuel » (recopiées d'Etsy) + entrées « etsy » (synchronisation). Seuls les avis
+    avec une note de 1 à 5 et un texte sont affichés ; les doublons sont ignorés."""
+    out = {"items": [], "url": ETSY_SHOP + "/reviews"}
+    if not REVIEWS.exists():
+        return out
+    try:
+        data = json.loads(REVIEWS.read_text(encoding="utf-8"))
+    except ValueError as e:
+        sys.exit(f"data/reviews.json illisible : {e}")
+    url = data.get("etsy_reviews_url")
+    if isinstance(url, str) and ETSY_URL_RE.match(url):
+        out["url"] = url
+    seen = set()
+    for source in ("manuel", "etsy"):
+        for r in data.get(source) or []:
+            if not isinstance(r, dict):
+                continue
+            rating, text = r.get("rating"), re.sub(r"\s+", " ", str(r.get("text") or "")).strip()
+            if isinstance(rating, bool) or not isinstance(rating, (int, float)) or not 1 <= rating <= 5 or not text:
+                continue
+            key = (text.lower(), str(r.get("listing_id") or ""))
+            if key in seen:
+                continue
+            seen.add(key)
+            d = str(r.get("date") or "")
+            out["items"].append({
+                "rating": int(round(rating)),
+                "text": text[:600],
+                "author": re.sub(r"\s+", " ", str(r.get("author") or "")).strip()[:40],
+                "date": d if re.fullmatch(r"\d{4}-\d{2}-\d{2}", d) else "",
+                "listing_id": str(r.get("listing_id") or ""),
+                "source": source,
+            })
+    out["items"].sort(key=lambda r: (r["date"], r["rating"]), reverse=True)
+    return out
+
+
+def pick_reviews(n: int, listing_ids=None) -> list:
+    """Les n avis à montrer : meilleures notes d'abord, puis textes de longueur agréable, puis les plus récents."""
+    pool = [r for r in _reviews["items"] if not listing_ids or r["listing_id"] in listing_ids]
+    return sorted(pool, key=lambda r: (r["rating"], 1 if 40 <= len(r["text"]) <= 420 else 0, r["date"]), reverse=True)[:n]
+
+
+def fr_month(iso: str) -> str:
+    try:
+        y, m = iso.split("-")[:2]
+        return f"{MONTHS_FR[int(m) - 1]} {y}"
+    except (ValueError, IndexError):
+        return ""
+
+
+def stars(rating: float, label: str | None = None) -> str:
+    """Cinq étoiles (pleines, demi, vides) ; note arrondie au demi-point ; libellé pour les lecteurs d'écran."""
+    half = round(max(0.0, min(5.0, float(rating))) * 2)
+    full, has_half = divmod(half, 2)
+    classes = ["star--on"] * full + (["star--half"] if has_half else []) + ["star--off"] * (5 - full - has_half)
+    label = label or f"{str(round(float(rating), 1)).replace('.', ',')} sur 5"
+    return (f'<span class="stars" role="img" aria-label="{esc(label)}">'
+            + "".join(f'<span class="star {c}">{ICON_STAR}{ICON_STAR if c == "star--half" else ""}</span>' for c in classes)
+            + "</span>")
+
+
+def review_summary(cat: Catalogue, variant: str = "") -> str:
+    """Bandeau « note moyenne » : note et nombre d'avis de la boutique Etsy quand ils sont connus
+    (synchronisation Etsy ou champs shop.review_average / shop.review_count de data/products.json),
+    sinon simple rappel des avis affichés. Vide s'il n'y a aucun avis."""
+    avg, count = cat.shop.get("review_average"), cat.shop.get("review_count")
+    url = esc(_reviews["url"])
+    if isinstance(avg, (int, float)) and not isinstance(avg, bool) and isinstance(count, int) and count > 0 and 1 <= avg <= 5:
+        note = str(round(float(avg), 1)).replace(".", ",")
+        return (f'<a class="review-strip{variant}" href="{url}" target="_blank" rel="noopener">{stars(avg, f"{note} sur 5")}'
+                f'<span><strong>{note}/5</strong> · {count} avis client{"s" if count > 1 else ""} sur Etsy</span></a>')
+    if _reviews["items"]:
+        avg_items = sum(r["rating"] for r in _reviews["items"]) / len(_reviews["items"])
+        return (f'<a class="review-strip{variant}" href="{url}" target="_blank" rel="noopener">{stars(avg_items)}'
+                f'<span><strong>Avis clients vérifiés</strong> · lire sur Etsy</span></a>')
+    return ""
+
+
+def review_card(r: dict, cat: Catalogue, show_product: bool = True) -> str:
+    p = cat.by_id.get(r["listing_id"]) if show_product else None
+    who = esc(r["author"] or "Client Etsy")
+    when = fr_month(r["date"])
+    about = f'<a class="review__product" href="{p["page_url"]}">{esc(p.get("short_title") or p["title"])}</a>' if p else ""
+    return (f'<figure class="review">{stars(r["rating"], f"{r['rating']} étoile{'s' if r['rating'] > 1 else ''} sur 5")}'
+            f'<blockquote class="review__text"><p>{esc(r["text"])}</p></blockquote>'
+            f'<figcaption class="review__meta"><span class="review__author">{who}</span>'
+            + (f'<span>{esc(when)}</span>' if when else "") + about
+            + '<span class="review__source">Avis Etsy</span></figcaption></figure>')
+
+
+def reviews_section(cat: Catalogue, n: int = 6, listing_ids=None, eyebrow: str = "Avis clients",
+                    title: str = "Ils ont reçu <em>leur création</em>", lead: str | None = None,
+                    alt: bool = True, show_product: bool = True) -> str:
+    """Section « avis clients » complète, ou chaîne vide s'il n'y a rien à montrer."""
+    picked = pick_reviews(n, listing_ids)
+    if not picked:
+        return ""
+    return f"""<section class="section section--tight{' section--alt' if alt else ''}" id="avis">
+    <div class="container">
+      <div class="section__head">
+        <span class="eyebrow">{esc(eyebrow)}</span>
+        <h2>{title}</h2>
+        {('<p class="section__lead">' + esc(lead) + '</p>') if lead else ''}
+        {review_summary(cat)}
+      </div>
+      <div class="reviews">{''.join(review_card(r, cat, show_product) for r in picked)}</div>
+      <p class="section__foot"><a class="btn btn--secondary" href="{esc(_reviews['url'])}" target="_blank" rel="noopener">Lire tous les avis sur Etsy {ICON_EXT}</a></p>
+    </div>
+  </section>
+"""
 
 
 # --------------------------------------------------------------------------- #
@@ -417,6 +560,7 @@ def product_page(p: dict, cat: Catalogue, header: str, footer: str) -> str:
     c = cat.cat_by_slug.get(p["category"], {"name": "Nos créations", "slug": ""})
     name = p.get("short_title") or p["title"]
     images = p.get("images") or []
+    alt = kind["alt"].format(name=name)
     title = p.get("seo_title") or kind["title"].format(name=name)
     desc = p.get("seo_description") or truncate(f"{p.get('description', '')} {price_fmt(p['price'])}. Création Wooden Brothers, disponible sur Etsy.", 155)
     crumbs = [("Accueil", "/"), ("Nos créations", "/produits"), (c["name"], f"/collections/{c['slug']}/" if c.get("slug") else None), (name, None)]
@@ -427,16 +571,19 @@ def product_page(p: dict, cat: Catalogue, header: str, footer: str) -> str:
     other_cols = [(c2, items) for c2, items in cat.collections() if c2["slug"] != c.get("slug")][:6]
 
     unavailable = p.get("status") == "unavailable"
+    reviews_html = (reviews_section(cat, 3, listing_ids={str(p["listing_id"])}, title="Avis sur <em>cette création</em>", show_product=False)
+                    or reviews_section(cat, 3, title="Ce que disent <em>nos clients</em>", lead="Avis déposés sur notre boutique Etsy, toutes créations confondues."))
     product_ld = {
         "@context": "https://schema.org",
         "@type": "Product",
-        "name": f"{name} – {kind['label']} en bois",
+        "name": kind["ld_name"].format(name=name),
         "image": [img_size(u, "1588xN") for u in images[:6]],
         "description": p.get("description", ""),
         "sku": str(p["listing_id"]),
         "brand": {"@type": "Brand", "name": BRAND},
         "material": "Bois de Paulownia" if p["kind"] == "dessous-de-plat" else "Bois",
         "category": kind["label"],
+        "countryOfOrigin": {"@type": "Country", "name": "FR"},
         "url": SITE + p["page_url"],
         "offers": {
             "@type": "Offer",
@@ -453,11 +600,11 @@ def product_page(p: dict, cat: Catalogue, header: str, footer: str) -> str:
 
     gallery_imgs = json.dumps([img_size(u, "794xN") for u in images], ensure_ascii=False)
     thumbs = "".join(
-        f'<button type="button" class="gallery__thumb{" is-active" if i == 0 else ""}" data-index="{i}" aria-label="Photo {i + 1}"><img src="{esc(img_size(u, "300x300"))}" alt="{esc(name)} – photo {i + 1}" width="66" height="66" loading="lazy"></button>'
+        f'<button type="button" class="gallery__thumb{" is-active" if i == 0 else ""}" data-index="{i}" aria-label="Photo {i + 1}"><img src="{esc(img_size(u, "300x300"))}" alt="{esc(alt)} – photo {i + 1}" width="66" height="66" loading="lazy"></button>'
         for i, u in enumerate(images)
     )
     main_img = (
-        f'<img class="gallery__img" src="{esc(img_size(images[0], "794xN"))}" srcset="{esc(img_size(images[0], "794xN"))} 794w, {esc(img_size(images[0], "1588xN"))} 1588w" sizes="(max-width: 900px) 100vw, 560px" alt="{esc(name)} en bois gravé, vue principale" width="794" height="794" fetchpriority="high" decoding="async">'
+        f'<img class="gallery__img" src="{esc(img_size(images[0], "794xN"))}" srcset="{esc(img_size(images[0], "794xN"))} 794w, {esc(img_size(images[0], "1588xN"))} 1588w" sizes="(max-width: 900px) 100vw, 560px" alt="{esc(alt)}, vue principale" width="794" height="794" fetchpriority="high" decoding="async">'
         if images else ""
     )
     nav_btns = (
@@ -471,11 +618,13 @@ def product_page(p: dict, cat: Catalogue, header: str, footer: str) -> str:
     <div class="gallery" data-gallery data-images='{esc(gallery_imgs)}'>
       <div class="gallery__main">{main_img}{('<span class="badge ' + b[0][1] + '">' + esc(b[0][0]) + '</span>') if b else ''}{nav_btns}</div>
       {('<div class="gallery__thumbs">' + thumbs + '</div>') if len(images) > 1 else ''}
+      {('<p class="gallery__caption">' + esc(kind["caption"].format(name=name)) + '</p>') if images else ''}
     </div>
     <div class="product-info">
       <span class="eyebrow">{esc(c["name"])}</span>
       <h1 class="product-info__title">{esc(name)}</h1>
       <p class="product-info__sub">{esc(kind["subtitle"])}</p>
+      {review_summary(cat, " review-strip--product")}
       <p class="product-info__price">{esc(price_fmt(p["price"], p.get("currency", "EUR")))} <small>{"Livraison offerte" if p.get("free_shipping") else "Frais de livraison calculés sur Etsy"}</small></p>
       {('<div class="notice"><p><strong>Momentanément indisponible.</strong> Cette création n\'est pas en stock pour le moment. <a href="/contact">Contactez-nous</a> pour être prévenu de son retour ou pour une fabrication à la demande.</p></div>') if unavailable else ''}
       <div class="product-info__cta">
@@ -488,7 +637,7 @@ def product_page(p: dict, cat: Catalogue, header: str, footer: str) -> str:
         {''.join(f'<p>{esc(x)}</p>' for x in p.get("description_long", []))}
         {('<ul>' + ''.join(f'<li>{esc(d)}</li>' for d in p.get('details', [])) + '</ul>') if p.get('details') else ''}
       </div>
-      <ul class="icon-list product-info__why">{''.join(f'<li>{ICON_CHECK} <span>{esc(w)}</span></li>' for w in kind['why'])}</ul>
+      <ul class="icon-list product-info__why">{''.join(f'<li>{ICON_CHECK} <span>{esc(w)}</span></li>' for w in kind['why'] + [MADE_IN_FR])}</ul>
     </div>
   </section>
 
@@ -502,7 +651,8 @@ def product_page(p: dict, cat: Catalogue, header: str, footer: str) -> str:
 
   {('<section class="section section--tight"><div class="container"><div class="section__head"><span class="eyebrow">Questions fréquentes</span><h2>À propos de cette création</h2></div>' + faq_html(kind["faq"]) + '</div></section>') if kind.get("faq") else ''}
 
-  <section class="section section--tight section--alt">
+  {reviews_html}
+  <section class="section section--tight{'' if reviews_html else ' section--alt'}">
     <div class="container">
       <div class="section__head section__head--row">
         <div><span class="eyebrow">Dans la même veine</span><h2>Vous aimerez aussi</h2></div>
@@ -533,6 +683,7 @@ def collection_page(col: dict, items: list, cat: Catalogue, header: str, footer:
     crumbs = [("Accueil", "/"), ("Nos créations", "/produits"), (name, None)]
     kind = KINDS.get(col.get("kind") or (items[0]["kind"] if items else "autre"), KINDS["autre"])
     others = [(c2, its) for c2, its in cat.collections() if c2["slug"] != slug]
+    reviews_html = reviews_section(cat, 3, listing_ids={str(x["listing_id"]) for x in items}, title="Avis sur <em>cette collection</em>")
     ld = {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
@@ -557,6 +708,7 @@ def collection_page(col: dict, items: list, cat: Catalogue, header: str, footer:
       <span class="eyebrow">Collection</span>
       <h1>{esc(h1)}</h1>
       <p class="page-head__lead">{esc(paras[0]) if paras else ''}</p>
+      {review_summary(cat)}
     </div>
   </section>
 
@@ -586,7 +738,8 @@ def collection_page(col: dict, items: list, cat: Catalogue, header: str, footer:
     </div>
   </section>
 
-  <section class="section section--tight section--alt">
+  {reviews_html}
+  <section class="section section--tight{'' if reviews_html else ' section--alt'}">
     <div class="container info-cols info-cols--wide">
       <div class="info-col prose">
         <h2>À propos de cette collection</h2>
@@ -596,6 +749,7 @@ def collection_page(col: dict, items: list, cat: Catalogue, header: str, footer:
         <h2>Bon à savoir</h2>
         <p>{esc(kind["care"])}</p>
         <p>{esc(kind["gift"])}</p>
+        <p>{esc(MADE_IN_FR_LONG)}</p>
       </div>
     </div>
   </section>
@@ -650,10 +804,12 @@ def html_pages(directory: Path) -> list:
 
 
 def main() -> int:
-    global _manifest
+    global _manifest, _reviews
     data = json.loads(DATA.read_text(encoding="utf-8"))
     cat = Catalogue(data)
+    _reviews = load_reviews()
     copy_sources()
+    (OUT / "data" / "reviews.json").unlink(missing_ok=True)      # fichier de travail, inutile en ligne
 
     # Photos ré-hébergées (si scripts/images.py a tourné) : copie + réécriture des URL dans data/products.json
     manifest_file = IMAGES_CACHE / "manifest.json"
@@ -686,6 +842,9 @@ def main() -> int:
     featured = [p for p in cat.products if p.get("featured")][:2] or cat.in_category("personnalise")[:2]
     index_out = inject(index_src, "selection", "".join(product_card(p, cat, eager=i < 4) for i, p in enumerate(picked)))
     index_out = inject(index_out, "featured", "".join(product_card(p, cat, show_category=False, reveal=False, sizes="(max-width: 480px) 90vw, 260px") for p in featured))
+    summary = review_summary(cat)
+    if summary:                                                   # note Etsy dans le héros (sinon le paragraphe reste masqué)
+        index_out = index_out.replace('<p class="hero__reviews" data-shop-reviews hidden></p>', f'<p class="hero__reviews" data-shop-reviews>{summary}</p>', 1)
     (OUT / "index.html").write_text(index_out, encoding="utf-8")
 
     # ----- catalogue complet
@@ -708,18 +867,24 @@ def main() -> int:
         (d / "index.html").write_text(collection_page(col, items, cat, header, footer), encoding="utf-8")
         generated.append((f"/collections/{col['slug']}/", None))
 
-    # ----- cartes produit insérées dans les pages sources via <!-- wb:products ids="a,b,c" -->
+    # ----- cartes produit et avis insérés dans les pages sources :
+    #       <!-- wb:products ids="a,b,c" [show-category="false"] --> et <!-- wb:reviews [max="6"] [alt="false"] -->
     pattern = re.compile(r'<!-- wb:products ids="([0-9, ]+)"(?: show-category="(\w+)")? -->.*?<!-- /wb:products -->', re.S)
-    by_id = {str(x["listing_id"]): x for x in cat.all_products}
+    reviews_pattern = re.compile(r'<!-- wb:reviews((?: max="\d+")?(?: alt="\w+")?) -->.*?<!-- /wb:reviews -->', re.S)
+    by_id = cat.by_id
     for f in OUT.rglob("*.html"):
         txt = f.read_text(encoding="utf-8")
-        if "wb:products" not in txt:
+        if "wb:products" not in txt and "wb:reviews" not in txt:
             continue
         def render(m):
             ids = [i.strip() for i in m.group(1).split(",") if i.strip()]
             cards = "".join(product_card(by_id[i], cat, show_category=(m.group(2) != "false"), reveal=False) for i in ids if i in by_id)
             return f'<!-- wb:products ids="{m.group(1)}" -->{cards}<!-- /wb:products -->'
-        f.write_text(pattern.sub(render, txt), encoding="utf-8")
+        def render_reviews(m):
+            attrs = dict(re.findall(r'(\w+)="([^"]*)"', m.group(1)))
+            section = reviews_section(cat, int(attrs.get("max", 6)), alt=attrs.get("alt") != "false", lead=REVIEWS_LEAD)
+            return f'<!-- wb:reviews{m.group(1)} -->{section}<!-- /wb:reviews -->'
+        f.write_text(reviews_pattern.sub(render_reviews, pattern.sub(render, txt)), encoding="utf-8")
 
     # ----- photos Etsy encore référencées dans les pages sources (héros, tuiles…) -> versions locales si disponibles
     etsy_img_re = re.compile(r"https://i\.etsystatic\.com/\d+/r/il/[0-9a-f]+/(\d+)/il_([0-9a-zA-Z]+x[0-9a-zA-Z]+)\.\1_[0-9a-z]+\.jpg")
@@ -761,8 +926,10 @@ def main() -> int:
 
     # ----- llms.txt (résumé lisible par les assistants IA)
     lines = [f"# {BRAND}", "",
-             f"> Atelier de gravure sur bois : dessous de plat en rondin de Paulownia (animaux, manga, Disney), cartes Pokémon 3D en bois, horloges murales et créations personnalisées. Motifs dessinés par l'atelier, fabriqués en petites séries. Les ventes se font sur la boutique Etsy officielle ({ETSY_SHOP}).", "",
+             f"> Atelier français de gravure sur bois : dessous de plat en rondin de Paulownia (animaux, manga, Disney), cartes Pokémon en bois 3D (Pikachu, Évoli, Mewtwo… ou carte Pokémon sur mesure), horloges murales et créations personnalisées. Motifs dessinés par l'atelier, fabriqués en petites séries et expédiés depuis la France. Les ventes se font sur la boutique Etsy officielle ({ETSY_SHOP}).", "",
              f"Site : {SITE}/ · Contact : {cat.shop.get('email', '')} · Instagram : {cat.shop.get('instagram', '')}", "",
+             *([f"Avis clients : {str(round(float(cat.shop['review_average']), 1)).replace('.', ',')}/5 sur Etsy ({cat.shop['review_count']} avis) – {_reviews['url']}", ""]
+               if isinstance(cat.shop.get("review_average"), (int, float)) and isinstance(cat.shop.get("review_count"), int) and cat.shop["review_count"] > 0 else []),
              "## Collections", ""]
     for col, items in cat.collections():
         lines.append(f"- [{col['name']}]({SITE}/collections/{col['slug']}/) : {len(items)} création(s). {truncate(col.get('tagline') or '', 120)}")
@@ -787,7 +954,7 @@ def main() -> int:
     if missing:
         print("ATTENTION liens internes introuvables :", ", ".join(sorted(missing)))
 
-    print(f"✓ {len(cat.all_products)} pages création, {len(cat.collections())} pages collection, {len(urls)} URL dans le sitemap → {OUT}")
+    print(f"✓ {len(cat.all_products)} pages création, {len(cat.collections())} pages collection, {len(_reviews['items'])} avis client(s), {len(urls)} URL dans le sitemap → {OUT}")
     return 1 if missing else 0
 
 

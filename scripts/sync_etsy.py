@@ -42,6 +42,7 @@ API_BASE = "https://openapi.etsy.com/v3/application"
 USER_AGENT = "woodenbrothers.fr catalogue sync (+https://www.woodenbrothers.fr)"
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_DATA = ROOT / "data" / "products.json"
+REVIEWS_FILE = ROOT / "data" / "reviews.json"
 
 # Champs du catalogue que la synchronisation ne doit jamais écraser.
 EDITORIAL_FIELDS = ("short_title", "slug", "seo_title", "seo_description", "description", "description_long",
@@ -268,6 +269,51 @@ def fetch_catalog(api_key: str, shop_id: int) -> tuple[dict, dict, list]:
     return shop, sections, listings
 
 
+def fetch_reviews(api_key: str, shop_id: int) -> list | None:
+    """Avis publics de la boutique (texte, note, article, date). None si l'API refuse."""
+    reviews, offset = [], 0
+    try:
+        while True:
+            res = api_get(f"/shops/{shop_id}/reviews", api_key, {"limit": 100, "offset": offset})
+            batch = res.get("results", [])
+            for r in batch:
+                text = (r.get("review") or "").strip()
+                rating = r.get("rating")
+                if not isinstance(rating, int) or rating < 1:
+                    continue
+                ts = r.get("created_timestamp") or r.get("create_timestamp")
+                reviews.append({
+                    "rating": rating,
+                    "text": text,
+                    "listing_id": r.get("listing_id"),
+                    "date": datetime.fromtimestamp(ts, tz=timezone.utc).date().isoformat() if ts else None,
+                    "language": r.get("language"),
+                })
+            offset += 100
+            if not batch or offset >= int(res.get("count", 0)) or offset >= 1000:
+                break
+        log(f"  {len(reviews)} avis client(s)")
+        return reviews
+    except RuntimeError as e:
+        log(f"  (avis indisponibles : {e})")
+        return None
+
+
+def save_reviews(reviews: list | None, dry_run: bool) -> None:
+    if reviews is None or not REVIEWS_FILE.exists():
+        return
+    data = json.loads(REVIEWS_FILE.read_text(encoding="utf-8"))
+    if data.get("etsy") == reviews:
+        return
+    data["etsy"] = reviews
+    data["updated_at"] = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+    if dry_run:
+        log(f"(dry-run) {len(reviews)} avis seraient écrits dans {REVIEWS_FILE}")
+        return
+    REVIEWS_FILE.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    log(f"✓ {len(reviews)} avis écrits dans {REVIEWS_FILE}")
+
+
 def merge(data: dict, shop: dict, sections: dict, listings: list) -> dict:
     new = copy.deepcopy(data)
     categories = new.setdefault("categories", [])
@@ -418,6 +464,7 @@ def main() -> int:
         return 1
 
     new = merge(data, shop, sections, listings)
+    save_reviews(fetch_reviews(api_key, shop_id), args.dry_run)
 
     def comparable(d: dict) -> dict:
         d = copy.deepcopy(d)
