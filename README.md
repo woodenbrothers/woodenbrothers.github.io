@@ -127,6 +127,11 @@ Le build remplit automatiquement les cartes. L'en-tête et le pied de page des p
 - **Couleurs et polices** : variables en haut de `assets/css/style.css` (`--forest`, `--wood`, `--bg`…).
 - **Photos du héros de l'accueil** et tuiles « collections » : URL dans `index.html`.
 - **FAQ** : section `#faq` de `index.html`.
+- **Livraison et retours déclarés à Google** (fiches de marchand) : clés `shipping` (tarif France `rate`, délais
+  `handling_days` et `transit_days` en jours, ex. `[1, 3]`) et `returns` (`days`, `fees` : `customer` ou `free`) de
+  l'objet `shop` dans `data/products.json`. Les articles « Livraison offerte » sont déclarés à 0 €, les créations sur
+  mesure sans droit de rétractation. Les avis liés à une création par `listing_id` sont aussi déclarés à Google pour
+  cette création uniquement (jamais la note globale de la boutique).
 
 ## Déploiement et sauvegarde
 

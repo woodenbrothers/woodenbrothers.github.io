@@ -55,6 +55,12 @@ MADE_IN_FR = "Fabriqué dans notre atelier et expédié depuis la France"
 MADE_IN_FR_LONG = ("Toutes nos créations sont dessinées et fabriquées dans notre atelier, puis expédiées depuis la France, "
                    "soigneusement emballées. Les délais et frais de livraison sont indiqués sur chaque fiche Etsy.")
 
+# Livraison et retours déclarés à Google (données « fiches de marchand »). Surcharge dans data/products.json, clé shop :
+#   "shipping": {"country": "FR", "rate": 4.9, "currency": "EUR", "handling_days": [1, 3], "transit_days": [2, 5]}
+#   "returns": {"country": "FR", "days": 14, "fees": "customer"}        (fees : "customer" ou "free")
+SHIPPING_DEFAULTS = {"country": "FR", "rate": None, "currency": "EUR", "handling_days": None, "transit_days": None}
+RETURNS_DEFAULTS = {"country": "FR", "days": 14, "fees": "customer"}
+
 # Textes par type de pièce (modifiables)
 KINDS = {
     "dessous-de-plat": {
@@ -596,8 +602,37 @@ def product_page(p: dict, cat: Catalogue, header: str, footer: str) -> str:
             "seller": {"@type": "Organization", "name": BRAND, "url": SITE + "/"},
         },
     }
-    if p.get("free_shipping"):
-        product_ld["offers"]["shippingDetails"] = {"@type": "OfferShippingDetails", "shippingRate": {"@type": "MonetaryAmount", "value": "0", "currency": "EUR"}, "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "FR"}}
+    # Livraison et retours (réglables dans data/products.json, voir SHIPPING_DEFAULTS / RETURNS_DEFAULTS)
+    shipping = {**SHIPPING_DEFAULTS, **(cat.shop.get("shipping") or {})}
+    returns = {**RETURNS_DEFAULTS, **(cat.shop.get("returns") or {})}
+    ship = {"@type": "OfferShippingDetails", "shippingDestination": {"@type": "DefinedRegion", "addressCountry": shipping["country"]}}
+    rate = 0 if p.get("free_shipping") else shipping.get("rate")
+    if rate is not None:
+        ship["shippingRate"] = {"@type": "MonetaryAmount", "value": f"{float(rate):.2f}", "currency": shipping.get("currency") or "EUR"}
+    delivery = {}
+    for key, prop in (("handling_days", "handlingTime"), ("transit_days", "transitTime")):
+        rng = shipping.get(key)
+        if isinstance(rng, (list, tuple)) and len(rng) == 2:
+            delivery[prop] = {"@type": "QuantitativeValue", "minValue": int(rng[0]), "maxValue": int(rng[1]), "unitCode": "DAY"}
+    if delivery:
+        ship["deliveryTime"] = {"@type": "ShippingDeliveryTime", **delivery}
+    product_ld["offers"]["shippingDetails"] = ship
+    if p.get("category") == "personnalise" or p.get("customizable"):       # sur mesure : pas de rétractation (art. L221-28 3°)
+        product_ld["offers"]["hasMerchantReturnPolicy"] = {"@type": "MerchantReturnPolicy", "applicableCountry": returns["country"], "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"}
+    else:
+        product_ld["offers"]["hasMerchantReturnPolicy"] = {
+            "@type": "MerchantReturnPolicy", "applicableCountry": returns["country"],
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": int(returns["days"]),
+            "returnMethod": "https://schema.org/ReturnByMail", "refundType": "https://schema.org/FullRefund",
+            "returnFees": "https://schema.org/FreeReturn" if returns.get("fees") == "free" else "https://schema.org/ReturnFeesCustomerResponsibility",
+        }
+    # Avis portant sur cette création et affichés sur la page -> extraits d'avis Google (jamais la note globale de la boutique)
+    own = [r for r in _reviews["items"] if r["listing_id"] == str(p["listing_id"])]
+    if own:
+        product_ld["aggregateRating"] = {"@type": "AggregateRating", "ratingValue": round(sum(r["rating"] for r in own) / len(own), 1), "reviewCount": len(own), "bestRating": 5, "worstRating": 1}
+        product_ld["review"] = [{"@type": "Review", "author": {"@type": "Person", "name": r["author"] or "Client Etsy"}, **({"datePublished": r["date"]} if r["date"] else {}),
+                                 "reviewBody": r["text"], "reviewRating": {"@type": "Rating", "ratingValue": r["rating"], "bestRating": 5, "worstRating": 1}}
+                                for r in pick_reviews(3, {str(p["listing_id"])})]
 
     gallery_imgs = json.dumps([img_size(u, "794xN") for u in images], ensure_ascii=False)
     thumbs = "".join(

@@ -9,7 +9,19 @@
     "email": "contact@woodenbrothers.fr",
     "review_average": 4.8,
     "review_count": 11,
-    "num_favorers": null
+    "num_favorers": null,
+    "shipping": {
+      "country": "FR",
+      "rate": null,
+      "currency": "EUR",
+      "handling_days": null,
+      "transit_days": null
+    },
+    "returns": {
+      "country": "FR",
+      "days": 14,
+      "fees": "customer"
+    }
   },
   "updated_at": "2026-10-15T12:00:00+00:00",
   "source": "manuel (boutique Etsy du 15/10/2026)",
