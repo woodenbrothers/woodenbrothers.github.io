@@ -1,2 +1,2 @@
 # Dépendances du build (scripts/images.py). Mises à jour proposées par Dependabot.
-pillow>=11,<13
+pillow>=13.0.0,<14
